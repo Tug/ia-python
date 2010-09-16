@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 6a : Satisfaction de contraintes: Référence de la classe libPSC.Noeud</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Liste&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="hierarchy.html"><span>Hiérarchie&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="functions.html"><span>Membres&nbsp;de&nbsp;classe</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><b>libPSC</b>.<a class="el" href="classlib_p_s_c_1_1_noeud.html">Noeud</a>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence de la classe libPSC.Noeud</h1><!-- doxytag: class="libPSC::Noeud" -->Classe modelisant un <a class="el" href="classlib_p_s_c_1_1_noeud.html" title="Classe modelisant un Noeud.">Noeud</a>.  
+<a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="classlib_p_s_c_1_1_noeud-members.html">Liste de tous les membres</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions membres publiques</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlib_p_s_c_1_1_noeud.html#cbf074fbc320dfdcfe19d62bb450df4b">__init__</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur de la classe.  <a href="#cbf074fbc320dfdcfe19d62bb450df4b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlib_p_s_c_1_1_noeud.html#cbea1ec113d394e07f94b259cd98d8fb">consistanceDuNoeud</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Applique la consistance du noeud sur ce noeud.  <a href="#cbea1ec113d394e07f94b259cd98d8fb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlib_p_s_c_1_1_noeud.html#83229ee33f33c43646d23ebbb4482afe">__repr__</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne une representation textuelle des donnees de la classe.  <a href="#83229ee33f33c43646d23ebbb4482afe"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Attributs publics</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlib_p_s_c_1_1_noeud.html#6750ef63c56aa9e091c6b39e6bccd950">refVar</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">la variable liee a ce noeud  <a href="#6750ef63c56aa9e091c6b39e6bccd950"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Classe modelisant un <a class="el" href="classlib_p_s_c_1_1_noeud.html" title="Classe modelisant un Noeud.">Noeud</a>. 
+<p>
+Un noeud est un element d'un graphe et fait reference a une variable. Un noeud partage certaines contraintes avec lui-meme ou avec d'autres noeuds. Ces contraintes sont exprimees a l'aide d'arcs. Un arc partant d'un noeud a lui-meme exprime une contrainte unaire. Un arc partant d'un noeud a un autre exprime une contrainte binaire. 
+<p>Définition à la ligne <a class="el" href="lib_p_s_c_8py-source.html#l00399">399</a> du fichier <a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a>.</p>
+<hr><h2>Documentation des fonctions membres</h2>
+<a class="anchor" name="cbf074fbc320dfdcfe19d62bb450df4b"></a><!-- doxytag: member="libPSC::Noeud::__init__" ref="cbf074fbc320dfdcfe19d62bb450df4b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def libPSC.Noeud.__init__           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>variable</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructeur de la classe. 
+<p>
+Attache une variable a ce noeud<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>variable</em>&nbsp;</td><td>la variable referencee par ce noeud </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="lib_p_s_c_8py-source.html#l00411">411</a> du fichier <a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cbea1ec113d394e07f94b259cd98d8fb"></a><!-- doxytag: member="libPSC::Noeud::consistanceDuNoeud" ref="cbea1ec113d394e07f94b259cd98d8fb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def libPSC.Noeud.consistanceDuNoeud           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>contraintes</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Applique la consistance du noeud sur ce noeud. 
+<p>
+La methode de consistance consiste a supprimer du domaine toutes les valeurs qui violent les contraintes. Pour cela, il suffit d'iterer parmi toutes les valeurs possibles du domaine et de verifier a chaque fois si la variable respecte bien toutes les contraintes. Dans la negative, il suffit de supprimer la valeur du domaine.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>contraintes</em>&nbsp;</td><td>la liste de contraintes unaires pour ce noeud</td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>Voir également:</b></dt><dd>Chapitre 8.5.1 du livre </dd></dl>
+<dl class="warning" compact><dt><b>Avertissement:</b></dt><dd>lors de l'iteration des valeurs du domaine, il faut bien faire <b>attention</b> a iterer sur une copie du domaine, car on ne peut pas supprimer des valeurs d'une liste et continuer a iterer sur celle-ci </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="lib_p_s_c_8py-source.html#l00431">431</a> du fichier <a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="83229ee33f33c43646d23ebbb4482afe"></a><!-- doxytag: member="libPSC::Noeud::__repr__" ref="83229ee33f33c43646d23ebbb4482afe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def libPSC.Noeud.__repr__           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne une representation textuelle des donnees de la classe. 
+<p>
+Retourne une representation textuelle de la classe. Le format d'affichage est le suivant:<p>
+<div class="fragment"><pre class="fragment"> Noeud -&gt; var&lt; nom, [domaine] &gt;
+</pre></div><p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une chaine de caracteres contenant la representation de la classe </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="lib_p_s_c_8py-source.html#l00459">459</a> du fichier <a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des données membres</h2>
+<a class="anchor" name="6750ef63c56aa9e091c6b39e6bccd950"></a><!-- doxytag: member="libPSC::Noeud::refVar" ref="6750ef63c56aa9e091c6b39e6bccd950" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classlib_p_s_c_1_1_noeud.html#6750ef63c56aa9e091c6b39e6bccd950">libPSC.Noeud::refVar</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+la variable liee a ce noeud 
+<p>
+
+<p>Définition à la ligne <a class="el" href="lib_p_s_c_8py-source.html#l00412">412</a> du fichier <a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a>.</p>
+
+</div>
+</div><p>
+<hr>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
+<li><a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Fri May 16 12:18:26 2008 pour Lab 6a : Satisfaction de contraintes par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 6a : Satisfaction de contraintes: Référence de la classe libPSC.Arc</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Liste&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="hierarchy.html"><span>Hiérarchie&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="functions.html"><span>Membres&nbsp;de&nbsp;classe</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><b>libPSC</b>.<a class="el" href="classlib_p_s_c_1_1_arc.html">Arc</a>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence de la classe libPSC.Arc</h1><!-- doxytag: class="libPSC::Arc" -->Classe modelisant un arc.  
+<a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="classlib_p_s_c_1_1_arc-members.html">Liste de tous les membres</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions membres publiques</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlib_p_s_c_1_1_arc.html#f718de771d9edaa72c45e73cdd606a17">__init__</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur de la classe.  <a href="#f718de771d9edaa72c45e73cdd606a17"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlib_p_s_c_1_1_arc.html#a557cbf4297f96b6244ab994a76a3507">reviser</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Revise la consistance des valeurs de domaine pour la contrainte representee par cet arc.  <a href="#a557cbf4297f96b6244ab994a76a3507"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlib_p_s_c_1_1_arc.html#d9b8462c7102d78b62c6134da8e82095">__repr__</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne une representation textuelle des donnees de la classe.  <a href="#d9b8462c7102d78b62c6134da8e82095"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Attributs publics</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlib_p_s_c_1_1_arc.html#5f4ad295f5eb6476d656871c2824b435">refContrainte</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">la contrainte de reference  <a href="#5f4ad295f5eb6476d656871c2824b435"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Classe modelisant un arc. 
+<p>
+Un arc modelise une contrainte allant d'un noeud de depart a un noeud d'arrivee. Un arc peut exprimer une contrainte unaire (d'un noeud a lui-meme) ou une contrainte binaire (d'un noeud a un autre). 
+<p>Définition à la ligne <a class="el" href="lib_p_s_c_8py-source.html#l00470">470</a> du fichier <a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a>.</p>
+<hr><h2>Documentation des fonctions membres</h2>
+<a class="anchor" name="f718de771d9edaa72c45e73cdd606a17"></a><!-- doxytag: member="libPSC::Arc::__init__" ref="f718de771d9edaa72c45e73cdd606a17" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def libPSC.Arc.__init__           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>contrainte</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructeur de la classe. 
+<p>
+Initialise la contrainte liee a cet arc.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>contrainte</em>&nbsp;</td><td>la contrainte referencee </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="lib_p_s_c_8py-source.html#l00482">482</a> du fichier <a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a557cbf4297f96b6244ab994a76a3507"></a><!-- doxytag: member="libPSC::Arc::reviser" ref="a557cbf4297f96b6244ab994a76a3507" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def libPSC.Arc.reviser           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Revise la consistance des valeurs de domaine pour la contrainte representee par cet arc. 
+<p>
+Cette fonction est utilisee conjointement avec <code>consistanceDesArcs()</code> pour supprimer les valeurs qui ne peuvent ou ne pourront pas satisfaire les diverses contraintes. Voir le livre pour plus de details<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>Voir également:</b></dt><dd>Chapitre 8.5.2 du livre sur l'algorihme de Walz et REVISER </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="lib_p_s_c_8py-source.html#l00495">495</a> du fichier <a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d9b8462c7102d78b62c6134da8e82095"></a><!-- doxytag: member="libPSC::Arc::__repr__" ref="d9b8462c7102d78b62c6134da8e82095" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def libPSC.Arc.__repr__           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne une representation textuelle des donnees de la classe. 
+<p>
+Retourne une representation textuelle de la classe. Le format d'affichage est le suivant:<p>
+<div class="fragment"><pre class="fragment"> Arc -&gt; contrainte: &lt; nom, [domaine] &gt;
+</pre></div><p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une chaine de caracteres contenant la representation de la classe </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="lib_p_s_c_8py-source.html#l00533">533</a> du fichier <a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des données membres</h2>
+<a class="anchor" name="5f4ad295f5eb6476d656871c2824b435"></a><!-- doxytag: member="libPSC::Arc::refContrainte" ref="5f4ad295f5eb6476d656871c2824b435" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classlib_p_s_c_1_1_arc.html#5f4ad295f5eb6476d656871c2824b435">libPSC.Arc::refContrainte</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+la contrainte de reference 
+<p>
+
+<p>Définition à la ligne <a class="el" href="lib_p_s_c_8py-source.html#l00483">483</a> du fichier <a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a>.</p>
+
+</div>
+</div><p>
+<hr>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
+<li><a class="el" href="lib_p_s_c_8py-source.html">libPSC.py</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Fri May 16 12:18:26 2008 pour Lab 6a : Satisfaction de contraintes par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

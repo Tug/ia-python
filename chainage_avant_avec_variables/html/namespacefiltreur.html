@@ -1,0 +1,476 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 3 : Moteur d&apos;inf&amp;eacute;rence &amp;agrave; cha&amp;icirc;nage avant avec variables: Paquetage filtreur</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.2 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li class="current"><a href="namespaces.html"><span>Paquetages</span></a></li>
+    <li><a href="files.html"><span>Fichiers</span></a></li>
+  </ul>
+</div>
+<div class="tabs">
+  <ul>
+    <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+    <li><a href="namespacemembers.html"><span>Fonctions&nbsp;de&nbsp;paquetage</span></a></li>
+  </ul>
+</div>
+<h1>Paquetage filtreur</h1>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefiltreur.html#f051394a842af3e130894cdeda9b26a3">testeAtome</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefiltreur.html#859a921b57ab6a61c34d844d1beb079a">testeSubstitution</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefiltreur.html#1b166d962ce1c1990edb475a256a066b">testeVariable</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefiltreur.html#19842885c6a30c65d5eed98e688b6dce">construitSubstitution</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefiltreur.html#af697b6d6890affdf47210bbcc30db83">retourneVariable</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefiltreur.html#c5c6e17ead522a4a243fa6d40bceba2e">retourneValeur</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefiltreur.html#dae9291b323c3903659d266194e3fbe1">trouveSubstitution</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefiltreur.html#2a17f97e93719bb9a2ca9386899ca8da">unionSubstitutions</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefiltreur.html#3a41b4da617a445d1a707294fb2159ea">substitueVariables</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefiltreur.html#f75fabcabe4b3d79574406812d46c685">filtrer</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefiltreur.html#04c56693b474f3403e4425e124658f20">patternMatching</a></td></tr>
+
+</table>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="19842885c6a30c65d5eed98e688b6dce"></a><!-- doxytag: member="filtreur::construitSubstitution" ref="19842885c6a30c65d5eed98e688b6dce" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def filtreur.construitSubstitution           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>variable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>datum</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne une substitution entre une variable et une expression<p>
+Construit une substitution, en associant une variable de la forme ?x avec une expression, qui peut etre d'un type quelconque sans variable.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>variable</em>&nbsp;</td><td>la variable a substituer </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>datum</em>&nbsp;</td><td>preposition sans variable </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une substitution {variable:datum} </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="filtreur_8py-source.html#l00065">65</a> du fichier <a class="el" href="filtreur_8py-source.html">filtreur.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="f75fabcabe4b3d79574406812d46c685"></a><!-- doxytag: member="filtreur::filtrer" ref="f75fabcabe4b3d79574406812d46c685" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def filtreur.filtrer           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>datum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>pattern</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Effectue un filtrage entre deux propositions<p>
+Le filtrage est effectue en parcourant les deux propositions en meme temps, en prenant deux elements, en les comparant et en construisant les substitutions qui s'imposent. Par exemple:<p>
+<ul>
+<li>
+prop1 = [ 'Superman', 'a', 'une', 'cape', 'rouge' ] </li>
+<li>
+prop2 = [ '?x', 'a', 'une', '?y', 'rouge' ] </li>
+</ul>
+<p>
+produit { '?x':Superman, '?y':'cape' }<p>
+L'algorithme est le suivant:<p>
+<div class="fragment"><pre class="fragment">  1. function FILTRER( datum, pattern )
+  2.   <span class="keywordflow">if</span> pattern est un symbol:
+  3.       <span class="keywordflow">if</span> datum et pattern sont identiques: <span class="keywordflow">return</span> {}
+  4.       <span class="keywordflow">if</span> pattern est une variable: <span class="keywordflow">return</span> {pattern : datum}
+  5.       <span class="keywordflow">return</span> ECHEC
+  6.   <span class="keywordflow">if</span> datum est un symbol: <span class="keywordflow">return</span> ECHEC
+  7.   F1 &lt;- premier element de datum, T1 &lt;- reste de datum
+  8.   F2 &lt;- premier element de pattern, T2 &lt;- reste de pattern
+  9.   Z1 &lt;- FILTRER(F1,F2)
+ 10.   <span class="keywordflow">if</span> Z1 = ECHEC: <span class="keywordflow">return</span> ECHEC
+ 11.   G1 &lt;- T1
+ 12.   G2 &lt;- remplacer les variables de T2 par les unifications Z1
+ 13.   Z2 &lt;- FILTRER(G1,G2)
+ 14.   <span class="keywordflow">if</span> Z2 = ECHEC: <span class="keywordflow">return</span> ECHEC
+ 15.   <span class="keywordflow">return</span> { Z1 union Z2 }
+</pre></div><p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>datum</em>&nbsp;</td><td>la propopsition <b>sans</b> variable </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pattern</em>&nbsp;</td><td>la proposition <b>avec</b> variables </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>les substitutions si le filtrage a reussi: {'?x':'a',..}, 'ECHEC' sinon </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="filtreur_8py-source.html#l00188">188</a> du fichier <a class="el" href="filtreur_8py-source.html">filtreur.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="04c56693b474f3403e4425e124658f20"></a><!-- doxytag: member="filtreur::patternMatching" ref="04c56693b474f3403e4425e124658f20" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def filtreur.patternMatching           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>datum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>pattern</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>environnement</em> = <code>None</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Effectue un filtrage en tenant compte d'une liste de substitutions initiale<p>
+Cette fonction effectue un filtrage sur deux propositions. Cette fonction peut prendre en argument un environnement initial. Un environnement initial est une liste de substitutions. Le resultat final est l'union de l'environnement initial avec les substitutions donnees par le filtrage<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pattern</em>&nbsp;</td><td>une proposition pouvant contenir des variables </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>datum</em>&nbsp;</td><td>la proposition <b>sans</b> variables </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>environnement</em>&nbsp;</td><td>une liste initiale de substitutions </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>filtre(proposition,datum) si OK, ECHEC sinon </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="filtreur_8py-source.html#l00250">250</a> du fichier <a class="el" href="filtreur_8py-source.html">filtreur.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="c5c6e17ead522a4a243fa6d40bceba2e"></a><!-- doxytag: member="filtreur::retourneValeur" ref="c5c6e17ead522a4a243fa6d40bceba2e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def filtreur.retourneValeur           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitution</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la valeur d'une substitution<p>
+La valeur d'une substitution est le deuxieme element d'une paire {variable:valeur}.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitution</em>&nbsp;</td><td>la substitution </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la valeur de la substitution </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="filtreur_8py-source.html#l00087">87</a> du fichier <a class="el" href="filtreur_8py-source.html">filtreur.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="af697b6d6890affdf47210bbcc30db83"></a><!-- doxytag: member="filtreur::retourneVariable" ref="af697b6d6890affdf47210bbcc30db83" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def filtreur.retourneVariable           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitution</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la variable d'une substitution<p>
+La variable d'une substitution est le premier element d'une paire {variable:valeur}.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitution</em>&nbsp;</td><td>la substitution </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la variable de la substitution </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="filtreur_8py-source.html#l00076">76</a> du fichier <a class="el" href="filtreur_8py-source.html">filtreur.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="3a41b4da617a445d1a707294fb2159ea"></a><!-- doxytag: member="filtreur::substitueVariables" ref="3a41b4da617a445d1a707294fb2159ea" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def filtreur.substitueVariables           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>pattern</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitutions</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la proposition avec les variables remplacees par leurs valeurs<p>
+Cette methode se charge de substituer toutes les variables de la proposition passee en argument par leur valeur associee dans la liste des substitutions. Si la proposition est une <em>variable</em>, alors il suffit de retourner la valeur associee si elle existe, sinon, on teste chaque element de la proposition recursivement<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>pattern</em>&nbsp;</td><td>la proposition (contient des variables, atomes,... sous forme [' ',' ', ' '] OU ' ' ou ['[]'...]) </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitutions</em>&nbsp;</td><td>la liste des substitutions {a:b, c:d,...} </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la proposition avec les variables remplacees par leur valeurs </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="filtreur_8py-source.html#l00141">141</a> du fichier <a class="el" href="filtreur_8py-source.html">filtreur.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="f051394a842af3e130894cdeda9b26a3"></a><!-- doxytag: member="filtreur::testeAtome" ref="f051394a842af3e130894cdeda9b26a3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def filtreur.testeAtome           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>x</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Teste si le symbole passe en parametre est un atome<p>
+Cette fonction teste si le symbole passe en parametre est du meme type qu'un atome ( c-a-d ' ' )<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>x</em>&nbsp;</td><td>le symbole a tester </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>True si le symbole x est un atome, False sinon </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="filtreur_8py-source.html#l00029">29</a> du fichier <a class="el" href="filtreur_8py-source.html">filtreur.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="859a921b57ab6a61c34d844d1beb079a"></a><!-- doxytag: member="filtreur::testeSubstitution" ref="859a921b57ab6a61c34d844d1beb079a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def filtreur.testeSubstitution           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>x</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Teste si le symbole passe en parametre est une substitution<p>
+Cette fonction teste si le symbole passe en parametre est du meme type qu'un dictionnaire ( c-a-d {} ). Une substitution est de la forme {'?x':'oiseau'}.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>x</em>&nbsp;</td><td>le symbole a tester </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>True si le symbole x est une substitution, False sinon </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="filtreur_8py-source.html#l00041">41</a> du fichier <a class="el" href="filtreur_8py-source.html">filtreur.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="1b166d962ce1c1990edb475a256a066b"></a><!-- doxytag: member="filtreur::testeVariable" ref="1b166d962ce1c1990edb475a256a066b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def filtreur.testeVariable           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>x</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Teste si le symbole passe en parametre est une variable<p>
+Cette fonction teste si le symbole x passe en parametre est un atome et qu'il commence par le caractere ?. Une variable est codee ainsi: ?x<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>x</em>&nbsp;</td><td>le symbole a tester </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>True si le symbole x est une variable </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="filtreur_8py-source.html#l00053">53</a> du fichier <a class="el" href="filtreur_8py-source.html">filtreur.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="dae9291b323c3903659d266194e3fbe1"></a><!-- doxytag: member="filtreur::trouveSubstitution" ref="dae9291b323c3903659d266194e3fbe1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def filtreur.trouveSubstitution           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>variable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitutions</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la substitution associee a une variable, cad: {variable:definition_de_la_variable}<p>
+Cette fonction retourne une paire {variable:valeur} si elle existe, dans le cas contraire, elle retourne False<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>variable</em>&nbsp;</td><td>la variable dont on veut trouver une substitution </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitutions</em>&nbsp;</td><td>la liste des substitutions possibles </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la substitution associee a la variable si elle existe dans substitutions, sinon retourne False </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="filtreur_8py-source.html#l00101">101</a> du fichier <a class="el" href="filtreur_8py-source.html">filtreur.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="2a17f97e93719bb9a2ca9386899ca8da"></a><!-- doxytag: member="filtreur::unionSubstitutions" ref="2a17f97e93719bb9a2ca9386899ca8da" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def filtreur.unionSubstitutions           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitution1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitution2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Construit l'union de deux substitutions<p>
+Pour construire l'union de deux substitutions, on prend chaque variable de la liste substitution2. Si la variable existe deja dans substitution1, alors sa valeur est mise a jour, sinon elle est creee avec sa valeur associee.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitution1</em>&nbsp;</td><td>la premiere substitution </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitution2</em>&nbsp;</td><td>la deuxieme substitution </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>substitution1 UNION substitution2; echec if substitution1 ou substitution2 ne sont pas des substitutions </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="filtreur_8py-source.html#l00118">118</a> du fichier <a class="el" href="filtreur_8py-source.html">filtreur.py</a>.
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Feb 28 11:44:27 2008 pour Lab 3 : Moteur d'inf&eacute;rence &agrave; cha&icirc;nage avant avec variables par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.2 </small></address>
+</body>
+</html>

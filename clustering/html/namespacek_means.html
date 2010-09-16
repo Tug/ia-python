@@ -1,0 +1,363 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 9 : Clustering: Paquetage kMeans</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="namespacemembers.html"><span>Fonctions&nbsp;de&nbsp;paquetage</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Paquetage kMeans</h1>Algorithme de k-means.  
+<a href="#_details">Plus de détails...</a>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacek_means.html#065d7c91f4fc8b661b2b6e8bd967d17f">afficheClusters</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche les clusters dans un format lisible.  <a href="#065d7c91f4fc8b661b2b6e8bd967d17f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacek_means.html#b5c241330e3d00d788176958163ea07e">formeClusters</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Associe chaque donnee au plus proche noyau.  <a href="#b5c241330e3d00d788176958163ea07e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacek_means.html#2fe05a187897a693f8740ee1b537fd92">recentreNoyau</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Recentre le noyau d'un cluster passe en parametre.  <a href="#2fe05a187897a693f8740ee1b537fd92"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacek_means.html#0b6f4b17b4968f896eb6568fec4c5184">afficheNoyaux</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche les noyaux dans un format lisible.  <a href="#0b6f4b17b4968f896eb6568fec4c5184"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacek_means.html#ad984e8278eb746eaa4f71fae9ddd009">afficheResultat</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche le resultat du <a class="el" href="namespaceclustering.html" title="Algorithme general de clustering.">clustering</a>, i.e.  <a href="#ad984e8278eb746eaa4f71fae9ddd009"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacek_means.html#c0ef62482b97adcc43ee31d856110e2c">chargeDonnees</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise l'algorithme.  <a href="#c0ef62482b97adcc43ee31d856110e2c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacek_means.html#f3db66afea3825cd78bfd36cab84a695">retourneNoyaux</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la liste des noyaux.  <a href="#f3db66afea3825cd78bfd36cab84a695"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacek_means.html#c73956ef2f8c083063c66db7e93f029b">fini</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne si la liste de clusters passee en parametre est satisfaisante, ou s'il faut continuer a iterer.  <a href="#c73956ef2f8c083063c66db7e93f029b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacek_means.html#27ca1b91a4893b7ed7c9313dfa995bed">reviseClusters</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Boucle principale qui met a jour les clusters.  <a href="#27ca1b91a4893b7ed7c9313dfa995bed"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">list&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacek_means.html#b75577a1b94fe13d921f35b47b635c25">VIEUXNOYAUX</a> = []</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Noyaux de l'iteration precedente.  <a href="#b75577a1b94fe13d921f35b47b635c25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">list&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacek_means.html#5298d6674b7a8b7ea781a2b5632d1041">CLUSTERS</a> = []</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Liste des clusters courants.  <a href="#5298d6674b7a8b7ea781a2b5632d1041"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Algorithme de k-means. <hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="065d7c91f4fc8b661b2b6e8bd967d17f"></a><!-- doxytag: member="kMeans::afficheClusters" ref="065d7c91f4fc8b661b2b6e8bd967d17f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def kMeans.afficheClusters           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>clusters</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Affiche les clusters dans un format lisible. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>clusters</em>&nbsp;</td><td>Liste des clusters a afficher </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="k_means_8py-source.html#l00024">24</a> du fichier <a class="el" href="k_means_8py-source.html">kMeans.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0b6f4b17b4968f896eb6568fec4c5184"></a><!-- doxytag: member="kMeans::afficheNoyaux" ref="0b6f4b17b4968f896eb6568fec4c5184" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def kMeans.afficheNoyaux           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>noyaux</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Affiche les noyaux dans un format lisible. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>noyaux</em>&nbsp;</td><td>Liste des noyaux a afficher </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="k_means_8py-source.html#l00068">68</a> du fichier <a class="el" href="k_means_8py-source.html">kMeans.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ad984e8278eb746eaa4f71fae9ddd009"></a><!-- doxytag: member="kMeans::afficheResultat" ref="ad984e8278eb746eaa4f71fae9ddd009" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def kMeans.afficheResultat           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Affiche le resultat du <a class="el" href="namespaceclustering.html" title="Algorithme general de clustering.">clustering</a>, i.e. 
+<p>
+la liste des clusters 
+<p>Définition à la ligne <a class="el" href="k_means_8py-source.html#l00076">76</a> du fichier <a class="el" href="k_means_8py-source.html">kMeans.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c0ef62482b97adcc43ee31d856110e2c"></a><!-- doxytag: member="kMeans::chargeDonnees" ref="c0ef62482b97adcc43ee31d856110e2c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def kMeans.chargeDonnees           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>listeNoyaux</em> = <code>None</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialise l'algorithme. 
+<p>
+Construit la liste <code>CLUSTERS</code>. Initialement, le premier cluster contient toutes les donnees (sauf les autres noyaux) <dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>k</em>&nbsp;</td><td>Nombre de clusters desires </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>listeNoyaux</em>&nbsp;</td><td>Liste des noyaux. Si pas specifiee, prend les k premieres donnees comme noyaux </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="k_means_8py-source.html#l00085">85</a> du fichier <a class="el" href="k_means_8py-source.html">kMeans.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c73956ef2f8c083063c66db7e93f029b"></a><!-- doxytag: member="kMeans::fini" ref="c73956ef2f8c083063c66db7e93f029b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def kMeans.fini           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne si la liste de clusters passee en parametre est satisfaisante, ou s'il faut continuer a iterer. 
+<p>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>True si la liste des noyaux n'a pas change depuis l'iteration precedente </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="k_means_8py-source.html#l00109">109</a> du fichier <a class="el" href="k_means_8py-source.html">kMeans.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b5c241330e3d00d788176958163ea07e"></a><!-- doxytag: member="kMeans::formeClusters" ref="b5c241330e3d00d788176958163ea07e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def kMeans.formeClusters           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>noyaux</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Associe chaque donnee au plus proche noyau. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>noyaux</em>&nbsp;</td><td>Liste des noyaux </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>La liste des clusters. La premiere donnee de chaque cluster est son noyau. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="k_means_8py-source.html#l00037">37</a> du fichier <a class="el" href="k_means_8py-source.html">kMeans.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2fe05a187897a693f8740ee1b537fd92"></a><!-- doxytag: member="kMeans::recentreNoyau" ref="2fe05a187897a693f8740ee1b537fd92" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def kMeans.recentreNoyau           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>cluster</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Recentre le noyau d'un cluster passe en parametre. 
+<p>
+Le nouveau noyau est place en tete de la liste qui represente le cluster. <dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>cluster</em>&nbsp;</td><td>Le cluster dont le noyau doit etre recentre </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Le cluster dont le noyau a ete recentre </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="k_means_8py-source.html#l00058">58</a> du fichier <a class="el" href="k_means_8py-source.html">kMeans.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f3db66afea3825cd78bfd36cab84a695"></a><!-- doxytag: member="kMeans::retourneNoyaux" ref="f3db66afea3825cd78bfd36cab84a695" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def kMeans.retourneNoyaux           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la liste des noyaux. 
+<p>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>La liste des premiers elements de chaque cluster </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="k_means_8py-source.html#l00103">103</a> du fichier <a class="el" href="k_means_8py-source.html">kMeans.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="27ca1b91a4893b7ed7c9313dfa995bed"></a><!-- doxytag: member="kMeans::reviseClusters" ref="27ca1b91a4893b7ed7c9313dfa995bed" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def kMeans.reviseClusters           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Boucle principale qui met a jour les clusters. 
+<p>
+
+<p>Définition à la ligne <a class="el" href="k_means_8py-source.html#l00117">117</a> du fichier <a class="el" href="k_means_8py-source.html">kMeans.py</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="5298d6674b7a8b7ea781a2b5632d1041"></a><!-- doxytag: member="kMeans::CLUSTERS" ref="5298d6674b7a8b7ea781a2b5632d1041" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list <a class="el" href="namespacek_means.html#5298d6674b7a8b7ea781a2b5632d1041">kMeans.CLUSTERS</a> = []          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Liste des clusters courants. 
+<p>
+
+<p>Définition à la ligne <a class="el" href="k_means_8py-source.html#l00020">20</a> du fichier <a class="el" href="k_means_8py-source.html">kMeans.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b75577a1b94fe13d921f35b47b635c25"></a><!-- doxytag: member="kMeans::VIEUXNOYAUX" ref="b75577a1b94fe13d921f35b47b635c25" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list <a class="el" href="namespacek_means.html#b75577a1b94fe13d921f35b47b635c25">kMeans.VIEUXNOYAUX</a> = []          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Noyaux de l'iteration precedente. 
+<p>
+
+<p>Définition à la ligne <a class="el" href="k_means_8py-source.html#l00017">17</a> du fichier <a class="el" href="k_means_8py-source.html">kMeans.py</a>.</p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:38 2008 pour Lab 9 : Clustering par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

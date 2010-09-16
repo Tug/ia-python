@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 5 : Algorithmes de recherche: Paquetage recherche</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.2 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li class="current"><a href="namespaces.html"><span>Paquetages</span></a></li>
+    <li><a href="annotated.html"><span>Classes</span></a></li>
+    <li><a href="files.html"><span>Fichiers</span></a></li>
+  </ul>
+</div>
+<div class="tabs">
+  <ul>
+    <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+    <li><a href="namespacemembers.html"><span>Fonctions&nbsp;de&nbsp;paquetage</span></a></li>
+  </ul>
+</div>
+<h1>Paquetage recherche</h1>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Classes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrecherche_1_1_v_i_l_l_e___p_a_s___t_r_o_u_v_e_e.html">VILLE_PAS_TROUVEE</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrecherche_1_1_ville.html">Ville</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrecherche_1_1_villes.html">Villes</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerecherche.html#f45c31d366835e041ebdfe36a6d898a2">recherche</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerecherche.html#683fa9b303413f1332b01c9a336fd5ef">rechercheOptimisee</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacerecherche.html#8d8855ece34b3d36396ddbc25feccc55">ajouteSuccesseurs</a></td></tr>
+
+</table>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="8d8855ece34b3d36396ddbc25feccc55"></a><!-- doxytag: member="recherche::ajouteSuccesseurs" ref="8d8855ece34b3d36396ddbc25feccc55" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def recherche.ajouteSuccesseurs           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>Q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>S</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>methode</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Ajoute les successeurs S dans la liste Q<p>
+Ajoute les succeseurs S a Q suivant la methode de <a class="el" href="namespacerecherche.html">recherche</a>.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>Q</em>&nbsp;</td><td>la liste initiale </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>S</em>&nbsp;</td><td>la liste des successeurs </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>methode</em>&nbsp;</td><td>la methode de <a class="el" href="namespacerecherche.html">recherche</a> { DFS, BFS, A* } </td></tr>
+  </table>
+</dl>
+
+<p>
+Définition à la ligne <a class="el" href="recherche_8py-source.html#l00347">347</a> du fichier <a class="el" href="recherche_8py-source.html">recherche.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="f45c31d366835e041ebdfe36a6d898a2"></a><!-- doxytag: member="recherche::recherche" ref="f45c31d366835e041ebdfe36a6d898a2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def recherche.recherche           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>depart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>but</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>methode</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Algorithme de <a class="el" href="namespacerecherche.html">recherche</a><p>
+Cette fonction de <a class="el" href="namespacerecherche.html">recherche</a> permet de faire trois types de <a class="el" href="namespacerecherche.html">recherche</a>:<p>
+<ul>
+<li><code>DFS</code> pour la <a class="el" href="namespacerecherche.html">recherche</a> en profondeur d'abord. </li>
+<li><code>BFS</code> pour la <a class="el" href="namespacerecherche.html">recherche</a> en largeur d'abord. </li>
+<li><code>A*</code> pour la <a class="el" href="namespacerecherche.html">recherche</a> heuristique</li>
+</ul>
+L'algorithme de <a class="el" href="namespacerecherche.html">recherche</a> est le suivant :<p>
+<div class="fragment"><pre class="fragment"> Recherche(Noeud_depart, Noeud_but, methode)
+        1. Q &lt;- [Noeud_depart] 
+        2. <span class="keywordflow">while</span> true:
+        3.   <span class="keywordflow">if</span> Q est vide:
+        4.       <span class="keywordflow">return</span> ECHEC.
+        5.   <span class="keywordflow">else</span> 
+        6.       n &lt;- premier(Q)
+        7.       Q &lt;- reste(Q)
+        8.       <span class="keywordflow">if</span> n est un noeud but:
+        8.         <span class="keywordflow">return</span> n
+   10.   <span class="keywordflow">else</span>:
+   11.     S &lt;- successeurs de n
+   12.     Q &lt;- ajouterSuccesseurs(Q,S,methode)
+</pre></div><p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>depart</em>&nbsp;</td><td>ville de depart </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>but</em>&nbsp;</td><td>ville d'arrivee </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>methode</em>&nbsp;</td><td>la methode utilisee (DFS,BFS,A*) </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>n si c'est un noeud but, ECHEC sinon </dd></dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Le seul changement entre les diverses methodes de <a class="el" href="namespacerecherche.html">recherche</a> est la facon d'ajouter les successeurs dans Q. <ul>
+<li><code>DFS</code> on ajoute S+Q </li>
+<li><code>BFS</code> on ajoute Q+S </li>
+<li><code>A*</code> on ajoute Q+S et on trie par ordre croissant de <img class="formulaInl" alt="$f_{n}$" src="form_5.png"> </li>
+</ul>
+</dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="recherche_8py-source.html#l00220">220</a> du fichier <a class="el" href="recherche_8py-source.html">recherche.py</a>.
+</div>
+</div><p>
+<a class="anchor" name="683fa9b303413f1332b01c9a336fd5ef"></a><!-- doxytag: member="recherche::rechercheOptimisee" ref="683fa9b303413f1332b01c9a336fd5ef" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def recherche.rechercheOptimisee           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>depart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>but</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>methode</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Algorithme de <a class="el" href="namespacerecherche.html">recherche</a> optimisee<p>
+L'algorithme de <a class="el" href="namespacerecherche.html">recherche</a> optimisee est tres similaire a celui d'une <a class="el" href="namespacerecherche.html">recherche</a> normale, la grande difference etant que l'on ne visite un noeud qu'une seule fois. Pour cela, on garde la liste C qui contient tous les noeuds deja visites.<p>
+<div class="fragment"><pre class="fragment">RechercheOptimisee(Noeud_depart, Noeud_but, methode)
+        1. Q &lt;- [Noeud_depart] 
+        2. C &lt;- [] 
+        3. <span class="keywordflow">while</span> true:
+        4.   <span class="keywordflow">if</span> Q est vide:
+        5.      <span class="keywordflow">return</span> ECHEC.
+        6.   <span class="keywordflow">else</span>:
+        7.       n &lt;- premier(Q)
+        8.       Q &lt;- reste(Q)
+        9.       <span class="keywordflow">if</span> n est un noeud but:
+   10.     <span class="keywordflow">return</span> n
+   11.   <span class="keywordflow">else</span>:
+   12.     <span class="keywordflow">if</span> (n <span class="keywordflow">not</span> <span class="keywordflow">in</span> C <span class="keywordflow">and</span> methode <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="stringliteral">"A*"</span>) <span class="keywordflow">or</span> 
+   ...(n=n<span class="stringliteral">' in C and f(n)&lt;f(n'</span>) <span class="keywordflow">and</span> methode <span class="keywordflow">is</span>  <span class="stringliteral">"A*"</span>):
+   13.           S &lt;- successeurs de n
+   14.           Q &lt;- ajouterSuccesseurs(Q,S,methode)
+   15.           ajoute n dans C
+</pre></div><p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>depart</em>&nbsp;</td><td>ville de depart </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>but</em>&nbsp;</td><td>ville d'arrivee </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>methode</em>&nbsp;</td><td>la methode utilisee (DFS,BFS,A*) </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Une variante est necessaire pour A*. En effet, un noeud peut etre deja contenu dans la liste. Cependant, si son cout est superieur a celui trouve par un autre chemin, on met a jour celui-ci </dd></dl>
+
+<p>
+Définition à la ligne <a class="el" href="recherche_8py-source.html#l00287">287</a> du fichier <a class="el" href="recherche_8py-source.html">recherche.py</a>.
+</div>
+</div><p>
+<hr size="1"><address style="text-align: right;"><small>Généré le Wed Jan 30 15:31:34 2008 pour Lab 5 : Algorithmes de recherche par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.2 </small></address>
+</body>
+</html>

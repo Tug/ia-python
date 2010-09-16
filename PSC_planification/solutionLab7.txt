@@ -1,0 +1,649 @@
+Chargement de l'algorithme de planification par PSC
+	@version: 3.0  date: 07/06/2008 modified by Thomas Leaute
+	@version: 2.3  date: 31/03/2008 modified by Thomas Leaute
+	@version: 2.2  date: 28/06/2007 modified by Thomas Leaute
+	@version: 2.1  date: 04/05/2007 modified by Thomas Leaute
+	@version: 2.0  date: 03/05/2007 modified by Thomas Leaute
+	@version: 1.1  date: 02/05/2007 modified by Thomas Leaute
+	@version: 1.0  date: 05/03/2007 created by Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch date: 05/03/2007
+	@copyright: EPFL-IC-IIF-LIA 2007
+Chargement du module variable et noeud pour PSC
+	@version: 2.0  date: 06/06/2008 modified by Thomas Leaute
+	@version: 1.8  date: 25/04/2008 modified by Thomas Leaute
+	@version: 1.7  date: 28/06/2007 modified by Thomas Leaute
+	@version: 1.6  date: 03/05/2007 modified by Thomas Leaute
+	@version: 1.5  date: 02/05/2007 modified by Thomas Leaute
+	@version: 1.4  date: 19/03/2007 modified by Vincent Schickel-Zuber
+	@version: 1.3  date: 14/02/2007 modified by Vincent Schickel-Zuber
+	@version: 1.2  date: 17/01/2007 modified by Bruno Alves
+	@version: 1.0  date: 24/04/2006 created by Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch date: 24/04/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+Chargement du module PSC
+	@version: 2.0  date: 06/06/2008 modified by Thomas Leaute
+	@version: 1.8  date: 03/06/2008 modified by Thomas Leaute
+	@version: 1.7  date: 28/03/2008 modified by Thomas Leaute
+	@version: 1.6  date: 28/06/2007 modified by Thomas Leaute
+	@version: 1.5  date: 02/05/2007 modified by Thomas Leaute
+	@version: 1.4  date: 19/03/2007 modified by Vincent Schickel-Zuber
+	@version: 1.3  date: 14/02/2007 modified by Vincent Schickel-Zuber
+	@version: 1.2  date: 21/01/2007 modified by Bruno Alves
+	@version: 1.1  date: 24/04/2006 modified by Vincent Schickel
+	@author: vincent.schickel-zuber@epfl.ch date: 24/04/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+Chargement de la librairie de definition de problemes de planification
+	@version: 3.0  date: 10/06/2008 modified by Thomas Leaute
+	@version: 2.1  date: 28/06/2007 modified by Thomas Leaute
+	@version: 2.0  date: 03/05/2007 modified by Thomas Leaute
+	@version: 1.1  date: 02/05/2007 modified by Thomas Leaute
+	@version: 1.0  date: 05/03/2007 created by Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch date: 05/03/2007
+	@copyright: EPFL-IC-IIF-LIA 2007
+Planification du probleme des missionnaires
+	@version: 3.0  date: 07/06/2008 modified by Thomas Leaute
+	@version: 2.1  date: 14/04/2008 modified by Thomas Leaute
+	@version: 2.0  date: 03/05/2007 modified by Thomas Leaute
+	@version: 1.1  date: 02/05/2007 modified by Thomas Leaute
+	@version: 1.0  date: 05/03/2007 created by Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch date: 05/03/2007
+	@copyright: EPFL-IC-IIF-LIA 2007
+
+Probleme de planification :
+Propositions : ['g(B)', 'd(B)', 'g(M1)', 'd(M1)', 'g(M2)', 'd(M2)', 'g(C1)', 'd(C1)', 'g(C2)', 'd(C2)']
+Operateurs :[dg(B, M1), gd(B, M1, M2), gd(B, M1, C1), gd(B, M1, C2), dg(B, M2), gd(B, M2, C1), gd(B, M2, C2)]
+Conditions initiales :[['g(B)', True], ['g(M1)', True], ['g(M2)', True], ['g(C1)', True], ['g(C2)', True]]
+Conditions finales :[['d(B)', True], ['d(M1)', True], ['d(M2)', True], ['d(C1)', True], ['d(C2)', True]]
+Mutex de propositions :[['d(B)', 'g(B)'], ['d(M1)', 'g(M1)'], ['d(M2)', 'g(M2)'], ['d(C1)', 'g(C1)'], ['d(C2)', 'g(C2)']]
+Mutex d'operateurs :[[dg(B, M1), gd(B, M1, M2)], [dg(B, M1), gd(B, M1, C1)], [dg(B, M1), gd(B, M1, C2)], [dg(B, M1), dg(B, M2)], [dg(B, M1), gd(B, M2, C1)], [dg(B, M1), gd(B, M2, C2)], [gd(B, M1, M2), gd(B, M1, C1)], [gd(B, M1, M2), gd(B, M1, C2)], [gd(B, M1, M2), dg(B, M2)], [gd(B, M1, M2), gd(B, M2, C1)], [gd(B, M1, M2), gd(B, M2, C2)], [gd(B, M1, C1), gd(B, M1, C2)], [gd(B, M1, C1), dg(B, M2)], [gd(B, M1, C1), gd(B, M2, C1)], [gd(B, M1, C1), gd(B, M2, C2)], [gd(B, M1, C2), dg(B, M2)], [gd(B, M1, C2), gd(B, M2, C1)], [gd(B, M1, C2), gd(B, M2, C2)], [dg(B, M2), gd(B, M2, C1)], [dg(B, M2), gd(B, M2, C2)], [gd(B, M2, C1), gd(B, M2, C2)]]
+
+|+|Construction des Etats 
+	Construction de l'etat : 0
+	Construction de l'etat : 1
+	Construction de l'etat : 2
+	Construction de l'etat : 3
+	Construction de l'etat : 4
+Etat 0
+	 Propositions initiales :
+		var : g(C2) etat 0 	= None,	domaine = [True, False]
+		var : d(B) etat 0 	= None,	domaine = [True, False]
+		var : g(C1) etat 0 	= None,	domaine = [True, False]
+		var : g(M1) etat 0 	= None,	domaine = [True, False]
+		var : g(B) etat 0 	= None,	domaine = [True, False]
+		var : d(C1) etat 0 	= None,	domaine = [True, False]
+		var : g(M2) etat 0 	= None,	domaine = [True, False]
+		var : d(C2) etat 0 	= None,	domaine = [True, False]
+		var : d(M1) etat 0 	= None,	domaine = [True, False]
+		var : d(M2) etat 0 	= None,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 0 	= None,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 0 	= None,	domaine = [True, False]
+		var : dg(B, M2) etat 0 	= None,	domaine = [True, False]
+		var : gd(B, M2, C2) etat 0 	= None,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 0 	= None,	domaine = [True, False]
+		var : dg(B, M1) etat 0 	= None,	domaine = [True, False]
+		var : gd(B, M1, C2) etat 0 	= None,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 1 	= None,	domaine = [True, False]
+		var : d(B) etat 1 	= None,	domaine = [True, False]
+		var : g(C1) etat 1 	= None,	domaine = [True, False]
+		var : g(M1) etat 1 	= None,	domaine = [True, False]
+		var : g(B) etat 1 	= None,	domaine = [True, False]
+		var : d(C1) etat 1 	= None,	domaine = [True, False]
+		var : g(M2) etat 1 	= None,	domaine = [True, False]
+		var : d(C2) etat 1 	= None,	domaine = [True, False]
+		var : d(M1) etat 1 	= None,	domaine = [True, False]
+		var : d(M2) etat 1 	= None,	domaine = [True, False]
+
+Etat 1
+	 Propositions initiales :
+		var : g(C2) etat 1 	= None,	domaine = [True, False]
+		var : d(B) etat 1 	= None,	domaine = [True, False]
+		var : g(C1) etat 1 	= None,	domaine = [True, False]
+		var : g(M1) etat 1 	= None,	domaine = [True, False]
+		var : g(B) etat 1 	= None,	domaine = [True, False]
+		var : d(C1) etat 1 	= None,	domaine = [True, False]
+		var : g(M2) etat 1 	= None,	domaine = [True, False]
+		var : d(C2) etat 1 	= None,	domaine = [True, False]
+		var : d(M1) etat 1 	= None,	domaine = [True, False]
+		var : d(M2) etat 1 	= None,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 1 	= None,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 1 	= None,	domaine = [True, False]
+		var : dg(B, M2) etat 1 	= None,	domaine = [True, False]
+		var : gd(B, M2, C2) etat 1 	= None,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 1 	= None,	domaine = [True, False]
+		var : dg(B, M1) etat 1 	= None,	domaine = [True, False]
+		var : gd(B, M1, C2) etat 1 	= None,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 2 	= None,	domaine = [True, False]
+		var : d(B) etat 2 	= None,	domaine = [True, False]
+		var : g(C1) etat 2 	= None,	domaine = [True, False]
+		var : g(M1) etat 2 	= None,	domaine = [True, False]
+		var : g(B) etat 2 	= None,	domaine = [True, False]
+		var : d(C1) etat 2 	= None,	domaine = [True, False]
+		var : g(M2) etat 2 	= None,	domaine = [True, False]
+		var : d(C2) etat 2 	= None,	domaine = [True, False]
+		var : d(M1) etat 2 	= None,	domaine = [True, False]
+		var : d(M2) etat 2 	= None,	domaine = [True, False]
+
+Etat 2
+	 Propositions initiales :
+		var : g(C2) etat 2 	= None,	domaine = [True, False]
+		var : d(B) etat 2 	= None,	domaine = [True, False]
+		var : g(C1) etat 2 	= None,	domaine = [True, False]
+		var : g(M1) etat 2 	= None,	domaine = [True, False]
+		var : g(B) etat 2 	= None,	domaine = [True, False]
+		var : d(C1) etat 2 	= None,	domaine = [True, False]
+		var : g(M2) etat 2 	= None,	domaine = [True, False]
+		var : d(C2) etat 2 	= None,	domaine = [True, False]
+		var : d(M1) etat 2 	= None,	domaine = [True, False]
+		var : d(M2) etat 2 	= None,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 2 	= None,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 2 	= None,	domaine = [True, False]
+		var : dg(B, M2) etat 2 	= None,	domaine = [True, False]
+		var : gd(B, M2, C2) etat 2 	= None,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 2 	= None,	domaine = [True, False]
+		var : dg(B, M1) etat 2 	= None,	domaine = [True, False]
+		var : gd(B, M1, C2) etat 2 	= None,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 3 	= None,	domaine = [True, False]
+		var : d(B) etat 3 	= None,	domaine = [True, False]
+		var : g(C1) etat 3 	= None,	domaine = [True, False]
+		var : g(M1) etat 3 	= None,	domaine = [True, False]
+		var : g(B) etat 3 	= None,	domaine = [True, False]
+		var : d(C1) etat 3 	= None,	domaine = [True, False]
+		var : g(M2) etat 3 	= None,	domaine = [True, False]
+		var : d(C2) etat 3 	= None,	domaine = [True, False]
+		var : d(M1) etat 3 	= None,	domaine = [True, False]
+		var : d(M2) etat 3 	= None,	domaine = [True, False]
+
+Etat 3
+	 Propositions initiales :
+		var : g(C2) etat 3 	= None,	domaine = [True, False]
+		var : d(B) etat 3 	= None,	domaine = [True, False]
+		var : g(C1) etat 3 	= None,	domaine = [True, False]
+		var : g(M1) etat 3 	= None,	domaine = [True, False]
+		var : g(B) etat 3 	= None,	domaine = [True, False]
+		var : d(C1) etat 3 	= None,	domaine = [True, False]
+		var : g(M2) etat 3 	= None,	domaine = [True, False]
+		var : d(C2) etat 3 	= None,	domaine = [True, False]
+		var : d(M1) etat 3 	= None,	domaine = [True, False]
+		var : d(M2) etat 3 	= None,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 3 	= None,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 3 	= None,	domaine = [True, False]
+		var : dg(B, M2) etat 3 	= None,	domaine = [True, False]
+		var : gd(B, M2, C2) etat 3 	= None,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 3 	= None,	domaine = [True, False]
+		var : dg(B, M1) etat 3 	= None,	domaine = [True, False]
+		var : gd(B, M1, C2) etat 3 	= None,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 4 	= None,	domaine = [True, False]
+		var : d(B) etat 4 	= None,	domaine = [True, False]
+		var : g(C1) etat 4 	= None,	domaine = [True, False]
+		var : g(M1) etat 4 	= None,	domaine = [True, False]
+		var : g(B) etat 4 	= None,	domaine = [True, False]
+		var : d(C1) etat 4 	= None,	domaine = [True, False]
+		var : g(M2) etat 4 	= None,	domaine = [True, False]
+		var : d(C2) etat 4 	= None,	domaine = [True, False]
+		var : d(M1) etat 4 	= None,	domaine = [True, False]
+		var : d(M2) etat 4 	= None,	domaine = [True, False]
+
+Etat 4
+	 Propositions initiales :
+		var : g(C2) etat 4 	= None,	domaine = [True, False]
+		var : d(B) etat 4 	= None,	domaine = [True, False]
+		var : g(C1) etat 4 	= None,	domaine = [True, False]
+		var : g(M1) etat 4 	= None,	domaine = [True, False]
+		var : g(B) etat 4 	= None,	domaine = [True, False]
+		var : d(C1) etat 4 	= None,	domaine = [True, False]
+		var : g(M2) etat 4 	= None,	domaine = [True, False]
+		var : d(C2) etat 4 	= None,	domaine = [True, False]
+		var : d(M1) etat 4 	= None,	domaine = [True, False]
+		var : d(M2) etat 4 	= None,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 4 	= None,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 4 	= None,	domaine = [True, False]
+		var : dg(B, M2) etat 4 	= None,	domaine = [True, False]
+		var : gd(B, M2, C2) etat 4 	= None,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 4 	= None,	domaine = [True, False]
+		var : dg(B, M1) etat 4 	= None,	domaine = [True, False]
+		var : gd(B, M1, C2) etat 4 	= None,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 5 	= None,	domaine = [True, False]
+		var : d(B) etat 5 	= None,	domaine = [True, False]
+		var : g(C1) etat 5 	= None,	domaine = [True, False]
+		var : g(M1) etat 5 	= None,	domaine = [True, False]
+		var : g(B) etat 5 	= None,	domaine = [True, False]
+		var : d(C1) etat 5 	= None,	domaine = [True, False]
+		var : g(M2) etat 5 	= None,	domaine = [True, False]
+		var : d(C2) etat 5 	= None,	domaine = [True, False]
+		var : d(M1) etat 5 	= None,	domaine = [True, False]
+		var : d(M2) etat 5 	= None,	domaine = [True, False]
+
+|+| Fait la consistance des noeuds
+|+| Fait la consistance des arcs
+Etat 0
+	 Propositions initiales :
+		var : g(C2) etat 0 	= None,	domaine = [True]
+		var : d(B) etat 0 	= None,	domaine = [False]
+		var : g(C1) etat 0 	= None,	domaine = [True]
+		var : g(M1) etat 0 	= None,	domaine = [True]
+		var : g(B) etat 0 	= None,	domaine = [True]
+		var : d(C1) etat 0 	= None,	domaine = [False]
+		var : g(M2) etat 0 	= None,	domaine = [True]
+		var : d(C2) etat 0 	= None,	domaine = [False]
+		var : d(M1) etat 0 	= None,	domaine = [False]
+		var : d(M2) etat 0 	= None,	domaine = [False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 0 	= None,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 0 	= None,	domaine = [True, False]
+		var : dg(B, M2) etat 0 	= None,	domaine = [False]
+		var : gd(B, M2, C2) etat 0 	= None,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 0 	= None,	domaine = [True, False]
+		var : dg(B, M1) etat 0 	= None,	domaine = [False]
+		var : gd(B, M1, C2) etat 0 	= None,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 1 	= None,	domaine = [True, False]
+		var : d(B) etat 1 	= None,	domaine = [True, False]
+		var : g(C1) etat 1 	= None,	domaine = [True, False]
+		var : g(M1) etat 1 	= None,	domaine = [True, False]
+		var : g(B) etat 1 	= None,	domaine = [True, False]
+		var : d(C1) etat 1 	= None,	domaine = [True, False]
+		var : g(M2) etat 1 	= None,	domaine = [True, False]
+		var : d(C2) etat 1 	= None,	domaine = [True, False]
+		var : d(M1) etat 1 	= None,	domaine = [True, False]
+		var : d(M2) etat 1 	= None,	domaine = [True, False]
+
+Etat 1
+	 Propositions initiales :
+		var : g(C2) etat 1 	= None,	domaine = [True, False]
+		var : d(B) etat 1 	= None,	domaine = [True, False]
+		var : g(C1) etat 1 	= None,	domaine = [True, False]
+		var : g(M1) etat 1 	= None,	domaine = [True, False]
+		var : g(B) etat 1 	= None,	domaine = [True, False]
+		var : d(C1) etat 1 	= None,	domaine = [True, False]
+		var : g(M2) etat 1 	= None,	domaine = [True, False]
+		var : d(C2) etat 1 	= None,	domaine = [True, False]
+		var : d(M1) etat 1 	= None,	domaine = [True, False]
+		var : d(M2) etat 1 	= None,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 1 	= None,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 1 	= None,	domaine = [True, False]
+		var : dg(B, M2) etat 1 	= None,	domaine = [True, False]
+		var : gd(B, M2, C2) etat 1 	= None,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 1 	= None,	domaine = [True, False]
+		var : dg(B, M1) etat 1 	= None,	domaine = [True, False]
+		var : gd(B, M1, C2) etat 1 	= None,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 2 	= None,	domaine = [True, False]
+		var : d(B) etat 2 	= None,	domaine = [True, False]
+		var : g(C1) etat 2 	= None,	domaine = [True, False]
+		var : g(M1) etat 2 	= None,	domaine = [True, False]
+		var : g(B) etat 2 	= None,	domaine = [True, False]
+		var : d(C1) etat 2 	= None,	domaine = [True, False]
+		var : g(M2) etat 2 	= None,	domaine = [True, False]
+		var : d(C2) etat 2 	= None,	domaine = [True, False]
+		var : d(M1) etat 2 	= None,	domaine = [True, False]
+		var : d(M2) etat 2 	= None,	domaine = [True, False]
+
+Etat 2
+	 Propositions initiales :
+		var : g(C2) etat 2 	= None,	domaine = [True, False]
+		var : d(B) etat 2 	= None,	domaine = [True, False]
+		var : g(C1) etat 2 	= None,	domaine = [True, False]
+		var : g(M1) etat 2 	= None,	domaine = [True, False]
+		var : g(B) etat 2 	= None,	domaine = [True, False]
+		var : d(C1) etat 2 	= None,	domaine = [True, False]
+		var : g(M2) etat 2 	= None,	domaine = [True, False]
+		var : d(C2) etat 2 	= None,	domaine = [True, False]
+		var : d(M1) etat 2 	= None,	domaine = [True, False]
+		var : d(M2) etat 2 	= None,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 2 	= None,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 2 	= None,	domaine = [True, False]
+		var : dg(B, M2) etat 2 	= None,	domaine = [True, False]
+		var : gd(B, M2, C2) etat 2 	= None,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 2 	= None,	domaine = [True, False]
+		var : dg(B, M1) etat 2 	= None,	domaine = [True, False]
+		var : gd(B, M1, C2) etat 2 	= None,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 3 	= None,	domaine = [True, False]
+		var : d(B) etat 3 	= None,	domaine = [True, False]
+		var : g(C1) etat 3 	= None,	domaine = [True, False]
+		var : g(M1) etat 3 	= None,	domaine = [True, False]
+		var : g(B) etat 3 	= None,	domaine = [True, False]
+		var : d(C1) etat 3 	= None,	domaine = [True, False]
+		var : g(M2) etat 3 	= None,	domaine = [True, False]
+		var : d(C2) etat 3 	= None,	domaine = [True, False]
+		var : d(M1) etat 3 	= None,	domaine = [True, False]
+		var : d(M2) etat 3 	= None,	domaine = [True, False]
+
+Etat 3
+	 Propositions initiales :
+		var : g(C2) etat 3 	= None,	domaine = [True, False]
+		var : d(B) etat 3 	= None,	domaine = [True, False]
+		var : g(C1) etat 3 	= None,	domaine = [True, False]
+		var : g(M1) etat 3 	= None,	domaine = [True, False]
+		var : g(B) etat 3 	= None,	domaine = [True, False]
+		var : d(C1) etat 3 	= None,	domaine = [True, False]
+		var : g(M2) etat 3 	= None,	domaine = [True, False]
+		var : d(C2) etat 3 	= None,	domaine = [True, False]
+		var : d(M1) etat 3 	= None,	domaine = [True, False]
+		var : d(M2) etat 3 	= None,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 3 	= None,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 3 	= None,	domaine = [True, False]
+		var : dg(B, M2) etat 3 	= None,	domaine = [True, False]
+		var : gd(B, M2, C2) etat 3 	= None,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 3 	= None,	domaine = [True, False]
+		var : dg(B, M1) etat 3 	= None,	domaine = [True, False]
+		var : gd(B, M1, C2) etat 3 	= None,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 4 	= None,	domaine = [True, False]
+		var : d(B) etat 4 	= None,	domaine = [True, False]
+		var : g(C1) etat 4 	= None,	domaine = [True, False]
+		var : g(M1) etat 4 	= None,	domaine = [True, False]
+		var : g(B) etat 4 	= None,	domaine = [True, False]
+		var : d(C1) etat 4 	= None,	domaine = [True, False]
+		var : g(M2) etat 4 	= None,	domaine = [True, False]
+		var : d(C2) etat 4 	= None,	domaine = [True, False]
+		var : d(M1) etat 4 	= None,	domaine = [True, False]
+		var : d(M2) etat 4 	= None,	domaine = [True, False]
+
+Etat 4
+	 Propositions initiales :
+		var : g(C2) etat 4 	= None,	domaine = [True, False]
+		var : d(B) etat 4 	= None,	domaine = [True, False]
+		var : g(C1) etat 4 	= None,	domaine = [True, False]
+		var : g(M1) etat 4 	= None,	domaine = [True, False]
+		var : g(B) etat 4 	= None,	domaine = [True, False]
+		var : d(C1) etat 4 	= None,	domaine = [True, False]
+		var : g(M2) etat 4 	= None,	domaine = [True, False]
+		var : d(C2) etat 4 	= None,	domaine = [True, False]
+		var : d(M1) etat 4 	= None,	domaine = [True, False]
+		var : d(M2) etat 4 	= None,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 4 	= None,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 4 	= None,	domaine = [True, False]
+		var : dg(B, M2) etat 4 	= None,	domaine = [False]
+		var : gd(B, M2, C2) etat 4 	= None,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 4 	= None,	domaine = [True, False]
+		var : dg(B, M1) etat 4 	= None,	domaine = [False]
+		var : gd(B, M1, C2) etat 4 	= None,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 5 	= None,	domaine = [False]
+		var : d(B) etat 5 	= None,	domaine = [True]
+		var : g(C1) etat 5 	= None,	domaine = [False]
+		var : g(M1) etat 5 	= None,	domaine = [False]
+		var : g(B) etat 5 	= None,	domaine = [False]
+		var : d(C1) etat 5 	= None,	domaine = [True]
+		var : g(M2) etat 5 	= None,	domaine = [False]
+		var : d(C2) etat 5 	= None,	domaine = [True]
+		var : d(M1) etat 5 	= None,	domaine = [True]
+		var : d(M2) etat 5 	= None,	domaine = [True]
+
+|+| Nombre de Variables :95
+|+| Nombre de Contraintes	:385
+|+| Applique l'heuristique Variable Ordering
+|+| Applique le Forward Checking
+fc : Iteration:= 1 , profondeur actuelle:= 0 et 0 contraintes verifiees
+fc : Iteration:= 2 , profondeur actuelle:= 1 et 17 contraintes verifiees
+fc : Iteration:= 3 , profondeur actuelle:= 2 et 33 contraintes verifiees
+fc : Iteration:= 4 , profondeur actuelle:= 3 et 46 contraintes verifiees
+fc : Iteration:= 5 , profondeur actuelle:= 4 et 46 contraintes verifiees
+fc : Iteration:= 6 , profondeur actuelle:= 5 et 55 contraintes verifiees
+fc : Iteration:= 7 , profondeur actuelle:= 6 et 55 contraintes verifiees
+fc : Iteration:= 8 , profondeur actuelle:= 7 et 64 contraintes verifiees
+fc : Iteration:= 9 , profondeur actuelle:= 8 et 64 contraintes verifiees
+fc : Iteration:= 10 , profondeur actuelle:= 9 et 71 contraintes verifiees
+fc : Iteration:= 11 , profondeur actuelle:= 10 et 71 contraintes verifiees
+fc : Iteration:= 12 , profondeur actuelle:= 11 et 78 contraintes verifiees
+fc : Iteration:= 13 , profondeur actuelle:= 12 et 78 contraintes verifiees
+fc : Iteration:= 14 , profondeur actuelle:= 13 et 95 contraintes verifiees
+fc : Iteration:= 15 , profondeur actuelle:= 14 et 111 contraintes verifiees
+fc : Iteration:= 16 , profondeur actuelle:= 15 et 114 contraintes verifiees
+fc : Iteration:= 17 , profondeur actuelle:= 16 et 124 contraintes verifiees
+fc : Iteration:= 18 , profondeur actuelle:= 17 et 127 contraintes verifiees
+fc : Iteration:= 19 , profondeur actuelle:= 18 et 133 contraintes verifiees
+fc : Iteration:= 20 , profondeur actuelle:= 19 et 136 contraintes verifiees
+fc : Iteration:= 21 , profondeur actuelle:= 20 et 142 contraintes verifiees
+fc : Iteration:= 22 , profondeur actuelle:= 21 et 145 contraintes verifiees
+fc : Iteration:= 23 , profondeur actuelle:= 22 et 149 contraintes verifiees
+fc : Iteration:= 24 , profondeur actuelle:= 23 et 152 contraintes verifiees
+fc : Iteration:= 25 , profondeur actuelle:= 24 et 156 contraintes verifiees
+fc : Iteration:= 26 , profondeur actuelle:= 25 et 170 contraintes verifiees
+fc : Iteration:= 27 , profondeur actuelle:= 26 et 177 contraintes verifiees
+fc : Iteration:= 28 , profondeur actuelle:= 27 et 184 contraintes verifiees
+fc : Iteration:= 29 , profondeur actuelle:= 28 et 191 contraintes verifiees
+fc : Iteration:= 30 , profondeur actuelle:= 29 et 199 contraintes verifiees
+fc : Iteration:= 31 , profondeur actuelle:= 30 et 205 contraintes verifiees
+fc : Iteration:= 32 , profondeur actuelle:= 31 et 215 contraintes verifiees
+fc : Iteration:= 33 , profondeur actuelle:= 32 et 219 contraintes verifiees
+fc : Iteration:= 34 , profondeur actuelle:= 33 et 222 contraintes verifiees
+fc : Iteration:= 35 , profondeur actuelle:= 34 et 226 contraintes verifiees
+fc : Iteration:= 36 , profondeur actuelle:= 35 et 229 contraintes verifiees
+fc : Iteration:= 37 , profondeur actuelle:= 36 et 231 contraintes verifiees
+fc : Iteration:= 38 , profondeur actuelle:= 37 et 233 contraintes verifiees
+fc : Iteration:= 39 , profondeur actuelle:= 38 et 247 contraintes verifiees
+fc : Iteration:= 40 , profondeur actuelle:= 39 et 262 contraintes verifiees
+fc : Iteration:= 41 , profondeur actuelle:= 40 et 278 contraintes verifiees
+fc : Iteration:= 42 , profondeur actuelle:= 41 et 293 contraintes verifiees
+fc : Iteration:= 43 , profondeur actuelle:= 42 et 311 contraintes verifiees
+fc : Iteration:= 44 , profondeur actuelle:= 43 et 313 contraintes verifiees
+fc : Iteration:= 45 , profondeur actuelle:= 44 et 315 contraintes verifiees
+fc : Iteration:= 46 , profondeur actuelle:= 45 et 317 contraintes verifiees
+fc : Iteration:= 47 , profondeur actuelle:= 46 et 319 contraintes verifiees
+fc : Iteration:= 48 , profondeur actuelle:= 47 et 335 contraintes verifiees
+fc : Iteration:= 49 , profondeur actuelle:= 48 et 339 contraintes verifiees
+fc : Iteration:= 50 , profondeur actuelle:= 49 et 356 contraintes verifiees
+fc : Iteration:= 51 , profondeur actuelle:= 50 et 374 contraintes verifiees
+fc : Iteration:= 52 , profondeur actuelle:= 51 et 388 contraintes verifiees
+fc : Iteration:= 53 , profondeur actuelle:= 52 et 388 contraintes verifiees
+fc : Iteration:= 54 , profondeur actuelle:= 53 et 391 contraintes verifiees
+fc : Iteration:= 55 , profondeur actuelle:= 54 et 395 contraintes verifiees
+fc : Iteration:= 56 , profondeur actuelle:= 55 et 405 contraintes verifiees
+fc : Iteration:= 57 , profondeur actuelle:= 56 et 417 contraintes verifiees
+fc : Iteration:= 58 , profondeur actuelle:= 57 et 430 contraintes verifiees
+fc : Iteration:= 59 , profondeur actuelle:= 58 et 442 contraintes verifiees
+fc : Iteration:= 60 , profondeur actuelle:= 59 et 450 contraintes verifiees
+fc : Iteration:= 61 , profondeur actuelle:= 60 et 470 contraintes verifiees
+fc : Iteration:= 62 , profondeur actuelle:= 61 et 489 contraintes verifiees
+fc : Iteration:= 63 , profondeur actuelle:= 62 et 507 contraintes verifiees
+fc : Iteration:= 64 , profondeur actuelle:= 63 et 518 contraintes verifiees
+fc : Iteration:= 65 , profondeur actuelle:= 64 et 526 contraintes verifiees
+fc : Iteration:= 66 , profondeur actuelle:= 65 et 530 contraintes verifiees
+fc : Iteration:= 67 , profondeur actuelle:= 66 et 532 contraintes verifiees
+fc : Iteration:= 68 , profondeur actuelle:= 67 et 538 contraintes verifiees
+fc : Iteration:= 69 , profondeur actuelle:= 68 et 540 contraintes verifiees
+fc : Iteration:= 70 , profondeur actuelle:= 69 et 542 contraintes verifiees
+fc : Iteration:= 71 , profondeur actuelle:= 70 et 545 contraintes verifiees
+fc : Iteration:= 72 , profondeur actuelle:= 71 et 551 contraintes verifiees
+fc : Iteration:= 73 , profondeur actuelle:= 72 et 553 contraintes verifiees
+fc : Iteration:= 74 , profondeur actuelle:= 73 et 568 contraintes verifiees
+fc : Iteration:= 75 , profondeur actuelle:= 74 et 584 contraintes verifiees
+fc : Iteration:= 76 , profondeur actuelle:= 75 et 586 contraintes verifiees
+fc : Iteration:= 77 , profondeur actuelle:= 76 et 592 contraintes verifiees
+fc : Iteration:= 78 , profondeur actuelle:= 77 et 603 contraintes verifiees
+fc : Iteration:= 79 , profondeur actuelle:= 78 et 615 contraintes verifiees
+fc : Iteration:= 80 , profondeur actuelle:= 79 et 615 contraintes verifiees
+fc : Iteration:= 81 , profondeur actuelle:= 80 et 624 contraintes verifiees
+fc : Iteration:= 82 , profondeur actuelle:= 81 et 634 contraintes verifiees
+fc : Iteration:= 83 , profondeur actuelle:= 82 et 634 contraintes verifiees
+fc : Iteration:= 84 , profondeur actuelle:= 83 et 640 contraintes verifiees
+fc : Iteration:= 85 , profondeur actuelle:= 84 et 641 contraintes verifiees
+fc : Iteration:= 86 , profondeur actuelle:= 85 et 643 contraintes verifiees
+fc : Iteration:= 87 , profondeur actuelle:= 86 et 643 contraintes verifiees
+fc : Iteration:= 88 , profondeur actuelle:= 87 et 647 contraintes verifiees
+fc : Iteration:= 89 , profondeur actuelle:= 88 et 653 contraintes verifiees
+fc : Iteration:= 90 , profondeur actuelle:= 89 et 658 contraintes verifiees
+fc : Iteration:= 91 , profondeur actuelle:= 90 et 663 contraintes verifiees
+fc : Iteration:= 92 , profondeur actuelle:= 91 et 666 contraintes verifiees
+fc : Iteration:= 93 , profondeur actuelle:= 92 et 666 contraintes verifiees
+fc : Iteration:= 94 , profondeur actuelle:= 93 et 668 contraintes verifiees
+fc : Iteration:= 95 , profondeur actuelle:= 94 et 670 contraintes verifiees
+fc : Iteration:= 96 , profondeur actuelle:= 95 et 670 contraintes verifiees
+	fc : SOLUTION TROUVEE en 96 etapes et avec 670 contraintes verifiees; SOLUTION= {'g(M2) etat 5': False, 'g(M2) etat 4': False, 'g(M2) etat 3': False, 'g(M2) etat 2': True, 'g(M2) etat 1': False, 'g(M2) etat 0': True, 'g(M1) etat 4': True, 'g(M1) etat 5': False, 'g(M1) etat 0': True, 'g(M1) etat 1': False, 'g(M1) etat 2': False, 'g(M1) etat 3': False, 'g(C1) etat 2': True, 'g(C1) etat 3': True, 'gd(B, M2, C2) etat 4': False, 'g(C1) etat 1': True, 'gd(B, M2, C2) etat 2': True, 'gd(B, M2, C2) etat 3': False, 'gd(B, M2, C2) etat 0': False, 'g(C1) etat 5': False, 'g(B) etat 5': False, 'g(B) etat 4': True, 'g(B) etat 1': False, 'g(B) etat 0': True, 'g(B) etat 3': False, 'g(B) etat 2': True, 'g(C2) etat 1': True, 'g(C2) etat 0': True, 'g(C2) etat 3': False, 'g(C2) etat 2': True, 'g(C2) etat 5': False, 'g(C2) etat 4': False, 'gd(B, M1, C2) etat 1': False, 'gd(B, M1, C2) etat 0': False, 'gd(B, M1, C2) etat 3': False, 'gd(B, M1, C2) etat 2': False, 'gd(B, M1, M2) etat 3': False, 'gd(B, M1, C2) etat 4': False, 'gd(B, M1, M2) etat 1': False, 'gd(B, M1, M2) etat 0': True, 'dg(B, M2) etat 3': False, 'dg(B, M2) etat 2': False, 'dg(B, M2) etat 1': True, 'dg(B, M2) etat 0': False, 'dg(B, M2) etat 4': False, 'gd(B, M1, M2) etat 4': False, 'd(B) etat 4': False, 'd(B) etat 5': True, 'd(B) etat 2': False, 'd(B) etat 3': True, 'd(B) etat 0': False, 'd(B) etat 1': True, 'gd(B, M1, C1) etat 2': False, 'gd(B, M1, C1) etat 3': False, 'gd(B, M1, C1) etat 0': False, 'gd(B, M1, C1) etat 1': False, 'gd(B, M1, C1) etat 4': True, 'gd(B, M2, C1) etat 4': False, 'gd(B, M2, C1) etat 1': False, 'gd(B, M2, C1) etat 0': False, 'gd(B, M2, C1) etat 3': False, 'gd(B, M2, C1) etat 2': False, 'g(C1) etat 4': True, 'g(C1) etat 0': True, 'd(C2) etat 4': True, 'd(C2) etat 5': True, 'd(C2) etat 0': False, 'd(C2) etat 1': False, 'd(C2) etat 2': False, 'd(C2) etat 3': True, 'd(M2) etat 4': True, 'd(M2) etat 5': True, 'd(M2) etat 2': False, 'd(M2) etat 3': True, 'd(M2) etat 0': False, 'd(M2) etat 1': True, 'gd(B, M2, C2) etat 1': False, 'd(C1) etat 5': True, 'd(C1) etat 4': False, 'd(C1) etat 3': False, 'd(C1) etat 2': False, 'd(C1) etat 1': False, 'd(C1) etat 0': False, 'd(M1) etat 5': True, 'd(M1) etat 4': False, 'd(M1) etat 1': True, 'd(M1) etat 0': False, 'd(M1) etat 3': True, 'd(M1) etat 2': True, 'dg(B, M1) etat 0': False, 'dg(B, M1) etat 1': False, 'dg(B, M1) etat 2': False, 'dg(B, M1) etat 3': True, 'dg(B, M1) etat 4': False, 'gd(B, M1, M2) etat 2': False}
+|+| Solution trouvee:=
+
+Etat 0
+	 Propositions initiales :
+		var : g(C2) etat 0 	= True,	domaine = [True]
+		var : d(B) etat 0 	= False,	domaine = [False]
+		var : g(C1) etat 0 	= True,	domaine = [True]
+		var : g(M1) etat 0 	= True,	domaine = [True]
+		var : g(B) etat 0 	= True,	domaine = [True]
+		var : d(C1) etat 0 	= False,	domaine = [False]
+		var : g(M2) etat 0 	= True,	domaine = [True]
+		var : d(C2) etat 0 	= False,	domaine = [False]
+		var : d(M1) etat 0 	= False,	domaine = [False]
+		var : d(M2) etat 0 	= False,	domaine = [False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 0 	= True,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 0 	= False,	domaine = [True, False]
+		var : dg(B, M2) etat 0 	= False,	domaine = [False]
+		var : gd(B, M2, C2) etat 0 	= False,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 0 	= False,	domaine = [True, False]
+		var : dg(B, M1) etat 0 	= False,	domaine = [False]
+		var : gd(B, M1, C2) etat 0 	= False,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 1 	= True,	domaine = [True, False]
+		var : d(B) etat 1 	= True,	domaine = [True, False]
+		var : g(C1) etat 1 	= True,	domaine = [True, False]
+		var : g(M1) etat 1 	= False,	domaine = [True, False]
+		var : g(B) etat 1 	= False,	domaine = [True, False]
+		var : d(C1) etat 1 	= False,	domaine = [True, False]
+		var : g(M2) etat 1 	= False,	domaine = [True, False]
+		var : d(C2) etat 1 	= False,	domaine = [True, False]
+		var : d(M1) etat 1 	= True,	domaine = [True, False]
+		var : d(M2) etat 1 	= True,	domaine = [True, False]
+
+Etat 1
+	 Propositions initiales :
+		var : g(C2) etat 1 	= True,	domaine = [True, False]
+		var : d(B) etat 1 	= True,	domaine = [True, False]
+		var : g(C1) etat 1 	= True,	domaine = [True, False]
+		var : g(M1) etat 1 	= False,	domaine = [True, False]
+		var : g(B) etat 1 	= False,	domaine = [True, False]
+		var : d(C1) etat 1 	= False,	domaine = [True, False]
+		var : g(M2) etat 1 	= False,	domaine = [True, False]
+		var : d(C2) etat 1 	= False,	domaine = [True, False]
+		var : d(M1) etat 1 	= True,	domaine = [True, False]
+		var : d(M2) etat 1 	= True,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 1 	= False,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 1 	= False,	domaine = [True, False]
+		var : dg(B, M2) etat 1 	= True,	domaine = [True, False]
+		var : gd(B, M2, C2) etat 1 	= False,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 1 	= False,	domaine = [True, False]
+		var : dg(B, M1) etat 1 	= False,	domaine = [True, False]
+		var : gd(B, M1, C2) etat 1 	= False,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 2 	= True,	domaine = [True, False]
+		var : d(B) etat 2 	= False,	domaine = [True, False]
+		var : g(C1) etat 2 	= True,	domaine = [True, False]
+		var : g(M1) etat 2 	= False,	domaine = [True, False]
+		var : g(B) etat 2 	= True,	domaine = [True, False]
+		var : d(C1) etat 2 	= False,	domaine = [True, False]
+		var : g(M2) etat 2 	= True,	domaine = [True, False]
+		var : d(C2) etat 2 	= False,	domaine = [True, False]
+		var : d(M1) etat 2 	= True,	domaine = [True, False]
+		var : d(M2) etat 2 	= False,	domaine = [True, False]
+
+Etat 2
+	 Propositions initiales :
+		var : g(C2) etat 2 	= True,	domaine = [True, False]
+		var : d(B) etat 2 	= False,	domaine = [True, False]
+		var : g(C1) etat 2 	= True,	domaine = [True, False]
+		var : g(M1) etat 2 	= False,	domaine = [True, False]
+		var : g(B) etat 2 	= True,	domaine = [True, False]
+		var : d(C1) etat 2 	= False,	domaine = [True, False]
+		var : g(M2) etat 2 	= True,	domaine = [True, False]
+		var : d(C2) etat 2 	= False,	domaine = [True, False]
+		var : d(M1) etat 2 	= True,	domaine = [True, False]
+		var : d(M2) etat 2 	= False,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 2 	= False,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 2 	= False,	domaine = [True, False]
+		var : dg(B, M2) etat 2 	= False,	domaine = [True, False]
+		var : gd(B, M2, C2) etat 2 	= True,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 2 	= False,	domaine = [True, False]
+		var : dg(B, M1) etat 2 	= False,	domaine = [True, False]
+		var : gd(B, M1, C2) etat 2 	= False,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 3 	= False,	domaine = [True, False]
+		var : d(B) etat 3 	= True,	domaine = [True, False]
+		var : g(C1) etat 3 	= True,	domaine = [True, False]
+		var : g(M1) etat 3 	= False,	domaine = [True, False]
+		var : g(B) etat 3 	= False,	domaine = [True, False]
+		var : d(C1) etat 3 	= False,	domaine = [True, False]
+		var : g(M2) etat 3 	= False,	domaine = [True, False]
+		var : d(C2) etat 3 	= True,	domaine = [True, False]
+		var : d(M1) etat 3 	= True,	domaine = [True, False]
+		var : d(M2) etat 3 	= True,	domaine = [True, False]
+
+Etat 3
+	 Propositions initiales :
+		var : g(C2) etat 3 	= False,	domaine = [True, False]
+		var : d(B) etat 3 	= True,	domaine = [True, False]
+		var : g(C1) etat 3 	= True,	domaine = [True, False]
+		var : g(M1) etat 3 	= False,	domaine = [True, False]
+		var : g(B) etat 3 	= False,	domaine = [True, False]
+		var : d(C1) etat 3 	= False,	domaine = [True, False]
+		var : g(M2) etat 3 	= False,	domaine = [True, False]
+		var : d(C2) etat 3 	= True,	domaine = [True, False]
+		var : d(M1) etat 3 	= True,	domaine = [True, False]
+		var : d(M2) etat 3 	= True,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 3 	= False,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 3 	= False,	domaine = [True, False]
+		var : dg(B, M2) etat 3 	= False,	domaine = [True, False]
+		var : gd(B, M2, C2) etat 3 	= False,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 3 	= False,	domaine = [True, False]
+		var : dg(B, M1) etat 3 	= True,	domaine = [True, False]
+		var : gd(B, M1, C2) etat 3 	= False,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 4 	= False,	domaine = [True, False]
+		var : d(B) etat 4 	= False,	domaine = [True, False]
+		var : g(C1) etat 4 	= True,	domaine = [True, False]
+		var : g(M1) etat 4 	= True,	domaine = [True, False]
+		var : g(B) etat 4 	= True,	domaine = [True, False]
+		var : d(C1) etat 4 	= False,	domaine = [True, False]
+		var : g(M2) etat 4 	= False,	domaine = [True, False]
+		var : d(C2) etat 4 	= True,	domaine = [True, False]
+		var : d(M1) etat 4 	= False,	domaine = [True, False]
+		var : d(M2) etat 4 	= True,	domaine = [True, False]
+
+Etat 4
+	 Propositions initiales :
+		var : g(C2) etat 4 	= False,	domaine = [True, False]
+		var : d(B) etat 4 	= False,	domaine = [True, False]
+		var : g(C1) etat 4 	= True,	domaine = [True, False]
+		var : g(M1) etat 4 	= True,	domaine = [True, False]
+		var : g(B) etat 4 	= True,	domaine = [True, False]
+		var : d(C1) etat 4 	= False,	domaine = [True, False]
+		var : g(M2) etat 4 	= False,	domaine = [True, False]
+		var : d(C2) etat 4 	= True,	domaine = [True, False]
+		var : d(M1) etat 4 	= False,	domaine = [True, False]
+		var : d(M2) etat 4 	= True,	domaine = [True, False]
+	 Operateurs :
+		var : gd(B, M1, M2) etat 4 	= False,	domaine = [True, False]
+		var : gd(B, M2, C1) etat 4 	= False,	domaine = [True, False]
+		var : dg(B, M2) etat 4 	= False,	domaine = [False]
+		var : gd(B, M2, C2) etat 4 	= False,	domaine = [True, False]
+		var : gd(B, M1, C1) etat 4 	= True,	domaine = [True, False]
+		var : dg(B, M1) etat 4 	= False,	domaine = [False]
+		var : gd(B, M1, C2) etat 4 	= False,	domaine = [True, False]
+	 Propositions finales :
+		var : g(C2) etat 5 	= False,	domaine = [False]
+		var : d(B) etat 5 	= True,	domaine = [True]
+		var : g(C1) etat 5 	= False,	domaine = [False]
+		var : g(M1) etat 5 	= False,	domaine = [False]
+		var : g(B) etat 5 	= False,	domaine = [False]
+		var : d(C1) etat 5 	= True,	domaine = [True]
+		var : g(M2) etat 5 	= False,	domaine = [False]
+		var : d(C2) etat 5 	= True,	domaine = [True]
+		var : d(M1) etat 5 	= True,	domaine = [True]
+		var : d(M2) etat 5 	= True,	domaine = [True]

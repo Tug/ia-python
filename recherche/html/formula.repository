@@ -1,0 +1,12 @@
+\form#0:$\sqrt{(self.posX-objet.posX)^2+(self.posY-objet.posY)^2}$
+\form#1:$c_{n}$
+\form#2:$c_{n}+h_{n}$
+\form#3:\[f_{n}=c_{n}+h_{n}\]
+\form#4:$h_{n}$
+\form#5:$f_{n}$
+\form#6:$ cmp = \left\{ \begin{array}{ll} <0 & \textrm{si self.coutF est plus petit n.coutF}\\ =0 & \textrm{si self.coutF est egal n.coutF}\\ >0 & \textrm{si self.coutF est plus grand n.coutF} \end{array} \right. $
+\form#7:\[c_{succ} = c_{self} + \delta (succ,self)\]
+\form#8:$f_{n}=c_{n}+h_{n}$
+\form#9:\[h_{succ} = c_{succ} + \delta (succ,self)\]
+\form#10:$noeud.coutF < noeuds.n.coutF$
+\form#11:\[f_{succ} = c_{succ} + \delta (succ,self)\]

@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 6a : Satisfaction de contraintes: Référence de la classe PSC.Variables</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Liste&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="hierarchy.html"><span>Hiérarchie&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="functions.html"><span>Membres&nbsp;de&nbsp;classe</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_p_s_c.html">PSC</a>.<a class="el" href="class_p_s_c_1_1_variables.html">Variables</a>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence de la classe PSC.Variables</h1><!-- doxytag: class="PSC::Variables" -->Classe gerant la liste des variables <a class="el" href="namespace_p_s_c.html#b80f7f24a7f2a5d11f7e22d5bdf983df" title="Liste de toutes les variables.">PSC.VARIABLES</a>.  
+<a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="class_p_s_c_1_1_variables-members.html">Liste de tous les membres</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions membres publiques</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_variables.html#69eb6297952e72f82eb35c43b5118859">__init__</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur de classe.  <a href="#69eb6297952e72f82eb35c43b5118859"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_variables.html#04604f5b3497725ea4402840ff9b7b30">retourneVar</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne une variable d'apres son nom.  <a href="#04604f5b3497725ea4402840ff9b7b30"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_variables.html#66e70e8e6cc45f9a6b1326ef03ee8205">ajouteVar</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajoute une nouvelle variable a la liste des variables.  <a href="#66e70e8e6cc45f9a6b1326ef03ee8205"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_variables.html#4f1cf8d190e321a325c7d896d561c8e0">consistanceDesNoeuds</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Applique la consistance des noeuds.  <a href="#4f1cf8d190e321a325c7d896d561c8e0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_variables.html#5d4b19ddaa79c2c480767ce6d90bc714">retourneNbVars</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne le nombre de variables.  <a href="#5d4b19ddaa79c2c480767ce6d90bc714"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_variables.html#94c18a14c01a3d2c69b7b762b92a2f29">__repr__</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne une representation textuelle des donnees des variables.  <a href="#94c18a14c01a3d2c69b7b762b92a2f29"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Classe gerant la liste des variables <a class="el" href="namespace_p_s_c.html#b80f7f24a7f2a5d11f7e22d5bdf983df" title="Liste de toutes les variables.">PSC.VARIABLES</a>. 
+<p>
+Cette classe est une sorte de wrapper pour l'object <a class="el" href="namespace_p_s_c.html#b80f7f24a7f2a5d11f7e22d5bdf983df" title="Liste de toutes les variables.">PSC.VARIABLES</a> facilitant la manipulation de celui-ci. Les fonctions disponibles peuvent ajouter ou obtenir une variables donnee. D'autres fonctions avancees permettent d'appliquer la consistance des noeuds a toutes les variables ou d'initialiser une instance des variables presentes. 
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00103">103</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+<hr><h2>Documentation des fonctions membres</h2>
+<a class="anchor" name="69eb6297952e72f82eb35c43b5118859"></a><!-- doxytag: member="PSC::Variables::__init__" ref="69eb6297952e72f82eb35c43b5118859" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Variables.__init__           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructeur de classe. 
+<p>
+Initialise le tableau de variables en l'effacant.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>pointeur automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00111">111</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="04604f5b3497725ea4402840ff9b7b30"></a><!-- doxytag: member="PSC::Variables::retourneVar" ref="04604f5b3497725ea4402840ff9b7b30" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Variables.retourneVar           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>nom</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne une variable d'apres son nom. 
+<p>
+Retourne une variable dont le nom correspond au nom passe en parametre.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>nom</em>&nbsp;</td><td>le nom de la variable que l'on cherche </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une reference a la variable recherchee si celle-ci existe, <code>None</code> sinon </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00123">123</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="66e70e8e6cc45f9a6b1326ef03ee8205"></a><!-- doxytag: member="PSC::Variables::ajouteVar" ref="66e70e8e6cc45f9a6b1326ef03ee8205" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Variables.ajouteVar           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>var</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Ajoute une nouvelle variable a la liste des variables. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>var</em>&nbsp;</td><td>la variable a ajouter dans la liste </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00135">135</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4f1cf8d190e321a325c7d896d561c8e0"></a><!-- doxytag: member="PSC::Variables::consistanceDesNoeuds" ref="4f1cf8d190e321a325c7d896d561c8e0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Variables.consistanceDesNoeuds           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Applique la consistance des noeuds. 
+<p>
+Cette methode applique la consistance des noeuds pour chaque variable de la liste. La methode de consistance consiste a supprimer du domaine toutes les valeurs qui violent les contraintes unaires. Pour cela, il suffit d'iterer sur la liste des contraintes unaires, et verifier si chacune est verifiee par toutes les valeurs possibles de la variable sur laquelle elle porte. Dans le cas contraire, cette valeur est supprimee du domaine.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+<dl class="see" compact><dt><b>Voir également:</b></dt><dd>Chapitre 8.5.1 du livre </dd></dl>
+<dl class="warning" compact><dt><b>Avertissement:</b></dt><dd>lors de l'iteration des valeurs du domaine, il faut bien faire <b>attention</b> a iterer sur une copie du domaine, car on ne peut pas supprimer des valeurs d'une liste et continuer a iterer sur celle-ci </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00156">156</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5d4b19ddaa79c2c480767ce6d90bc714"></a><!-- doxytag: member="PSC::Variables::retourneNbVars" ref="5d4b19ddaa79c2c480767ce6d90bc714" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Variables.retourneNbVars           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne le nombre de variables. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00173">173</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="94c18a14c01a3d2c69b7b762b92a2f29"></a><!-- doxytag: member="PSC::Variables::__repr__" ref="94c18a14c01a3d2c69b7b762b92a2f29" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Variables.__repr__           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne une representation textuelle des donnees des variables. 
+<p>
+Retourne une representation de toutes les variables ajoutees dans la liste <a class="el" href="namespace_p_s_c.html#b80f7f24a7f2a5d11f7e22d5bdf983df" title="Liste de toutes les variables.">PSC.VARIABLES</a>. Le format d'affichage est:<p>
+<div class="fragment"><pre class="fragment"> Vars:
+   var1.__repr__()
+   var2.__repr__()
+   ...
+   varn.__repr__()
+</pre></div><p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une chaine de caracteres contenant une representation de la classe </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00192">192</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<hr>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
+<li><a class="el" href="_p_s_c_8py-source.html">PSC.py</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:18 2008 pour Lab 6a : Satisfaction de contraintes par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

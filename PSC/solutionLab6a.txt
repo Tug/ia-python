@@ -1,0 +1,99 @@
+Chargement du module PSC
+	@version: 2.0  date: 06/06/2008 modified by Thomas Leaute
+	@version: 1.5  date: 28/03/2008 modified by Thomas Leaute
+	@version: 1.4  date: 28/06/2007 modified by Thomas Leaute
+	@version: 1.3  date: 14/02/2007 modified by Vincent Schickel
+	@version: 1.2  date: 17/01/2007 modified by Bruno Alves
+	@version: 1.1  date: 24/04/2006 modified by Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch date: 24/04/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+Chargement du module variable et noeud pour PSC
+	@version: 2.0  date: 06/06/2008 modified by Thomas Leaute
+	@version: 1.5  date: 25/04/2008 modified by Thomas Leaute
+	@version: 1.4  date: 28/06/2007 modified by Thomas Leaute
+	@version: 1.3  date: 14/02/2007 modified by Vincent Schickel-Zuber
+	@version: 1.2  date: 17/01/2007 modified by Bruno Alves
+	@version: 1.0  date: 24/04/2006 created by Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch date: 24/04/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+Vars:
+	var : a 	= None,	domaine = [2, 3]
+	var : b 	= None,	domaine = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+	var : c 	= None,	domaine = [0, 1, 2]
+	var : d 	= None,	domaine = [0, 1, 2]
+	var : e 	= None,	domaine = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+Contraintes:
+	1. Contrainte : b < 4
+	1. Contrainte : a != b
+	1. Contrainte : b != c
+	1. Contrainte : b != d
+	1. Contrainte : b != e
+	1. Contrainte : c != d
+	1. Contrainte : c != e
+	1. Contrainte : d != e
+	1. Contrainte : e < a
+
+Fait la consistance des noeuds
+Vars:
+	var : a 	= None,	domaine = [2, 3]
+	var : b 	= None,	domaine = [0, 1, 2, 3]
+	var : c 	= None,	domaine = [0, 1, 2]
+	var : d 	= None,	domaine = [0, 1, 2]
+	var : e 	= None,	domaine = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+Fait la consistance des arcs
+Vars:
+	var : a 	= None,	domaine = [2, 3]
+	var : b 	= None,	domaine = [0, 1, 2, 3]
+	var : c 	= None,	domaine = [0, 1, 2]
+	var : d 	= None,	domaine = [0, 1, 2]
+	var : e 	= None,	domaine = [0, 1, 2]
+
+bt : Iteration:= 1 , profondeur actuelle:= 0 et 0 contraintes verifiees
+bt : Iteration:= 2 , profondeur actuelle:= 1 et 0 contraintes verifiees
+bt : Iteration:= 3 , profondeur actuelle:= 2 et 1 contraintes verifiees
+bt : Iteration:= 4 , profondeur actuelle:= 3 et 3 contraintes verifiees
+bt : Iteration:= 5 , profondeur actuelle:= 4 et 8 contraintes verifiees
+bt : Iteration:= 6 , profondeur actuelle:= 3 et 15 contraintes verifiees
+bt : Iteration:= 7 , profondeur actuelle:= 4 et 18 contraintes verifiees
+bt : Iteration:= 8 , profondeur actuelle:= 2 et 27 contraintes verifiees
+bt : Iteration:= 9 , profondeur actuelle:= 3 et 28 contraintes verifiees
+bt : Iteration:= 10 , profondeur actuelle:= 4 et 33 contraintes verifiees
+bt : Iteration:= 11 , profondeur actuelle:= 3 et 41 contraintes verifiees
+bt : Iteration:= 12 , profondeur actuelle:= 4 et 43 contraintes verifiees
+bt : Iteration:= 13 , profondeur actuelle:= 2 et 54 contraintes verifiees
+bt : Iteration:= 14 , profondeur actuelle:= 3 et 55 contraintes verifiees
+bt : Iteration:= 15 , profondeur actuelle:= 4 et 59 contraintes verifiees
+bt : Iteration:= 16 , profondeur actuelle:= 4 et 70 contraintes verifiees
+bt : Iteration:= 17 , profondeur actuelle:= 5 et 76 contraintes verifiees
+	bt : SOLUTION TROUVEE en 17 etapes et avec 76 contraintes verifiees; SOLUTION= {'a': 2, 'c': 0, 'b': 3, 'e': 1, 'd': 2}
+bt : Iteration:= 18 , profondeur actuelle:= 3 et 80 contraintes verifiees
+bt : Iteration:= 19 , profondeur actuelle:= 4 et 82 contraintes verifiees
+bt : Iteration:= 20 , profondeur actuelle:= 4 et 95 contraintes verifiees
+bt : Iteration:= 21 , profondeur actuelle:= 5 et 99 contraintes verifiees
+	bt : SOLUTION TROUVEE en 21 etapes et avec 99 contraintes verifiees; SOLUTION= {'a': 2, 'c': 1, 'b': 3, 'e': 0, 'd': 2}
+bt : Iteration:= 22 , profondeur actuelle:= 3 et 105 contraintes verifiees
+bt : Iteration:= 23 , profondeur actuelle:= 4 et 107 contraintes verifiees
+bt : Iteration:= 24 , profondeur actuelle:= 5 et 114 contraintes verifiees
+	bt : SOLUTION TROUVEE en 24 etapes et avec 114 contraintes verifiees; SOLUTION= {'a': 2, 'c': 2, 'b': 3, 'e': 1, 'd': 0}
+bt : Iteration:= 25 , profondeur actuelle:= 4 et 118 contraintes verifiees
+bt : Iteration:= 26 , profondeur actuelle:= 5 et 122 contraintes verifiees
+	bt : SOLUTION TROUVEE en 26 etapes et avec 122 contraintes verifiees; SOLUTION= {'a': 2, 'c': 2, 'b': 3, 'e': 0, 'd': 1}
+bt : Iteration:= 27 , profondeur actuelle:= 1 et 129 contraintes verifiees
+bt : Iteration:= 28 , profondeur actuelle:= 2 et 130 contraintes verifiees
+bt : Iteration:= 29 , profondeur actuelle:= 3 et 132 contraintes verifiees
+bt : Iteration:= 30 , profondeur actuelle:= 4 et 137 contraintes verifiees
+bt : Iteration:= 31 , profondeur actuelle:= 3 et 144 contraintes verifiees
+bt : Iteration:= 32 , profondeur actuelle:= 4 et 147 contraintes verifiees
+bt : Iteration:= 33 , profondeur actuelle:= 2 et 156 contraintes verifiees
+bt : Iteration:= 34 , profondeur actuelle:= 3 et 157 contraintes verifiees
+bt : Iteration:= 35 , profondeur actuelle:= 4 et 162 contraintes verifiees
+bt : Iteration:= 36 , profondeur actuelle:= 3 et 170 contraintes verifiees
+bt : Iteration:= 37 , profondeur actuelle:= 4 et 172 contraintes verifiees
+bt : Iteration:= 38 , profondeur actuelle:= 2 et 182 contraintes verifiees
+bt : Iteration:= 39 , profondeur actuelle:= 3 et 183 contraintes verifiees
+bt : Iteration:= 40 , profondeur actuelle:= 4 et 187 contraintes verifiees
+bt : Iteration:= 41 , profondeur actuelle:= 3 et 195 contraintes verifiees
+bt : Iteration:= 42 , profondeur actuelle:= 4 et 197 contraintes verifiees
+Solutions trouvees avec bt:= [{'a': 2, 'c': 0, 'b': 3, 'e': 1, 'd': 2}, {'a': 2, 'c': 1, 'b': 3, 'e': 0, 'd': 2}, {'a': 2, 'c': 2, 'b': 3, 'e': 1, 'd': 0}, {'a': 2, 'c': 2, 'b': 3, 'e': 0, 'd': 1}]

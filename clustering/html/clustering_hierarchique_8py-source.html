@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 9 : Clustering:  Fichier source de clusteringHierarchique.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>clusteringHierarchique.py</h1><a href="clustering_hierarchique_8py.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespaceclustering_hierarchique.html">00001</a> <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00002"></a>00002 <span class="keywordflow">print</span> <span class="stringliteral">"Algorithme de clustering hierarchique"</span>
+<a name="l00003"></a>00003 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.2  date: 26/05/2007 modified by Thomas Leaute"</span>
+<a name="l00004"></a>00004 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.1  date: 25/05/2007 modified by Thomas Leaute"</span>
+<a name="l00005"></a>00005 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.0  date: 05/03/2007 created by Thomas Leaute"</span>
+<a name="l00006"></a>00006 <span class="keywordflow">print</span> <span class="stringliteral">"\t@author: thomas.leaute _AT_ epfl.ch date: 09/05/2007"</span>
+<a name="l00007"></a>00007 <span class="keywordflow">print</span> <span class="stringliteral">"\t@copyright: EPFL-IC-IIF-LIA 2007"</span>
+<a name="l00008"></a>00008 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00009"></a>00009 <span class="comment">## @package clusteringHierarchique Algorithme de clustering hierarchique, par single-link et complete-link</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 <span class="comment">## @file clusteringHierarchique.py Algorithme de clustering hierarchique, par single-link et complete-link</span>
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 exec file(<span class="stringliteral">"distance.py"</span>)
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 <span class="comment">## "single-link" ou "complete-link" </span>
+<a name="l00016"></a><a class="code" href="namespaceclustering_hierarchique.html#bcd775814a16d3270af6300f1866266b">00016</a> METHODE = <span class="stringliteral">""</span> 
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="comment">## liste des noeuds de dendogramme restant a fusionner</span>
+<a name="l00019"></a><a class="code" href="namespaceclustering_hierarchique.html#9d353af515d55e7b6aef1fc5deb542cf">00019</a> NOEUDS = [] 
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="comment">##  \brief Cette classe represente un noeud dans un dendogramme de clusters</span>
+<a name="l00022"></a><a class="code" href="classclustering_hierarchique_1_1_noeud.html">00022</a> <span class="keyword">class </span><a class="code" href="classclustering_hierarchique_1_1_noeud.html" title="Cette classe represente un noeud dans un dendogramme de clusters.">Noeud</a>:
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024         <span class="comment">## @var profondeur </span>
+<a name="l00025"></a>00025         <span class="comment"># \brief Profondeur du noeud dans le dendogramme</span>
+<a name="l00026"></a>00026         
+<a name="l00027"></a>00027         <span class="comment">## @var successeurs </span>
+<a name="l00028"></a>00028         <span class="comment"># \brief Liste des successeurs du noeud dans le dendogramme</span>
+<a name="l00029"></a>00029         
+<a name="l00030"></a>00030         <span class="comment">## @var cluster </span>
+<a name="l00031"></a>00031         <span class="comment"># \brief Cluster associe a ce noeud</span>
+<a name="l00032"></a>00032         
+<a name="l00033"></a>00033         <span class="comment">## \brief Constructeur</span>
+<a name="l00034"></a>00034         <span class="comment"># @param self Reference vers l'objet</span>
+<a name="l00035"></a>00035         <span class="comment"># @param p Profondeur du noeud dans le dendogramme</span>
+<a name="l00036"></a>00036         <span class="comment"># @param succ Liste des successeurs du noeud</span>
+<a name="l00037"></a>00037         <span class="comment"># @param c Cluster associe a ce noeud. Si pas precise, construit le cluster comme l'union des clusters des successeurs</span>
+<a name="l00038"></a><a class="code" href="classclustering_hierarchique_1_1_noeud.html#aa41d7f34342fa06a84b170b5afc2c04">00038</a>         <span class="keyword">def </span><a class="code" href="classclustering_hierarchique_1_1_noeud.html#aa41d7f34342fa06a84b170b5afc2c04" title="Constructeur.">__init__</a> (self, p, succ, c = None):
+<a name="l00039"></a><a class="code" href="classclustering_hierarchique_1_1_noeud.html#b1c39f5792ba4cd6d21168e0cad6747a">00039</a>                 self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#b1c39f5792ba4cd6d21168e0cad6747a" title="Profondeur du noeud dans le dendogramme.">profondeur</a> = p
+<a name="l00040"></a><a class="code" href="classclustering_hierarchique_1_1_noeud.html#4b286959b2c9bf64c6cb41efea8b64e5">00040</a>                 self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#4b286959b2c9bf64c6cb41efea8b64e5" title="Liste des successeurs du noeud dans le dendogramme.">successeurs</a> = succ
+<a name="l00041"></a>00041                 <span class="keywordflow">if</span> c != <span class="keywordtype">None</span>:
+<a name="l00042"></a><a class="code" href="classclustering_hierarchique_1_1_noeud.html#31fe2bd9bd64b54effb2075850db55b3">00042</a>                         self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#31fe2bd9bd64b54effb2075850db55b3" title="Cluster associe a ce noeud.">cluster</a> = c
+<a name="l00043"></a>00043                 <span class="keywordflow">else</span>:
+<a name="l00044"></a>00044                         self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#31fe2bd9bd64b54effb2075850db55b3" title="Cluster associe a ce noeud.">cluster</a> = [ donnee <span class="keywordflow">for</span> noeud <span class="keywordflow">in</span> self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#4b286959b2c9bf64c6cb41efea8b64e5" title="Liste des successeurs du noeud dans le dendogramme.">successeurs</a> <span class="keywordflow">for</span> donnee <span class="keywordflow">in</span> noeud.cluster ]
+<a name="l00045"></a>00045         
+<a name="l00046"></a>00046         <span class="comment">## \brief Affiche le dendogramme qui a ce noeud pour racine</span>
+<a name="l00047"></a>00047         <span class="comment"># @param self Reference vers l'objet</span>
+<a name="l00048"></a>00048         <span class="comment"># @param prefixe (optionnel) String a utiliser comme prefixe en debut de chaque ligne</span>
+<a name="l00049"></a><a class="code" href="classclustering_hierarchique_1_1_noeud.html#077a6b096455906955055c564fa654af">00049</a>         <span class="keyword">def </span><a class="code" href="classclustering_hierarchique_1_1_noeud.html#077a6b096455906955055c564fa654af" title="Affiche le dendogramme qui a ce noeud pour racine.">afficheDentogramme</a> (self, prefixe = ""):
+<a name="l00050"></a>00050                 <span class="keywordflow">print</span> prefixe + str(self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#31fe2bd9bd64b54effb2075850db55b3" title="Cluster associe a ce noeud.">cluster</a>)
+<a name="l00051"></a>00051                 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(0, len(self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#4b286959b2c9bf64c6cb41efea8b64e5" title="Liste des successeurs du noeud dans le dendogramme.">successeurs</a>)):
+<a name="l00052"></a>00052                         <span class="keywordflow">print</span> prefixe + <span class="stringliteral">"|\n"</span> + prefixe + <span class="stringliteral">"|"</span>
+<a name="l00053"></a>00053                         trait = <span class="stringliteral">"---"</span> + <span class="stringliteral">""</span>.join([<span class="stringliteral">"---"</span> <span class="keywordflow">for</span> j <span class="keywordflow">in</span> range(0, self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#4b286959b2c9bf64c6cb41efea8b64e5" title="Liste des successeurs du noeud dans le dendogramme.">successeurs</a>[i].profondeur - self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#b1c39f5792ba4cd6d21168e0cad6747a" title="Profondeur du noeud dans le dendogramme.">profondeur</a> - 1)])
+<a name="l00054"></a>00054                         marge = <span class="stringliteral">""</span>.join([<span class="stringliteral">"   "</span> <span class="keywordflow">for</span> j <span class="keywordflow">in</span> range(0, self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#4b286959b2c9bf64c6cb41efea8b64e5" title="Liste des successeurs du noeud dans le dendogramme.">successeurs</a>[i].profondeur - self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#b1c39f5792ba4cd6d21168e0cad6747a" title="Profondeur du noeud dans le dendogramme.">profondeur</a> - 1)])
+<a name="l00055"></a>00055                         <span class="keywordflow">if</span> i == len(self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#4b286959b2c9bf64c6cb41efea8b64e5" title="Liste des successeurs du noeud dans le dendogramme.">successeurs</a>)-1:
+<a name="l00056"></a>00056                                 marge = <span class="stringliteral">"   "</span> + marge
+<a name="l00057"></a>00057                         <span class="keywordflow">else</span>:
+<a name="l00058"></a>00058                                 marge = <span class="stringliteral">"|  "</span> + marge
+<a name="l00059"></a>00059                         <span class="keywordflow">print</span> prefixe + trait
+<a name="l00060"></a>00060                         self.<a class="code" href="classclustering_hierarchique_1_1_noeud.html#4b286959b2c9bf64c6cb41efea8b64e5" title="Liste des successeurs du noeud dans le dendogramme.">successeurs</a>[i].afficheDentogramme(prefixe + marge)
+<a name="l00061"></a>00061                 
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 <span class="comment">## \brief Initialise l'algorithme</span>
+<a name="l00064"></a>00064 <span class="comment"># </span>
+<a name="l00065"></a>00065 <span class="comment"># Transforme les donnees en une liste de noeuds, chaque noeud correspondant a un cluster contenant une unique donnee</span>
+<a name="l00066"></a>00066 <span class="comment"># @param methode Methode utilisee ("complete-link" ou "single-link") </span>
+<a name="l00067"></a><a class="code" href="namespaceclustering_hierarchique.html#7ff0e71260d0ed28de92e0face22b152">00067</a> <span class="keyword">def </span><a class="code" href="namespaceclustering_hierarchique.html#7ff0e71260d0ed28de92e0face22b152" title="Initialise l&amp;#39;algorithme.">chargeDonnees</a> (methode):
+<a name="l00068"></a>00068         <span class="keyword">global</span> NOEUDS, METHODE
+<a name="l00069"></a>00069         METHODE = methode
+<a name="l00070"></a>00070         NOEUDS = [ Noeud(len(DONNEES), [], [donnee]) <span class="keywordflow">for</span> donnee <span class="keywordflow">in</span> DONNEES ]
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 <span class="comment">## \brief Retourne si tous les clusters ont ete fusionnes  </span>
+<a name="l00074"></a>00074 <span class="comment"># @return True si et seulement si \c NOEUDS ne contient plus qu'un seul noeud</span>
+<a name="l00075"></a><a class="code" href="namespaceclustering_hierarchique.html#4f0955480e55ce3dc80ec6657282bd41">00075</a> <span class="keyword">def </span><a class="code" href="namespaceclustering_hierarchique.html#4f0955480e55ce3dc80ec6657282bd41" title="Retourne si tous les clusters ont ete fusionnes.">fini</a> ():
+<a name="l00076"></a>00076         <span class="keywordflow">return</span> len(NOEUDS) &lt;= 1
+<a name="l00077"></a>00077         
+<a name="l00078"></a>00078         
+<a name="l00079"></a>00079 <span class="comment">## \brief Distance entre deux clusters </span>
+<a name="l00080"></a>00080 <span class="comment"># </span>
+<a name="l00081"></a>00081 <span class="comment"># Consulte la valeur de \c METHODE pour decider de la methode de calcul de la distance</span>
+<a name="l00082"></a>00082 <span class="comment"># @param cluster1 Premier cluster</span>
+<a name="l00083"></a>00083 <span class="comment"># @param cluster2 Deuxieme cluster</span>
+<a name="l00084"></a>00084 <span class="comment"># @return La distance entre \c cluster1 et \c cluster2</span>
+<a name="l00085"></a><a class="code" href="namespaceclustering_hierarchique.html#145822012b6cf2bdf4637c0ab56c54f7">00085</a> <span class="keyword">def </span><a class="code" href="namespaceclustering_hierarchique.html#145822012b6cf2bdf4637c0ab56c54f7" title="Distance entre deux clusters.">distanceClusters</a> (cluster1, cluster2):
+<a name="l00086"></a>00086         <span class="keywordflow">if</span> METHODE == <span class="stringliteral">"single-link"</span>:
+<a name="l00087"></a>00087                 <span class="keywordflow">return</span> min([ distance(donnee1, donnee2) <span class="keywordflow">for</span> donnee1 <span class="keywordflow">in</span> cluster1 <span class="keywordflow">for</span> donnee2 <span class="keywordflow">in</span> cluster2 ])
+<a name="l00088"></a>00088         <span class="keywordflow">elif</span> METHODE == <span class="stringliteral">"complete-link"</span>:
+<a name="l00089"></a>00089                 <span class="keywordflow">return</span> max([ distance(donnee1, donnee2) <span class="keywordflow">for</span> donnee1 <span class="keywordflow">in</span> cluster1 <span class="keywordflow">for</span> donnee2 <span class="keywordflow">in</span> cluster2 ])
+<a name="l00090"></a>00090         <span class="keywordflow">else</span>:
+<a name="l00091"></a>00091                 <span class="keywordflow">print</span> <span class="stringliteral">"Methode de calcul de la distance entre clusters '"</span> + METHODE + <span class="stringliteral">"' inconnue"</span>
+<a name="l00092"></a>00092                 <span class="keywordflow">return</span> <span class="keywordtype">None</span>
+<a name="l00093"></a>00093         
+<a name="l00094"></a>00094         
+<a name="l00095"></a>00095 <span class="comment">## \brief Fusionne les deux clusters les plus similaires dans la liste \c NOEUDS</span>
+<a name="l00096"></a><a class="code" href="namespaceclustering_hierarchique.html#f4c67a1370e966498858eddee0f0edae">00096</a> <span class="keyword">def </span><a class="code" href="namespaceclustering_hierarchique.html#f4c67a1370e966498858eddee0f0edae" title="Fusionne les deux clusters les plus similaires dans la liste NOEUDS.">reviseClusters</a> ():
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098         <span class="comment"># S'il y a strictement moins de 2 noeuds :</span>
+<a name="l00099"></a>00099         <span class="keywordflow">if</span> len(NOEUDS) &lt;= 1:
+<a name="l00100"></a>00100                 <span class="keywordflow">return</span> 
+<a name="l00101"></a>00101         
+<a name="l00102"></a>00102         <span class="comment"># Sinon (plus de 2 noeuds), trouve les 2 noeuds dont les clusters sont les plus similaires :</span>
+<a name="l00103"></a>00103         pairesDeNoeuds = [ [NOEUDS[i], NOEUDS[j]] <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(0, len(NOEUDS)-1) <span class="keywordflow">for</span> j <span class="keywordflow">in</span> range(i+1, len(NOEUDS)) ]
+<a name="l00104"></a>00104 <span class="comment">#       paireMin = argmin(pairesDeNoeuds, lambda paire: distanceClusters(paire[0].cluster, paire[1].cluster)) # pour Python 2.3 </span>
+<a name="l00105"></a>00105         paireMin = min(pairesDeNoeuds, key = <span class="keyword">lambda</span> paire: distanceClusters(paire[0].cluster, paire[1].cluster)) <span class="comment"># pour Python 2.x, x &gt;= 4 </span>
+<a name="l00106"></a>00106                                 
+<a name="l00107"></a>00107         <span class="comment"># Fusionne les deux clusters trouves pour former un nouveau noeud : </span>
+<a name="l00108"></a>00108         NOEUDS.remove(paireMin[0])
+<a name="l00109"></a>00109         NOEUDS.remove(paireMin[1])
+<a name="l00110"></a>00110         NOEUDS.append(Noeud(len(NOEUDS) + 1, [paireMin[0], paireMin[1]]))
+<a name="l00111"></a>00111                                 
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 <span class="comment">## \brief Affiche le resultat du clustering, i.e. le dendogramme obtenu</span>
+<a name="l00114"></a><a class="code" href="namespaceclustering_hierarchique.html#afd3d379f80a1cfafc8db59dc67b7332">00114</a> <span class="keyword">def </span><a class="code" href="namespaceclustering_hierarchique.html#afd3d379f80a1cfafc8db59dc67b7332" title="Affiche le resultat du clustering, i.e.">afficheResultat</a> (): 
+<a name="l00115"></a>00115         NOEUDS[0].afficheDentogramme()
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118 <span class="comment">############################</span>
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 <span class="comment"># Charge la base de donnees :</span>
+<a name="l00121"></a>00121 <span class="comment">#exec file("maladies.py")</span>
+<a name="l00122"></a>00122 exec file(<span class="stringliteral">"profits.py"</span>)
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 <span class="comment"># Initialise l'algorithme de clustering hierarchique :</span>
+<a name="l00125"></a>00125 chargeDonnees(<span class="stringliteral">"single-link"</span>) 
+<a name="l00126"></a>00126 <span class="comment">#chargeDonnees("complete-link") </span>
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128 <span class="comment"># Lance l'agorithme de clustering :</span>
+<a name="l00129"></a>00129 exec file(<span class="stringliteral">"clustering.py"</span>)
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:38 2008 pour Lab 9 : Clustering par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

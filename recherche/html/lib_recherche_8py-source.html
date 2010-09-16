@@ -1,0 +1,356 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 5 : Algorithmes de recherche:  Fichier source de libRecherche.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>libRecherche.py</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00002"></a>00002 <span class="keywordflow">print</span> <span class="stringliteral">"Chargement du module objet et noeud pour la recherche"</span>
+<a name="l00003"></a>00003 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.3  date: 13/06/2007 modified by Thomas Leaute"</span>
+<a name="l00004"></a>00004 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.2  date: 13/02/2007 modified by Vincent Schickel-Zuber"</span>
+<a name="l00005"></a>00005 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.1  date: 15/01/2007 modified by Bruno Alves"</span>
+<a name="l00006"></a>00006 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.0  date: 24/03/2006 modified by the author"</span>
+<a name="l00007"></a>00007 <span class="keywordflow">print</span> <span class="stringliteral">"\t@author: vincent.schickel-zuber@epfl.ch date: 24/03/2006"</span>
+<a name="l00008"></a>00008 <span class="keywordflow">print</span> <span class="stringliteral">"\t@copyright: EPFL-IC-IIF-LIA 2006-2007"</span>
+<a name="l00009"></a>00009 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 <span class="comment"># modules utilises</span>
+<a name="l00012"></a>00012 <span class="keyword">import</span> math
+<a name="l00013"></a>00013 <span class="keyword">import</span> copy
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="comment">## Represente un noeud d'un graphe</span>
+<a name="l00017"></a>00017 <span class="comment">#</span>
+<a name="l00018"></a>00018 <span class="comment"># La classe Element correspond a un simple noeud d'un graphe. Dans ce cas</span>
+<a name="l00019"></a>00019 <span class="comment"># il s'agira d'un graphe de villes. Donc un element sera une ville.</span>
+<a name="l00020"></a><a class="code" href="classlib_recherche_1_1_element.html">00020</a> <span class="keyword">class </span><a class="code" href="classlib_recherche_1_1_element.html" title="Represente un noeud d&amp;#39;un graphe.">Element</a>:
+<a name="l00021"></a>00021         
+<a name="l00022"></a>00022         <span class="comment">## @var nom</span>
+<a name="l00023"></a>00023         <span class="comment">## le nom de cet element </span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025         <span class="comment">## @var posX</span>
+<a name="l00026"></a>00026         <span class="comment">## la position horizontale de cet element </span>
+<a name="l00027"></a>00027         
+<a name="l00028"></a>00028         <span class="comment">## @var posY</span>
+<a name="l00029"></a>00029         <span class="comment">## la position verticale de cet element </span>
+<a name="l00030"></a>00030         
+<a name="l00031"></a>00031         <span class="comment">## @var voisins</span>
+<a name="l00032"></a>00032         <span class="comment">## la liste des voisins attaches a celui-ci</span>
+<a name="l00033"></a>00033                 
+<a name="l00034"></a>00034         <span class="comment">## Constructeur de la classe </span>
+<a name="l00035"></a>00035         <span class="comment"># </span>
+<a name="l00036"></a>00036         <span class="comment"># Initialise l'objet Element representant un noeud sur un graphe, en</span>
+<a name="l00037"></a>00037         <span class="comment"># lui associant un nom et une position sur un plan 2-D. La liste de</span>
+<a name="l00038"></a>00038         <span class="comment"># ses voisins est initialement vide</span>
+<a name="l00039"></a>00039         <span class="comment">#</span>
+<a name="l00040"></a>00040         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00041"></a>00041         <span class="comment"># @param[in] nom le nom a donner a cet element</span>
+<a name="l00042"></a>00042         <span class="comment"># @param[in] posX la position du noeud sur l'axe X</span>
+<a name="l00043"></a>00043         <span class="comment"># @param[in] posY la position du noeud sur l'axe Y</span>
+<a name="l00044"></a>00044         <span class="comment"># @note le parametre nom est utilise comme indentificateur est doit</span>
+<a name="l00045"></a>00045         <span class="comment">#          pour cela etre &lt;strong&gt;unique&lt;/strong&gt;!</span>
+<a name="l00046"></a><a class="code" href="classlib_recherche_1_1_element.html#46fea2e852b5659b23fd5365cd66d09e">00046</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_element.html#46fea2e852b5659b23fd5365cd66d09e" title="Constructeur de la classe.">__init__</a>( self, nom, posX, posY ):
+<a name="l00047"></a>00047                 
+<a name="l00048"></a>00048                 <span class="comment">## le nom de cet element </span>
+<a name="l00049"></a><a class="code" href="classlib_recherche_1_1_element.html#36ddd1c28436d71befeef66e0f976d26">00049</a>                 self.<a class="code" href="classlib_recherche_1_1_element.html#36ddd1c28436d71befeef66e0f976d26" title="le nom de cet element">nom</a> = nom
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051                 <span class="comment">## la position horizontale de cet element </span>
+<a name="l00052"></a><a class="code" href="classlib_recherche_1_1_element.html#7f2d139f91565eb7343b074f26192182">00052</a>                 self.<a class="code" href="classlib_recherche_1_1_element.html#7f2d139f91565eb7343b074f26192182" title="la position horizontale de cet element">posX</a> = posX
+<a name="l00053"></a>00053                 
+<a name="l00054"></a>00054                 <span class="comment">## la position verticale de cet element </span>
+<a name="l00055"></a><a class="code" href="classlib_recherche_1_1_element.html#898e484dc0332ed97faa492a98f4b3e5">00055</a>                 self.<a class="code" href="classlib_recherche_1_1_element.html#898e484dc0332ed97faa492a98f4b3e5" title="la position verticale de cet element">posY</a> = posY
+<a name="l00056"></a>00056                 
+<a name="l00057"></a>00057                 <span class="comment">## la liste des voisins attaches a celui-ci</span>
+<a name="l00058"></a><a class="code" href="classlib_recherche_1_1_element.html#118a29b2f05f87ea9a5977bd33294050">00058</a>                 self.<a class="code" href="classlib_recherche_1_1_element.html#118a29b2f05f87ea9a5977bd33294050" title="la liste des voisins attaches a celui-ci">voisins</a> = []
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061         <span class="comment">## Retourne une representation textuelle de cet element</span>
+<a name="l00062"></a>00062         <span class="comment">#</span>
+<a name="l00063"></a>00063         <span class="comment"># Cette methode retourne sous forme textuelle une representation</span>
+<a name="l00064"></a>00064         <span class="comment"># des donnees contenues dans cette classe. Ces donnees sont retournees</span>
+<a name="l00065"></a>00065         <span class="comment"># sous forme d'une chaine de caracteres au format:</span>
+<a name="l00066"></a>00066         <span class="comment">#</span>
+<a name="l00067"></a>00067         <span class="comment"># @code</span>
+<a name="l00068"></a>00068         <span class="comment">#       &lt;nom_element,(position_x,position_y)&gt;</span>
+<a name="l00069"></a>00069         <span class="comment">#                voisins = { nom_voisin_1 nom_voisin_2 ... nom_voisin_n }</span>
+<a name="l00070"></a>00070         <span class="comment"># @endcode</span>
+<a name="l00071"></a>00071         <span class="comment">#</span>
+<a name="l00072"></a>00072         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00073"></a>00073         <span class="comment"># @return Une chaine de caracteres contenant les donnees de cet element</span>
+<a name="l00074"></a><a class="code" href="classlib_recherche_1_1_element.html#0965b6bd5412150f3f520fd8164bdbf4">00074</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_element.html#0965b6bd5412150f3f520fd8164bdbf4" title="Retourne une representation textuelle de cet element.">__repr__</a>( self ):
+<a name="l00075"></a>00075                 out = (<span class="stringliteral">"&lt;%s,(%d,%d)&gt;\n"</span> % (self.<a class="code" href="classlib_recherche_1_1_element.html#36ddd1c28436d71befeef66e0f976d26" title="le nom de cet element">nom</a>, self.<a class="code" href="classlib_recherche_1_1_element.html#7f2d139f91565eb7343b074f26192182" title="la position horizontale de cet element">posX</a>,self.<a class="code" href="classlib_recherche_1_1_element.html#898e484dc0332ed97faa492a98f4b3e5" title="la position verticale de cet element">posY</a>))
+<a name="l00076"></a>00076                 out = out + <span class="stringliteral">"\t voisins = {"</span>
+<a name="l00077"></a>00077                 <span class="keywordflow">for</span> voisin <span class="keywordflow">in</span> self.<a class="code" href="classlib_recherche_1_1_element.html#118a29b2f05f87ea9a5977bd33294050" title="la liste des voisins attaches a celui-ci">voisins</a>:
+<a name="l00078"></a>00078                         out = out + <span class="stringliteral">" "</span> + voisin.nom
+<a name="l00079"></a>00079                 out = out + <span class="stringliteral">" }"</span>
+<a name="l00080"></a>00080                 <span class="keywordflow">return</span> out
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083         <span class="comment">## Ajoute un nouveau voisin a la liste des voisins de cet element</span>
+<a name="l00084"></a>00084         <span class="comment">#</span>
+<a name="l00085"></a>00085         <span class="comment"># Insere un nouveau voisin en \b tete de liste des voisins de cet element. Un</span>
+<a name="l00086"></a>00086         <span class="comment"># voisin est un autre element defini par un nom et une position. Dans le</span>
+<a name="l00087"></a>00087         <span class="comment"># cas de cette simulation, un element sera une ville et les voisins aussi.</span>
+<a name="l00088"></a>00088         <span class="comment">#</span>
+<a name="l00089"></a>00089         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00090"></a>00090         <span class="comment"># @param[in] voisin le noeud voisin a ajouter dans la liste</span>
+<a name="l00091"></a><a class="code" href="classlib_recherche_1_1_element.html#bfd98b36d6e2dd752821a4c81387e3c3">00091</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_element.html#bfd98b36d6e2dd752821a4c81387e3c3" title="Ajoute un nouveau voisin a la liste des voisins de cet element.">ajouteVoisin</a>( self, voisin ):
+<a name="l00092"></a>00092                 self.<a class="code" href="classlib_recherche_1_1_element.html#118a29b2f05f87ea9a5977bd33294050" title="la liste des voisins attaches a celui-ci">voisins</a>.insert( 0, voisin )
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095         <span class="comment">## Verifie si le nom passe en param est egal a celui de cet element</span>
+<a name="l00096"></a>00096         <span class="comment">#</span>
+<a name="l00097"></a>00097         <span class="comment"># Cette methode compare deux chaines de caracteres et teste si elles sont</span>
+<a name="l00098"></a>00098         <span class="comment"># egales. Si elles sont egales, alors le nom passe en parametre est </span>
+<a name="l00099"></a>00099         <span class="comment"># le meme que celui de cet element.</span>
+<a name="l00100"></a>00100         <span class="comment">#</span>
+<a name="l00101"></a>00101         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00102"></a>00102         <span class="comment"># @param[in] un_nom le nom avec lequel il faut comparer</span>
+<a name="l00103"></a>00103         <span class="comment"># @return \b True si les deux noms correspondent, \b False sinon</span>
+<a name="l00104"></a><a class="code" href="classlib_recherche_1_1_element.html#2028c850045dfe882410ec6da25a5299">00104</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_element.html#2028c850045dfe882410ec6da25a5299" title="Verifie si le nom passe en param est egal a celui de cet element.">verifieNom</a>( self, un_nom ):
+<a name="l00105"></a>00105                 <span class="keywordflow">return</span> (self.<a class="code" href="classlib_recherche_1_1_element.html#36ddd1c28436d71befeef66e0f976d26" title="le nom de cet element">nom</a>==un_nom)
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108         <span class="comment">## Retourne la distance euclidienne separant cet objet avec celui </span>
+<a name="l00109"></a>00109         <span class="comment"># passe en parametre</span>
+<a name="l00110"></a>00110         <span class="comment">#</span>
+<a name="l00111"></a>00111         <span class="comment"># Cette methode retourne la distance euclidienne entre ces deux</span>
+<a name="l00112"></a>00112         <span class="comment"># elements. </span>
+<a name="l00113"></a>00113         <span class="comment">#</span>
+<a name="l00114"></a>00114         <span class="comment"># La formule de la distance euclienne est la suivante:</span>
+<a name="l00115"></a>00115         <span class="comment"># \f$\sqrt{(self.posX-objet.posX)^2+(self.posY-objet.posY)^2}\f$.</span>
+<a name="l00116"></a>00116         <span class="comment">#</span>
+<a name="l00117"></a>00117         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00118"></a>00118         <span class="comment"># @param[in] objet un autre element avec lequel on calcule la distance</span>
+<a name="l00119"></a>00119         <span class="comment"># @return Distance euclidienne entre l'element courant et l'objet passe</span>
+<a name="l00120"></a>00120         <span class="comment">#                en parametre. Dans le cas de cette simulation, il s'agit de</span>
+<a name="l00121"></a>00121         <span class="comment">#                donner la distance entre deux villes </span>
+<a name="l00122"></a>00122         <span class="comment"># @note L'operateur Python '**' designe : &lt;em&gt;elevation a une puissance&lt;/em&gt;</span>
+<a name="l00123"></a><a class="code" href="classlib_recherche_1_1_element.html#5f0e5a9bdd9116c7cc98f23852c83c91">00123</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_element.html#5f0e5a9bdd9116c7cc98f23852c83c91" title="Retourne la distance euclidienne separant cet objet avec celui passe en parametre...">distanceEuclidienne</a>( self, objet ):
+<a name="l00124"></a>00124                 <span class="keywordflow">return</span> math.sqrt((self.<a class="code" href="classlib_recherche_1_1_element.html#7f2d139f91565eb7343b074f26192182" title="la position horizontale de cet element">posX</a>-objet.posX)**2 + (self.<a class="code" href="classlib_recherche_1_1_element.html#898e484dc0332ed97faa492a98f4b3e5" title="la position verticale de cet element">posY</a>-objet.posY)**2)
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127 <span class="comment">## Represente un noeud d'un algorithme de recherche</span>
+<a name="l00128"></a>00128 <span class="comment">#</span>
+<a name="l00129"></a>00129 <span class="comment"># Ce qui differentie un noeud d'un algorithme de recherche d'un noeud </span>
+<a name="l00130"></a>00130 <span class="comment"># traditionel d'un graphe(Element), est que ce dernier ne comprend pas</span>
+<a name="l00131"></a>00131 <span class="comment"># de cout. La variable cout est utile pour des algorithmes de recherche</span>
+<a name="l00132"></a>00132 <span class="comment"># tels que A*.</span>
+<a name="l00133"></a><a class="code" href="classlib_recherche_1_1_noeud.html">00133</a> <span class="keyword">class </span><a class="code" href="classlib_recherche_1_1_noeud.html" title="Represente un noeud d&amp;#39;un algorithme de recherche.">Noeud</a>:
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135         <span class="comment">## @var refElement</span>
+<a name="l00136"></a>00136         <span class="comment"># une reference vers l'element du graphe</span>
+<a name="l00137"></a>00137         
+<a name="l00138"></a>00138         <span class="comment">## @var coutC</span>
+<a name="l00139"></a>00139         <span class="comment"># le cout \f$c_{n}\f$ pour aller d'un noeud inital a un noeud n</span>
+<a name="l00140"></a>00140         
+<a name="l00141"></a>00141         <span class="comment">## @var coutF</span>
+<a name="l00142"></a>00142         <span class="comment"># le cout total \f$c_{n}+h_{n}\f$ pour aller d'un noeud inital a un </span>
+<a name="l00143"></a>00143         <span class="comment"># noeud final en passant par n</span>
+<a name="l00144"></a>00144                 
+<a name="l00145"></a>00145         <span class="comment">## Constructeur de la classe Noeud</span>
+<a name="l00146"></a>00146         <span class="comment">#</span>
+<a name="l00147"></a>00147         <span class="comment"># Initialise l'etat interne d'un noeud de recherche. Il comprend</span>
+<a name="l00148"></a>00148         <span class="comment"># notamment une reference vers un noeud du graphe, ainsi qu'un cout</span>
+<a name="l00149"></a>00149         <span class="comment"># f(n) et un cout c(n). La relation entre ces deux elements est la</span>
+<a name="l00150"></a>00150         <span class="comment"># suivante: \f[f_{n}=c_{n}+h_{n}\f]\n</span>
+<a name="l00151"></a>00151         <span class="comment">#</span>
+<a name="l00152"></a>00152         <span class="comment">#        \f$c_{n}\f$  represente le cout pour aller du noeud initial jusqu'au</span>
+<a name="l00153"></a>00153         <span class="comment">#                               noeud courant n\n</span>
+<a name="l00154"></a>00154         <span class="comment">#       \f$h_{n}\f$  represente une &lt;strong&gt;estimation&lt;/strong&gt; du cout pour</span>
+<a name="l00155"></a>00155         <span class="comment">#                               aller du noeud n a un noeud final\n</span>
+<a name="l00156"></a>00156         <span class="comment">#        \f$f_{n}\f$  represente le cout total pour aller d'un noeud initial</span>
+<a name="l00157"></a>00157         <span class="comment">#                               a un noeud but en passant par le noeud n !\n</span>
+<a name="l00158"></a>00158         <span class="comment">#</span>
+<a name="l00159"></a>00159         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00160"></a>00160         <span class="comment"># @param[in] refElement une reference a un element representant un noeud</span>
+<a name="l00161"></a>00161         <span class="comment"># @param[in] coutC le cout \f$c_{n}\f$</span>
+<a name="l00162"></a>00162         <span class="comment"># @param[in] coutF le cout total \f$c_{n}+h_{n}\f$</span>
+<a name="l00163"></a><a class="code" href="classlib_recherche_1_1_noeud.html#39a78d4e79fff658dc51c417119e7ca4">00163</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_noeud.html#39a78d4e79fff658dc51c417119e7ca4" title="Constructeur de la classe Noeud.">__init__</a>( self, refElement, coutC=None, coutF=None ):
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165                 <span class="keywordflow">if</span> coutC <span class="keywordflow">is</span> <span class="keywordtype">None</span>:
+<a name="l00166"></a>00166                         coutC = 0
+<a name="l00167"></a>00167                 <span class="keywordflow">if</span> coutF <span class="keywordflow">is</span> <span class="keywordtype">None</span>:
+<a name="l00168"></a>00168                         coutF = 0
+<a name="l00169"></a>00169                         
+<a name="l00170"></a><a class="code" href="classlib_recherche_1_1_noeud.html#1e0a253ff9778f32498227233a712749">00170</a>                 self.<a class="code" href="classlib_recherche_1_1_noeud.html#1e0a253ff9778f32498227233a712749" title="une reference vers l&amp;#39;element du graphe">refElement</a> = refElement
+<a name="l00171"></a><a class="code" href="classlib_recherche_1_1_noeud.html#2fb111ed638fc058e7eb0218b7b99ee6">00171</a>                 self.<a class="code" href="classlib_recherche_1_1_noeud.html#2fb111ed638fc058e7eb0218b7b99ee6" title="le cout  pour aller d&amp;#39;un noeud inital a un noeud n">coutC</a> = coutC
+<a name="l00172"></a><a class="code" href="classlib_recherche_1_1_noeud.html#4c21dce894f69bf45c3b01c985aa4e8c">00172</a>                 self.<a class="code" href="classlib_recherche_1_1_noeud.html#4c21dce894f69bf45c3b01c985aa4e8c" title="le cout total  pour aller d&amp;#39;un noeud inital a un noeud final en passant par n...">coutF</a> = coutF
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174 
+<a name="l00175"></a>00175         <span class="comment">## Retourne une representation textuelle de cet objet</span>
+<a name="l00176"></a>00176         <span class="comment">#</span>
+<a name="l00177"></a>00177         <span class="comment"># Cette methode retourne une representant sous forme textuelle des </span>
+<a name="l00178"></a>00178         <span class="comment"># donnees contenues dans cet objet. Ces donnes sont au format :</span>
+<a name="l00179"></a>00179         <span class="comment">#</span>
+<a name="l00180"></a>00180         <span class="comment"># @code</span>
+<a name="l00181"></a>00181         <span class="comment"># noeud&lt;nom_du_noeud,cout_cn, cout_fn&gt;</span>
+<a name="l00182"></a>00182         <span class="comment"># @endcode</span>
+<a name="l00183"></a>00183         <span class="comment">#</span>
+<a name="l00184"></a>00184         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00185"></a>00185         <span class="comment"># @return </span>
+<a name="l00186"></a><a class="code" href="classlib_recherche_1_1_noeud.html#4721836f496bb140d96fbe6d5923ad9c">00186</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_noeud.html#4721836f496bb140d96fbe6d5923ad9c" title="Retourne une representation textuelle de cet objet.">__repr__</a>(self):
+<a name="l00187"></a>00187                 <span class="keywordflow">return</span> (<span class="stringliteral">"noeud &lt;%s,%d,%d&gt;"</span> % ( self.<a class="code" href="classlib_recherche_1_1_noeud.html#1e0a253ff9778f32498227233a712749" title="une reference vers l&amp;#39;element du graphe">refElement</a>.nom, 
+<a name="l00188"></a>00188                                                                            self.<a class="code" href="classlib_recherche_1_1_noeud.html#2fb111ed638fc058e7eb0218b7b99ee6" title="le cout  pour aller d&amp;#39;un noeud inital a un noeud n">coutC</a>, 
+<a name="l00189"></a>00189                                                                            self.<a class="code" href="classlib_recherche_1_1_noeud.html#4c21dce894f69bf45c3b01c985aa4e8c" title="le cout total  pour aller d&amp;#39;un noeud inital a un noeud final en passant par n...">coutF</a>) )
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191 
+<a name="l00192"></a>00192         <span class="comment">## Teste si le noeud passe en parametre est solution</span>
+<a name="l00193"></a>00193         <span class="comment">#</span>
+<a name="l00194"></a>00194         <span class="comment"># Un noeud est une solution si son nom est le meme que celui</span>
+<a name="l00195"></a>00195         <span class="comment"># d'un noeud but. Pour rappel, le nom d'un element est &lt;strong&gt;unique</span>
+<a name="l00196"></a>00196         <span class="comment"># &lt;/strong&gt;, donc, il suffit de tester la correspondance entre les noms</span>
+<a name="l00197"></a>00197         <span class="comment"># des deux elements : celui-ci et celui passe en parametre. En general,</span>
+<a name="l00198"></a>00198         <span class="comment"># l'element passe en parametre sera un noeud &lt;em&gt;final&lt;/em&gt;.</span>
+<a name="l00199"></a>00199         <span class="comment">#</span>
+<a name="l00200"></a>00200         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00201"></a>00201         <span class="comment"># @param[in] refElement l'element de reference equivalent a </span>
+<a name="l00202"></a>00202         <span class="comment">#                       la destination finale</span>
+<a name="l00203"></a>00203         <span class="comment"># @return true &lt;=&gt;  self est l'objet final</span>
+<a name="l00204"></a><a class="code" href="classlib_recherche_1_1_noeud.html#ef1c5a906d2172235d771ecb629d8bd7">00204</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_noeud.html#ef1c5a906d2172235d771ecb629d8bd7" title="Teste si le noeud passe en parametre est solution.">estUneSolution</a>( self, refElement ):
+<a name="l00205"></a>00205                 <span class="keywordflow">return</span> self.<a class="code" href="classlib_recherche_1_1_noeud.html#1e0a253ff9778f32498227233a712749" title="une reference vers l&amp;#39;element du graphe">refElement</a>.nom==refElement.nom
+<a name="l00206"></a>00206 
+<a name="l00207"></a>00207 
+<a name="l00208"></a>00208         <span class="comment">## Met a jour le cout \f$c_{n}\f$ du noeud passe en parametre</span>
+<a name="l00209"></a>00209         <span class="comment">#</span>
+<a name="l00210"></a>00210         <span class="comment"># Attention, la mise a jour s'effectue bien sur le noeud passe en </span>
+<a name="l00211"></a>00211         <span class="comment"># parametre, et non pas le noeud represente par l'objet traitant</span>
+<a name="l00212"></a>00212         <span class="comment"># cette methode. Cela est tout a fait normal. Pour chaque noeud, il y</span>
+<a name="l00213"></a>00213         <span class="comment"># a 0,1, ou plusieurs successeurs. L'algorithme de recherche part du</span>
+<a name="l00214"></a>00214         <span class="comment"># premier noeud et descend selon les successeurs. Alors, pour le noeud</span>
+<a name="l00215"></a>00215         <span class="comment"># courant on a toujours un cout defini(0 pour le noeud initial). A chaque</span>
+<a name="l00216"></a>00216         <span class="comment"># successeur du noeud, on met a jour a partir du cout du noeud courant et</span>
+<a name="l00217"></a>00217         <span class="comment"># de la distance euclidienne les separant :</span>
+<a name="l00218"></a>00218         <span class="comment">#</span>
+<a name="l00219"></a>00219         <span class="comment"># \f[c_{succ} = c_{self} + \delta (succ,self)\f]</span>
+<a name="l00220"></a>00220         <span class="comment"># </span>
+<a name="l00221"></a>00221         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00222"></a>00222         <span class="comment"># @param[in,out] succ le noeud a mettre a jour</span>
+<a name="l00223"></a><a class="code" href="classlib_recherche_1_1_noeud.html#ea5a614dc0b348f031f9d265f46d0d10">00223</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_noeud.html#ea5a614dc0b348f031f9d265f46d0d10" title="Met a jour le cout  du noeud passe en parametre.">metAJourCoutC</a>( self, succ ):
+<a name="l00224"></a>00224                 succ.coutC = self.<a class="code" href="classlib_recherche_1_1_noeud.html#2fb111ed638fc058e7eb0218b7b99ee6" title="le cout  pour aller d&amp;#39;un noeud inital a un noeud n">coutC</a> + self.<a class="code" href="classlib_recherche_1_1_noeud.html#1e0a253ff9778f32498227233a712749" title="une reference vers l&amp;#39;element du graphe">refElement</a>.distanceEuclidienne(
+<a name="l00225"></a>00225                                                                                                                         succ.refElement )
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227 
+<a name="l00228"></a>00228         <span class="comment">## Met a jour le cout \f$f_{n}=c_{n}+h_{n}\f$ du noeud passe en parametre</span>
+<a name="l00229"></a>00229         <span class="comment">#</span>
+<a name="l00230"></a>00230         <span class="comment"># Met a jour le cout total du noeud courant. Pour mettre a jour cette</span>
+<a name="l00231"></a>00231         <span class="comment"># valeur, il faut que le cout c(n) soit a jour. La partie heuristique</span>
+<a name="l00232"></a>00232         <span class="comment"># h(n) de la formule est donnee par la distance euclidienne entre le</span>
+<a name="l00233"></a>00233         <span class="comment"># noeud self et le noeud but passe en parametre.</span>
+<a name="l00234"></a>00234         <span class="comment"># Dans notre cas, self est le noeud but !!!!</span>
+<a name="l00235"></a>00235         <span class="comment">#</span>
+<a name="l00236"></a>00236         <span class="comment"># \f[f_{succ} = c_{succ} + \delta (succ,self)\f]</span>
+<a name="l00237"></a>00237         <span class="comment"># </span>
+<a name="l00238"></a>00238         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00239"></a>00239         <span class="comment"># @param[in,out] succ le noeud a mettre a jour</span>
+<a name="l00240"></a>00240         <span class="comment"># @note h(n)=distance euclidienne entre self et le but</span>
+<a name="l00241"></a><a class="code" href="classlib_recherche_1_1_noeud.html#8c66dd476280da4f03382f85b7f6adcd">00241</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_noeud.html#8c66dd476280da4f03382f85b7f6adcd" title="Met a jour le cout  du noeud passe en parametre.">metAJourCoutF</a>(self,succ):
+<a name="l00242"></a>00242                 succ.coutF = succ.coutC + succ.refElement.distanceEuclidienne(
+<a name="l00243"></a>00243                                                                                                                         self.<a class="code" href="classlib_recherche_1_1_noeud.html#1e0a253ff9778f32498227233a712749" title="une reference vers l&amp;#39;element du graphe">refElement</a> )
+<a name="l00244"></a>00244                                                                                                                                         
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246         <span class="comment">## Retourne tous les voisins du noeud</span>
+<a name="l00247"></a>00247         <span class="comment">#</span>
+<a name="l00248"></a>00248         <span class="comment"># Cette methode retourne tous les noeuds voisins du noeud courant</span>
+<a name="l00249"></a>00249         <span class="comment"># represente par self.</span>
+<a name="l00250"></a>00250         <span class="comment">#</span>
+<a name="l00251"></a>00251         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00252"></a>00252         <span class="comment"># @param[in] but la ville de destination (de type Element)</span>
+<a name="l00253"></a><a class="code" href="classlib_recherche_1_1_noeud.html#b241545e06cca29e361b412f6d75fc1b">00253</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_noeud.html#b241545e06cca29e361b412f6d75fc1b" title="Retourne tous les voisins du noeud.">successeurs</a>(self,but):
+<a name="l00254"></a>00254                 
+<a name="l00255"></a>00255                 <span class="comment"># construit un noeud pour chaque voisin. Remarquez que le</span>
+<a name="l00256"></a>00256                 <span class="comment"># constructeur de Noeud est automatiquement appelle</span>
+<a name="l00257"></a>00257                 succs = map( Noeud, self.<a class="code" href="classlib_recherche_1_1_noeud.html#1e0a253ff9778f32498227233a712749" title="une reference vers l&amp;#39;element du graphe">refElement</a>.voisins )
+<a name="l00258"></a>00258                 
+<a name="l00259"></a>00259                 <span class="comment"># met a jour le cout C de chaque noeud. La fonction self.metAJourCoutC</span>
+<a name="l00260"></a>00260                 <span class="comment"># sera appelee automatiquement en recevant comme parametre une noeud</span>
+<a name="l00261"></a>00261                 <span class="comment"># successeur</span>
+<a name="l00262"></a>00262                 map( self.<a class="code" href="classlib_recherche_1_1_noeud.html#ea5a614dc0b348f031f9d265f46d0d10" title="Met a jour le cout  du noeud passe en parametre.">metAJourCoutC</a>, succs )
+<a name="l00263"></a>00263                 
+<a name="l00264"></a>00264                 <span class="comment"># met a jour le cout total f(n). La fonction metAJourCoutF est</span>
+<a name="l00265"></a>00265                 <span class="comment"># automatiquement appelee pour chaque successeur</span>
+<a name="l00266"></a>00266                 map( Noeud(but).metAJourCoutF, succs )
+<a name="l00267"></a>00267                 
+<a name="l00268"></a>00268                 <span class="comment"># retourne la liste des successeurs ainsi obtenue</span>
+<a name="l00269"></a>00269                 <span class="keywordflow">return</span> succs
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272 <span class="comment">## Represente une liste de noeuds d'un graphe</span>
+<a name="l00273"></a>00273 <span class="comment">#</span>
+<a name="l00274"></a>00274 <span class="comment"># Cette classe facilite la programmation en proposant un wrapper pour une </span>
+<a name="l00275"></a>00275 <span class="comment"># liste de noeuds. Cet objet permet d'ajouter de nouveaux noeuds, permet</span>
+<a name="l00276"></a>00276 <span class="comment"># de tester si un noeud est present et permet de tester si un noeud precis</span>
+<a name="l00277"></a>00277 <span class="comment"># a un cout F inferieur a celui de tous les noeuds presents dans la liste </span>
+<a name="l00278"></a><a class="code" href="classlib_recherche_1_1_noeuds.html">00278</a> <span class="keyword">class </span><a class="code" href="classlib_recherche_1_1_noeuds.html" title="Represente une liste de noeuds d&amp;#39;un graphe.">Noeuds</a>:
+<a name="l00279"></a>00279 
+<a name="l00280"></a>00280         <span class="comment">## @var noeuds</span>
+<a name="l00281"></a>00281         <span class="comment"># la liste contenant les noeuds d'un graphe</span>
+<a name="l00282"></a>00282         
+<a name="l00283"></a>00283         <span class="comment">## Constructeur de la classe</span>
+<a name="l00284"></a>00284         <span class="comment">#</span>
+<a name="l00285"></a>00285         <span class="comment"># Initialise la liste des noeuds a zero</span>
+<a name="l00286"></a>00286         <span class="comment">#</span>
+<a name="l00287"></a>00287         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00288"></a><a class="code" href="classlib_recherche_1_1_noeuds.html#9f052d97720a783a3481e2af9a24b8c6">00288</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_noeuds.html#9f052d97720a783a3481e2af9a24b8c6" title="Constructeur de la classe.">__init__</a>( self ):
+<a name="l00289"></a><a class="code" href="classlib_recherche_1_1_noeuds.html#9a9ec7c3422293c56202a5f457414192">00289</a>                 self.<a class="code" href="classlib_recherche_1_1_noeuds.html#9a9ec7c3422293c56202a5f457414192" title="la liste contenant les noeuds d&amp;#39;un graphe">noeuds</a>=[]
+<a name="l00290"></a>00290 
+<a name="l00291"></a>00291 
+<a name="l00292"></a>00292         <span class="comment">## Ajoute un noeud a la liste</span>
+<a name="l00293"></a>00293         <span class="comment">#</span>
+<a name="l00294"></a>00294         <span class="comment"># Ajoute un nouveau noeud a la liste des noeuds presente</span>
+<a name="l00295"></a>00295         <span class="comment"># </span>
+<a name="l00296"></a>00296         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00297"></a>00297         <span class="comment"># @param[in] noeud le noeud a ajouter </span>
+<a name="l00298"></a><a class="code" href="classlib_recherche_1_1_noeuds.html#10d392124d23b180998c832d7845dee2">00298</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_noeuds.html#10d392124d23b180998c832d7845dee2" title="Ajoute un noeud a la liste.">ajouteNoeud</a>( self, noeud ):
+<a name="l00299"></a>00299                 self.<a class="code" href="classlib_recherche_1_1_noeuds.html#9a9ec7c3422293c56202a5f457414192" title="la liste contenant les noeuds d&amp;#39;un graphe">noeuds</a>.append( noeud )
+<a name="l00300"></a>00300 
+<a name="l00301"></a>00301 
+<a name="l00302"></a>00302         <span class="comment">## Teste si un noeud precis est contenu dans la liste </span>
+<a name="l00303"></a>00303         <span class="comment">#</span>
+<a name="l00304"></a>00304         <span class="comment"># Cette methode teste si un noeud est deja contenu dans la liste</span>
+<a name="l00305"></a>00305         <span class="comment"># des noeuds de la classe en testant si leurs noms sont egaux. Pour</span>
+<a name="l00306"></a>00306         <span class="comment"># rappel, un nom est \b unique.</span>
+<a name="l00307"></a>00307         <span class="comment">#</span>
+<a name="l00308"></a>00308         <span class="comment"># @param self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00309"></a>00309         <span class="comment"># @param noeud le noeud a verifier</span>
+<a name="l00310"></a>00310         <span class="comment"># @return \b True si le noeud est dans la liste, \b False sinon</span>
+<a name="l00311"></a><a class="code" href="classlib_recherche_1_1_noeuds.html#6142b5ac4d20021c7e52c9317fca13ba">00311</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_noeuds.html#6142b5ac4d20021c7e52c9317fca13ba" title="Teste si un noeud precis est contenu dans la liste.">contient</a>(self,noeud):
+<a name="l00312"></a>00312                 <span class="keywordflow">for</span> n <span class="keywordflow">in</span> self.<a class="code" href="classlib_recherche_1_1_noeuds.html#9a9ec7c3422293c56202a5f457414192" title="la liste contenant les noeuds d&amp;#39;un graphe">noeuds</a>:
+<a name="l00313"></a>00313                         <span class="keywordflow">if</span> n.refElement.nom==noeud.refElement.nom:
+<a name="l00314"></a>00314                                 <span class="keywordflow">return</span> <span class="keyword">True</span>
+<a name="l00315"></a>00315                 <span class="keywordflow">return</span> <span class="keyword">False</span>
+<a name="l00316"></a>00316 
+<a name="l00317"></a>00317 
+<a name="l00318"></a>00318         <span class="comment">## Teste si le noeud passe en parametre a un cout \f$f_{n}\f$ strictement inferieur </span>
+<a name="l00319"></a>00319         <span class="comment">## a celui des noeuds presents dans la liste</span>
+<a name="l00320"></a>00320         <span class="comment">#</span>
+<a name="l00321"></a>00321         <span class="comment"># Cette methode teste si le cout \f$f_{n}\f$ du noeud passe en parametre</span>
+<a name="l00322"></a>00322         <span class="comment"># est strictement inferieur a celui des autres. Pour cela, on parcourt</span>
+<a name="l00323"></a>00323         <span class="comment"># la liste des noeuds et on teste si un noeud avec le meme nom</span>
+<a name="l00324"></a>00324         <span class="comment"># existe. Si c'est le cas et si son cout \f$f_{n}\f$ est plus grand </span>
+<a name="l00325"></a>00325         <span class="comment"># que celui du noeud passe en parametre, alors on retourne \b True.</span>
+<a name="l00326"></a>00326         <span class="comment">#</span>
+<a name="l00327"></a>00327         <span class="comment"># @param[in] self un pointeur vers cet objet lui-meme (automatique)</span>
+<a name="l00328"></a>00328         <span class="comment"># @param[in] noeud le noeud a verifier</span>
+<a name="l00329"></a>00329         <span class="comment"># @return \b True si \f$noeud.coutF &lt; noeuds.n.coutF\f$, \b False sinon</span>
+<a name="l00330"></a><a class="code" href="classlib_recherche_1_1_noeuds.html#1f21bb976d92629ee23845b00b3a97cb">00330</a>         <span class="keyword">def </span><a class="code" href="classlib_recherche_1_1_noeuds.html#1f21bb976d92629ee23845b00b3a97cb" title="Teste si le noeud passe en parametre a un cout  strictement inferieur a celui des...">coutFStrictementInferieur</a>( self, noeud ):
+<a name="l00331"></a>00331                 <span class="keywordflow">for</span> n <span class="keywordflow">in</span> self.<a class="code" href="classlib_recherche_1_1_noeuds.html#9a9ec7c3422293c56202a5f457414192" title="la liste contenant les noeuds d&amp;#39;un graphe">noeuds</a>:
+<a name="l00332"></a>00332                         <span class="keywordflow">if</span> ( n.refElement.nom==noeud.refElement.nom <span class="keywordflow">and</span> 
+<a name="l00333"></a>00333                                 noeud.coutF&lt;n.coutF):
+<a name="l00334"></a>00334                                 <span class="keywordflow">return</span> <span class="keyword">True</span>
+<a name="l00335"></a>00335                 <span class="keywordflow">return</span> <span class="keyword">False</span> 
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Wed Mar 25 11:01:49 2009 pour Lab 5 : Algorithmes de recherche par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

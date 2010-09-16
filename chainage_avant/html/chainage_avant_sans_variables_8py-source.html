@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 2 : Moteur d&#39;inf&eacute;rence &agrave; cha&icirc;nage avant sans variables:  Fichier source de chainageAvantSansVariables.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>chainageAvantSansVariables.py</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00002"></a>00002 <span class="keywordflow">print</span> <span class="stringliteral">"Loading chainage_avant_sans_variables"</span>
+<a name="l00003"></a>00003 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 2.4  date: 27/06/2007 modifie par Thomas Leaute"</span>
+<a name="l00004"></a>00004 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 2.3  date: 20/02/2007 modifie par Vincent Schickel-Zuber"</span>
+<a name="l00005"></a>00005 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 2.2  date: 10/23/2006 modifie par Vincent Schickel-Zuber"</span>
+<a name="l00006"></a>00006 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 2.1  date: 01/03/2007 modifie par Bruno Alves"</span>
+<a name="l00007"></a>00007 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 2.0  date: 12/02/2007 modifie par Vincent Schickel-Zuber"</span>
+<a name="l00008"></a>00008 <span class="keywordflow">print</span> <span class="stringliteral">"\t@author: vincent.schickel-zuber@epfl.ch"</span>
+<a name="l00009"></a>00009 <span class="keywordflow">print</span> <span class="stringliteral">"\t@copyright: EPFL-IC-IIF-LIA 2007"</span>
+<a name="l00010"></a>00010 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 <span class="comment"># Module pour la copie en profondeur</span>
+<a name="l00013"></a>00013 <span class="keyword">import</span> copy
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 <span class="comment">## Base des faits</span>
+<a name="l00016"></a>00016 faits = []
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 <span class="comment">## Base des regles</span>
+<a name="l00019"></a>00019 regles = []
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 <span class="comment">## Initialise les bases de faits et de regles</span>
+<a name="l00023"></a>00023 <span class="comment">#</span>
+<a name="l00024"></a>00024 <span class="comment"># Initialise la base des faits ainsi que la base des</span>
+<a name="l00025"></a>00025 <span class="comment"># regles en les vidant d'abord.</span>
+<a name="l00026"></a>00026 <span class="keyword">def </span>initDBs():
+<a name="l00027"></a>00027         del faits[:]
+<a name="l00028"></a>00028         del regles[:]
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00032"></a>00032 <span class="comment"># FAITS</span>
+<a name="l00033"></a>00033 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="comment">## Affiche la base des faits</span>
+<a name="l00036"></a>00036 <span class="comment">#</span>
+<a name="l00037"></a>00037 <span class="comment"># Affiche les faits sur la sortie standard du programme(ecran)</span>
+<a name="l00038"></a>00038 <span class="keyword">def </span>afficheFaits():
+<a name="l00039"></a>00039         <span class="keywordflow">for</span> x <span class="keywordflow">in</span> faits:
+<a name="l00040"></a>00040                 <span class="keywordflow">print</span> x
+<a name="l00041"></a>00041                 
+<a name="l00042"></a>00042 <span class="comment">## Ajoute un fait a la base des faits</span>
+<a name="l00043"></a>00043 <span class="comment">#</span>
+<a name="l00044"></a>00044 <span class="comment"># Ajoute un fait passe en parametre dans la base de faits actuelle</span>
+<a name="l00045"></a>00045 <span class="comment">#</span>
+<a name="l00046"></a>00046 <span class="comment"># @param[in] fait le fait a ajouter dans la base des faits</span>
+<a name="l00047"></a>00047 <span class="keyword">def </span>ajouteFait( fait ):
+<a name="l00048"></a>00048         faits.append( fait )
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050                 
+<a name="l00051"></a>00051 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00052"></a>00052 <span class="comment"># REGLES</span>
+<a name="l00053"></a>00053 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 <span class="comment">## affiche la base des regles</span>
+<a name="l00056"></a>00056 <span class="comment">#</span>
+<a name="l00057"></a>00057 <span class="comment"># Affiche chaque regle de la base des regles sur la sortie standard</span>
+<a name="l00058"></a>00058 <span class="comment"># du programme (stdout)</span>
+<a name="l00059"></a>00059 <span class="keyword">def </span>afficheRegles():
+<a name="l00060"></a>00060         <span class="keywordflow">for</span> x <span class="keywordflow">in</span> regles:
+<a name="l00061"></a>00061                 <span class="keywordflow">print</span> x
+<a name="l00062"></a>00062                 
+<a name="l00063"></a>00063                 
+<a name="l00064"></a>00064 <span class="comment">## Ajoute une regle a la base des regles</span>
+<a name="l00065"></a>00065 <span class="comment">#</span>
+<a name="l00066"></a>00066 <span class="comment"># Ajoute une regle a la base des regles. Une regle est en fait un couple</span>
+<a name="l00067"></a>00067 <span class="comment"># compose d'une seule consequence precedee d'un groupe de conditions. Une fois</span>
+<a name="l00068"></a>00068 <span class="comment"># toutes les conditions reunies, la consequence peut etre ajoutee a la </span>
+<a name="l00069"></a>00069 <span class="comment"># base des faits. Le codage d'une regle est le suivant:</span>
+<a name="l00070"></a>00070 <span class="comment"># </span>
+<a name="l00071"></a>00071 <span class="comment">#         regle = [ ['cond1','cond2',...,'condn'], consequence ]</span>
+<a name="l00072"></a>00072 <span class="comment">#   d'ou regle[0] = ['cond1','cond2',...,'condn']</span>
+<a name="l00073"></a>00073 <span class="comment">#        et regle[1] = consequence</span>
+<a name="l00074"></a>00074 <span class="comment">#</span>
+<a name="l00075"></a>00075 <span class="comment"># @param[in] conditions la liste des conditions ['toto',...,'titi']</span>
+<a name="l00076"></a>00076 <span class="comment"># @param[in] consequence la consequence (un atome)</span>
+<a name="l00077"></a>00077 <span class="keyword">def </span>ajouteRegle( conditions, consequence ):
+<a name="l00078"></a>00078         regles.append( [conditions, consequence] )
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080         
+<a name="l00081"></a>00081 <span class="comment">## Retourne les conditions d'une regle.</span>
+<a name="l00082"></a>00082 <span class="comment">#</span>
+<a name="l00083"></a>00083 <span class="comment"># Retourne les conditions d'une regle. Le codage des regles est decrit dans</span>
+<a name="l00084"></a>00084 <span class="comment"># la documentation de la fonction ajouteRegle()</span>
+<a name="l00085"></a>00085 <span class="comment">#</span>
+<a name="l00086"></a>00086 <span class="comment"># @param[in] regle une regle de la base des regles</span>
+<a name="l00087"></a>00087 <span class="comment"># @return la liste des conditions de la regle passee en argument</span>
+<a name="l00088"></a>00088 <span class="comment"># @see ajouteRegle</span>
+<a name="l00089"></a>00089 <span class="keyword">def </span>conditionsRegle( regle ):
+<a name="l00090"></a>00090         <span class="keywordflow">return</span> regle[0]
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 <span class="comment">## Retourne la consequence d'une regle</span>
+<a name="l00094"></a>00094 <span class="comment">#</span>
+<a name="l00095"></a>00095 <span class="comment"># Retourne la consequence d'une regle. Celle-ci correspond au deuxieme</span>
+<a name="l00096"></a>00096 <span class="comment"># element d'une regle(donc d'index 1)</span>
+<a name="l00097"></a>00097 <span class="comment"># @param[in] regle une regle de la base des regles</span>
+<a name="l00098"></a>00098 <span class="comment"># @return la consequence de la regle passee en argument</span>
+<a name="l00099"></a>00099 <span class="comment"># @see ajouteRegle</span>
+<a name="l00100"></a>00100 <span class="keyword">def </span>consequenceRegle( regle ):
+<a name="l00101"></a>00101         <span class="keywordflow">return</span> regle[1]
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104 <span class="comment">## Indique si un fait passe en parametre satisfait une des conditions d'une regle ou non</span>
+<a name="l00105"></a>00105 <span class="comment">#</span>
+<a name="l00106"></a>00106 <span class="comment"># Un fait satisfait l'une des conditions d'une regle, si le fait est</span>
+<a name="l00107"></a>00107 <span class="comment"># inclus dans la liste des conditions de la regle</span>
+<a name="l00108"></a>00108 <span class="comment">#</span>
+<a name="l00109"></a>00109 <span class="comment"># @param[in] regle la regle a veifier</span>
+<a name="l00110"></a>00110 <span class="comment"># @param[in] le_fait le fait que la condition de la regle doit contenir</span>
+<a name="l00111"></a>00111 <span class="comment"># @return True si une des conditions est remplie par le_fait, False sinon </span>
+<a name="l00112"></a>00112 <span class="keyword">def </span>satisfaitUneCondition( regle, le_fait ):
+<a name="l00113"></a>00113         <span class="keywordflow">return</span> ( le_fait <span class="keywordflow">in</span> conditionsRegle(regle) )
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 <span class="comment">## Indique si toutes les conditions d'une regle sont satisfaites par la base des faits</span>
+<a name="l00117"></a>00117 <span class="comment">#</span>
+<a name="l00118"></a>00118 <span class="comment"># Les conditions d'une regle sont satisfaites par la base des faits, si tous les</span>
+<a name="l00119"></a>00119 <span class="comment"># faits constituant les conditions de la regle passee en parametre sont inclus</span>
+<a name="l00120"></a>00120 <span class="comment"># dans la base des faits</span>
+<a name="l00121"></a>00121 <span class="comment">#</span>
+<a name="l00122"></a>00122 <span class="comment"># @param regle la regle a verifier</span>
+<a name="l00123"></a>00123 <span class="comment"># @return True si toutes les conditions sont remplies par la base des faits, </span>
+<a name="l00124"></a>00124 <span class="comment">#                False sinon</span>
+<a name="l00125"></a>00125 <span class="keyword">def </span>satisfaitConditions( regle ):
+<a name="l00126"></a>00126         <span class="keywordflow">return</span> set(conditionsRegle(regle)).issubset(set(faits))
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 <span class="comment">## Effectue un chainage avant simple a partir des faits initiaux et de regles donnees</span>
+<a name="l00130"></a>00130 <span class="comment">#</span>
+<a name="l00131"></a>00131 <span class="comment"># La fonction de chainage avant simple deduit tous les faits possibles de</span>
+<a name="l00132"></a>00132 <span class="comment"># deduire a partir des faits initiaux et des regles donnes. Une fois que les </span>
+<a name="l00133"></a>00133 <span class="comment"># consequences deduites sont inscrites dans la bases de donnees, il faudra</span>
+<a name="l00134"></a>00134 <span class="comment"># de nouveau verifier si ces nouveaux faits permettent de declencher de</span>
+<a name="l00135"></a>00135 <span class="comment"># nouvelles regles. Le processus se poursuit jusqu'a ce qu'il n'y ait plus</span>
+<a name="l00136"></a>00136 <span class="comment"># de fait a deduire. Le pseudo-code de l'algorithme de chainage avant est le</span>
+<a name="l00137"></a>00137 <span class="comment"># suivant:</span>
+<a name="l00138"></a>00138 <span class="comment">#</span>
+<a name="l00139"></a>00139 <span class="comment"># @code</span>
+<a name="l00140"></a>00140 <span class="comment">#    1. Procedure Chainage-Simple(F,R)</span>
+<a name="l00141"></a>00141 <span class="comment">#    2. Q &lt;- faits de depart F</span>
+<a name="l00142"></a>00142 <span class="comment">#    3. while Q pas vide {</span>
+<a name="l00143"></a>00143 <span class="comment">#    4.  q &lt;- premier(Q), Q &lt;- reste(Q)</span>
+<a name="l00144"></a>00144 <span class="comment">#    5.  if q pas dans la base de donnees then </span>
+<a name="l00145"></a>00145 <span class="comment">#    6.                 ajouter q a la base de donnees et imprimer q</span>
+<a name="l00146"></a>00146 <span class="comment">#    7.  for chaque regle r de la base de regles R {</span>
+<a name="l00147"></a>00147 <span class="comment">#    8.          if q appartient conditions(r)</span>
+<a name="l00148"></a>00148 <span class="comment">#    9.           and conditions(r) est inclus dans la base de donnees</span>
+<a name="l00149"></a>00149 <span class="comment">#   10.           and conclusion(r) pas dans la base de donnees {</span>
+<a name="l00150"></a>00150 <span class="comment">#   11.                  ajouter conclusion(r) en queue de Q</span>
+<a name="l00151"></a>00151 <span class="comment">#   12.          }</span>
+<a name="l00152"></a>00152 <span class="comment">#   13.  }</span>
+<a name="l00153"></a>00153 <span class="comment">#   14. }</span>
+<a name="l00154"></a>00154 <span class="comment"># @endcode</span>
+<a name="l00155"></a>00155 <span class="comment">#</span>
+<a name="l00156"></a>00156 <span class="comment"># @param[in] faitsInitiaux la liste des faits initiaux</span>
+<a name="l00157"></a>00157 <span class="comment"># @param[in] regles la liste des regles</span>
+<a name="l00158"></a>00158 <span class="keyword">def </span>chainageAvantSimple( faitsInitiaux, regles ):
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160         <span class="comment"># copie les faits initiaux dans Q</span>
+<a name="l00161"></a>00161         Q = copy.deepcopy( faitsInitiaux )
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163         <span class="comment"># tant qu'il reste des faits a analyser,</span>
+<a name="l00164"></a>00164         <span class="comment"># il faut le faire...</span>
+<a name="l00165"></a>00165         <span class="keywordflow">while</span> len(Q)&gt;0:
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167                 <span class="comment"># considere le premier fait de la liste Q</span>
+<a name="l00168"></a>00168                 q = Q.pop(0)
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170                 <span class="comment"># si le fait n'est pas encore dans la base des</span>
+<a name="l00171"></a>00171                 <span class="comment"># faits, il faut l'ajouter. cela ne sera vrai</span>
+<a name="l00172"></a>00172                 <span class="comment"># que lorsqu'une nouvelle consequence sera</span>
+<a name="l00173"></a>00173                 <span class="comment"># inseree dans la liste Q</span>
+<a name="l00174"></a>00174                 <span class="keywordflow">if</span> q <span class="keywordflow">not</span> <span class="keywordflow">in</span> faits:
+<a name="l00175"></a>00175                         ajouteFait( q )
+<a name="l00176"></a>00176                         <span class="keywordflow">print</span> q
+<a name="l00177"></a>00177 
+<a name="l00178"></a>00178         <span class="comment"># pour que la consequence d'une regle soit ajoutee</span>
+<a name="l00179"></a>00179         <span class="comment"># dans la base des faits, il faut respecter les trois</span>
+<a name="l00180"></a>00180         <span class="comment"># conditions suivantes:</span>
+<a name="l00181"></a>00181         <span class="comment">#</span>
+<a name="l00182"></a>00182                 <span class="comment">#        1 - le fait q est une condition de la regle r</span>
+<a name="l00183"></a>00183                 <span class="comment">#        2 - les autres conditions de r sont satisfaites par</span>
+<a name="l00184"></a>00184                 <span class="comment">#                la base des faits actuelle</span>
+<a name="l00185"></a>00185                 <span class="comment">#        3 - la consequence de la regle r n'est pas encore</span>
+<a name="l00186"></a>00186                 <span class="comment">#                dans la base des faits</span>
+<a name="l00187"></a>00187                 <span class="keywordflow">for</span> r <span class="keywordflow">in</span> regles:
+<a name="l00188"></a>00188                         <span class="keywordflow">if</span> ( satisfaitUneCondition(r,q) <span class="keywordflow">and</span>
+<a name="l00189"></a>00189                                  satisfaitConditions(r) <span class="keywordflow">and</span>
+<a name="l00190"></a>00190                                  consequenceRegle(r) <span class="keywordflow">not</span> <span class="keywordflow">in</span> faits ):
+<a name="l00191"></a>00191                                 Q.append( consequenceRegle(r) )
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193                   
+<a name="l00194"></a>00194 <span class="comment">#</span>
+<a name="l00195"></a>00195 <span class="comment"># Execution du programme</span>
+<a name="l00196"></a>00196 <span class="comment">#</span>
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198 <span class="comment"># Execute le fichier pour ajouter les regles et les faits dans leurs</span>
+<a name="l00199"></a>00199 <span class="comment"># bases respectives</span>
+<a name="l00200"></a>00200 execfile( <span class="stringliteral">"impots.py"</span> )
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202 <span class="comment"># effectue le chainage avant simple sur la liste</span>
+<a name="l00203"></a>00203 <span class="comment"># des faits et des regles</span>
+<a name="l00204"></a>00204 chainageAvantSimple( faits, regles )
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206 <span class="comment"># imprime la nouvelle base des faits</span>
+<a name="l00207"></a>00207 <span class="keywordflow">print</span> <span class="stringliteral">"Liste des faits deduits:"</span>
+<a name="l00208"></a>00208 <span class="keywordflow">print</span> faits
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Tue Jun 3 18:43:28 2008 pour Lab 2 : Moteur d'inf&eacute;rence &agrave; cha&icirc;nage avant sans variables par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

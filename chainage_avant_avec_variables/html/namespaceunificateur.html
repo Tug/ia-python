@@ -1,0 +1,512 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 3 : Moteur d&#39;inf&eacute;rence &agrave; cha&icirc;nage avant avec variables: Paquetage unificateur</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="namespacemembers.html"><span>Fonctions&nbsp;de&nbsp;paquetage</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Paquetage unificateur</h1>Implementation de l'algorithme du pattern matching.  
+<a href="#_details">Plus de détails...</a>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceunificateur.html#0c73abe9f5954485e036359b081d46a8">testeAtome</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Teste si le symbole passe en parametre est un atome.  <a href="#0c73abe9f5954485e036359b081d46a8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceunificateur.html#dc73e458e35e1e3357b4f8cb5949006c">testeSubstitution</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Teste si le symbole passe en parametre est une substitution.  <a href="#dc73e458e35e1e3357b4f8cb5949006c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceunificateur.html#d26305815a5a4df9c119470968aee99e">testeVariable</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Teste si le symbole passe en parametre est une variable.  <a href="#d26305815a5a4df9c119470968aee99e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceunificateur.html#172c90ddf5729e82dfd17298f1201bcd">construitSubstitution</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne une substitution entre une variable et une expression.  <a href="#172c90ddf5729e82dfd17298f1201bcd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceunificateur.html#491c75ed45b710c66294b3482e107bf9">retourneVariable</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la variable d'une substitution.  <a href="#491c75ed45b710c66294b3482e107bf9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceunificateur.html#8ea2477a65dd37b4bf82528588b27b7a">retourneValeur</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la valeur d'une substitution.  <a href="#8ea2477a65dd37b4bf82528588b27b7a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceunificateur.html#1cb84c72c42a96590c399490b428e30a">trouveSubstitution</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la substitution associee a une variable, cad: {variable:definition_de_la_variable}.  <a href="#1cb84c72c42a96590c399490b428e30a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceunificateur.html#5fafdc1d9411c125dbd24617187e3089">unionSubstitutions</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Construit l'union de deux substitutions.  <a href="#5fafdc1d9411c125dbd24617187e3089"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceunificateur.html#6f9e1c608366d9c932b591a6ddc46878">substitueVariables</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la proposition avec les variables remplacees par leurs valeurs.  <a href="#6f9e1c608366d9c932b591a6ddc46878"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceunificateur.html#8c598c7cf0139cf301c68596e6bdf93d">unifier</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effectue une unification entre deux propositions.  <a href="#8c598c7cf0139cf301c68596e6bdf93d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceunificateur.html#147c6b18247c7108b554a5d595174f60">patternMatching</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effectue une unification entre deux propositions passees en parametres.  <a href="#147c6b18247c7108b554a5d595174f60"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Implementation de l'algorithme du pattern matching. 
+<p>
+Implementation de l'algorithme du pattern matching par unification. Cette version permet d'avoir des variables sur les deux propositions <hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="172c90ddf5729e82dfd17298f1201bcd"></a><!-- doxytag: member="unificateur::construitSubstitution" ref="172c90ddf5729e82dfd17298f1201bcd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def unificateur.construitSubstitution           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>variable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>datum</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne une substitution entre une variable et une expression. 
+<p>
+Construit une substitution, en associant une variable de la forme ?x avec une expression, qui peut etre d'un type quelconque sans variable.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>variable</em>&nbsp;</td><td>la variable a substituer </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>datum</em>&nbsp;</td><td>preposition sans variable </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une substitution {variable:datum} </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unificateur_8py-source.html#l00066">66</a> du fichier <a class="el" href="unificateur_8py-source.html">unificateur.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="147c6b18247c7108b554a5d595174f60"></a><!-- doxytag: member="unificateur::patternMatching" ref="147c6b18247c7108b554a5d595174f60" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def unificateur.patternMatching           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>proposition1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>proposition2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>environnement</em> = <code>None</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Effectue une unification entre deux propositions passees en parametres. 
+<p>
+Une unification est un procede tres semblable au filtrage vu dans l'exercice precedent, mais dans ce cas, les deux propositions peuvent contenir des variables. Un <a class="el" href="namespaceunificateur.html" title="Implementation de l&#39;algorithme du pattern matching.">unificateur</a> est plus general qu'un filtreur, il peut dont faire office de filtreur et ainsi etre utilise dans le chainage avant. Cependant il est absolument necessaire dans un moteur d'inference a chainage arriere.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>proposition1</em>&nbsp;</td><td>proposition 1 avec/sans variables </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>proposition2</em>&nbsp;</td><td>porposition 2 avec/sans variables </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>environnement</em>&nbsp;</td><td>un environnement {'?x':'a',...} de depart </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>substitution dans un dico si le filtrage reussit : {'?x':'a',...}, 'ECHEC sinon </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unificateur_8py-source.html#l00274">274</a> du fichier <a class="el" href="unificateur_8py-source.html">unificateur.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8ea2477a65dd37b4bf82528588b27b7a"></a><!-- doxytag: member="unificateur::retourneValeur" ref="8ea2477a65dd37b4bf82528588b27b7a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def unificateur.retourneValeur           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitution</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la valeur d'une substitution. 
+<p>
+La valeur d'une substitution est le deuxieme element d'une paire {variable:valeur}.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitution</em>&nbsp;</td><td>la substitution </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la valeur de la substitution </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unificateur_8py-source.html#l00088">88</a> du fichier <a class="el" href="unificateur_8py-source.html">unificateur.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="491c75ed45b710c66294b3482e107bf9"></a><!-- doxytag: member="unificateur::retourneVariable" ref="491c75ed45b710c66294b3482e107bf9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def unificateur.retourneVariable           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitution</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la variable d'une substitution. 
+<p>
+La variable d'une substitution est le premier element d'une paire {variable:valeur}.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitution</em>&nbsp;</td><td>la substitution </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la variable de la substitution </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unificateur_8py-source.html#l00077">77</a> du fichier <a class="el" href="unificateur_8py-source.html">unificateur.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6f9e1c608366d9c932b591a6ddc46878"></a><!-- doxytag: member="unificateur::substitueVariables" ref="6f9e1c608366d9c932b591a6ddc46878" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def unificateur.substitueVariables           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>pattern</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitutions</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la proposition avec les variables remplacees par leurs valeurs. 
+<p>
+Cette methode se charge de substituer toutes les variables de la proposition passee en argument par leur valeur associee dans la liste des substitutions. Si la proposition est une <em>variable</em>, alors il suffit de retourner la valeur associee si elle existe, sinon, on teste chaque element de la proposition recursivement. <dl class="note" compact><dt><b>Note:</b></dt><dd>Notez que pour l'unification, les propositions peuvent avoir des variables des deux cotes. Il faut donc remplacer les variables dans les deux propositions.</dd></dl>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>pattern</em>&nbsp;</td><td>la proposition (contient des variables, atomes,... sous forme [' ',' ', ' '] OU ' ' ou ['[]'...]) </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitutions</em>&nbsp;</td><td>la liste des substitutions {a:b, c:d,...} </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la proposition avec les variables remplacees par leur valeurs </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unificateur_8py-source.html#l00144">144</a> du fichier <a class="el" href="unificateur_8py-source.html">unificateur.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0c73abe9f5954485e036359b081d46a8"></a><!-- doxytag: member="unificateur::testeAtome" ref="0c73abe9f5954485e036359b081d46a8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def unificateur.testeAtome           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>x</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Teste si le symbole passe en parametre est un atome. 
+<p>
+Cette fonction teste si le symbole passe en parametre est du meme type qu'un atome ( c-a-d ' ' )<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>x</em>&nbsp;</td><td>le symbole a tester </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>True si le symbole x est un atome, False sinon </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unificateur_8py-source.html#l00030">30</a> du fichier <a class="el" href="unificateur_8py-source.html">unificateur.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dc73e458e35e1e3357b4f8cb5949006c"></a><!-- doxytag: member="unificateur::testeSubstitution" ref="dc73e458e35e1e3357b4f8cb5949006c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def unificateur.testeSubstitution           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>x</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Teste si le symbole passe en parametre est une substitution. 
+<p>
+Cette fonction teste si le symbole passe en parametre est du meme type qu'un dictionnaire ( c-a-d {} ). Une substitution est de la forme {'?x':'oiseau'}.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>x</em>&nbsp;</td><td>le symbole a tester </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>True si le symbole x est une substitution, False sinon </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unificateur_8py-source.html#l00042">42</a> du fichier <a class="el" href="unificateur_8py-source.html">unificateur.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d26305815a5a4df9c119470968aee99e"></a><!-- doxytag: member="unificateur::testeVariable" ref="d26305815a5a4df9c119470968aee99e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def unificateur.testeVariable           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>x</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Teste si le symbole passe en parametre est une variable. 
+<p>
+Cette fonction teste si le symbole x passe en parametre est un atome et qu'il commence par le caractere ?. Une variable est codee ainsi: ?x<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>x</em>&nbsp;</td><td>le symbole a tester </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>True si le symbole x est une variable </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unificateur_8py-source.html#l00054">54</a> du fichier <a class="el" href="unificateur_8py-source.html">unificateur.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1cb84c72c42a96590c399490b428e30a"></a><!-- doxytag: member="unificateur::trouveSubstitution" ref="1cb84c72c42a96590c399490b428e30a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def unificateur.trouveSubstitution           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>variable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitutions</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la substitution associee a une variable, cad: {variable:definition_de_la_variable}. 
+<p>
+Cette fonction retourne une paire {variable:valeur} si elle existe, dans le cas contraire, elle retourne False<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>variable</em>&nbsp;</td><td>la variable dont on veut trouver une substitution </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitutions</em>&nbsp;</td><td>la liste des substitutions possibles </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la substitution associee a la variable si elle existe dans substitutions, sinon retourne False </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unificateur_8py-source.html#l00102">102</a> du fichier <a class="el" href="unificateur_8py-source.html">unificateur.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8c598c7cf0139cf301c68596e6bdf93d"></a><!-- doxytag: member="unificateur::unifier" ref="8c598c7cf0139cf301c68596e6bdf93d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def unificateur.unifier           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>proposition1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>proposition2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Effectue une unification entre deux propositions. 
+<p>
+Le filtrage est effectue en parcourant les deux propositions en meme temps, en prenant deux elements, en les comparants et en construisant les substitutions qui s'imposent. Par exemple:<p>
+<ul>
+<li>
+prop1 = [ 'Superman', 'a', 'une', 'cape', '?z' ] </li>
+<li>
+prop2 = [ '?x', 'a', 'une', '?y', 'rouge' ] </li>
+</ul>
+<p>
+produit { '?x':Superman, '?y':'cape', '?z':'rouge' }<p>
+L'algorithme est le suivant:<p>
+<div class="fragment"><pre class="fragment"> Unifier (pat1, pat2)
+        1. <span class="keywordflow">if</span> pat1 ou pat2 est un atome:
+        3.       Echanger pat1 et pat2 au besoin pour que pat1 soit un atome
+        4.       <span class="keywordflow">if</span> pat1 et pat2 sont identiques: <span class="keywordflow">return</span> {}.
+        5.       <span class="keywordflow">else</span> <span class="keywordflow">if</span> pat1 est une variable:
+        7.               <span class="keywordflow">if</span> pat1 apparait dans pat2: <span class="keywordflow">return</span> echec.
+        8.               <span class="keywordflow">else</span> <span class="keywordflow">return</span> la substitution {pat1:pat2}.
+   10.   <span class="keywordflow">else</span> <span class="keywordflow">if</span> pat2 est une variable: <span class="keywordflow">return</span> la substit. {pat2:pat1}.
+   11.   <span class="keywordflow">else</span>: <span class="keywordflow">return</span> echec.
+   12. <span class="keywordflow">else</span>:
+   13.   F1 &lt;- premier element de pat1
+   14.   T1 &lt;- reste de pat1
+   15.   F2 &lt;- premier element de pat2
+   16.   T2 &lt;- reste de pat2
+   17.   Z1 &lt;- Unifier (F1, F2)
+   18.   <span class="keywordflow">if</span> Z1 = echec: <span class="keywordflow">return</span> echec
+   19.   G1 &lt;- remplacer les variables de T1 selon les substitutions de Z1.
+   20.   G2 &lt;- remplacer les variables de T2 selon les substitutions de Z1.
+   21.   Z2 &lt;- Unifier (G1, G2)
+   22.   <span class="keywordflow">if</span> Z2 = echec: <span class="keywordflow">return</span> echec
+   23.   <span class="keywordflow">return</span> { Z1 union Z2 }
+</pre></div><p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>proposition1</em>&nbsp;</td><td>une propopsition avec/sans variables </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>proposition2</em>&nbsp;</td><td>une proposition avec/sans variables </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>les substitutions si l'unification reussit: {'?x':'a',..}, 'ECHEC' sinon </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unificateur_8py-source.html#l00200">200</a> du fichier <a class="el" href="unificateur_8py-source.html">unificateur.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5fafdc1d9411c125dbd24617187e3089"></a><!-- doxytag: member="unificateur::unionSubstitutions" ref="5fafdc1d9411c125dbd24617187e3089" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def unificateur.unionSubstitutions           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitution1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>substitution2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Construit l'union de deux substitutions. 
+<p>
+Pour construire l'union de deux substitutions, on prend chaque variable de la liste substitution2. Si la variable existe deja dans substitution1, alors ca valeur est mise a jour, sinon elle est creee avec sa valeur associee.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitution1</em>&nbsp;</td><td>la premiere substitution </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>substitution2</em>&nbsp;</td><td>la deuxieme substitution </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>substitution1 UNION substitution2; echec if substitution1 ou substitution2 ne sont pas des substitutions </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unificateur_8py-source.html#l00119">119</a> du fichier <a class="el" href="unificateur_8py-source.html">unificateur.py</a>.</p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Tue Mar 10 17:19:37 2009 pour Lab 3 : Moteur d'inf&eacute;rence &agrave; cha&icirc;nage avant avec variables par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

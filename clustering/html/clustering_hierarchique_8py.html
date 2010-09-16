@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 9 : Clustering: Référence du fichier clusteringHierarchique.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier clusteringHierarchique.py</h1>Algorithme de <a class="el" href="namespaceclustering.html" title="Algorithme general de clustering.">clustering</a> hierarchique, par single-link et complete-link. <a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="clustering_hierarchique_8py-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Espaces de nommage</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclustering_hierarchique.html">clusteringHierarchique</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Classes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclustering_hierarchique_1_1_noeud.html">clusteringHierarchique.Noeud</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cette classe represente un noeud dans un dendogramme de clusters.  <a href="classclustering_hierarchique_1_1_noeud.html#_details">Plus de détails...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclustering_hierarchique.html#7ff0e71260d0ed28de92e0face22b152">clusteringHierarchique.chargeDonnees</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise l'algorithme.  <a href="#7ff0e71260d0ed28de92e0face22b152"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclustering_hierarchique.html#4f0955480e55ce3dc80ec6657282bd41">clusteringHierarchique.fini</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne si tous les clusters ont ete fusionnes.  <a href="#4f0955480e55ce3dc80ec6657282bd41"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclustering_hierarchique.html#145822012b6cf2bdf4637c0ab56c54f7">clusteringHierarchique.distanceClusters</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Distance entre deux clusters.  <a href="#145822012b6cf2bdf4637c0ab56c54f7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclustering_hierarchique.html#f4c67a1370e966498858eddee0f0edae">clusteringHierarchique.reviseClusters</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fusionne les deux clusters les plus similaires dans la liste <code>NOEUDS</code>.  <a href="#f4c67a1370e966498858eddee0f0edae"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclustering_hierarchique.html#afd3d379f80a1cfafc8db59dc67b7332">clusteringHierarchique.afficheResultat</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche le resultat du <a class="el" href="namespaceclustering.html" title="Algorithme general de clustering.">clustering</a>, i.e.  <a href="#afd3d379f80a1cfafc8db59dc67b7332"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclustering_hierarchique.html#bcd775814a16d3270af6300f1866266b">clusteringHierarchique.METHODE</a> = &quot;&quot;</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">"single-link" ou "complete-link"  <a href="#bcd775814a16d3270af6300f1866266b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">list&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceclustering_hierarchique.html#9d353af515d55e7b6aef1fc5deb542cf">clusteringHierarchique.NOEUDS</a> = []</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">liste des noeuds de dendogramme restant a fusionner  <a href="#9d353af515d55e7b6aef1fc5deb542cf"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Algorithme de <a class="el" href="namespaceclustering.html" title="Algorithme general de clustering.">clustering</a> hierarchique, par single-link et complete-link. 
+<p>
+
+<p>Définition dans le fichier <a class="el" href="clustering_hierarchique_8py-source.html">clusteringHierarchique.py</a>.</p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:38 2008 pour Lab 9 : Clustering par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 6a : Satisfaction de contraintes:  Fichier source de test.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>test.py</h1><a href="test_8py.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespacetest.html">00001</a> exec file(<span class="stringliteral">"PSC.py"</span>)
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="namespacetest.html#8bd1e6493fb3532c7ad2d586a3f0d273">00003</a> vars = Variables()
+<a name="l00004"></a><a class="code" href="namespacetest.html#1d5a6372218aa7370d8681619e846af0">00004</a> contraintes = Contraintes()
+<a name="l00005"></a>00005 
+<a name="l00006"></a><a class="code" href="namespacetest.html#6546fabd63b8e020a216e4ff18816375">00006</a> v1=libPSC.Variable(<span class="stringliteral">"a"</span>,[2, 3])
+<a name="l00007"></a><a class="code" href="namespacetest.html#0f1027df33a8522673f716b77083c719">00007</a> v2=libPSC.Variable(<span class="stringliteral">"b"</span>,range(12))
+<a name="l00008"></a><a class="code" href="namespacetest.html#476348c91dadad724590c6e1f7572c8d">00008</a> v3=libPSC.Variable(<span class="stringliteral">"c"</span>,range(3))
+<a name="l00009"></a><a class="code" href="namespacetest.html#e0b352b9a59185a8da41e154f784a846">00009</a> v4=libPSC.Variable(<span class="stringliteral">"d"</span>,range(3))
+<a name="l00010"></a><a class="code" href="namespacetest.html#e45ce7778f81316696159916aa3f3786">00010</a> v5=libPSC.Variable(<span class="stringliteral">"e"</span>,range(12))
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 vars.ajouteVar(v1)
+<a name="l00013"></a>00013 vars.ajouteVar(v2)
+<a name="l00014"></a>00014 vars.ajouteVar(v3)
+<a name="l00015"></a>00015 vars.ajouteVar(v4)
+<a name="l00016"></a>00016 vars.ajouteVar(v5)
+<a name="l00017"></a>00017 <span class="keywordflow">print</span> vars
+<a name="l00018"></a>00018 
+<a name="l00019"></a><a class="code" href="namespacetest.html#bbfb944d965a6c3150d2d3d1debeb948">00019</a> cv2= libPSC.ContrainteUnaire(v2,<span class="stringliteral">"&lt;"</span>,4)
+<a name="l00020"></a><a class="code" href="namespacetest.html#bb0dd7bd14bdbbc0587ac375475d7dae">00020</a> cv1v2= libPSC.ContrainteBinaire(v1,<span class="stringliteral">"!="</span>,v2)
+<a name="l00021"></a><a class="code" href="namespacetest.html#03528936169152f351402f09dfaa0dd2">00021</a> cv2v3= libPSC.ContrainteBinaire(v2,<span class="stringliteral">"!="</span>,v3)
+<a name="l00022"></a><a class="code" href="namespacetest.html#1d003d36b377fec6010d9112c92b78ec">00022</a> cv2v4= libPSC.ContrainteBinaire(v2,<span class="stringliteral">"!="</span>,v4)
+<a name="l00023"></a><a class="code" href="namespacetest.html#4431bb86789b359fa42e3d68c5742edf">00023</a> cv2v5= libPSC.ContrainteBinaire(v2,<span class="stringliteral">"!="</span>,v5)
+<a name="l00024"></a><a class="code" href="namespacetest.html#f56024ee5f3a5801ec1d7c0546581190">00024</a> cv3v4= libPSC.ContrainteBinaire(v3,<span class="stringliteral">"!="</span>,v4)
+<a name="l00025"></a><a class="code" href="namespacetest.html#be4f95cf6cf8a4da5b05488a8bd30fe9">00025</a> cv3v5= libPSC.ContrainteBinaire(v3,<span class="stringliteral">"!="</span>,v5)
+<a name="l00026"></a><a class="code" href="namespacetest.html#554eeef141e47b777738d7f5c01dcecc">00026</a> cv4v5= libPSC.ContrainteBinaire(v4,<span class="stringliteral">"!="</span>,v5)
+<a name="l00027"></a><a class="code" href="namespacetest.html#944e2920542996dd2b29fa27b7c33a76">00027</a> cv5v1= libPSC.ContrainteBinaire(v5,<span class="stringliteral">"&lt;"</span>,v1)
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 contraintes.ajouteContrainte(cv2)
+<a name="l00030"></a>00030 contraintes.ajouteContrainte(cv1v2)
+<a name="l00031"></a>00031 contraintes.ajouteContrainte(cv2v3)
+<a name="l00032"></a>00032 contraintes.ajouteContrainte(cv2v4)
+<a name="l00033"></a>00033 contraintes.ajouteContrainte(cv2v5)
+<a name="l00034"></a>00034 contraintes.ajouteContrainte(cv3v4)
+<a name="l00035"></a>00035 contraintes.ajouteContrainte(cv3v5)
+<a name="l00036"></a>00036 contraintes.ajouteContrainte(cv4v5)
+<a name="l00037"></a>00037 contraintes.ajouteContrainte(cv5v1)
+<a name="l00038"></a>00038 <span class="keywordflow">print</span> contraintes
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="keywordflow">print</span> <span class="stringliteral">"Fait la consistance des noeuds"</span>
+<a name="l00041"></a>00041 vars.consistanceDesNoeuds()
+<a name="l00042"></a>00042 <span class="keywordflow">print</span> vars
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <span class="keywordflow">print</span> <span class="stringliteral">"Fait la consistance des arcs"</span>
+<a name="l00045"></a>00045 contraintes.consistanceDesArcs()
+<a name="l00046"></a>00046 <span class="keywordflow">print</span> vars
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="namespacetest.html#7fa0e0d0791e5b2a0b70e4a03316436f">00048</a> sol=backtrack(0,<span class="keyword">True</span>)
+<a name="l00049"></a>00049 <span class="keywordflow">print</span> <span class="stringliteral">"Solutions trouvees avec bt:="</span>, SOLUTIONS
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:18 2008 pour Lab 6a : Satisfaction de contraintes par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

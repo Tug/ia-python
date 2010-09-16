@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 2 : Moteur d&#39;inf&eacute;rence &agrave; cha&icirc;nage avant sans variables:  Fichier source de impots.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>impots.py</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00002"></a>00002 <span class="comment"># INITIALISATION</span>
+<a name="l00003"></a>00003 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00004"></a>00004 <span class="keywordflow">print</span> <span class="stringliteral">"|+| Chargement du fichier impots"</span> 
+<a name="l00005"></a>00005 initDBs()
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00008"></a>00008 <span class="comment"># TEST 1</span>
+<a name="l00009"></a>00009 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00010"></a>00010 <span class="keywordflow">print</span> <span class="stringliteral">"\tAjout des faits..."</span>,
+<a name="l00011"></a>00011 ajouteFait( <span class="stringliteral">'bas-salaire'</span> )
+<a name="l00012"></a>00012 ajouteFait( <span class="stringliteral">'loyer'</span> )
+<a name="l00013"></a>00013 ajouteFait( <span class="stringliteral">'enfants'</span> )
+<a name="l00014"></a>00014 ajouteFait( <span class="stringliteral">'long-trajet'</span> )
+<a name="l00015"></a>00015 <span class="keywordflow">print</span> <span class="stringliteral">"\tOK"</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00018"></a>00018 <span class="comment"># TEST 2</span>
+<a name="l00019"></a>00019 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00020"></a>00020 <span class="comment"># print "\tAjout des faits...",</span>
+<a name="l00021"></a>00021 <span class="comment"># ajouteFait( 'pas-d-enfants' )</span>
+<a name="l00022"></a>00022 <span class="comment"># ajouteFait( 'pas-de-loyer' )</span>
+<a name="l00023"></a>00023 <span class="comment"># ajouteFait( 'haut-salaire' )</span>
+<a name="l00024"></a>00024 <span class="comment"># ajouteFait( 'long-trajet' )</span>
+<a name="l00025"></a>00025 <span class="comment"># print "\tOK"</span>
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00028"></a>00028 <span class="comment"># AJOUT DES REGLES</span>
+<a name="l00029"></a>00029 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00030"></a>00030 <span class="keywordflow">print</span> <span class="stringliteral">"\tAjout des regles..."</span>,
+<a name="l00031"></a>00031 ajouteRegle( [<span class="stringliteral">'pas-d-enfants'</span>], <span class="stringliteral">'reduc-enfant-0'</span> )
+<a name="l00032"></a>00032 ajouteRegle( [<span class="stringliteral">'enfants'</span>], <span class="stringliteral">'reduc-enfant-100'</span> )
+<a name="l00033"></a>00033 ajouteRegle( [<span class="stringliteral">'bas-salaire'</span>], <span class="stringliteral">'reduc-loyer-200'</span> )
+<a name="l00034"></a>00034 ajouteRegle( [<span class="stringliteral">'moyen-salaire'</span>], <span class="stringliteral">'reduc-loyer-100'</span> )
+<a name="l00035"></a>00035 ajouteRegle( [<span class="stringliteral">'haut-salaire'</span>], <span class="stringliteral">'reduc-loyer-0'</span> )
+<a name="l00036"></a>00036 ajouteRegle( [<span class="stringliteral">'pas-loyer'</span>], <span class="stringliteral">'reduc-loyer-0'</span> )
+<a name="l00037"></a>00037 ajouteRegle( [<span class="stringliteral">'petit-trajet'</span>], <span class="stringliteral">'reduc-trajet-0'</span> )
+<a name="l00038"></a>00038 ajouteRegle( [<span class="stringliteral">'reduc-enfant-0'</span>, <span class="stringliteral">'long-trajet'</span>], <span class="stringliteral">'reduc-trajet-100'</span> )
+<a name="l00039"></a>00039 ajouteRegle( [<span class="stringliteral">'reduc-loyer-0'</span>, <span class="stringliteral">'long-trajet'</span>], <span class="stringliteral">'reduc-trajet-100'</span> )
+<a name="l00040"></a>00040 ajouteRegle( [<span class="stringliteral">'reduc-enfant-100'</span>, <span class="stringliteral">'reduc-loyer-100'</span>, <span class="stringliteral">'long-trajet'</span>], <span class="stringliteral">'reduc-trajet-50'</span> )
+<a name="l00041"></a>00041 ajouteRegle( [<span class="stringliteral">'reduc-enfant-100'</span>, <span class="stringliteral">'reduc-loyer-200'</span>, <span class="stringliteral">'long-trajet'</span>], <span class="stringliteral">'reduc-trajet-0'</span> )
+<a name="l00042"></a>00042 ajouteRegle( [<span class="stringliteral">'reduc-enfant-0'</span>, <span class="stringliteral">'reduc-loyer-0'</span>, <span class="stringliteral">'reduc-trajet-0'</span>], <span class="stringliteral">'reduc-0'</span> )
+<a name="l00043"></a>00043 ajouteRegle( [<span class="stringliteral">'reduc-enfant-100'</span>, <span class="stringliteral">'reduc-loyer-0'</span>, <span class="stringliteral">'reduc-trajet-0'</span>], <span class="stringliteral">'reduc-100'</span> )
+<a name="l00044"></a>00044 ajouteRegle( [<span class="stringliteral">'reduc-enfant-0'</span>, <span class="stringliteral">'reduc-loyer-100'</span>, <span class="stringliteral">'reduc-trajet-0'</span>], <span class="stringliteral">'reduc-100'</span> )
+<a name="l00045"></a>00045 ajouteRegle( [<span class="stringliteral">'reduc-enfant-100'</span>, <span class="stringliteral">'reduc-loyer-100'</span>, <span class="stringliteral">'reduc-trajet-0'</span>], <span class="stringliteral">'reduc-200'</span> )
+<a name="l00046"></a>00046 ajouteRegle( [<span class="stringliteral">'reduc-enfant-0'</span>, <span class="stringliteral">'reduc-loyer-200'</span>, <span class="stringliteral">'reduc-trajet-0'</span>], <span class="stringliteral">'reduc-200'</span> )
+<a name="l00047"></a>00047 ajouteRegle( [<span class="stringliteral">'reduc-enfant-100'</span>, <span class="stringliteral">'reduc-loyer-200'</span>, <span class="stringliteral">'reduc-trajet-0'</span>], <span class="stringliteral">'reduc-300'</span> )
+<a name="l00048"></a>00048 ajouteRegle( [<span class="stringliteral">'reduc-enfant-0'</span>, <span class="stringliteral">'reduc-loyer-0'</span>, <span class="stringliteral">'reduc-trajet-50'</span>], <span class="stringliteral">'reduc-50'</span> )
+<a name="l00049"></a>00049 ajouteRegle( [<span class="stringliteral">'reduc-enfant-100'</span>, <span class="stringliteral">'reduc-loyer-0'</span>, <span class="stringliteral">'reduc-trajet-50'</span>], <span class="stringliteral">'reduc-150'</span> )
+<a name="l00050"></a>00050 ajouteRegle( [<span class="stringliteral">'reduc-enfant-0'</span>, <span class="stringliteral">'reduc-loyer-100'</span>, <span class="stringliteral">'reduc-trajet-50'</span>], <span class="stringliteral">'reduc-150'</span> )
+<a name="l00051"></a>00051 ajouteRegle( [<span class="stringliteral">'reduc-enfant-100'</span>, <span class="stringliteral">'reduc-loyer-100'</span>, <span class="stringliteral">'reduc-trajet-50'</span>], <span class="stringliteral">'reduc-250'</span> )
+<a name="l00052"></a>00052 ajouteRegle( [<span class="stringliteral">'reduc-enfant-0'</span>, <span class="stringliteral">'reduc-loyer-200'</span>, <span class="stringliteral">'reduc-trajet-50'</span>], <span class="stringliteral">'reduc-250'</span> )
+<a name="l00053"></a>00053 ajouteRegle( [<span class="stringliteral">'reduc-enfant-100'</span>, <span class="stringliteral">'reduc-loyer-200'</span>, <span class="stringliteral">'reduc-trajet-50'</span>], <span class="stringliteral">'reduc-350'</span> )
+<a name="l00054"></a>00054 ajouteRegle( [<span class="stringliteral">'reduc-enfant-0'</span>, <span class="stringliteral">'reduc-loyer-0'</span>, <span class="stringliteral">'reduc-trajet-100'</span>], <span class="stringliteral">'reduc-100'</span> )
+<a name="l00055"></a>00055 ajouteRegle( [<span class="stringliteral">'reduc-enfant-100'</span>, <span class="stringliteral">'reduc-loyer-0'</span>, <span class="stringliteral">'reduc-trajet-100'</span>], <span class="stringliteral">'reduc-200'</span> )
+<a name="l00056"></a>00056 ajouteRegle( [<span class="stringliteral">'reduc-enfant-0'</span>, <span class="stringliteral">'reduc-loyer-100'</span>, <span class="stringliteral">'reduc-trajet-100'</span>], <span class="stringliteral">'reduc-200'</span> )
+<a name="l00057"></a>00057 ajouteRegle( [<span class="stringliteral">'reduc-enfant-100'</span>, <span class="stringliteral">'reduc-loyer-100'</span>, <span class="stringliteral">'reduc-trajet-100'</span>], <span class="stringliteral">'reduc-300'</span> )
+<a name="l00058"></a>00058 ajouteRegle( [<span class="stringliteral">'reduc-enfant-0'</span>, <span class="stringliteral">'reduc-loyer-200'</span>, <span class="stringliteral">'reduc-trajet-100'</span>], <span class="stringliteral">'reduc-300'</span> )
+<a name="l00059"></a>00059 ajouteRegle( [<span class="stringliteral">'reduc-enfant-100'</span>, <span class="stringliteral">'reduc-loyer-200'</span>, <span class="stringliteral">'reduc-trajet-100'</span>], <span class="stringliteral">'reduc-400'</span> )
+<a name="l00060"></a>00060 <span class="keywordflow">print</span> <span class="stringliteral">"\tOK"</span>
+<a name="l00061"></a>00061 
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Tue Jun 3 18:43:28 2008 pour Lab 2 : Moteur d'inf&eacute;rence &agrave; cha&icirc;nage avant sans variables par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

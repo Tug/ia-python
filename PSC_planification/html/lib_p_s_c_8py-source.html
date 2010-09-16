@@ -1,0 +1,502 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 7 : Planification avec PSC:  Fichier source de libPSC.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>libPSC.py</h1><a href="lib_p_s_c_8py.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespacelib_p_s_c.html">00001</a> <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00002"></a>00002 <span class="keywordflow">print</span> <span class="stringliteral">"Chargement du module variable et noeud pour PSC"</span>
+<a name="l00003"></a>00003 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 2.0  date: 06/06/2008 modified by Thomas Leaute"</span>
+<a name="l00004"></a>00004 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.8  date: 25/04/2008 modified by Thomas Leaute"</span>
+<a name="l00005"></a>00005 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.7  date: 28/06/2007 modified by Thomas Leaute"</span>
+<a name="l00006"></a>00006 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.6  date: 03/05/2007 modified by Thomas Leaute"</span>
+<a name="l00007"></a>00007 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.5  date: 02/05/2007 modified by Thomas Leaute"</span>
+<a name="l00008"></a>00008 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.4  date: 19/03/2007 modified by Vincent Schickel-Zuber"</span>
+<a name="l00009"></a>00009 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.3  date: 14/02/2007 modified by Vincent Schickel-Zuber"</span>
+<a name="l00010"></a>00010 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.2  date: 17/01/2007 modified by Bruno Alves"</span>
+<a name="l00011"></a>00011 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.0  date: 24/04/2006 created by Vincent Schickel-Zuber"</span>
+<a name="l00012"></a>00012 <span class="keywordflow">print</span> <span class="stringliteral">"\t@author: vincent.schickel-zuber@epfl.ch date: 24/04/2006"</span>
+<a name="l00013"></a>00013 <span class="keywordflow">print</span> <span class="stringliteral">"\t@copyright: EPFL-IC-IIF-LIA 2006-2007"</span>
+<a name="l00014"></a>00014 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="comment"># module utilise</span>
+<a name="l00017"></a>00017 <span class="keyword">import</span> copy
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="comment">## Le nombre de contraintes visitees</span>
+<a name="l00020"></a><a class="code" href="namespacelib_p_s_c.html#7be1546c406c497bb4ba4b7290234560">00020</a> NBCONTRAINTES=0
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="comment">## Classe modelisant une variable</span>
+<a name="l00024"></a>00024 <span class="comment">#</span>
+<a name="l00025"></a>00025 <span class="comment"># Une variable dans le probleme des contraintes est un objet qui peut</span>
+<a name="l00026"></a>00026 <span class="comment"># prendre n'importe quelle valeur de son domaine.</span>
+<a name="l00027"></a><a class="code" href="classlib_p_s_c_1_1_variable.html">00027</a> <span class="keyword">class </span><a class="code" href="classlib_p_s_c_1_1_variable.html" title="Classe modelisant une variable.">Variable</a>:
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029         <span class="comment">## \var nom</span>
+<a name="l00030"></a>00030         <span class="comment"># le nom de la variable</span>
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032         <span class="comment">## \var domaine</span>
+<a name="l00033"></a>00033         <span class="comment"># le domaine de valeurs de la variable</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035         <span class="comment">## \var valeur</span>
+<a name="l00036"></a>00036         <span class="comment"># la valeur actuelle de la variable</span>
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038         <span class="comment">## \var label</span>
+<a name="l00039"></a>00039         <span class="comment"># le label de valeurs associe a la variable</span>
+<a name="l00040"></a>00040         <span class="comment"># utilise pour le forward checking</span>
+<a name="l00041"></a>00041         
+<a name="l00042"></a>00042         
+<a name="l00043"></a>00043         <span class="comment">## Constructeur de la classe</span>
+<a name="l00044"></a>00044         <span class="comment">#</span>
+<a name="l00045"></a>00045         <span class="comment"># Initialise la variable avec un nom et un domaine donnes. Sa valeur</span>
+<a name="l00046"></a>00046         <span class="comment"># initiale est fixee a \c None et son label est une copie du domaine.</span>
+<a name="l00047"></a>00047         <span class="comment">#</span>
+<a name="l00048"></a>00048         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00049"></a>00049         <span class="comment">#                                methode.</span>
+<a name="l00050"></a>00050         <span class="comment"># @param[in] nom le nom de la variable</span>
+<a name="l00051"></a>00051         <span class="comment"># @param[in] domaine une liste de valeurs possibles pour la variable</span>
+<a name="l00052"></a>00052         <span class="comment">#</span>
+<a name="l00053"></a>00053         <span class="comment"># @note comme pour le precedent exercice (Lab5), un nom est un identifiant,</span>
+<a name="l00054"></a>00054         <span class="comment">#          il doit donc etre \b unique</span>
+<a name="l00055"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#a6d44466de2cd89711768d9a7adc12eb">00055</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_variable.html#a6d44466de2cd89711768d9a7adc12eb" title="Constructeur de la classe.">__init__</a>( self, nom, domaine ):
+<a name="l00056"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#6d66b815e851d36f3fb59229eb94e911">00056</a>                 self.<a class="code" href="classlib_p_s_c_1_1_variable.html#6d66b815e851d36f3fb59229eb94e911" title="le nom de la variable">nom</a>=nom
+<a name="l00057"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#c841b3f4f69f2709154f4ad29d6e968d">00057</a>                 self.<a class="code" href="classlib_p_s_c_1_1_variable.html#c841b3f4f69f2709154f4ad29d6e968d" title="le domaine de valeurs de la variable">domaine</a>=domaine
+<a name="l00058"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#1567b71448f5ed222b2b1347050f7564">00058</a>                 self.<a class="code" href="classlib_p_s_c_1_1_variable.html#1567b71448f5ed222b2b1347050f7564" title="la valeur actuelle de la variable">valeur</a>=<span class="keywordtype">None</span> 
+<a name="l00059"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#3b5addab8ac01c399d3d3d849572e938">00059</a>                 self.<a class="code" href="classlib_p_s_c_1_1_variable.html#3b5addab8ac01c399d3d3d849572e938" title="le label de valeurs associe a la variable utilise pour le forward checking">label</a>=[]
+<a name="l00060"></a>00060                 self.<a class="code" href="classlib_p_s_c_1_1_variable.html#5d0a375c9d6c6f8d24f50a44818aa953" title="Reinitialise le contenu de l&amp;#39;attribut label.">initLabel</a>()
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062         
+<a name="l00063"></a>00063         <span class="comment">## Reinitialise le contenu de l'attribut label</span>
+<a name="l00064"></a>00064         <span class="comment">#</span>
+<a name="l00065"></a>00065         <span class="comment"># Reinitialise le label comme une copie du domaine.</span>
+<a name="l00066"></a>00066         <span class="comment">#   label = domaine.clone()</span>
+<a name="l00067"></a>00067         <span class="comment">#</span>
+<a name="l00068"></a>00068         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00069"></a>00069         <span class="comment">#                                methode.</span>
+<a name="l00070"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#5d0a375c9d6c6f8d24f50a44818aa953">00070</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_variable.html#5d0a375c9d6c6f8d24f50a44818aa953" title="Reinitialise le contenu de l&amp;#39;attribut label.">initLabel</a>( self ):
+<a name="l00071"></a>00071                 self.<a class="code" href="classlib_p_s_c_1_1_variable.html#3b5addab8ac01c399d3d3d849572e938" title="le label de valeurs associe a la variable utilise pour le forward checking">label</a>=copy.deepcopy(self.<a class="code" href="classlib_p_s_c_1_1_variable.html#c841b3f4f69f2709154f4ad29d6e968d" title="le domaine de valeurs de la variable">domaine</a>)
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074         <span class="comment">## Efface la valeur desiree du label</span>
+<a name="l00075"></a>00075         <span class="comment">#</span>
+<a name="l00076"></a>00076         <span class="comment"># Supprime la valeur d passee en parametre du label, si elle existe.</span>
+<a name="l00077"></a>00077         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00078"></a>00078         <span class="comment">#                                methode.</span>
+<a name="l00079"></a>00079         <span class="comment"># @param[in] d la valeur du domaine a supprimer</span>
+<a name="l00080"></a>00080         <span class="comment">#</span>
+<a name="l00081"></a>00081         <span class="comment"># @see Chapitre 8.5.2 sur l'algorithme de Walz</span>
+<a name="l00082"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#27e40484b40c81f1b23d6d20b3e079e0">00082</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_variable.html#27e40484b40c81f1b23d6d20b3e079e0" title="Efface la valeur desiree du label.">enleveDuLabel</a>( self, d ):
+<a name="l00083"></a>00083                 <span class="keywordflow">if</span> d <span class="keywordflow">in</span> self.<a class="code" href="classlib_p_s_c_1_1_variable.html#3b5addab8ac01c399d3d3d849572e938" title="le label de valeurs associe a la variable utilise pour le forward checking">label</a>:
+<a name="l00084"></a>00084                         self.<a class="code" href="classlib_p_s_c_1_1_variable.html#3b5addab8ac01c399d3d3d849572e938" title="le label de valeurs associe a la variable utilise pour le forward checking">label</a>.remove(d)
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087         <span class="comment">## Met a jour la valeur de cette variable</span>
+<a name="l00088"></a>00088         <span class="comment">#</span>
+<a name="l00089"></a>00089         <span class="comment"># Remplace la valeur actuelle de la variable par une nouvelle valeur</span>
+<a name="l00090"></a>00090         <span class="comment"># passee en parametre.</span>
+<a name="l00091"></a>00091         <span class="comment">#</span>
+<a name="l00092"></a>00092         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00093"></a>00093         <span class="comment">#                                methode.</span>
+<a name="l00094"></a>00094         <span class="comment"># @param valeur la nouvelle valeur</span>
+<a name="l00095"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#d086c36f011bd5f045b310a1cf457f58">00095</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_variable.html#d086c36f011bd5f045b310a1cf457f58" title="Met a jour la valeur de cette variable.">metAJourValeur</a>( self, valeur ):
+<a name="l00096"></a>00096                 self.<a class="code" href="classlib_p_s_c_1_1_variable.html#1567b71448f5ed222b2b1347050f7564" title="la valeur actuelle de la variable">valeur</a>=valeur   
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099         <span class="comment">## Verifie que le nom de la variable correspond a celui passe en parametre</span>
+<a name="l00100"></a>00100         <span class="comment">#</span>
+<a name="l00101"></a>00101         <span class="comment"># Cette methode verifie si le nom passe en parametre est bien le nom</span>
+<a name="l00102"></a>00102         <span class="comment"># de cette variable</span>
+<a name="l00103"></a>00103         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00104"></a>00104         <span class="comment">#                       methode.</span>
+<a name="l00105"></a>00105         <span class="comment"># @param[in] nom le nom a verifier</span>
+<a name="l00106"></a>00106         <span class="comment"># @return \b True si le nom correspond, \b False sinon</span>
+<a name="l00107"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#e125a1a0621bbaf408e7186aa479d680">00107</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_variable.html#e125a1a0621bbaf408e7186aa479d680" title="Verifie que le nom de la variable correspond a celui passe en parametre.">nomEstEgal</a>( self, nom ):
+<a name="l00108"></a>00108                 <span class="keywordflow">return</span> self.<a class="code" href="classlib_p_s_c_1_1_variable.html#6d66b815e851d36f3fb59229eb94e911" title="le nom de la variable">nom</a>==nom
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110                 
+<a name="l00111"></a>00111         <span class="comment">## Retourne la taille du domaine</span>
+<a name="l00112"></a>00112         <span class="comment">#</span>
+<a name="l00113"></a>00113         <span class="comment"># La taille du domaine est le nombre d'elements presents dans le domaine.</span>
+<a name="l00114"></a>00114         <span class="comment"># Dans cette version, le domaine doit etre fini !</span>
+<a name="l00115"></a>00115         <span class="comment">#</span>
+<a name="l00116"></a>00116         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00117"></a>00117         <span class="comment">#                                methode.</span>
+<a name="l00118"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#4a5f1194881cb907dbde95491c76c50e">00118</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_variable.html#4a5f1194881cb907dbde95491c76c50e" title="Retourne la taille du domaine.">tailleDuDomaine</a>( self ):
+<a name="l00119"></a>00119                 <span class="keywordflow">return</span> len(self.<a class="code" href="classlib_p_s_c_1_1_variable.html#c841b3f4f69f2709154f4ad29d6e968d" title="le domaine de valeurs de la variable">domaine</a>)
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121         <span class="comment">## Retourne la taille du label</span>
+<a name="l00122"></a>00122         <span class="comment">#</span>
+<a name="l00123"></a>00123         <span class="comment"># La taille du label est le nombre d'elements presents dans le label.</span>
+<a name="l00124"></a>00124         <span class="comment"># Dans cette version, le label doit etre fini !</span>
+<a name="l00125"></a>00125         <span class="comment">#</span>
+<a name="l00126"></a>00126         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00127"></a>00127         <span class="comment">#                                methode.</span>
+<a name="l00128"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#da809681a33f6e03bdae86cd11fbbfff">00128</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_variable.html#da809681a33f6e03bdae86cd11fbbfff" title="Retourne la taille du label.">tailleDuLabel</a>( self ):
+<a name="l00129"></a>00129                 <span class="keywordflow">return</span> len(self.<a class="code" href="classlib_p_s_c_1_1_variable.html#3b5addab8ac01c399d3d3d849572e938" title="le label de valeurs associe a la variable utilise pour le forward checking">label</a>)
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131         <span class="comment">## Retourne une representation textuelle des donnees de la classe</span>
+<a name="l00132"></a>00132         <span class="comment">#</span>
+<a name="l00133"></a>00133         <span class="comment"># Retourne une representation textuelle de la classe. Le format d'affichage</span>
+<a name="l00134"></a>00134         <span class="comment"># est le suivant:</span>
+<a name="l00135"></a>00135         <span class="comment">#</span>
+<a name="l00136"></a>00136         <span class="comment"># @code</span>
+<a name="l00137"></a>00137         <span class="comment">#   var : nom = valeur,         domaine = [val1, ..., valn]</span>
+<a name="l00138"></a>00138         <span class="comment"># @endcode</span>
+<a name="l00139"></a>00139         <span class="comment">#</span>
+<a name="l00140"></a>00140         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00141"></a>00141         <span class="comment">#                                methode.</span>
+<a name="l00142"></a><a class="code" href="classlib_p_s_c_1_1_variable.html#8be7289088cce80a6e222ad6b6664897">00142</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_variable.html#8be7289088cce80a6e222ad6b6664897" title="Retourne une representation textuelle des donnees de la classe.">__repr__</a>( self ):
+<a name="l00143"></a>00143                 str = <span class="stringliteral">"var : %s \t= %s,\tdomaine = %s"</span> % ( self.<a class="code" href="classlib_p_s_c_1_1_variable.html#6d66b815e851d36f3fb59229eb94e911" title="le nom de la variable">nom</a>, self.<a class="code" href="classlib_p_s_c_1_1_variable.html#1567b71448f5ed222b2b1347050f7564" title="la valeur actuelle de la variable">valeur</a>, self.<a class="code" href="classlib_p_s_c_1_1_variable.html#c841b3f4f69f2709154f4ad29d6e968d" title="le domaine de valeurs de la variable">domaine</a> )
+<a name="l00144"></a>00144                 <span class="keywordflow">return</span> str
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147 <span class="comment">## Classe modelisant une contrainte sur une ou plusieurs variables</span>
+<a name="l00148"></a><a class="code" href="classlib_p_s_c_1_1_contrainte.html">00148</a> <span class="keyword">class </span><a class="code" href="classlib_p_s_c_1_1_contrainte.html" title="Classe modelisant une contrainte sur une ou plusieurs variables.">Contrainte</a>:
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150         <span class="comment">## \var vars</span>
+<a name="l00151"></a>00151         <span class="comment"># Liste des noms des variables de cette contrainte</span>
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153         <span class="comment">## Constructeur de la classe</span>
+<a name="l00154"></a>00154         <span class="comment">#</span>
+<a name="l00155"></a>00155         <span class="comment"># Initialise la liste des variables</span>
+<a name="l00156"></a>00156         <span class="comment">#</span>
+<a name="l00157"></a>00157         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00158"></a>00158         <span class="comment">#                                methode.</span>
+<a name="l00159"></a>00159         <span class="comment"># @param[in] vars la liste des variables</span>
+<a name="l00160"></a><a class="code" href="classlib_p_s_c_1_1_contrainte.html#cc679acb0da606470b2c0f144b35548e">00160</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte.html#cc679acb0da606470b2c0f144b35548e" title="Constructeur de la classe.">__init__</a>( self, vars ):
+<a name="l00161"></a><a class="code" href="classlib_p_s_c_1_1_contrainte.html#9b943dc092005d28f3966fcc1976f7a1">00161</a>                 self.<a class="code" href="classlib_p_s_c_1_1_contrainte.html#9b943dc092005d28f3966fcc1976f7a1" title="Liste des noms des variables de cette contrainte.">vars</a> = vars
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163         <span class="comment">## Retourne la dimension de la contrainte</span>
+<a name="l00164"></a>00164         <span class="comment">#</span>
+<a name="l00165"></a>00165         <span class="comment"># Cette methode retourne la dimension de la contrainte, qui specifie</span>
+<a name="l00166"></a>00166         <span class="comment"># le nombre de variables qu'elle touche.</span>
+<a name="l00167"></a>00167         <span class="comment">#</span>
+<a name="l00168"></a>00168         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00169"></a>00169         <span class="comment">#                                methode.</span>
+<a name="l00170"></a><a class="code" href="classlib_p_s_c_1_1_contrainte.html#e057b4e1b115092e44b2da3e1853a545">00170</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte.html#e057b4e1b115092e44b2da3e1853a545" title="Retourne la dimension de la contrainte.">dimension</a>( self ):
+<a name="l00171"></a>00171                 <span class="keywordflow">return</span> 0
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174         <span class="comment">## Teste si la contrainte est valide et respectee par les valeurs de la/</span>
+<a name="l00175"></a>00175         <span class="comment"># des variable(s) qui la compose/ent.</span>
+<a name="l00176"></a>00176         <span class="comment">#</span>
+<a name="l00177"></a>00177         <span class="comment"># Cette methode verifie si la contrainte est respectee par les valeurs</span>
+<a name="l00178"></a>00178         <span class="comment"># actuelles des variables qui la composent.</span>
+<a name="l00179"></a>00179         <span class="comment">#</span>
+<a name="l00180"></a>00180         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00181"></a>00181         <span class="comment">#                                methode.</span>
+<a name="l00182"></a>00182         <span class="comment"># @param[in] var variable pour laquelle on veut tester une valeur</span>
+<a name="l00183"></a>00183         <span class="comment"># @param[in] val valeur de la variable a tester</span>
+<a name="l00184"></a>00184         <span class="comment"># @return \b True si la contrainte est respectee, \b False sinon</span>
+<a name="l00185"></a><a class="code" href="classlib_p_s_c_1_1_contrainte.html#ca1cba79132844e6a8e45d1c2a30c5bc">00185</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte.html#ca1cba79132844e6a8e45d1c2a30c5bc" title="Teste si la contrainte est valide et respectee par les valeurs de la/ des variable(s)...">estValide</a>( self, var, val ):
+<a name="l00186"></a>00186                 <span class="keywordflow">return</span> <span class="keyword">False</span>;
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189         <span class="comment">## Retourne une representation textuelle des donnees de la classe</span>
+<a name="l00190"></a>00190         <span class="comment">#</span>
+<a name="l00191"></a>00191         <span class="comment"># Retourne une representation textuelle de la classe.</span>
+<a name="l00192"></a>00192         <span class="comment">#</span>
+<a name="l00193"></a>00193         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00194"></a>00194         <span class="comment">#                                methode.</span>
+<a name="l00195"></a><a class="code" href="classlib_p_s_c_1_1_contrainte.html#516e42cdb5d0223bcf855009d9cd5c11">00195</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte.html#516e42cdb5d0223bcf855009d9cd5c11" title="Retourne une representation textuelle des donnees de la classe.">__repr__</a>( self ):
+<a name="l00196"></a>00196                 str = <span class="stringliteral">"Contrainte : %s"</span> %(self.<a class="code" href="classlib_p_s_c_1_1_contrainte.html#9b943dc092005d28f3966fcc1976f7a1" title="Liste des noms des variables de cette contrainte.">vars</a>)
+<a name="l00197"></a>00197                 <span class="keywordflow">return</span> str              
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200 
+<a name="l00201"></a>00201 <span class="comment">## Classe modelisant une contrainte unaire</span>
+<a name="l00202"></a>00202 <span class="comment">#</span>
+<a name="l00203"></a>00203 <span class="comment"># Une contrainte unaire correspond a une restriction sur les valeurs possibles</span>
+<a name="l00204"></a>00204 <span class="comment"># d'une variable, de la forme x &gt; 0, y = 5, etc..</span>
+<a name="l00205"></a>00205 <span class="comment">#</span>
+<a name="l00206"></a>00206 <span class="comment"># @remarks Cette classe est une sous-classe de Contrainte, elle implemente</span>
+<a name="l00207"></a>00207 <span class="comment">#                 donc toutes les fonctions de base de celle-ci.</span>
+<a name="l00208"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html">00208</a> <span class="keyword">class </span><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html" title="Classe modelisant une contrainte unaire.">ContrainteUnaire</a>(<a class="code" href="classlib_p_s_c_1_1_contrainte.html" title="Classe modelisant une contrainte sur une ou plusieurs variables.">Contrainte</a>):
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210         <span class="comment">## \var ref</span>
+<a name="l00211"></a>00211         <span class="comment"># la valeur de reference avec laquelle la valeur</span>
+<a name="l00212"></a>00212         <span class="comment"># de la variable est comparee</span>
+<a name="l00213"></a>00213         
+<a name="l00214"></a>00214         <span class="comment">## \var op</span>
+<a name="l00215"></a>00215         <span class="comment"># l'operation a effectuer entre les deux valeurs</span>
+<a name="l00216"></a>00216 
+<a name="l00217"></a>00217         <span class="comment">## \var refVar</span>
+<a name="l00218"></a>00218         <span class="comment"># une reference a la variable de la contrainte unaire</span>
+<a name="l00219"></a>00219         
+<a name="l00220"></a>00220         <span class="comment">## Constructeur de la classe</span>
+<a name="l00221"></a>00221         <span class="comment">#</span>
+<a name="l00222"></a>00222         <span class="comment"># Initialise la contrainte unaire avec une valeur de reference, une</span>
+<a name="l00223"></a>00223         <span class="comment"># reference vers la variable de la contrainte ainsi qu'un operateur</span>
+<a name="l00224"></a>00224         <span class="comment"># de comparaison entre les deux</span>
+<a name="l00225"></a>00225         <span class="comment">#</span>
+<a name="l00226"></a>00226         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00227"></a>00227         <span class="comment">#                                methode.</span>
+<a name="l00228"></a>00228         <span class="comment"># @param[in] ref valeur de reference pour la comparaison</span>
+<a name="l00229"></a>00229         <span class="comment"># @param[in] op un operateur possible entre \f$&lt;\f$, \f$\leq\f$, \f$=\f$ et \f$!=\f$</span>
+<a name="l00230"></a>00230         <span class="comment"># @param[in] refVar reference sur la variable a utiliser</span>
+<a name="l00231"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#ee0dab1e6b5e8d3060cd7e7a195c4ade">00231</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#ee0dab1e6b5e8d3060cd7e7a195c4ade" title="Constructeur de la classe.">__init__</a>( self, refVar, op, ref ):
+<a name="l00232"></a>00232                 Contrainte.__init__(self, [refVar.nom])
+<a name="l00233"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#7d3c69e449eb1d50946c7a0b7b7fcd7a">00233</a>                 self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#7d3c69e449eb1d50946c7a0b7b7fcd7a" title="la valeur de reference avec laquelle la valeur de la variable est comparee">ref</a>=ref
+<a name="l00234"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#334837ccb8b3b3c740da80eb8e401c37">00234</a>                 self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#334837ccb8b3b3c740da80eb8e401c37" title="l&amp;#39;operation a effectuer entre les deux valeurs">op</a>=op
+<a name="l00235"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#52bbbc326d27bd917076e8ba4553f01f">00235</a>                 self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#52bbbc326d27bd917076e8ba4553f01f" title="une reference a la variable de la contrainte unaire">refVar</a>=refVar
+<a name="l00236"></a>00236 
+<a name="l00237"></a>00237         <span class="comment">## Retourne la dimension de la contrainte(unaire=1).</span>
+<a name="l00238"></a>00238         <span class="comment">#</span>
+<a name="l00239"></a>00239         <span class="comment"># @copydoc Contrainte::dimension()</span>
+<a name="l00240"></a>00240         <span class="comment"># @remarks La dimension d'une contrainte unaire est 1.</span>
+<a name="l00241"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#3951ed61a588a455a90bcab18d3aea1c">00241</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#3951ed61a588a455a90bcab18d3aea1c" title="Retourne la dimension de la contrainte(unaire=1).">dimension</a>( self ):
+<a name="l00242"></a>00242                 <span class="keywordflow">return</span> 1
+<a name="l00243"></a>00243 
+<a name="l00244"></a>00244         <span class="comment">## Teste si la contrainte est valide et respectee par la valeur de la variable</span>
+<a name="l00245"></a>00245         <span class="comment">#</span>
+<a name="l00246"></a>00246         <span class="comment"># @copydoc Contrainte::estValide()</span>
+<a name="l00247"></a>00247         <span class="comment"># @remarks La contrainte unaire est respectee si l'operateur applique</span>
+<a name="l00248"></a>00248         <span class="comment">#                 aux deux operandes \c refVar et \c ref retourne \b True.</span>
+<a name="l00249"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#7b38a7be229dc9bed8924a4deb8d3a6a">00249</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#7b38a7be229dc9bed8924a4deb8d3a6a" title="Teste si la contrainte est valide et respectee par la valeur de la variable.">estValide</a>( self, var, val ):
+<a name="l00250"></a>00250 
+<a name="l00251"></a>00251                 <span class="comment"># incremente le nombre de contraintes visitees</span>
+<a name="l00252"></a>00252                 <span class="keyword">global</span> NBCONTRAINTES
+<a name="l00253"></a>00253                 NBCONTRAINTES += 1
+<a name="l00254"></a>00254                 
+<a name="l00255"></a>00255                 <span class="comment"># sauvegarde la valeur actuelle de la variable var</span>
+<a name="l00256"></a>00256                 <span class="comment"># avant de la modifier</span>
+<a name="l00257"></a>00257                 valeur = var.valeur
+<a name="l00258"></a>00258                 var.metAJourValeur(val)
+<a name="l00259"></a>00259                         
+<a name="l00260"></a>00260                 valide = <span class="keyword">False</span>
+<a name="l00261"></a>00261 
+<a name="l00262"></a>00262                 <span class="comment"># si l'operateur est 'plus-petit-que', alors</span>
+<a name="l00263"></a>00263                 <span class="keywordflow">if</span> (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#334837ccb8b3b3c740da80eb8e401c37" title="l&amp;#39;operation a effectuer entre les deux valeurs">op</a> == <span class="stringliteral">"&lt;"</span>):
+<a name="l00264"></a>00264                         valide = self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#52bbbc326d27bd917076e8ba4553f01f" title="une reference a la variable de la contrainte unaire">refVar</a>.valeur &lt; self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#7d3c69e449eb1d50946c7a0b7b7fcd7a" title="la valeur de reference avec laquelle la valeur de la variable est comparee">ref</a>
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266                 <span class="comment"># si l'operateur est 'plus-petit-ou-egal', alors</span>
+<a name="l00267"></a>00267                 <span class="keywordflow">elif</span> (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#334837ccb8b3b3c740da80eb8e401c37" title="l&amp;#39;operation a effectuer entre les deux valeurs">op</a> == <span class="stringliteral">"&lt;="</span>):
+<a name="l00268"></a>00268                         valide = self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#52bbbc326d27bd917076e8ba4553f01f" title="une reference a la variable de la contrainte unaire">refVar</a>.valeur &lt;= self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#7d3c69e449eb1d50946c7a0b7b7fcd7a" title="la valeur de reference avec laquelle la valeur de la variable est comparee">ref</a>
+<a name="l00269"></a>00269 
+<a name="l00270"></a>00270                 <span class="comment"># si l'operateur est 'egal', alors</span>
+<a name="l00271"></a>00271                 <span class="keywordflow">elif</span> (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#334837ccb8b3b3c740da80eb8e401c37" title="l&amp;#39;operation a effectuer entre les deux valeurs">op</a> == <span class="stringliteral">"=="</span>):
+<a name="l00272"></a>00272                         valide = self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#52bbbc326d27bd917076e8ba4553f01f" title="une reference a la variable de la contrainte unaire">refVar</a>.valeur == self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#7d3c69e449eb1d50946c7a0b7b7fcd7a" title="la valeur de reference avec laquelle la valeur de la variable est comparee">ref</a>
+<a name="l00273"></a>00273 
+<a name="l00274"></a>00274                  <span class="comment"># si l'operateur est 'different', alors</span>
+<a name="l00275"></a>00275                 <span class="keywordflow">elif</span> (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#334837ccb8b3b3c740da80eb8e401c37" title="l&amp;#39;operation a effectuer entre les deux valeurs">op</a> == <span class="stringliteral">"!="</span>):
+<a name="l00276"></a>00276                         valide = self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#52bbbc326d27bd917076e8ba4553f01f" title="une reference a la variable de la contrainte unaire">refVar</a>.valeur != self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#7d3c69e449eb1d50946c7a0b7b7fcd7a" title="la valeur de reference avec laquelle la valeur de la variable est comparee">ref</a>
+<a name="l00277"></a>00277 
+<a name="l00278"></a>00278                 <span class="comment"># sinon indique que l'operateur n'est pas implemente</span>
+<a name="l00279"></a>00279                 <span class="keywordflow">else</span>:
+<a name="l00280"></a>00280                         <span class="keywordflow">print</span> <span class="stringliteral">"|-| Operateur"</span>, self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#334837ccb8b3b3c740da80eb8e401c37" title="l&amp;#39;operation a effectuer entre les deux valeurs">op</a>, <span class="stringliteral">"non implemente"</span>
+<a name="l00281"></a>00281                 
+<a name="l00282"></a>00282                 <span class="comment"># annule le changement de valeur de la variable var et retourne</span>
+<a name="l00283"></a>00283                 var.metAJourValeur(valeur)
+<a name="l00284"></a>00284                 <span class="keywordflow">return</span> valide
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286 
+<a name="l00287"></a>00287         <span class="comment"># Retourne une representation textuelle des donnees de la classe</span>
+<a name="l00288"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#df201d27ba121f9b7a9201db18923213">00288</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#df201d27ba121f9b7a9201db18923213" title="Retourne une representation textuelle des donnees de la classe.">__repr__</a>(self):
+<a name="l00289"></a>00289                 str = <span class="stringliteral">"Contrainte : %s %s %s"</span> % ( self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#52bbbc326d27bd917076e8ba4553f01f" title="une reference a la variable de la contrainte unaire">refVar</a>.nom, self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#334837ccb8b3b3c740da80eb8e401c37" title="l&amp;#39;operation a effectuer entre les deux valeurs">op</a>, self.<a class="code" href="classlib_p_s_c_1_1_contrainte_unaire.html#7d3c69e449eb1d50946c7a0b7b7fcd7a" title="la valeur de reference avec laquelle la valeur de la variable est comparee">ref</a> )
+<a name="l00290"></a>00290                 <span class="keywordflow">return</span> str
+<a name="l00291"></a>00291 
+<a name="l00292"></a>00292 
+<a name="l00293"></a>00293 
+<a name="l00294"></a>00294 <span class="comment">## Classe modelisant une contrainte binaire</span>
+<a name="l00295"></a>00295 <span class="comment">#</span>
+<a name="l00296"></a>00296 <span class="comment"># Une contrainte binaire est representee dans un graphe par un</span>
+<a name="l00297"></a>00297 <span class="comment"># arc allant d'un noeud source(noeud de depart) a un noeud de</span>
+<a name="l00298"></a>00298 <span class="comment"># destination(noeud d'arrivee). Cette contrainte est souvent de</span>
+<a name="l00299"></a>00299 <span class="comment"># la forme v1&lt;v2, v1==v2, v1&gt;v2, etc...</span>
+<a name="l00300"></a>00300 
+<a name="l00301"></a>00301 <span class="comment"># @remarks Cette classe est une sous-classe de Contrainte, elle implemente</span>
+<a name="l00302"></a>00302 <span class="comment">#                 donc toutes les fonctions de base de celle-ci.</span>
+<a name="l00303"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html">00303</a> <span class="keyword">class </span><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html" title="Classe modelisant une contrainte binaire.">ContrainteBinaire</a>(<a class="code" href="classlib_p_s_c_1_1_contrainte.html" title="Classe modelisant une contrainte sur une ou plusieurs variables.">Contrainte</a>):
+<a name="l00304"></a>00304 
+<a name="l00305"></a>00305         <span class="comment">## \var op</span>
+<a name="l00306"></a>00306         <span class="comment"># l'operateur de comparaison entre les deux variables</span>
+<a name="l00307"></a>00307 
+<a name="l00308"></a>00308         <span class="comment">## \var refVar1</span>
+<a name="l00309"></a>00309         <span class="comment"># une reference vers la premiere variable de la contrainte</span>
+<a name="l00310"></a>00310 
+<a name="l00311"></a>00311         <span class="comment">## \var refVar2</span>
+<a name="l00312"></a>00312         <span class="comment"># une reference vers la deuxieme variable de la contrainte</span>
+<a name="l00313"></a>00313         
+<a name="l00314"></a>00314         <span class="comment">## Constructeur de la classe</span>
+<a name="l00315"></a>00315         <span class="comment">#</span>
+<a name="l00316"></a>00316         <span class="comment"># Initialise les variables de depart et d'arrivee, ainsi</span>
+<a name="l00317"></a>00317         <span class="comment"># que l'operateur utilise pour la comparaison.</span>
+<a name="l00318"></a>00318         <span class="comment">#</span>
+<a name="l00319"></a>00319         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00320"></a>00320         <span class="comment">#                                methode.</span>
+<a name="l00321"></a>00321         <span class="comment"># @param[in] op un operateur parmi \f$\ne\f$ ou \f$\equiv\f$</span>
+<a name="l00322"></a>00322         <span class="comment"># @param[in] refVar1 reference vers la variable 1</span>
+<a name="l00323"></a>00323         <span class="comment"># @param[in] refVar2 reference vers la variable 2</span>
+<a name="l00324"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#4a118fabbf719d70d1db35f9b08c9c48">00324</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#4a118fabbf719d70d1db35f9b08c9c48" title="Constructeur de la classe.">__init__</a>( self, refVar1, op, refVar2 ):
+<a name="l00325"></a>00325                 Contrainte.__init__(self, [refVar1.nom, refVar2.nom])
+<a name="l00326"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d">00326</a>                 self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d" title="une reference vers la premiere variable de la contrainte">refVar1</a>=refVar1
+<a name="l00327"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f2306f81d5ad82d76cbf19c63ad74efa">00327</a>                 self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f2306f81d5ad82d76cbf19c63ad74efa" title="l&amp;#39;operateur de comparaison entre les deux variables">op</a>=op
+<a name="l00328"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#88124f2ff9f9e21a49322ab3bc13ac2f">00328</a>                 self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#88124f2ff9f9e21a49322ab3bc13ac2f" title="une reference vers la deuxieme variable de la contrainte">refVar2</a>=refVar2
+<a name="l00329"></a>00329 
+<a name="l00330"></a>00330 
+<a name="l00331"></a>00331         <span class="comment">## Retourne la dimension de la contrainte (binaire=2).</span>
+<a name="l00332"></a>00332         <span class="comment">#</span>
+<a name="l00333"></a>00333         <span class="comment"># @copydoc Contrainte::dimension()</span>
+<a name="l00334"></a>00334         <span class="comment"># @remarks La dimension d'une contrainte binaire est 2.</span>
+<a name="l00335"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#df19e3460c442721fb4987ae63f574bc">00335</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#df19e3460c442721fb4987ae63f574bc" title="Retourne la dimension de la contrainte (binaire=2).">dimension</a>( self ):
+<a name="l00336"></a>00336                 <span class="keywordflow">return</span> 2        
+<a name="l00337"></a>00337 
+<a name="l00338"></a>00338 
+<a name="l00339"></a>00339         <span class="comment">## Teste si la contrainte est valide et respectee par les valeurs des variables qui la composent.</span>
+<a name="l00340"></a>00340         <span class="comment">#</span>
+<a name="l00341"></a>00341         <span class="comment"># @copydoc Contrainte::estValide()</span>
+<a name="l00342"></a>00342         <span class="comment"># @remarks La contrainte binaire est respectee si l'operateur applique</span>
+<a name="l00343"></a>00343         <span class="comment">#                 aux deux operandes \c refVar1 et \c refVar2 retourne \b True.</span>
+<a name="l00344"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f1e96405ca1570933b789724fbfbf1e5">00344</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f1e96405ca1570933b789724fbfbf1e5" title="Teste si la contrainte est valide et respectee par les valeurs des variables qui...">estValide</a>( self, var, val ):
+<a name="l00345"></a>00345 
+<a name="l00346"></a>00346                 <span class="comment"># incremente le nombre de contraintes visitees</span>
+<a name="l00347"></a>00347                 <span class="keyword">global</span> NBCONTRAINTES
+<a name="l00348"></a>00348                 NBCONTRAINTES += 1
+<a name="l00349"></a>00349                 
+<a name="l00350"></a>00350                 <span class="comment"># sauvegarde la valeur actuelle de la variable var</span>
+<a name="l00351"></a>00351                 <span class="comment"># avant de la modifier </span>
+<a name="l00352"></a>00352                 valeur = var.valeur
+<a name="l00353"></a>00353                 var.metAJourValeur(val)
+<a name="l00354"></a>00354                         
+<a name="l00355"></a>00355                 valide = <span class="keyword">False</span>
+<a name="l00356"></a>00356 
+<a name="l00357"></a>00357                 <span class="comment"># si l'operateur est 'pas-egal', alors...</span>
+<a name="l00358"></a>00358                 <span class="keywordflow">if</span> (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f2306f81d5ad82d76cbf19c63ad74efa" title="l&amp;#39;operateur de comparaison entre les deux variables">op</a> == <span class="stringliteral">"!="</span>):
+<a name="l00359"></a>00359                         valide = self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d" title="une reference vers la premiere variable de la contrainte">refVar1</a>.valeur != self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#88124f2ff9f9e21a49322ab3bc13ac2f" title="une reference vers la deuxieme variable de la contrainte">refVar2</a>.valeur
+<a name="l00360"></a>00360 
+<a name="l00361"></a>00361                 <span class="comment"># si l'operateur est 'egal', alors...</span>
+<a name="l00362"></a>00362                 <span class="keywordflow">elif</span> (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f2306f81d5ad82d76cbf19c63ad74efa" title="l&amp;#39;operateur de comparaison entre les deux variables">op</a> == <span class="stringliteral">"=="</span>):
+<a name="l00363"></a>00363                         valide = self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d" title="une reference vers la premiere variable de la contrainte">refVar1</a>.valeur == self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#88124f2ff9f9e21a49322ab3bc13ac2f" title="une reference vers la deuxieme variable de la contrainte">refVar2</a>.valeur
+<a name="l00364"></a>00364 
+<a name="l00365"></a>00365                 <span class="comment"># si l'operateur est 'plus-petit-que', alors...</span>
+<a name="l00366"></a>00366                 <span class="keywordflow">elif</span> (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f2306f81d5ad82d76cbf19c63ad74efa" title="l&amp;#39;operateur de comparaison entre les deux variables">op</a> == <span class="stringliteral">"&lt;"</span>):
+<a name="l00367"></a>00367                         valide = self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d" title="une reference vers la premiere variable de la contrainte">refVar1</a>.valeur &lt; self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#88124f2ff9f9e21a49322ab3bc13ac2f" title="une reference vers la deuxieme variable de la contrainte">refVar2</a>.valeur
+<a name="l00368"></a>00368 
+<a name="l00369"></a>00369                 <span class="comment"># si l'operateur est 'NAND' (pour des variables booleennes), alors...</span>
+<a name="l00370"></a>00370                 <span class="keywordflow">elif</span> (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f2306f81d5ad82d76cbf19c63ad74efa" title="l&amp;#39;operateur de comparaison entre les deux variables">op</a>==<span class="stringliteral">"NAND"</span>):
+<a name="l00371"></a>00371                         valide = <span class="keywordflow">not</span> (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d" title="une reference vers la premiere variable de la contrainte">refVar1</a>.valeur == <span class="keyword">True</span> <span class="keywordflow">and</span> self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#88124f2ff9f9e21a49322ab3bc13ac2f" title="une reference vers la deuxieme variable de la contrainte">refVar2</a>.valeur == <span class="keyword">True</span>) 
+<a name="l00372"></a>00372 
+<a name="l00373"></a>00373                 <span class="comment"># si l'operateur est l'implication logique (pour des variables booleennes), alors...</span>
+<a name="l00374"></a>00374                 <span class="keywordflow">elif</span> (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f2306f81d5ad82d76cbf19c63ad74efa" title="l&amp;#39;operateur de comparaison entre les deux variables">op</a> == <span class="stringliteral">"-&gt;"</span>):
+<a name="l00375"></a>00375                         valide = (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d" title="une reference vers la premiere variable de la contrainte">refVar1</a>.valeur == <span class="keyword">False</span> <span class="keywordflow">or</span> self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#88124f2ff9f9e21a49322ab3bc13ac2f" title="une reference vers la deuxieme variable de la contrainte">refVar2</a>.valeur == <span class="keyword">True</span>)
+<a name="l00376"></a>00376 
+<a name="l00377"></a>00377                 <span class="comment"># sinon, indique que l'operateur n'est pas implemente</span>
+<a name="l00378"></a>00378                 <span class="keywordflow">else</span>:
+<a name="l00379"></a>00379                         <span class="keywordflow">print</span> <span class="stringliteral">"|-| Operateur"</span>, self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f2306f81d5ad82d76cbf19c63ad74efa" title="l&amp;#39;operateur de comparaison entre les deux variables">op</a>, <span class="stringliteral">"non implemente"</span>
+<a name="l00380"></a>00380 
+<a name="l00381"></a>00381                 <span class="comment"># annule le changement de valeur de la variable var et retourne</span>
+<a name="l00382"></a>00382                 var.metAJourValeur(valeur)
+<a name="l00383"></a>00383                 <span class="keywordflow">return</span> valide
+<a name="l00384"></a>00384 
+<a name="l00385"></a>00385 
+<a name="l00386"></a>00386         <span class="comment">## Teste si la contrainte est satisfaite pour au moins une valeur dans</span>
+<a name="l00387"></a>00387         <span class="comment"># le domaine de la variable passee en parametre</span>
+<a name="l00388"></a>00388         <span class="comment">#</span>
+<a name="l00389"></a>00389         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00390"></a>00390         <span class="comment">#                                methode.</span>
+<a name="l00391"></a>00391         <span class="comment"># @param[in] var la variable dont on veut tester si une valeur de domaine convient</span>
+<a name="l00392"></a>00392         <span class="comment"># @return \b True si la contrainte est possible pour au moins une des</span>
+<a name="l00393"></a>00393         <span class="comment">#                valeurs de D2, \b False sinon</span>
+<a name="l00394"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#0da21dfc4c26ad4459cde4396aee57bf">00394</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#0da21dfc4c26ad4459cde4396aee57bf" title="Teste si la contrainte est satisfaite pour au moins une valeur dans le domaine de...">estPossible</a>( self, var ):
+<a name="l00395"></a>00395 
+<a name="l00396"></a>00396                 <span class="comment"># si la variable n'a pas de valeur possible, alors la</span>
+<a name="l00397"></a>00397                 <span class="comment"># contrainte ne peut trivialement pas etre satisfaite</span>
+<a name="l00398"></a>00398                 <span class="keywordflow">if</span> len(var.domaine)==0 :
+<a name="l00399"></a>00399                         <span class="keywordflow">return</span> <span class="keyword">False</span>
+<a name="l00400"></a>00400 
+<a name="l00401"></a>00401                 <span class="comment"># pour chaque valeur du domaine de la variable:</span>
+<a name="l00402"></a>00402                 <span class="keywordflow">for</span> d <span class="keywordflow">in</span> var.domaine:
+<a name="l00403"></a>00403 
+<a name="l00404"></a>00404                         <span class="comment"># retourne True si au moins une valeur convient pour cette valeur d</span>
+<a name="l00405"></a>00405                         <span class="keywordflow">if</span> self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f1e96405ca1570933b789724fbfbf1e5" title="Teste si la contrainte est valide et respectee par les valeurs des variables qui...">estValide</a>( var, d ):
+<a name="l00406"></a>00406                                 <span class="keywordflow">return</span> <span class="keyword">True</span>
+<a name="l00407"></a>00407 
+<a name="l00408"></a>00408                 <span class="comment"># Aucune valeur pour la variable ne convient</span>
+<a name="l00409"></a>00409                 <span class="keywordflow">return</span> <span class="keyword">False</span>
+<a name="l00410"></a>00410 
+<a name="l00411"></a>00411 
+<a name="l00412"></a>00412         <span class="comment">## Applique l'algorithme REVISER</span>
+<a name="l00413"></a>00413         <span class="comment">#</span>
+<a name="l00414"></a>00414         <span class="comment"># Pour chaque variable, pour chaque valeur v dans le domaine de cette variable,</span>
+<a name="l00415"></a>00415         <span class="comment"># verifie s'il existe une valeur possible pour la deuxieme variable </span>
+<a name="l00416"></a>00416         <span class="comment"># qui satisfasse la contrainte ; sinon, supprime v du domaine. </span>
+<a name="l00417"></a>00417         <span class="comment">#</span>
+<a name="l00418"></a>00418         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00419"></a>00419         <span class="comment">#                                methode.</span>
+<a name="l00420"></a>00420         <span class="comment"># @note Regarder le chapitre 8.5.2 du cours pour de plus amples informations</span>
+<a name="l00421"></a>00421         <span class="comment"># sur le fonctionnement de l'algorithme de Waltz et REVISER</span>
+<a name="l00422"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#46a6ea7cc4549efeee9fc1bbccad993a">00422</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#46a6ea7cc4549efeee9fc1bbccad993a" title="Applique l&amp;#39;algorithme REVISER.">reviser</a> ( self ):
+<a name="l00423"></a>00423                 modifiee = <span class="keyword">False</span>
+<a name="l00424"></a>00424                 <span class="keywordflow">for</span> paire <span class="keywordflow">in</span> [ [self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d" title="une reference vers la premiere variable de la contrainte">refVar1</a>, self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#88124f2ff9f9e21a49322ab3bc13ac2f" title="une reference vers la deuxieme variable de la contrainte">refVar2</a>], [self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#88124f2ff9f9e21a49322ab3bc13ac2f" title="une reference vers la deuxieme variable de la contrainte">refVar2</a>, self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d" title="une reference vers la premiere variable de la contrainte">refVar1</a>] ]:
+<a name="l00425"></a>00425                 
+<a name="l00426"></a>00426                         <span class="comment"># pour chaque valeur du domaine de la premiere variable</span>
+<a name="l00427"></a>00427                         <span class="keywordflow">for</span> x <span class="keywordflow">in</span> paire[0].domaine[:]:
+<a name="l00428"></a>00428                         
+<a name="l00429"></a>00429                                 <span class="comment"># on met a jour la valeur de la variable</span>
+<a name="l00430"></a>00430                                 paire[0].metAJourValeur(x)
+<a name="l00431"></a>00431                         
+<a name="l00432"></a>00432                                 <span class="comment"># si cette contrainte n'est pas possible,</span>
+<a name="l00433"></a>00433                                 <span class="comment"># alors...</span>
+<a name="l00434"></a>00434                                 <span class="keywordflow">if</span> <span class="keywordflow">not</span> self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#0da21dfc4c26ad4459cde4396aee57bf" title="Teste si la contrainte est satisfaite pour au moins une valeur dans le domaine de...">estPossible</a>(paire[1]):
+<a name="l00435"></a>00435                         
+<a name="l00436"></a>00436                                         <span class="comment"># ...on supprime la valeur du domaine</span>
+<a name="l00437"></a>00437                                         paire[0].domaine.remove(x)
+<a name="l00438"></a>00438         
+<a name="l00439"></a>00439                                         <span class="comment"># cependant il faut reviser a nouveau, car on</span>
+<a name="l00440"></a>00440                                         <span class="comment"># a peut-etre invalide d'autres contraintes</span>
+<a name="l00441"></a>00441                                         modifiee = <span class="keyword">True</span>
+<a name="l00442"></a>00442 
+<a name="l00443"></a>00443                         paire[0].metAJourValeur(<span class="keywordtype">None</span>)
+<a name="l00444"></a>00444                         
+<a name="l00445"></a>00445                 <span class="keywordflow">return</span> modifiee
+<a name="l00446"></a>00446         
+<a name="l00447"></a>00447         
+<a name="l00448"></a>00448         <span class="comment">## Propage l'assignation d'une variable de la contrainte a l'autre variable non instanciee</span>
+<a name="l00449"></a>00449         <span class="comment">#</span>
+<a name="l00450"></a>00450         <span class="comment"># Etant donne qu'on a fixe une valeur pour une variable de cette contrainte, </span>
+<a name="l00451"></a>00451         <span class="comment"># on essaie de reduire le label de la deuxieme en supprimant les valeurs inconsistantes. </span>
+<a name="l00452"></a>00452         <span class="comment">#</span>
+<a name="l00453"></a>00453         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00454"></a>00454         <span class="comment">#                                methode.</span>
+<a name="l00455"></a>00455         <span class="comment"># @param[in] var la variable qui vient d'etre instanciee</span>
+<a name="l00456"></a>00456         <span class="comment"># @return True si apres propagation, la contrainte est toujours consistante</span>
+<a name="l00457"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#bccfd27fc27b04db34c8057900a9d5a0">00457</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#bccfd27fc27b04db34c8057900a9d5a0" title="Propage l&amp;#39;assignation d&amp;#39;une variable de la contrainte a l&amp;#39;autre variable...">propage</a> ( self, var ):
+<a name="l00458"></a>00458         
+<a name="l00459"></a>00459                 <span class="comment"># trouve la variable encore non instanciee</span>
+<a name="l00460"></a>00460                 var2 = self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d" title="une reference vers la premiere variable de la contrainte">refVar1</a>
+<a name="l00461"></a>00461                 <span class="keywordflow">if</span> var == self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d" title="une reference vers la premiere variable de la contrainte">refVar1</a>:
+<a name="l00462"></a>00462                         var2 = self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#88124f2ff9f9e21a49322ab3bc13ac2f" title="une reference vers la deuxieme variable de la contrainte">refVar2</a>
+<a name="l00463"></a>00463                 
+<a name="l00464"></a>00464                 <span class="comment"># utilise le label de la variable var2</span>
+<a name="l00465"></a>00465                 <span class="keywordflow">for</span> l <span class="keywordflow">in</span> var2.label[:]:
+<a name="l00466"></a>00466 
+<a name="l00467"></a>00467                         <span class="comment">#verifie que la contrainte est satisfaite</span>
+<a name="l00468"></a>00468                         <span class="keywordflow">if</span> <span class="keywordflow">not</span> self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f1e96405ca1570933b789724fbfbf1e5" title="Teste si la contrainte est valide et respectee par les valeurs des variables qui...">estValide</a>( var2, l ):
+<a name="l00469"></a>00469                                 <span class="comment"># on enleve la valeur l du label</span>
+<a name="l00470"></a>00470                                 var2.enleveDuLabel(l)
+<a name="l00471"></a>00471                 
+<a name="l00472"></a>00472                 <span class="comment"># la consistance est possibe &lt;=&gt; il reste au moins une valeur dans le label</span>
+<a name="l00473"></a>00473                 <span class="keywordflow">return</span> len(var2.label) &gt; 0
+<a name="l00474"></a>00474                 
+<a name="l00475"></a>00475         
+<a name="l00476"></a>00476         
+<a name="l00477"></a>00477         <span class="comment"># Retourne une representation textuelle des donnees de la classe</span>
+<a name="l00478"></a><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#cf66ce2f2de9ff66313b65924de72622">00478</a>         <span class="keyword">def </span><a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#cf66ce2f2de9ff66313b65924de72622" title="Retourne une representation textuelle des donnees de la classe.">__repr__</a>(self):
+<a name="l00479"></a>00479                 str = <span class="stringliteral">"Contrainte : %s %s %s"</span> % (self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#2520f30221e629df2b68c03b8dc2d65d" title="une reference vers la premiere variable de la contrainte">refVar1</a>.nom, self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#f2306f81d5ad82d76cbf19c63ad74efa" title="l&amp;#39;operateur de comparaison entre les deux variables">op</a>, self.<a class="code" href="classlib_p_s_c_1_1_contrainte_binaire.html#88124f2ff9f9e21a49322ab3bc13ac2f" title="une reference vers la deuxieme variable de la contrainte">refVar2</a>.nom)
+<a name="l00480"></a>00480                 <span class="keywordflow">return</span> str              
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:29 2008 pour Lab 7 : Planification avec PSC par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

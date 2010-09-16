@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 9 : Clustering: Paquetage distance</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="namespacemembers.html"><span>Fonctions&nbsp;de&nbsp;paquetage</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Paquetage distance</h1>Distance entre deux donnees.  
+<a href="#_details">Plus de détails...</a>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedistance.html#83b28f7ec7fdb35733d2d1687b92dc86">distance</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Distance entre deux donnees.  <a href="#83b28f7ec7fdb35733d2d1687b92dc86"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedistance.html#c769e7f77dd1915d6c53e96a0fb15333">argmin</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction argmin.  <a href="#c769e7f77dd1915d6c53e96a0fb15333"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Distance entre deux donnees. <hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="c769e7f77dd1915d6c53e96a0fb15333"></a><!-- doxytag: member="distance::argmin" ref="c769e7f77dd1915d6c53e96a0fb15333" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def distance.argmin           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>liste</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>fn</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Fonction argmin. 
+<p>
+Cette fonction retourne l'element d'une liste qui minimise la fonction passee en parametre. Elle n'est utile que pour Python 2.3, sinon on peut utiliser la fonction min() a partir de 2.4. Retourne <code>None</code> si la liste est vide. <dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>liste</em>&nbsp;</td><td>Une liste dont on cherche l'element optimal </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>fn</em>&nbsp;</td><td>Fonction a minimiser </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>L'element de la liste <code>liste</code> qui minimise la fonction <code>fn</code> </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="distance_8py-source.html#l00034">34</a> du fichier <a class="el" href="distance_8py-source.html">distance.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="83b28f7ec7fdb35733d2d1687b92dc86"></a><!-- doxytag: member="distance::distance" ref="83b28f7ec7fdb35733d2d1687b92dc86" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def distance.distance           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>donnee1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>donnee2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Distance entre deux donnees. 
+<p>
+Retourne le nombre d'elements differents <dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>donnee1</em>&nbsp;</td><td>Premiere donnee </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>donnee2</em>&nbsp;</td><td>Deuxieme donnee </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>La <a class="el" href="namespacedistance.html" title="Distance entre deux donnees.">distance</a> entre <code>donnee1</code> et <code>donnee2</code> </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="distance_8py-source.html#l00018">18</a> du fichier <a class="el" href="distance_8py-source.html">distance.py</a>.</p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:38 2008 pour Lab 9 : Clustering par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

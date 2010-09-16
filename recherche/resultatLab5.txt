@@ -1,0 +1,495 @@
+//-----------------------------------------------------------------------------------------------
+// Recherche sur fichier carte.py
+//-----------------------------------------------------------------------------------------------
+Chargement du module de recherche
+	@version: 1.3  date: 28/06/2007 modified by Thomas Leaute
+	@version: 1.2  date: 15/01/2007 modified by Vincent Schickel-Zuber
+	@version: 1.1  date: 15/01/2007 modified by Bruno Alves
+	@version: 1.0  date: 24/03/2006 modified by the author
+	@author: vincent.schickel-zuber@epfl.ch date: 24/03/2006
+	@copyright: EPFL-IC-IIF-LIA 2006
+Chargement du module objet et noeud pour la recherche
+	@version: 1.3  date: 13/06/2007 modified by Thomas Leaute
+	@version: 1.2  date: 13/02/2007 modified by Vincent Schickel-Zuber
+	@version: 1.1  date: 15/01/2007 modified by Bruno Alves
+	@version: 1.0  date: 24/03/2006 modified by the author
+	@author: vincent.schickel-zuber@epfl.ch date: 24/03/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+	Villes ajoutees
+	Routes ajoutees
+ville <A,(0,16)>
+	 voisins={ E B}
+ville <C,(0,10)>
+	 voisins={ P D B}
+ville <B,(5,13)>
+	 voisins={ F I D E C A}
+ville <E,(11,18)>
+	 voisins={ L F B A}
+ville <D,(5,8)>
+	 voisins={ K I C B}
+ville <G,(29,18)>
+	 voisins={ M L H}
+ville <F,(15,13)>
+	 voisins={ B M L I E}
+ville <I,(12,10)>
+	 voisins={ B J F D}
+ville <H,(26,0)>
+	 voisins={ G}
+ville <K,(11,3)>
+	 voisins={ P O J D}
+ville <J,(17,7)>
+	 voisins={ N K I}
+ville <M,(25,12)>
+	 voisins={ N G F}
+ville <L,(22,16)>
+	 voisins={ G F E}
+ville <O,(20,0)>
+	 voisins={ P N K}
+ville <N,(24,6)>
+	 voisins={ O M J}
+ville <P,(5,0)>
+	 voisins={ O K C}
+Debut= ville <A,(0,16)>
+	 voisins={ E B}
+But= ville <P,(5,0)>
+	 voisins={ O K C}
+
+Recherche avec DFS=
+Iteration  2 : noeud <A,0,0>
+Iteration  3 : noeud <E,11,30>
+Iteration  4 : noeud <L,22,45>
+Iteration  5 : noeud <G,29,59>
+Iteration  6 : noeud <M,36,60>
+Iteration  7 : noeud <N,42,62>
+Iteration  8 : noeud <O,50,65>
+Solution a l'iteration  8 : noeud <P,65,65>
+noeud <P,65,65>
+
+Recherche avec BFS=
+Iteration  2 : noeud <A,0,0>
+Iteration  3 : noeud <E,11,30>
+Iteration  4 : noeud <B,5,18>
+Iteration  5 : noeud <L,22,45>
+Iteration  6 : noeud <F,17,33>
+Iteration  7 : noeud <B,18,31>
+Iteration  8 : noeud <A,22,39>
+Iteration  9 : noeud <F,15,32>
+Iteration  10 : noeud <I,13,25>
+Iteration  11 : noeud <D,10,18>
+Iteration  12 : noeud <E,13,32>
+Iteration  13 : noeud <C,11,22>
+Iteration  14 : noeud <A,11,28>
+Iteration  15 : noeud <G,29,59>
+Iteration  16 : noeud <F,29,46>
+Iteration  17 : noeud <E,33,52>
+Iteration  18 : noeud <B,27,40>
+Iteration  19 : noeud <M,27,50>
+Iteration  20 : noeud <L,25,48>
+Iteration  21 : noeud <I,21,34>
+Iteration  22 : noeud <E,23,42>
+Iteration  23 : noeud <F,28,45>
+Iteration  24 : noeud <I,26,38>
+Iteration  25 : noeud <D,23,31>
+Iteration  26 : noeud <E,26,45>
+Iteration  27 : noeud <C,24,36>
+Iteration  28 : noeud <A,24,41>
+Iteration  29 : noeud <E,33,52>
+Iteration  30 : noeud <B,28,41>
+Iteration  31 : noeud <B,25,38>
+Iteration  32 : noeud <M,25,49>
+Iteration  33 : noeud <L,23,46>
+Iteration  34 : noeud <I,20,32>
+Iteration  35 : noeud <E,22,41>
+Iteration  36 : noeud <B,21,34>
+Iteration  37 : noeud <J,19,33>
+Iteration  38 : noeud <F,17,34>
+Iteration  39 : noeud <D,20,28>
+Iteration  40 : noeud <K,18,25>
+Iteration  41 : noeud <I,18,30>
+Iteration  42 : noeud <C,16,27>
+Iteration  43 : noeud <B,15,28>
+Iteration  44 : noeud <L,24,48>
+Iteration  45 : noeud <F,20,36>
+Iteration  46 : noeud <B,21,34>
+Iteration  47 : noeud <A,24,41>
+Solution a l'iteration  47 : noeud <P,22,22>
+noeud <P,22,22>
+
+Recherche optimisee avec BFS=
+Iteration  1 : noeud <A,0,0>
+Iteration  2 : noeud <E,11,30>
+Iteration  3 : noeud <B,5,18>
+Iteration  4 : noeud <L,22,45>
+Iteration  5 : noeud <F,17,33>
+Iteration  6 : noeud <I,13,25>
+Iteration  7 : noeud <D,10,18>
+Iteration  8 : noeud <C,11,22>
+Iteration  9 : noeud <G,29,59>
+Iteration  10 : noeud <M,27,50>
+Iteration  11 : noeud <J,19,33>
+Iteration  12 : noeud <K,18,25>
+Solution a l'iteration  13 : noeud <P,22,22>
+noeud <P,22,22>
+
+Recherche avec A*=
+Iteration  2 : noeud <A,0,0>
+Iteration  3 : noeud <B,5,18>
+Iteration  4 : noeud <D,10,18>
+Iteration  5 : noeud <C,11,22>
+Solution a l'iteration  5 : noeud <P,22,22>
+noeud <P,22,22>
+
+Recherche optimisee avec A*=
+Iteration  1 : noeud <A,0,0>
+Iteration  2 : noeud <B,5,18>
+Iteration  3 : noeud <D,10,18>
+Iteration  4 : noeud <C,11,22>
+Solution a l'iteration  5 : noeud <P,22,22>
+noeud <P,22,22>
+
+//-----------------------------------------------------------------------------------------------
+// Recherche sur fichier suisse.py
+//-----------------------------------------------------------------------------------------------
+Chargement du module de recherche
+	@version: 1.3  date: 28/06/2007 modified by Thomas Leaute
+	@version: 1.2  date: 15/01/2007 modified by Vincent Schickel-Zuber
+	@version: 1.1  date: 15/01/2007 modified by Bruno Alves
+	@version: 1.0  date: 24/03/2006 modified by the author
+	@author: vincent.schickel-zuber@epfl.ch date: 24/03/2006
+	@copyright: EPFL-IC-IIF-LIA 2006
+Chargement du module objet et noeud pour la recherche
+	@version: 1.3  date: 13/06/2007 modified by Thomas Leaute
+	@version: 1.2  date: 13/02/2007 modified by Vincent Schickel-Zuber
+	@version: 1.1  date: 15/01/2007 modified by Bruno Alves
+	@version: 1.0  date: 24/03/2006 modified by the author
+	@author: vincent.schickel-zuber@epfl.ch date: 24/03/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+	Villes ajoutees
+	Routes ajoutees
+ville <Geneve,(40,300)>
+	 voisins={ Lausanne}
+ville <Neuchatel,(150,170)>
+	 voisins={ Bern Lausanne}
+ville <St-Gallen,(455,85)>
+	 voisins={ Zurich}
+ville <Zurich,(340,90)>
+	 voisins={ Basel St-Gallen Luzern Aarau}
+ville <Aarau,(290,95)>
+	 voisins={ Luzern Bern Zurich}
+ville <Basel,(230,65)>
+	 voisins={ Zurich Bern}
+ville <Luzern,(320,155)>
+	 voisins={ Aarau Bern Zurich}
+ville <Thun,(235,210)>
+	 voisins={ Bern Sion}
+ville <Lausanne,(110,260)>
+	 voisins={ Fribourg Neuchatel Sion Geneve}
+ville <Sion,(200,300)>
+	 voisins={ Thun Lausanne}
+ville <Fribourg,(175,200)>
+	 voisins={ Bern Lausanne}
+ville <Bern,(210,280)>
+	 voisins={ Thun Luzern Aarau Basel Neuchatel Fribourg}
+Debut= ville <Zurich,(340,90)>
+	 voisins={ Basel St-Gallen Luzern Aarau}
+But= ville <Geneve,(40,300)>
+	 voisins={ Lausanne}
+
+Recherche avec BFS=
+Iteration  2 : noeud <Zurich,0,0>
+Iteration  3 : noeud <Basel,112,415>
+Iteration  4 : noeud <St-Gallen,115,582>
+Iteration  5 : noeud <Luzern,68,383>
+Iteration  6 : noeud <Aarau,50,373>
+Iteration  7 : noeud <Zurich,225,591>
+Iteration  8 : noeud <Bern,328,499>
+Iteration  9 : noeud <Zurich,230,596>
+Iteration  10 : noeud <Aarau,135,458>
+Iteration  11 : noeud <Bern,234,405>
+Iteration  12 : noeud <Zurich,136,502>
+Iteration  13 : noeud <Luzern,117,432>
+Iteration  14 : noeud <Bern,251,422>
+Iteration  15 : noeud <Zurich,100,466>
+Iteration  16 : noeud <Basel,338,640>
+Iteration  17 : noeud <St-Gallen,340,808>
+Iteration  18 : noeud <Luzern,293,608>
+Iteration  19 : noeud <Aarau,275,599>
+Iteration  20 : noeud <Thun,403,617>
+Iteration  21 : noeud <Luzern,495,810>
+Iteration  22 : noeud <Aarau,530,853>
+Iteration  23 : noeud <Basel,544,846>
+Iteration  24 : noeud <Neuchatel,454,624>
+Iteration  25 : noeud <Fribourg,416,584>
+Iteration  26 : noeud <Basel,343,645>
+Iteration  27 : noeud <St-Gallen,345,812>
+Iteration  28 : noeud <Luzern,298,613>
+Iteration  29 : noeud <Aarau,280,603>
+Iteration  30 : noeud <Luzern,202,517>
+Iteration  31 : noeud <Bern,336,507>
+Iteration  32 : noeud <Zurich,185,551>
+Iteration  33 : noeud <Thun,308,523>
+Iteration  34 : noeud <Luzern,401,716>
+Iteration  35 : noeud <Aarau,436,759>
+Iteration  36 : noeud <Basel,450,752>
+Iteration  37 : noeud <Neuchatel,359,530>
+Iteration  38 : noeud <Fribourg,321,489>
+Iteration  39 : noeud <Basel,248,551>
+Iteration  40 : noeud <St-Gallen,251,718>
+Iteration  41 : noeud <Luzern,204,519>
+Iteration  42 : noeud <Aarau,186,509>
+Iteration  43 : noeud <Aarau,184,507>
+Iteration  44 : noeud <Bern,283,455>
+Iteration  45 : noeud <Zurich,185,551>
+Iteration  46 : noeud <Thun,326,540>
+Iteration  47 : noeud <Luzern,418,733>
+Iteration  48 : noeud <Aarau,453,776>
+Iteration  49 : noeud <Basel,467,769>
+Iteration  50 : noeud <Neuchatel,377,547>
+Iteration  51 : noeud <Fribourg,339,507>
+Iteration  52 : noeud <Basel,213,515>
+Iteration  53 : noeud <St-Gallen,215,682>
+Iteration  54 : noeud <Luzern,168,483>
+Iteration  55 : noeud <Aarau,150,474>
+Iteration  56 : noeud <Zurich,451,817>
+Iteration  57 : noeud <Bern,554,725>
+Iteration  58 : noeud <Zurich,455,822>
+Iteration  59 : noeud <Aarau,360,684>
+Iteration  60 : noeud <Bern,460,631>
+Iteration  61 : noeud <Zurich,361,727>
+Iteration  62 : noeud <Luzern,342,658>
+Iteration  63 : noeud <Bern,477,648>
+Iteration  64 : noeud <Zurich,326,692>
+Iteration  65 : noeud <Bern,477,648>
+Iteration  66 : noeud <Sion,499,659>
+Iteration  67 : noeud <Aarau,562,885>
+Iteration  68 : noeud <Bern,661,832>
+Iteration  69 : noeud <Zurich,563,929>
+Iteration  70 : noeud <Luzern,597,912>
+Iteration  71 : noeud <Bern,731,903>
+Iteration  72 : noeud <Zurich,580,946>
+Iteration  73 : noeud <Zurich,657,1023>
+Iteration  74 : noeud <Bern,760,931>
+Iteration  75 : noeud <Bern,579,750>
+Iteration  76 : noeud <Lausanne,552,633>
+Iteration  77 : noeud <Bern,503,674>
+Iteration  78 : noeud <Lausanne,504,585>
+Iteration  79 : noeud <Zurich,455,822>
+Iteration  80 : noeud <Bern,558,730>
+Iteration  81 : noeud <Zurich,460,826>
+Iteration  82 : noeud <Aarau,365,688>
+Iteration  83 : noeud <Bern,464,635>
+Iteration  84 : noeud <Zurich,366,732>
+Iteration  85 : noeud <Luzern,347,662>
+Iteration  86 : noeud <Bern,482,653>
+Iteration  87 : noeud <Zurich,330,696>
+Iteration  88 : noeud <Aarau,269,592>
+Iteration  89 : noeud <Bern,368,539>
+Iteration  90 : noeud <Zurich,270,636>
+Iteration  91 : noeud <Thun,410,625>
+Iteration  92 : noeud <Luzern,503,818>
+Iteration  93 : noeud <Aarau,538,861>
+Iteration  94 : noeud <Basel,552,854>
+Iteration  95 : noeud <Neuchatel,461,632>
+Iteration  96 : noeud <Fribourg,423,591>
+Iteration  97 : noeud <Basel,298,600>
+Iteration  98 : noeud <St-Gallen,300,767>
+Iteration  99 : noeud <Luzern,253,568>
+Iteration  100 : noeud <Aarau,235,558>
+Iteration  101 : noeud <Bern,383,554>
+Iteration  102 : noeud <Sion,405,565>
+Iteration  103 : noeud <Aarau,468,791>
+Iteration  104 : noeud <Bern,567,738>
+Iteration  105 : noeud <Zurich,469,835>
+Iteration  106 : noeud <Luzern,503,818>
+Iteration  107 : noeud <Bern,637,808>
+Iteration  108 : noeud <Zurich,486,852>
+Iteration  109 : noeud <Zurich,563,929>
+Iteration  110 : noeud <Bern,666,837>
+Iteration  111 : noeud <Bern,485,656>
+Iteration  112 : noeud <Lausanne,458,538>
+Iteration  113 : noeud <Bern,409,580>
+Iteration  114 : noeud <Lausanne,410,490>
+Iteration  115 : noeud <Zurich,361,727>
+Iteration  116 : noeud <Bern,464,635>
+Iteration  117 : noeud <Zurich,366,732>
+Iteration  118 : noeud <Aarau,271,594>
+Iteration  119 : noeud <Bern,370,541>
+Iteration  120 : noeud <Zurich,272,638>
+Iteration  121 : noeud <Luzern,253,568>
+Iteration  122 : noeud <Bern,387,558>
+Iteration  123 : noeud <Zurich,236,602>
+Iteration  124 : noeud <Luzern,251,566>
+Iteration  125 : noeud <Bern,385,557>
+Iteration  126 : noeud <Zurich,234,600>
+Iteration  127 : noeud <Thun,358,572>
+Iteration  128 : noeud <Luzern,450,765>
+Iteration  129 : noeud <Aarau,485,808>
+Iteration  130 : noeud <Basel,499,801>
+Iteration  131 : noeud <Neuchatel,409,579>
+Iteration  132 : noeud <Fribourg,371,539>
+Iteration  133 : noeud <Basel,298,600>
+Iteration  134 : noeud <St-Gallen,300,767>
+Iteration  135 : noeud <Luzern,253,568>
+Iteration  136 : noeud <Aarau,235,558>
+Iteration  137 : noeud <Bern,400,571>
+Iteration  138 : noeud <Sion,422,582>
+Iteration  139 : noeud <Aarau,485,808>
+Iteration  140 : noeud <Bern,584,755>
+Iteration  141 : noeud <Zurich,486,852>
+Iteration  142 : noeud <Luzern,520,835>
+Iteration  143 : noeud <Bern,654,826>
+Iteration  144 : noeud <Zurich,503,869>
+Iteration  145 : noeud <Zurich,580,946>
+Iteration  146 : noeud <Bern,683,854>
+Iteration  147 : noeud <Bern,502,673>
+Iteration  148 : noeud <Lausanne,475,556>
+Iteration  149 : noeud <Bern,426,597>
+Iteration  150 : noeud <Lausanne,427,508>
+Iteration  151 : noeud <Zurich,326,692>
+Iteration  152 : noeud <Bern,429,600>
+Iteration  153 : noeud <Zurich,330,696>
+Iteration  154 : noeud <Aarau,235,558>
+Iteration  155 : noeud <Bern,335,506>
+Iteration  156 : noeud <Zurich,236,602>
+Iteration  157 : noeud <Luzern,217,533>
+Iteration  158 : noeud <Bern,352,523>
+Iteration  159 : noeud <Zurich,200,567>
+Iteration  160 : noeud <Basel,564,866>
+Iteration  161 : noeud <St-Gallen,566,1033>
+Iteration  162 : noeud <Luzern,519,834>
+Iteration  163 : noeud <Aarau,501,824>
+Iteration  164 : noeud <Thun,628,843>
+Iteration  165 : noeud <Luzern,720,1036>
+Iteration  166 : noeud <Aarau,755,1079>
+Iteration  167 : noeud <Basel,770,1072>
+Iteration  168 : noeud <Neuchatel,679,849>
+Iteration  169 : noeud <Fribourg,641,809>
+Iteration  170 : noeud <Basel,568,870>
+Iteration  171 : noeud <St-Gallen,570,1038>
+Iteration  172 : noeud <Luzern,523,839>
+Iteration  173 : noeud <Aarau,506,829>
+Iteration  174 : noeud <Luzern,427,743>
+Iteration  175 : noeud <Bern,562,733>
+Iteration  176 : noeud <Zurich,410,777>
+Iteration  177 : noeud <Thun,534,749>
+Iteration  178 : noeud <Luzern,626,941>
+Iteration  179 : noeud <Aarau,661,984>
+Iteration  180 : noeud <Basel,676,978>
+Iteration  181 : noeud <Neuchatel,585,755>
+Iteration  182 : noeud <Fribourg,547,715>
+Iteration  183 : noeud <Basel,474,776>
+Iteration  184 : noeud <St-Gallen,476,944>
+Iteration  185 : noeud <Luzern,429,744>
+Iteration  186 : noeud <Aarau,411,735>
+Iteration  187 : noeud <Aarau,410,733>
+Iteration  188 : noeud <Bern,509,680>
+Iteration  189 : noeud <Zurich,410,777>
+Iteration  190 : noeud <Thun,551,766>
+Iteration  191 : noeud <Luzern,643,959>
+Iteration  192 : noeud <Aarau,678,1002>
+Iteration  193 : noeud <Basel,693,995>
+Iteration  194 : noeud <Neuchatel,602,773>
+Iteration  195 : noeud <Fribourg,564,732>
+Iteration  196 : noeud <Basel,438,741>
+Iteration  197 : noeud <St-Gallen,441,908>
+Iteration  198 : noeud <Luzern,394,709>
+Iteration  199 : noeud <Aarau,376,699>
+Iteration  200 : noeud <Thun,551,766>
+Iteration  201 : noeud <Luzern,643,959>
+Iteration  202 : noeud <Aarau,678,1002>
+Iteration  203 : noeud <Basel,693,995>
+Iteration  204 : noeud <Neuchatel,602,772>
+Iteration  205 : noeud <Fribourg,564,732>
+Iteration  206 : noeud <Thun,596,810>
+Iteration  207 : noeud <Lausanne,598,678>
+Iteration  208 : noeud <Luzern,629,944>
+Iteration  209 : noeud <Bern,763,935>
+Iteration  210 : noeud <Zurich,612,978>
+Iteration  211 : noeud <Thun,736,950>
+Iteration  212 : noeud <Luzern,828,1143>
+Iteration  213 : noeud <Aarau,863,1186>
+Iteration  214 : noeud <Basel,877,1179>
+Iteration  215 : noeud <Neuchatel,787,957>
+Iteration  216 : noeud <Fribourg,749,917>
+Iteration  217 : noeud <Basel,676,978>
+Iteration  218 : noeud <St-Gallen,678,1145>
+Iteration  219 : noeud <Luzern,631,946>
+Iteration  220 : noeud <Aarau,613,936>
+Iteration  221 : noeud <Aarau,664,987>
+Iteration  222 : noeud <Bern,763,935>
+Iteration  223 : noeud <Zurich,665,1031>
+Iteration  224 : noeud <Thun,806,1020>
+Iteration  225 : noeud <Luzern,898,1213>
+Iteration  226 : noeud <Aarau,933,1256>
+Iteration  227 : noeud <Basel,947,1249>
+Iteration  228 : noeud <Neuchatel,857,1027>
+Iteration  229 : noeud <Fribourg,819,987>
+Iteration  230 : noeud <Basel,693,995>
+Iteration  231 : noeud <St-Gallen,695,1163>
+Iteration  232 : noeud <Luzern,648,963>
+Iteration  233 : noeud <Aarau,630,954>
+Iteration  234 : noeud <Basel,770,1072>
+Iteration  235 : noeud <St-Gallen,772,1239>
+Iteration  236 : noeud <Luzern,725,1040>
+Iteration  237 : noeud <Aarau,707,1031>
+Iteration  238 : noeud <Thun,834,1049>
+Iteration  239 : noeud <Luzern,927,1242>
+Iteration  240 : noeud <Aarau,962,1285>
+Iteration  241 : noeud <Basel,976,1278>
+Iteration  242 : noeud <Neuchatel,885,1056>
+Iteration  243 : noeud <Fribourg,847,1015>
+Iteration  244 : noeud <Thun,653,868>
+Iteration  245 : noeud <Luzern,745,1061>
+Iteration  246 : noeud <Aarau,780,1104>
+Iteration  247 : noeud <Basel,795,1097>
+Iteration  248 : noeud <Neuchatel,704,874>
+Iteration  249 : noeud <Fribourg,666,834>
+Iteration  250 : noeud <Fribourg,640,808>
+Iteration  251 : noeud <Neuchatel,651,821>
+Iteration  252 : noeud <Sion,651,811>
+Solution a l'iteration  252 : noeud <Geneve,633,633>
+noeud <Geneve,633,633>
+
+Recherche optimisee avec BFS=
+Iteration  1 : noeud <Zurich,0,0>
+Iteration  2 : noeud <Basel,112,415>
+Iteration  3 : noeud <St-Gallen,115,582>
+Iteration  4 : noeud <Luzern,68,383>
+Iteration  5 : noeud <Aarau,50,373>
+Iteration  6 : noeud <Bern,328,499>
+Iteration  7 : noeud <Thun,403,617>
+Iteration  8 : noeud <Neuchatel,454,624>
+Iteration  9 : noeud <Fribourg,416,584>
+Iteration  10 : noeud <Sion,499,659>
+Iteration  11 : noeud <Lausanne,552,633>
+Solution a l'iteration  12 : noeud <Geneve,633,633>
+noeud <Geneve,633,633>
+
+Recherche avec A*=
+Iteration  2 : noeud <Zurich,0,0>
+Iteration  3 : noeud <Aarau,50,373>
+Iteration  4 : noeud <Luzern,68,383>
+Iteration  5 : noeud <Bern,234,405>
+Iteration  6 : noeud <Basel,112,415>
+Iteration  7 : noeud <Bern,251,422>
+Iteration  8 : noeud <Luzern,117,432>
+Iteration  9 : noeud <Bern,283,455>
+Iteration  10 : noeud <Aarau,135,458>
+Iteration  11 : noeud <Zurich,100,466>
+Iteration  12 : noeud <Aarau,150,474>
+Iteration  13 : noeud <Luzern,168,483>
+Iteration  14 : noeud <Fribourg,321,489>
+Iteration  15 : noeud <Lausanne,410,490>
+Solution a l'iteration  15 : noeud <Geneve,490,490>
+noeud <Geneve,490,490>
+
+Recherche optimisee avec A*=
+Iteration  1 : noeud <Zurich,0,0>
+Iteration  2 : noeud <Aarau,50,373>
+Iteration  3 : noeud <Luzern,68,383>
+Iteration  4 : noeud <Bern,234,405>
+Iteration  5 : noeud <Basel,112,415>
+Iteration  6 : noeud <Fribourg,321,489>
+Iteration  7 : noeud <Lausanne,410,490>
+Solution a l'iteration  8 : noeud <Geneve,490,490>
+noeud <Geneve,490,490>

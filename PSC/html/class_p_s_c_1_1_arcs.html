@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 6a : Satisfaction de contraintes: Référence de la classe PSC.Arcs</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Liste&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="hierarchy.html"><span>Hiérarchie&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="functions.html"><span>Membres&nbsp;de&nbsp;classe</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespace_p_s_c.html">PSC</a>.<a class="el" href="class_p_s_c_1_1_arcs.html">Arcs</a>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence de la classe PSC.Arcs</h1><!-- doxytag: class="PSC::Arcs" -->Classe gerant la liste des arcs ARCS.  
+<a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="class_p_s_c_1_1_arcs-members.html">Liste de tous les membres</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions membres publiques</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_arcs.html#05e5de97f604032d7e70e81d743d76dd">__init__</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur de la classe.  <a href="#05e5de97f604032d7e70e81d743d76dd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_arcs.html#dae59e9fcafc87c1433d4cace53a12d5">ajouteArc</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajoute un arc dans la liste des arcs.  <a href="#dae59e9fcafc87c1433d4cace53a12d5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_arcs.html#5a6e4ea4dfa8a90589ad6b444daf4b41">retourneArcs</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne tous les arcs unaires pour un noeud donne.  <a href="#5a6e4ea4dfa8a90589ad6b444daf4b41"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_arcs.html#538995c515540decf42373c8561a46d7">consistanceDesArcs</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Applique la consistance des arcs.  <a href="#538995c515540decf42373c8561a46d7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_arcs.html#e52ea4fce2cdf85ae5cc4f6300c75d09">retourneNbArcs</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne le nombre d'arcs.  <a href="#e52ea4fce2cdf85ae5cc4f6300c75d09"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_s_c_1_1_arcs.html#39826e2b96963be85ea1e5aee0f297bf">__repr__</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne une representation textuelle des donnees des arcs.  <a href="#39826e2b96963be85ea1e5aee0f297bf"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Classe gerant la liste des arcs ARCS. 
+<p>
+Cette classe assure la gestion de la liste ARCS. Pour chaque arc dans cette liste, il y a un contrainte binaire ou unaire. Pour assurer la consistance, cette classe propose des methodes pour acceder aux arcs, mais aussi pour appliquer la consistance des arcs a chacun. 
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00236">236</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+<hr><h2>Documentation des fonctions membres</h2>
+<a class="anchor" name="05e5de97f604032d7e70e81d743d76dd"></a><!-- doxytag: member="PSC::Arcs::__init__" ref="05e5de97f604032d7e70e81d743d76dd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Arcs.__init__           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructeur de la classe. 
+<p>
+Initialise la liste des arcs ARCS<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00244">244</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dae59e9fcafc87c1433d4cace53a12d5"></a><!-- doxytag: member="PSC::Arcs::ajouteArc" ref="dae59e9fcafc87c1433d4cace53a12d5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Arcs.ajouteArc           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>arc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Ajoute un arc dans la liste des arcs. 
+<p>
+Ajoute l'arc passe en parametre dans ARCS.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>arc</em>&nbsp;</td><td>l'arc que l'on cherche a ajouter </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00255">255</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5a6e4ea4dfa8a90589ad6b444daf4b41"></a><!-- doxytag: member="PSC::Arcs::retourneArcs" ref="5a6e4ea4dfa8a90589ad6b444daf4b41" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Arcs.retourneArcs           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>noeud</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne tous les arcs unaires pour un noeud donne. 
+<p>
+Cette methode retourne les arcs unaires. Pour cela, elle parcourt la liste des arcs et verifie si la contrainte de l'arc a le meme depart et la meme arrivee et si en plus elle est egale a celle du noeud passe en parametre <dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>noeud</em>&nbsp;</td><td>le noeud dont on cherche les arcs unaires lies </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une liste d'arcs unaires pour le noeud donne </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00267">267</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="538995c515540decf42373c8561a46d7"></a><!-- doxytag: member="PSC::Arcs::consistanceDesArcs" ref="538995c515540decf42373c8561a46d7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Arcs.consistanceDesArcs           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Applique la consistance des arcs. 
+<p>
+Cette methode est une application directe de l'algorithme REVISER vu en cours. Sa base theorique prend en compte le fait que pour une valeur v du domaine de xi, il se peut qu'il n'y ait pas de valeur dans le domaine qui soit consistante avec les contraintes en xi et xj. Dans ce cas, l'algorithme REVISER supprime v de xi. Cependant, l'appliquer une fois ne suffit pas. En effet, il se peut, comme cet algorithme modifie le domaine de xi, que cette modification entraine l'inconsistance avec d'autres contraintes etant valides dans le passe.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+<dl class="note" compact><dt><b>Note:</b></dt><dd>Regarder le chapitre 8.5.2 du cours pour de plus amples informations sur le fonctionnement de l'algorithme de Waltz et REVISER </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00289">289</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e52ea4fce2cdf85ae5cc4f6300c75d09"></a><!-- doxytag: member="PSC::Arcs::retourneNbArcs" ref="e52ea4fce2cdf85ae5cc4f6300c75d09" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Arcs.retourneNbArcs           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne le nombre d'arcs. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00300">300</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="39826e2b96963be85ea1e5aee0f297bf"></a><!-- doxytag: member="PSC::Arcs::__repr__" ref="39826e2b96963be85ea1e5aee0f297bf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def PSC.Arcs.__repr__           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne une representation textuelle des donnees des arcs. 
+<p>
+Retourne une representation des tous les arcs ajoutes dans la liste ARCS. Le format d'affichage est:<p>
+<div class="fragment"><pre class="fragment"> Arcs:
+   arc1.__repr__()
+   arc2.__repr__()
+   ...
+   arcn.__repr__()
+</pre></div><p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>reference automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une chaine de caracteres contenant une representation de la classe </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="_p_s_c_8py-source.html#l00319">319</a> du fichier <a class="el" href="_p_s_c_8py-source.html">PSC.py</a>.</p>
+
+</div>
+</div><p>
+<hr>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
+<li><a class="el" href="_p_s_c_8py-source.html">PSC.py</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Fri May 16 12:18:26 2008 pour Lab 6a : Satisfaction de contraintes par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

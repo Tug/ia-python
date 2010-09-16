@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 7 : Planification avec PSC:  Fichier source de libPlan.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>libPlan.py</h1><a href="lib_plan_8py.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespacelib_plan.html">00001</a> <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00002"></a>00002 <span class="keywordflow">print</span> <span class="stringliteral">"Chargement de la librairie de definition de problemes de planification"</span>
+<a name="l00003"></a>00003 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 3.0  date: 10/06/2008 modified by Thomas Leaute"</span>
+<a name="l00004"></a>00004 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 2.1  date: 28/06/2007 modified by Thomas Leaute"</span>
+<a name="l00005"></a>00005 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 2.0  date: 03/05/2007 modified by Thomas Leaute"</span>
+<a name="l00006"></a>00006 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.1  date: 02/05/2007 modified by Thomas Leaute"</span>
+<a name="l00007"></a>00007 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.0  date: 05/03/2007 created by Vincent Schickel-Zuber"</span>
+<a name="l00008"></a>00008 <span class="keywordflow">print</span> <span class="stringliteral">"\t@author: vincent.schickel-zuber@epfl.ch date: 05/03/2007"</span>
+<a name="l00009"></a>00009 <span class="keywordflow">print</span> <span class="stringliteral">"\t@copyright: EPFL-IC-IIF-LIA 2007"</span>
+<a name="l00010"></a>00010 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00011"></a>00011 <span class="keyword">import</span> libPSC
+<a name="l00012"></a>00012 <span class="keyword">import</span> PSC
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 <span class="comment">## Un operateur de planification </span>
+<a name="l00015"></a><a class="code" href="classlib_plan_1_1_operateur.html">00015</a> <span class="keyword">class </span><a class="code" href="classlib_plan_1_1_operateur.html" title="Un operateur de planification.">Operateur</a>:
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017         <span class="comment">## \var nom </span>
+<a name="l00018"></a>00018         <span class="comment"># Le nom de l'operateur </span>
+<a name="l00019"></a>00019         
+<a name="l00020"></a>00020         <span class="comment">## \var preconditions </span>
+<a name="l00021"></a>00021         <span class="comment"># Liste des preconditions de l'operateur</span>
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023         <span class="comment">## \var postconditions </span>
+<a name="l00024"></a>00024         <span class="comment"># Liste des postconditions de l'operateur (qui doivent etre vraies apres son execution) </span>
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026         <span class="comment">##Constructeur</span>
+<a name="l00027"></a>00027         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00028"></a>00028         <span class="comment"># @param[in] str Chaine de caracteres representant l'operateur </span>
+<a name="l00029"></a>00029         <span class="comment"># @param[in] pre Liste de preconditions de type Proposition</span>
+<a name="l00030"></a>00030         <span class="comment"># @param[in] post Liste de postconditions de type Proposition</span>
+<a name="l00031"></a><a class="code" href="classlib_plan_1_1_operateur.html#be919fb05006a86e0dd3db5d1460399e">00031</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_operateur.html#be919fb05006a86e0dd3db5d1460399e" title="Constructeur.">__init__</a>(self, str, pre, post):
+<a name="l00032"></a><a class="code" href="classlib_plan_1_1_operateur.html#2964882fe703476c7448c38992193acc">00032</a>                 self.<a class="code" href="classlib_plan_1_1_operateur.html#2964882fe703476c7448c38992193acc" title="Le nom de l&amp;#39;operateur.">nom</a> = str
+<a name="l00033"></a><a class="code" href="classlib_plan_1_1_operateur.html#6f86023075e718230f6770f4f402705a">00033</a>                 self.<a class="code" href="classlib_plan_1_1_operateur.html#6f86023075e718230f6770f4f402705a" title="Liste des preconditions de l&amp;#39;operateur.">preconditions</a> = pre
+<a name="l00034"></a><a class="code" href="classlib_plan_1_1_operateur.html#6041fcb0f6bcc335c5db40faaf77952c">00034</a>                 self.<a class="code" href="classlib_plan_1_1_operateur.html#6041fcb0f6bcc335c5db40faaf77952c" title="Liste des postconditions de l&amp;#39;operateur (qui doivent etre vraies apres son execution)...">postconditions</a> = post
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036         <span class="comment">## Retourne si la proposition passee en parametre est une precondition</span>
+<a name="l00037"></a>00037         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00038"></a>00038         <span class="comment"># @param[in] prop Proposition dont on veut savoir si elle est une precondition </span>
+<a name="l00039"></a><a class="code" href="classlib_plan_1_1_operateur.html#b57df2a32a20a15cf8753d87ef2baf89">00039</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_operateur.html#b57df2a32a20a15cf8753d87ef2baf89" title="Retourne si la proposition passee en parametre est une precondition.">aPourPrecondition</a> (self, prop):
+<a name="l00040"></a>00040                 <span class="keywordflow">return</span> prop <span class="keywordflow">in</span> self.<a class="code" href="classlib_plan_1_1_operateur.html#6f86023075e718230f6770f4f402705a" title="Liste des preconditions de l&amp;#39;operateur.">preconditions</a>
+<a name="l00041"></a>00041         
+<a name="l00042"></a>00042         <span class="comment">## Retourne la liste des preconditions</span>
+<a name="l00043"></a>00043         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00044"></a><a class="code" href="classlib_plan_1_1_operateur.html#0f6e4a480c9a0466d2949358823211d0">00044</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_operateur.html#0f6e4a480c9a0466d2949358823211d0" title="Retourne la liste des preconditions.">retournePreconditions</a> (self):
+<a name="l00045"></a>00045                 <span class="keywordflow">return</span> self.<a class="code" href="classlib_plan_1_1_operateur.html#6f86023075e718230f6770f4f402705a" title="Liste des preconditions de l&amp;#39;operateur.">preconditions</a>
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047         <span class="comment">## Retourne si la proposition passee en parametre est une postcondition</span>
+<a name="l00048"></a>00048         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00049"></a>00049         <span class="comment"># @param[in] prop Proposition dont on veut savoir si elle est une postcondition </span>
+<a name="l00050"></a><a class="code" href="classlib_plan_1_1_operateur.html#db2ee4d25b44c79afdcb00e244b03994">00050</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_operateur.html#db2ee4d25b44c79afdcb00e244b03994" title="Retourne si la proposition passee en parametre est une postcondition.">aPourPostcondition</a> (self, prop):
+<a name="l00051"></a>00051                 <span class="keywordflow">return</span> prop <span class="keywordflow">in</span> self.<a class="code" href="classlib_plan_1_1_operateur.html#6041fcb0f6bcc335c5db40faaf77952c" title="Liste des postconditions de l&amp;#39;operateur (qui doivent etre vraies apres son execution)...">postconditions</a>
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053         <span class="comment">## Retourne la liste des postconditions</span>
+<a name="l00054"></a>00054         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00055"></a><a class="code" href="classlib_plan_1_1_operateur.html#d324849ff99ba0b0e76668398db0121f">00055</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_operateur.html#d324849ff99ba0b0e76668398db0121f" title="Retourne la liste des postconditions.">retournePostconditions</a> (self):
+<a name="l00056"></a>00056                 <span class="keywordflow">return</span> self.<a class="code" href="classlib_plan_1_1_operateur.html#6041fcb0f6bcc335c5db40faaf77952c" title="Liste des postconditions de l&amp;#39;operateur (qui doivent etre vraies apres son execution)...">postconditions</a>
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058         <span class="comment">## retourne une representation en String</span>
+<a name="l00059"></a>00059         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode   </span>
+<a name="l00060"></a><a class="code" href="classlib_plan_1_1_operateur.html#7f846cc8e6a6d07b44e843a04db28577">00060</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_operateur.html#7f846cc8e6a6d07b44e843a04db28577" title="retourne une representation en String">__repr__</a>(self):
+<a name="l00061"></a>00061                 <span class="keywordflow">return</span> self.<a class="code" href="classlib_plan_1_1_operateur.html#2964882fe703476c7448c38992193acc" title="Le nom de l&amp;#39;operateur.">nom</a>
+<a name="l00062"></a>00062         
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 <span class="comment">## Cette classe represente un probleme de planification, avec des propositions, des operateurs, des conditions initiales et finales, et des mutex de propositions</span>
+<a name="l00065"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html">00065</a> <span class="keyword">class </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html" title="Cette classe represente un probleme de planification, avec des propositions, des...">ProblemeDePlanification</a>: 
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="comment">## \var operateurs </span>
+<a name="l00068"></a>00068         <span class="comment"># Liste d'operateurs de planification</span>
+<a name="l00069"></a>00069         
+<a name="l00070"></a>00070         <span class="comment">## \var propositions </span>
+<a name="l00071"></a>00071         <span class="comment"># Liste de propositions de planification</span>
+<a name="l00072"></a>00072         
+<a name="l00073"></a>00073         <span class="comment">## \var condIni </span>
+<a name="l00074"></a>00074         <span class="comment"># Liste de conditions initiales de la forme [ [prop1, bool1], [prop2, bool2], ... ]</span>
+<a name="l00075"></a>00075         
+<a name="l00076"></a>00076         <span class="comment">## \var condFin </span>
+<a name="l00077"></a>00077         <span class="comment"># Liste de conditions finales de la forme [ [prop1, bool1], [prop2, bool2], ... ]</span>
+<a name="l00078"></a>00078         
+<a name="l00079"></a>00079         <span class="comment">## \var mutexDeProp </span>
+<a name="l00080"></a>00080         <span class="comment"># Liste des mutex entre paires de propositions </span>
+<a name="l00081"></a>00081         
+<a name="l00082"></a>00082         <span class="comment">## \var mutexDOperateurs </span>
+<a name="l00083"></a>00083         <span class="comment"># Liste des mutex entre paires d'operateurs  </span>
+<a name="l00084"></a>00084         
+<a name="l00085"></a>00085         <span class="comment">## Constructeur</span>
+<a name="l00086"></a>00086         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00087"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#92eee9404f7216de5d089057da2b5ad8">00087</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#92eee9404f7216de5d089057da2b5ad8" title="Constructeur.">__init__</a> (self):
+<a name="l00088"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#aa2a5cdb874054b996930a4b05328db8">00088</a>                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#aa2a5cdb874054b996930a4b05328db8" title="Liste d&amp;#39;operateurs de planification.">operateurs</a> = []
+<a name="l00089"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#c3fbc7ff4fb2741f69b6695660d6a301">00089</a>                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#c3fbc7ff4fb2741f69b6695660d6a301" title="Liste de propositions de planification.">propositions</a> = []
+<a name="l00090"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#1453fb9101d4ac3ea9ea15c9f36ebaa5">00090</a>                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#1453fb9101d4ac3ea9ea15c9f36ebaa5" title="Liste de conditions initiales de la forme [ [prop1, bool1], [prop2, bool2], .">condIni</a> = []
+<a name="l00091"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#9c6e68e8fa7b3df152dac07922179bbc">00091</a>                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#9c6e68e8fa7b3df152dac07922179bbc" title="Liste de conditions finales de la forme [ [prop1, bool1], [prop2, bool2], .">condFin</a> = []
+<a name="l00092"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#6d569f7587a9e77fb564792bd7b196e5">00092</a>                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#6d569f7587a9e77fb564792bd7b196e5" title="Liste des mutex entre paires de propositions.">mutexDeProp</a> = []
+<a name="l00093"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#96f3a6f83acd1dbfe2e5a28a66f64bff">00093</a>                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#96f3a6f83acd1dbfe2e5a28a66f64bff" title="Liste des mutex entre paires d&amp;#39;operateurs.">mutexDOperateurs</a> = []
+<a name="l00094"></a>00094         
+<a name="l00095"></a>00095         <span class="comment">## Ajoute un operateur de planification</span>
+<a name="l00096"></a>00096         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00097"></a>00097         <span class="comment"># @param[in] op Operateur a ajouter</span>
+<a name="l00098"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#26d48f7e713399f3173fcf269efd3765">00098</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#26d48f7e713399f3173fcf269efd3765" title="Ajoute un operateur de planification.">ajouteOperateur</a> (self, op):
+<a name="l00099"></a>00099                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#aa2a5cdb874054b996930a4b05328db8" title="Liste d&amp;#39;operateurs de planification.">operateurs</a>.append(op)
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         <span class="comment">## Retourne la liste d'operateurs</span>
+<a name="l00102"></a>00102         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00103"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#5315db66ccbae363791c5b1fd6daedc3">00103</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#5315db66ccbae363791c5b1fd6daedc3" title="Retourne la liste d&amp;#39;operateurs.">retourneOperateurs</a> (self):
+<a name="l00104"></a>00104                 <span class="keywordflow">return</span> self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#aa2a5cdb874054b996930a4b05328db8" title="Liste d&amp;#39;operateurs de planification.">operateurs</a> 
+<a name="l00105"></a>00105                 
+<a name="l00106"></a>00106         <span class="comment">## Ajoute une proposition de planification</span>
+<a name="l00107"></a>00107         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00108"></a>00108         <span class="comment"># @param[in] prop Proposition a ajouter</span>
+<a name="l00109"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#22c159e0b784a7d3e0191bd438c21c71">00109</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#22c159e0b784a7d3e0191bd438c21c71" title="Ajoute une proposition de planification.">ajouteProposition</a> (self, prop):
+<a name="l00110"></a>00110                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#c3fbc7ff4fb2741f69b6695660d6a301" title="Liste de propositions de planification.">propositions</a>.append(prop)
+<a name="l00111"></a>00111         
+<a name="l00112"></a>00112         <span class="comment">## Retourne la liste de propositions</span>
+<a name="l00113"></a>00113         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00114"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#c46b0d2c5687d54cf279a5f2c406f753">00114</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#c46b0d2c5687d54cf279a5f2c406f753" title="Retourne la liste de propositions.">retournePropositions</a> (self):
+<a name="l00115"></a>00115                 <span class="keywordflow">return</span> self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#c3fbc7ff4fb2741f69b6695660d6a301" title="Liste de propositions de planification.">propositions</a> 
+<a name="l00116"></a>00116                 
+<a name="l00117"></a>00117         <span class="comment">## Ajoute une condition initiale</span>
+<a name="l00118"></a>00118         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00119"></a>00119         <span class="comment"># @param[in] prop Proposition sur laquelle porte la condition initiale</span>
+<a name="l00120"></a>00120         <span class="comment"># @param[in] bool Valeur booleenne que doit prendre la Proposition au debut du plan</span>
+<a name="l00121"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#ce3ecf4ff67be0ea45c66b8dda3d432d">00121</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#ce3ecf4ff67be0ea45c66b8dda3d432d" title="Ajoute une condition initiale.">ajouteConditionInitiale</a> (self, prop, bool):
+<a name="l00122"></a>00122                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#1453fb9101d4ac3ea9ea15c9f36ebaa5" title="Liste de conditions initiales de la forme [ [prop1, bool1], [prop2, bool2], .">condIni</a>.append([prop, bool])
+<a name="l00123"></a>00123         
+<a name="l00124"></a>00124         <span class="comment">## Retourne les conditions initiales </span>
+<a name="l00125"></a>00125         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00126"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#9b31191acb1ab6673438cf2a1d3a9817">00126</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#9b31191acb1ab6673438cf2a1d3a9817" title="Retourne les conditions initiales.">retourneConditionsInitiales</a> (self):
+<a name="l00127"></a>00127                 <span class="keywordflow">return</span> self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#1453fb9101d4ac3ea9ea15c9f36ebaa5" title="Liste de conditions initiales de la forme [ [prop1, bool1], [prop2, bool2], .">condIni</a>
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129         <span class="comment">## Ajoute une condition finale</span>
+<a name="l00130"></a>00130         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00131"></a>00131         <span class="comment"># @param[in] prop Proposition sur laquelle porte la condition finale</span>
+<a name="l00132"></a>00132         <span class="comment"># @param[in] bool Valeur booleenne que doit prendre la Proposition a la fin du plan</span>
+<a name="l00133"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#c6448120fed4af3eba30feb48e0e737c">00133</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#c6448120fed4af3eba30feb48e0e737c" title="Ajoute une condition finale.">ajouteConditionFinale</a> (self, prop, bool):
+<a name="l00134"></a>00134                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#9c6e68e8fa7b3df152dac07922179bbc" title="Liste de conditions finales de la forme [ [prop1, bool1], [prop2, bool2], .">condFin</a>.append([prop, bool])
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136         <span class="comment">## Retourne les conditions finales </span>
+<a name="l00137"></a>00137         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00138"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#7609f2493bc54590f99e5a7501ac3403">00138</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#7609f2493bc54590f99e5a7501ac3403" title="Retourne les conditions finales.">retourneConditionsFinales</a> (self):
+<a name="l00139"></a>00139                 <span class="keywordflow">return</span> self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#9c6e68e8fa7b3df152dac07922179bbc" title="Liste de conditions finales de la forme [ [prop1, bool1], [prop2, bool2], .">condFin</a>
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141         <span class="comment">## Ajoute un mutex entre deux propositions</span>
+<a name="l00142"></a>00142         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00143"></a>00143         <span class="comment"># @param[in] prop1 Premiere Proposition</span>
+<a name="l00144"></a>00144         <span class="comment"># @param[in] prop2 Deuxieme Proposition</span>
+<a name="l00145"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#48ce8ed96b487e4e2fe5db93b18263d7">00145</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#48ce8ed96b487e4e2fe5db93b18263d7" title="Ajoute un mutex entre deux propositions.">ajouteMutexDePropositions</a> (self, prop1, prop2): 
+<a name="l00146"></a>00146                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#6d569f7587a9e77fb564792bd7b196e5" title="Liste des mutex entre paires de propositions.">mutexDeProp</a>.append([prop1, prop2])
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148         <span class="comment">## Retourne les mutex entre paires de propositions</span>
+<a name="l00149"></a>00149         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00150"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#c2add1be4be895670ea26654e4888748">00150</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#c2add1be4be895670ea26654e4888748" title="Retourne les mutex entre paires de propositions.">retourneMutexDePropositions</a> (self): 
+<a name="l00151"></a>00151                 <span class="keywordflow">return</span> self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#6d569f7587a9e77fb564792bd7b196e5" title="Liste des mutex entre paires de propositions.">mutexDeProp</a>
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153         <span class="comment">## Ajoute un mutex entre deux operateurs</span>
+<a name="l00154"></a>00154         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00155"></a>00155         <span class="comment"># @param[in] op1 Premier Operateur</span>
+<a name="l00156"></a>00156         <span class="comment"># @param[in] op2 Deuxieme Operateur</span>
+<a name="l00157"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#33c64b55523c9b3477b9598d2582598d">00157</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#33c64b55523c9b3477b9598d2582598d" title="Ajoute un mutex entre deux operateurs.">ajouteMutexDOperateurs</a> (self, op1, op2): 
+<a name="l00158"></a>00158                 self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#96f3a6f83acd1dbfe2e5a28a66f64bff" title="Liste des mutex entre paires d&amp;#39;operateurs.">mutexDOperateurs</a>.append([op1, op2])
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160         <span class="comment">## Retourne les mutex entre paires d'operateurs</span>
+<a name="l00161"></a>00161         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00162"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#e19d0c90d21c6c23c758f00dd57869b2">00162</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#e19d0c90d21c6c23c758f00dd57869b2" title="Retourne les mutex entre paires d&amp;#39;operateurs.">retourneMutexDOperateurs</a> (self): 
+<a name="l00163"></a>00163                 <span class="keywordflow">return</span> self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#96f3a6f83acd1dbfe2e5a28a66f64bff" title="Liste des mutex entre paires d&amp;#39;operateurs.">mutexDOperateurs</a>
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165         <span class="comment">## Affiche la liste des propositions et des operateurs, les conditions initiales et finales, et les mutex de propositions</span>
+<a name="l00166"></a>00166         <span class="comment"># @param[in] self reference automatique sur l'objet qui execute cette methode</span>
+<a name="l00167"></a><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#e6a9ddb732a26783bec0af6efa4883b6">00167</a>         <span class="keyword">def </span><a class="code" href="classlib_plan_1_1_probleme_de_planification.html#e6a9ddb732a26783bec0af6efa4883b6" title="Affiche la liste des propositions et des operateurs, les conditions initiales et...">__repr__</a>(self):
+<a name="l00168"></a>00168                 out = <span class="stringliteral">"\nProbleme de planification :\n"</span>
+<a name="l00169"></a>00169                 out += <span class="stringliteral">"Propositions : "</span> + str(self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#c3fbc7ff4fb2741f69b6695660d6a301" title="Liste de propositions de planification.">propositions</a>) + <span class="stringliteral">"\n"</span>
+<a name="l00170"></a>00170                 out += <span class="stringliteral">"Operateurs :"</span> + str(self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#aa2a5cdb874054b996930a4b05328db8" title="Liste d&amp;#39;operateurs de planification.">operateurs</a>) + <span class="stringliteral">"\n"</span>
+<a name="l00171"></a>00171                 out += <span class="stringliteral">"Conditions initiales :"</span> + str(self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#1453fb9101d4ac3ea9ea15c9f36ebaa5" title="Liste de conditions initiales de la forme [ [prop1, bool1], [prop2, bool2], .">condIni</a>) + <span class="stringliteral">"\n"</span>
+<a name="l00172"></a>00172                 out += <span class="stringliteral">"Conditions finales :"</span> + str(self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#9c6e68e8fa7b3df152dac07922179bbc" title="Liste de conditions finales de la forme [ [prop1, bool1], [prop2, bool2], .">condFin</a>) + <span class="stringliteral">"\n"</span>
+<a name="l00173"></a>00173                 out += <span class="stringliteral">"Mutex de propositions :"</span> + str(self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#6d569f7587a9e77fb564792bd7b196e5" title="Liste des mutex entre paires de propositions.">mutexDeProp</a>) + <span class="stringliteral">"\n"</span>
+<a name="l00174"></a>00174                 out += <span class="stringliteral">"Mutex d'operateurs :"</span> + str(self.<a class="code" href="classlib_plan_1_1_probleme_de_planification.html#96f3a6f83acd1dbfe2e5a28a66f64bff" title="Liste des mutex entre paires d&amp;#39;operateurs.">mutexDOperateurs</a>) + <span class="stringliteral">"\n"</span>
+<a name="l00175"></a>00175                 <span class="keywordflow">return</span> out
+<a name="l00176"></a>00176         
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:29 2008 pour Lab 7 : Planification avec PSC par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

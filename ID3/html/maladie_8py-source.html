@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 8 : ID3:  Fichier source de maladie.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>maladie.py</h1><a href="maladie_8py.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespacemaladie.html">00001</a> <span class="comment"># -*- coding: cp1252 -*-</span>
+<a name="l00002"></a>00002 <span class="comment">## \file maladie.py</span>
+<a name="l00003"></a>00003 <span class="comment">## \brief Maladies chez l'enfant</span>
+<a name="l00004"></a>00004 <span class="comment">## \package maladie</span>
+<a name="l00005"></a>00005 <span class="comment">## \brief Maladies chez l'enfant</span>
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="comment"># initialise ID3</span>
+<a name="l00009"></a>00009 initID3( [[<span class="stringliteral">'angine-erythemateuse'</span>,<span class="stringliteral">'elevee'</span>,<span class="stringliteral">'gonflees'</span>,    <span class="stringliteral">'oui'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'normale'</span>,<span class="stringliteral">'normales'</span>,     <span class="stringliteral">'normaux'</span>],
+<a name="l00010"></a>00010           [<span class="stringliteral">'angine-pultacee'</span>,     <span class="stringliteral">'elevee'</span>,<span class="stringliteral">'points-blancs'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'normale'</span>,<span class="stringliteral">'normales'</span>,     <span class="stringliteral">'normaux'</span>],
+<a name="l00011"></a>00011           [<span class="stringliteral">'angine-diphterique'</span>,  <span class="stringliteral">'legere'</span>,<span class="stringliteral">'enduit-blanc'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'normale'</span>,<span class="stringliteral">'normales'</span>,     <span class="stringliteral">'normaux'</span>],
+<a name="l00012"></a>00012           [<span class="stringliteral">'appendicite'</span>,         <span class="stringliteral">'legere'</span>,<span class="stringliteral">'normales'</span>,    <span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'normale'</span>,<span class="stringliteral">'normales'</span>,     <span class="stringliteral">'normaux'</span>],
+<a name="l00013"></a>00013           [<span class="stringliteral">'bronchite'</span>,           <span class="stringliteral">'legere'</span>,<span class="stringliteral">'normales'</span>,    <span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'genee'</span>,   <span class="stringliteral">'normales'</span>,     <span class="stringliteral">'normaux'</span>],
+<a name="l00014"></a>00014           [<span class="stringliteral">'coqueluche'</span>,          <span class="stringliteral">'legere'</span>,<span class="stringliteral">'normales'</span>,    <span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'genee'</span>,   <span class="stringliteral">'normales'</span>,     <span class="stringliteral">'normaux'</span>],
+<a name="l00015"></a>00015           [<span class="stringliteral">'pneumonie'</span>,           <span class="stringliteral">'elevee'</span>,<span class="stringliteral">'normales'</span>,    <span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'rapide'</span>, <span class="stringliteral">'rouges'</span>,       <span class="stringliteral">'normaux'</span>],
+<a name="l00016"></a>00016           [<span class="stringliteral">'rougeole'</span>,            <span class="stringliteral">'legere'</span>,<span class="stringliteral">'normales'</span>,    <span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'normale'</span>,<span class="stringliteral">'normales'</span>,     <span class="stringliteral">'larmoyants'</span>],
+<a name="l00017"></a>00017           [<span class="stringliteral">'rougeole'</span>,            <span class="stringliteral">'legere'</span>,<span class="stringliteral">'normales'</span>,    <span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'oui'</span>,<span class="stringliteral">'normale'</span>,<span class="stringliteral">'taches-rouges'</span>,<span class="stringliteral">'larmoyants'</span>],
+<a name="l00018"></a>00018           [<span class="stringliteral">'rubeole'</span>,             <span class="stringliteral">'legere'</span>,<span class="stringliteral">'normales'</span>,    <span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'normale'</span>,<span class="stringliteral">'taches-rouges'</span>,<span class="stringliteral">'normaux'</span>],
+<a name="l00019"></a>00019           [<span class="stringliteral">'rubeole'</span>,             <span class="stringliteral">'non'</span>,   <span class="stringliteral">'normales'</span>,    <span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'normale'</span>,<span class="stringliteral">'taches-rouges'</span>,<span class="stringliteral">'normaux'</span>],
+<a name="l00020"></a>00020           [<span class="stringliteral">'rubeole'</span>,             <span class="stringliteral">'non'</span>,   <span class="stringliteral">'normales'</span>,    <span class="stringliteral">'oui'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'normale'</span>,<span class="stringliteral">'normales'</span>,     <span class="stringliteral">'normaux'</span>]],
+<a name="l00021"></a>00021          [[<span class="stringliteral">'maladies'</span>,<span class="stringliteral">'angine-erythemateuse'</span>,<span class="stringliteral">'angine-pultacee'</span>,<span class="stringliteral">'angine-diphterique'</span>,<span class="stringliteral">'appendicite'</span>,<span class="stringliteral">'bronchite'</span>,<span class="stringliteral">'coqueluche'</span>,
+<a name="l00022"></a>00022            <span class="stringliteral">'pneumonie'</span>,<span class="stringliteral">'rougeole'</span>,<span class="stringliteral">'rubeole'</span>],
+<a name="l00023"></a>00023           [<span class="stringliteral">'fievre'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'legere'</span>,<span class="stringliteral">'elevee'</span>],
+<a name="l00024"></a>00024           [<span class="stringliteral">'amygdales'</span>,<span class="stringliteral">'normales'</span>,<span class="stringliteral">'gonflees'</span>, <span class="stringliteral">'points-blancs'</span>, <span class="stringliteral">'enduit-blanc'</span>],
+<a name="l00025"></a>00025           [<span class="stringliteral">'ganglions'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>],
+<a name="l00026"></a>00026           [<span class="stringliteral">'gene-a-avaler'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>],
+<a name="l00027"></a>00027           [<span class="stringliteral">'mal-au-ventre'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>],
+<a name="l00028"></a>00028           [<span class="stringliteral">'toux'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>],
+<a name="l00029"></a>00029           [<span class="stringliteral">'rhume'</span>,<span class="stringliteral">'non'</span>,<span class="stringliteral">'oui'</span>],
+<a name="l00030"></a>00030           [<span class="stringliteral">'respiration'</span>,<span class="stringliteral">'normale'</span>,<span class="stringliteral">'genee'</span>,<span class="stringliteral">'rapide'</span>],
+<a name="l00031"></a>00031           [<span class="stringliteral">'joues'</span>,<span class="stringliteral">'normales'</span>,<span class="stringliteral">'rouges'</span>,<span class="stringliteral">'taches-rouges'</span>],
+<a name="l00032"></a>00032           [<span class="stringliteral">'yeux'</span>,<span class="stringliteral">'normaux'</span>,<span class="stringliteral">'larmoyants'</span>]]  )
+<a name="l00033"></a>00033     
+<a name="l00034"></a>00034 <span class="comment"># construit l'arbre de d�cision</span>
+<a name="l00035"></a>00035 construitArbreDecision()
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:34 2008 pour Lab 8 : ID3 par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

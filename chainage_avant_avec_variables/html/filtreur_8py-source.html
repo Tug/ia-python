@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 3 : Moteur d&#39;inf&eacute;rence &agrave; cha&icirc;nage avant avec variables:  Fichier source de filtreur.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>filtreur.py</h1><a href="filtreur_8py.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">## \file filtreur.py</span>
+<a name="l00002"></a>00002 <span class="comment">## \brief Implementation de l'algorithme du filtrage.</span>
+<a name="l00003"></a>00003 <span class="comment">## \package match</span>
+<a name="l00004"></a>00004 <span class="comment">##</span>
+<a name="l00005"></a>00005 <span class="comment">## Implementation de l'algorithme du pattern matching avec un filtrage simple. </span>
+<a name="l00006"></a>00006 <span class="comment">## Ce type de filtrage ne supporte que les variables d'un cote.</span>
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00009"></a>00009 <span class="keywordflow">print</span> <span class="stringliteral">"Filtreur"</span>
+<a name="l00010"></a>00010 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.5  date: 07/03/2008 modified by Thomas Leaute"</span>
+<a name="l00011"></a>00011 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.4  date: 27/06/2007 modified by Thomas Leaute"</span>
+<a name="l00012"></a>00012 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.3  date: 20/02/2007 modified by Vincent Schickel"</span>
+<a name="l00013"></a>00013 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.2  date: 01/07/2007 modified by Bruno Alves"</span>
+<a name="l00014"></a>00014 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.1  date: 10/03/2006 modified by Vincent Schickel"</span>
+<a name="l00015"></a>00015 <span class="keywordflow">print</span> <span class="stringliteral">"\t@author: vincent.schickel-zuber@epfl.ch date: 9/2/2006"</span>
+<a name="l00016"></a>00016 <span class="keywordflow">print</span> <span class="stringliteral">"\t@copyright: EPFL-IC-IIF-LIA 2006-2007"</span>
+<a name="l00017"></a>00017 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="comment">## La variable globale utilisee pour signifier un ECHEC</span>
+<a name="l00020"></a>00020 echec=<span class="stringliteral">'ECHEC'</span>
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="comment">## Teste si le symbole passe en parametre est un atome</span>
+<a name="l00024"></a>00024 <span class="comment"># </span>
+<a name="l00025"></a>00025 <span class="comment"># Cette fonction teste si le symbole passe en parametre est</span>
+<a name="l00026"></a>00026 <span class="comment"># du meme type qu'un atome ( c-a-d ' ' )</span>
+<a name="l00027"></a>00027 <span class="comment">#</span>
+<a name="l00028"></a>00028 <span class="comment"># @param[in] x le symbole a tester</span>
+<a name="l00029"></a>00029 <span class="comment"># @return True si le symbole x est un atome, False sinon</span>
+<a name="l00030"></a>00030 <span class="keyword">def </span><a class="code" href="namespaceunificateur.html#0c73abe9f5954485e036359b081d46a8" title="Teste si le symbole passe en parametre est un atome.">testeAtome</a>( x ):
+<a name="l00031"></a>00031         <span class="keywordflow">return</span> type(x)==type(<span class="stringliteral">''</span>)
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="comment">## Teste si le symbole passe en parametre est une substitution</span>
+<a name="l00035"></a>00035 <span class="comment">#</span>
+<a name="l00036"></a>00036 <span class="comment"># Cette fonction teste si le symbole passe en parametre est du</span>
+<a name="l00037"></a>00037 <span class="comment"># meme type qu'un dictionnaire ( c-a-d {} ). Une substitution</span>
+<a name="l00038"></a>00038 <span class="comment"># est de la forme {'?x':'oiseau'}.</span>
+<a name="l00039"></a>00039 <span class="comment">#</span>
+<a name="l00040"></a>00040 <span class="comment"># @param[in] x le symbole a tester</span>
+<a name="l00041"></a>00041 <span class="comment"># @return True si le symbole x est une substitution, False sinon</span>
+<a name="l00042"></a>00042 <span class="keyword">def </span><a class="code" href="namespaceunificateur.html#dc73e458e35e1e3357b4f8cb5949006c" title="Teste si le symbole passe en parametre est une substitution.">testeSubstitution</a>( x ):
+<a name="l00043"></a>00043         <span class="keywordflow">return</span> type(x)==type({})
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="comment">## Teste si le symbole passe en parametre est une variable</span>
+<a name="l00047"></a>00047 <span class="comment">#</span>
+<a name="l00048"></a>00048 <span class="comment"># Cette fonction teste si le symbole x passe en parametre est</span>
+<a name="l00049"></a>00049 <span class="comment"># un atome et qu'il commence par le caractere ?. Une variable</span>
+<a name="l00050"></a>00050 <span class="comment"># est codee ainsi: ?x</span>
+<a name="l00051"></a>00051 <span class="comment">#</span>
+<a name="l00052"></a>00052 <span class="comment"># @param[in] x le symbole a tester</span>
+<a name="l00053"></a>00053 <span class="comment"># @return True si le symbole x est une variable</span>
+<a name="l00054"></a>00054 <span class="keyword">def </span><a class="code" href="namespaceunificateur.html#d26305815a5a4df9c119470968aee99e" title="Teste si le symbole passe en parametre est une variable.">testeVariable</a>( x ):
+<a name="l00055"></a>00055         <span class="keywordflow">return</span> (testeAtome(x) <span class="keywordflow">and</span> x[0]==<span class="stringliteral">'?'</span>)
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 <span class="comment">## Retourne une substitution entre une variable et une expression</span>
+<a name="l00059"></a>00059 <span class="comment">#</span>
+<a name="l00060"></a>00060 <span class="comment"># Construit une substitution, en associant une variable de la forme ?x</span>
+<a name="l00061"></a>00061 <span class="comment"># avec une expression, qui peut etre d'un type quelconque sans variable.</span>
+<a name="l00062"></a>00062 <span class="comment">#</span>
+<a name="l00063"></a>00063 <span class="comment"># @param[in] variable la variable a substituer</span>
+<a name="l00064"></a>00064 <span class="comment"># @param[in] datum preposition sans variable</span>
+<a name="l00065"></a>00065 <span class="comment"># @return une substitution {variable:datum}</span>
+<a name="l00066"></a>00066 <span class="keyword">def </span><a class="code" href="namespaceunificateur.html#172c90ddf5729e82dfd17298f1201bcd" title="Retourne une substitution entre une variable et une expression.">construitSubstitution</a>( variable, datum ):
+<a name="l00067"></a>00067         <span class="keywordflow">return</span> {variable:datum}
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="comment">## Retourne la variable d'une substitution</span>
+<a name="l00071"></a>00071 <span class="comment">#</span>
+<a name="l00072"></a>00072 <span class="comment"># La variable d'une substitution est le premier element d'une paire</span>
+<a name="l00073"></a>00073 <span class="comment"># {variable:valeur}. </span>
+<a name="l00074"></a>00074 <span class="comment">#</span>
+<a name="l00075"></a>00075 <span class="comment"># @param[in] substitution la substitution</span>
+<a name="l00076"></a>00076 <span class="comment"># @return la variable de la substitution</span>
+<a name="l00077"></a>00077 <span class="keyword">def </span><a class="code" href="namespaceunificateur.html#491c75ed45b710c66294b3482e107bf9" title="Retourne la variable d&amp;#39;une substitution.">retourneVariable</a>( substitution ):
+<a name="l00078"></a>00078         <span class="keywordflow">return</span> substitution.keys()[0]
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="comment">## Retourne la valeur d'une substitution</span>
+<a name="l00082"></a>00082 <span class="comment">#</span>
+<a name="l00083"></a>00083 <span class="comment"># La valeur d'une substitution est le deuxieme element d'une paire</span>
+<a name="l00084"></a>00084 <span class="comment"># {variable:valeur}. </span>
+<a name="l00085"></a>00085 <span class="comment">#</span>
+<a name="l00086"></a>00086 <span class="comment"># @param[in] substitution la substitution</span>
+<a name="l00087"></a>00087 <span class="comment"># @return la valeur de la substitution</span>
+<a name="l00088"></a>00088 <span class="keyword">def </span><a class="code" href="namespaceunificateur.html#8ea2477a65dd37b4bf82528588b27b7a" title="Retourne la valeur d&amp;#39;une substitution.">retourneValeur</a>( substitution ):
+<a name="l00089"></a>00089         <span class="keywordflow">return</span> substitution.values()[0]
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 <span class="comment">## Retourne la substitution associee a une variable,</span>
+<a name="l00093"></a>00093 <span class="comment"># cad: {variable:definition_de_la_variable}</span>
+<a name="l00094"></a>00094 <span class="comment">#</span>
+<a name="l00095"></a>00095 <span class="comment"># Cette fonction retourne une paire {variable:valeur} si elle existe,</span>
+<a name="l00096"></a>00096 <span class="comment"># dans le cas contraire, elle retourne False</span>
+<a name="l00097"></a>00097 <span class="comment">#</span>
+<a name="l00098"></a>00098 <span class="comment"># @param[in] variable la variable dont on veut trouver une substitution</span>
+<a name="l00099"></a>00099 <span class="comment"># @param[in] substitutions la liste des substitutions possibles</span>
+<a name="l00100"></a>00100 <span class="comment"># @return la substitution associee a la variable si elle existe dans</span>
+<a name="l00101"></a>00101 <span class="comment">#                substitutions, sinon retourne False</span>
+<a name="l00102"></a>00102 <span class="keyword">def </span><a class="code" href="namespaceunificateur.html#1cb84c72c42a96590c399490b428e30a" title="Retourne la substitution associee a une variable, cad: {variable:definition_de_la_variable}...">trouveSubstitution</a>( variable, substitutions ):
+<a name="l00103"></a>00103         <span class="keywordflow">if</span> variable <span class="keywordflow">in</span> substitutions:
+<a name="l00104"></a>00104                 <span class="keywordflow">return</span> {variable:substitutions[variable]}
+<a name="l00105"></a>00105         <span class="keywordflow">else</span>:
+<a name="l00106"></a>00106                 <span class="keywordflow">return</span> <span class="keyword">False</span>
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109 <span class="comment">## Construit l'union de deux substitutions</span>
+<a name="l00110"></a>00110 <span class="comment">#</span>
+<a name="l00111"></a>00111 <span class="comment"># Pour construire l'union de deux substitutions, on prend chaque variable de la</span>
+<a name="l00112"></a>00112 <span class="comment"># liste substitution2. Si la variable existe deja dans substitution1, alors sa</span>
+<a name="l00113"></a>00113 <span class="comment"># valeur est mise a jour, sinon elle est creee avec sa valeur associee.</span>
+<a name="l00114"></a>00114 <span class="comment">#</span>
+<a name="l00115"></a>00115 <span class="comment"># @param[in] substitution1 la premiere substitution</span>
+<a name="l00116"></a>00116 <span class="comment"># @param[in] substitution2 la deuxieme substitution</span>
+<a name="l00117"></a>00117 <span class="comment"># @return substitution1 UNION substitution2; echec if substitution1 ou</span>
+<a name="l00118"></a>00118 <span class="comment">#                substitution2 ne sont pas des substitutions</span>
+<a name="l00119"></a>00119 <span class="keyword">def </span><a class="code" href="namespaceunificateur.html#5fafdc1d9411c125dbd24617187e3089" title="Construit l&amp;#39;union de deux substitutions.">unionSubstitutions</a>( substitution1, substitution2 ):
+<a name="l00120"></a>00120         <span class="keywordflow">if</span> ( testeSubstitution(substitution1) <span class="keywordflow">and</span>
+<a name="l00121"></a>00121                  testeSubstitution(substitution2) ):
+<a name="l00122"></a>00122                 keys = substitution2.keys()
+<a name="l00123"></a>00123                 <span class="keywordflow">for</span> x <span class="keywordflow">in</span> keys:
+<a name="l00124"></a>00124                         substitution1[x]=substitution2[x]
+<a name="l00125"></a>00125                 <span class="keywordflow">return</span> substitution1;
+<a name="l00126"></a>00126         <span class="keywordflow">else</span>:
+<a name="l00127"></a>00127                 <span class="keywordflow">return</span> echec
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130 <span class="comment">## Retourne la proposition avec les variables remplacees par leurs valeurs</span>
+<a name="l00131"></a>00131 <span class="comment">#</span>
+<a name="l00132"></a>00132 <span class="comment"># Cette methode se charge de substituer toutes les variables de la proposition</span>
+<a name="l00133"></a>00133 <span class="comment"># passee en argument par leur valeur associee dans la liste des substitutions.</span>
+<a name="l00134"></a>00134 <span class="comment"># Si la proposition est une &lt;em&gt;variable&lt;/em&gt;, alors il suffit de retourner</span>
+<a name="l00135"></a>00135 <span class="comment"># la valeur associee si elle existe, sinon, on teste chaque element de la</span>
+<a name="l00136"></a>00136 <span class="comment"># proposition recursivement</span>
+<a name="l00137"></a>00137 <span class="comment">#</span>
+<a name="l00138"></a>00138 <span class="comment"># @param[in] pattern la proposition (contient des variables, atomes,...</span>
+<a name="l00139"></a>00139 <span class="comment">#                               sous forme [' ',' ', ' '] OU ' ' ou ['[]'...])</span>
+<a name="l00140"></a>00140 <span class="comment"># @param[in] substitutions la liste des substitutions {a:b, c:d,...}</span>
+<a name="l00141"></a>00141 <span class="comment"># @return la proposition avec les variables remplacees par leur valeurs</span>
+<a name="l00142"></a>00142 <span class="keyword">def </span><a class="code" href="namespaceunificateur.html#6f9e1c608366d9c932b591a6ddc46878" title="Retourne la proposition avec les variables remplacees par leurs valeurs.">substitueVariables</a>( pattern , substitutions ):  
+<a name="l00143"></a>00143         <span class="keywordflow">if</span> testeAtome(pattern):
+<a name="l00144"></a>00144                 <span class="keywordflow">if</span> testeVariable(pattern) <span class="keywordflow">and</span> pattern <span class="keywordflow">in</span> substitutions:          
+<a name="l00145"></a>00145                         <span class="keywordflow">return</span> retourneValeur(trouveSubstitution(pattern,substitutions))
+<a name="l00146"></a>00146         <span class="keywordflow">else</span>:
+<a name="l00147"></a>00147                 <span class="keywordflow">for</span> x <span class="keywordflow">in</span> pattern[:]:
+<a name="l00148"></a>00148                         pattern.append(substitueVariables(x , substitutions))
+<a name="l00149"></a>00149                         pattern.pop(0)                  
+<a name="l00150"></a>00150         <span class="keywordflow">return</span> pattern
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153 <span class="comment">## Effectue un filtrage entre deux propositions</span>
+<a name="l00154"></a>00154 <span class="comment">#</span>
+<a name="l00155"></a>00155 <span class="comment"># Le filtrage est effectue en parcourant les deux propositions en meme temps,</span>
+<a name="l00156"></a>00156 <span class="comment"># en prenant deux elements, en les comparant et en construisant les </span>
+<a name="l00157"></a>00157 <span class="comment"># substitutions qui s'imposent. Par exemple:</span>
+<a name="l00158"></a>00158 <span class="comment">#</span>
+<a name="l00159"></a>00159 <span class="comment"># &lt;ul&gt;</span>
+<a name="l00160"></a>00160 <span class="comment">#       &lt;li&gt;prop1 = [ 'Superman', 'a', 'une', 'cape', 'rouge' ]&lt;/li&gt;</span>
+<a name="l00161"></a>00161 <span class="comment">#       &lt;li&gt;prop2 = [ '?x', 'a', 'une', '?y', 'rouge' ]&lt;/li&gt;</span>
+<a name="l00162"></a>00162 <span class="comment"># &lt;/ul&gt;</span>
+<a name="l00163"></a>00163 <span class="comment">#</span>
+<a name="l00164"></a>00164 <span class="comment"># produit { '?x':Superman, '?y':'cape' }</span>
+<a name="l00165"></a>00165 <span class="comment">#</span>
+<a name="l00166"></a>00166 <span class="comment"># L'algorithme est le suivant:</span>
+<a name="l00167"></a>00167 <span class="comment">#</span>
+<a name="l00168"></a>00168 <span class="comment"># @code</span>
+<a name="l00169"></a>00169 <span class="comment">#  1. function FILTRER( datum, pattern )</span>
+<a name="l00170"></a>00170 <span class="comment">#  2.   if pattern est [] et datum est []: return {}</span>
+<a name="l00171"></a>00171 <span class="comment">#  3.   if pattern est [] ou datum est []: return ECHEC</span>
+<a name="l00172"></a>00172 <span class="comment">#  4.   if pattern est un atome:</span>
+<a name="l00173"></a>00173 <span class="comment">#  5.      if datum et pattern sont identiques: return {}</span>
+<a name="l00174"></a>00174 <span class="comment">#  6.      if pattern est une variable: return {pattern : datum}</span>
+<a name="l00175"></a>00175 <span class="comment">#  7.      return ECHEC</span>
+<a name="l00176"></a>00176 <span class="comment">#  8.   if datum est un atome: return ECHEC</span>
+<a name="l00177"></a>00177 <span class="comment">#  9.   F1 &lt;- premier element de datum, T1 &lt;- reste de datum</span>
+<a name="l00178"></a>00178 <span class="comment"># 10.   F2 &lt;- premier element de pattern, T2 &lt;- reste de pattern</span>
+<a name="l00179"></a>00179 <span class="comment"># 11.   Z1 &lt;- FILTRER(F1,F2)</span>
+<a name="l00180"></a>00180 <span class="comment"># 12.   if Z1 = ECHEC: return ECHEC</span>
+<a name="l00181"></a>00181 <span class="comment"># 13.   G1 &lt;- T1</span>
+<a name="l00182"></a>00182 <span class="comment"># 14.   G2 &lt;- remplacer les variables de T2 par les substitutions de Z1</span>
+<a name="l00183"></a>00183 <span class="comment"># 15.   Z2 &lt;- FILTRER(G1,G2)</span>
+<a name="l00184"></a>00184 <span class="comment"># 16.   if Z2 = ECHEC: return ECHEC</span>
+<a name="l00185"></a>00185 <span class="comment"># 17.   return { Z1 union Z2 }</span>
+<a name="l00186"></a>00186 <span class="comment"># @endcode</span>
+<a name="l00187"></a>00187 <span class="comment">#</span>
+<a name="l00188"></a>00188 <span class="comment"># @param datum la propopsition &lt;strong&gt;sans&lt;/strong&gt; variable</span>
+<a name="l00189"></a>00189 <span class="comment"># @param pattern la proposition &lt;strong&gt;avec&lt;/strong&gt; variables</span>
+<a name="l00190"></a>00190 <span class="comment"># @return les substitutions si le filtrage a reussi: {'?x':'a',..}, 'ECHEC' sinon</span>
+<a name="l00191"></a>00191 <span class="keyword">def </span>filtrer( datum, pattern ):
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193         <span class="comment"># si les deux listes sont vides, alors on retourne</span>
+<a name="l00194"></a>00194         <span class="comment"># une liste vide</span>
+<a name="l00195"></a>00195         <span class="keywordflow">if</span> (pattern == [] <span class="keywordflow">and</span> datum == []):
+<a name="l00196"></a>00196                 <span class="keywordflow">return</span> {}
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198         <span class="comment"># si l'une des deux listes est vide, alors on retourne</span>
+<a name="l00199"></a>00199         <span class="comment"># ECHEC</span>
+<a name="l00200"></a>00200         <span class="keywordflow">elif</span> (pattern == [] <span class="keywordflow">or</span> datum == []):
+<a name="l00201"></a>00201                 <span class="keywordflow">return</span> echec
+<a name="l00202"></a>00202 
+<a name="l00203"></a>00203         <span class="comment"># si pattern est un atome, </span>
+<a name="l00204"></a>00204         <span class="keywordflow">elif</span> testeAtome(pattern):
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206                 <span class="comment"># et si les deux propositions sont identiques, alors</span>
+<a name="l00207"></a>00207                 <span class="comment"># pas de substitution</span>
+<a name="l00208"></a>00208                 <span class="keywordflow">if</span> (pattern==datum):
+<a name="l00209"></a>00209                         <span class="keywordflow">return</span> {}
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211                 <span class="comment"># si pattern est une variable, alors trouve une</span>
+<a name="l00212"></a>00212                 <span class="comment"># substitution</span>
+<a name="l00213"></a>00213                 <span class="keywordflow">elif</span> testeVariable(pattern):
+<a name="l00214"></a>00214                         <span class="keywordflow">return</span> construitSubstitution(pattern,datum)
+<a name="l00215"></a>00215 
+<a name="l00216"></a>00216                 <span class="comment"># sinon, le filtrage echoue</span>
+<a name="l00217"></a>00217                 <span class="keywordflow">else</span> :
+<a name="l00218"></a>00218                         <span class="keywordflow">return</span> echec
+<a name="l00219"></a>00219 
+<a name="l00220"></a>00220         <span class="comment"># si datum est un atome et pattern *n'est pas* un atome, alors</span>
+<a name="l00221"></a>00221         <span class="comment"># il y a ECHEC</span>
+<a name="l00222"></a>00222         <span class="keywordflow">elif</span> testeAtome(datum):
+<a name="l00223"></a>00223                 <span class="keywordflow">return</span> echec
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225         <span class="comment"># sinon, on peut filtrer les deux propositions sans probleme</span>
+<a name="l00226"></a>00226         <span class="keywordflow">else</span>:
+<a name="l00227"></a>00227                 f1=datum[0]                     <span class="comment"># premier element       </span>
+<a name="l00228"></a>00228                 t1=datum[1:]            <span class="comment"># le reste de la liste </span>
+<a name="l00229"></a>00229                 f2=pattern[0]
+<a name="l00230"></a>00230                 t2=pattern[1:]
+<a name="l00231"></a>00231                 z1=filtrer(f1,f2)
+<a name="l00232"></a>00232                 <span class="keywordflow">if</span> z1==echec: <span class="keywordflow">return</span> echec
+<a name="l00233"></a>00233                 g1=t1
+<a name="l00234"></a>00234                 g2=substitueVariables(t2, z1)
+<a name="l00235"></a>00235                 z2= filtrer(g1,g2)
+<a name="l00236"></a>00236                 <span class="keywordflow">if</span> z2==echec: <span class="keywordflow">return</span> echec
+<a name="l00237"></a>00237                 <span class="keywordflow">return</span> unionSubstitutions(z1,z2)                
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239 
+<a name="l00240"></a>00240 <span class="comment">## Effectue un filtrage en tenant compte d'une liste de substitutions</span>
+<a name="l00241"></a>00241 <span class="comment"># initiale</span>
+<a name="l00242"></a>00242 <span class="comment">#</span>
+<a name="l00243"></a>00243 <span class="comment"># Cette fonction effectue un filtrage sur deux propositions. Cette</span>
+<a name="l00244"></a>00244 <span class="comment"># fonction peut prendre en argument un environnement initial. Un</span>
+<a name="l00245"></a>00245 <span class="comment"># environnement initial est une liste de substitutions. Le resultat</span>
+<a name="l00246"></a>00246 <span class="comment"># final est l'union de l'environnement initial avec les substitutions</span>
+<a name="l00247"></a>00247 <span class="comment"># donnees par le filtrage</span>
+<a name="l00248"></a>00248 <span class="comment">#</span>
+<a name="l00249"></a>00249 <span class="comment"># @param pattern une proposition pouvant contenir des variables</span>
+<a name="l00250"></a>00250 <span class="comment"># @param datum la proposition &lt;strong&gt;sans&lt;/strong&gt; variables</span>
+<a name="l00251"></a>00251 <span class="comment"># @param environnement une liste initiale de substitutions</span>
+<a name="l00252"></a>00252 <span class="comment"># @return filtre(proposition,datum) si OK, ECHEC sinon  </span>
+<a name="l00253"></a>00253 <span class="keyword">def </span><a class="code" href="namespaceunificateur.html#147c6b18247c7108b554a5d595174f60" title="Effectue une unification entre deux propositions passees en parametres.">patternMatching</a>( datum, pattern, environnement=None ):
+<a name="l00254"></a>00254         <span class="keywordflow">if</span> environnement <span class="keywordflow">is</span> <span class="keywordtype">None</span>:
+<a name="l00255"></a>00255                 environnement={}
+<a name="l00256"></a>00256         <span class="keywordflow">if</span> environnement==echec:
+<a name="l00257"></a>00257                 <span class="keywordflow">return</span> echec
+<a name="l00258"></a>00258         <span class="keywordflow">else</span> :
+<a name="l00259"></a>00259                 pattern = substitueVariables(pattern,environnement)
+<a name="l00260"></a>00260                 <span class="keywordflow">return</span> unionSubstitutions(environnement,filtrer(datum,pattern))
+<a name="l00261"></a>00261 
+<a name="l00262"></a>00262 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00263"></a>00263 <span class="comment"># BATTERIE DE TESTS</span>
+<a name="l00264"></a>00264 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266 <span class="comment"># effectue des tests sur la fonction substitueVariables</span>
+<a name="l00267"></a>00267 exec file( <span class="stringliteral">"testSubstitueVariables.py"</span> )
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269 <span class="comment"># effectue des tests sur la fonction filtrer</span>
+<a name="l00270"></a>00270 exec file( <span class="stringliteral">"testFiltrer.py"</span> )
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272 <span class="comment"># effectue des tests sur la fonction patternMatching</span>
+<a name="l00273"></a>00273 exec file( <span class="stringliteral">"testPatternMatching.py"</span> )
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Tue Mar 10 17:19:37 2009 pour Lab 3 : Moteur d'inf&eacute;rence &agrave; cha&icirc;nage avant avec variables par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

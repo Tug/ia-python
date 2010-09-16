@@ -1,0 +1,123 @@
+#####Solution Exo 1
+Filtreur
+	@version: 1.5  date: 07/03/2008 modified by Thomas Leaute
+	@version: 1.4  date: 27/06/2007 modified by Thomas Leaute
+	@version: 1.3  date: 20/02/2007 modified by Vincent Schickel
+	@version: 1.2  date: 01/07/2007 modified by Bruno Alves
+	@version: 1.1  date: 10/03/2006 modified by Vincent Schickel
+	@author: vincent.schickel-zuber@epfl.ch date: 9/2/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+
+Test de la fonction substitueVariables(pattern,substitutions):
+	['?x', 'est un', 'doctorant']
+	['?x', 'est un', 'doctorant']
+	['vincent', 'est un', 'doctorant']
+	['?w', 'est un', 'doctorant']
+	['vincent', 'et', 'paolo', 'sont', 'doctorants']
+	['vincent', 'est un', ['vincent']]
+	['vincent', 'est un', ['?a']]
+	vincent
+	doctorant
+
+Test de la fonction filtrer(datum,pattern):
+	{'?x': 'vincent'}
+	{'?x': 'vincent'}
+	{'?y': 'doctorant', '?x': 'vincent'}
+	{}
+	{}
+	ECHEC
+	ECHEC
+	{'?v': 'doctorant', '?z': 'paolo', '?y': 'doctorant', '?x': 'vincent'}
+	{'?x': 'vincent'}
+	ECHEC
+
+Test de la fonction patternMatching(daum,proposition,env):
+	{'?x': 'vincent'}
+	{'?y': 'doctorant', '?x': 'vincent'}
+	{}
+	ECHEC
+	{'?y': 'marc', '?x': 'jean'}
+	ECHEC
+	{'?y': 'doctorant', '?x': 'vincent'}
+	{'?y': 'doctorant', '?x': 'vincent'}
+	ECHEC
+	ECHEC
+	{'?x': 'vincent'}
+    
+#####Solution Exo 2
+Loading chainage_avant_avec_variables
+	@version: 1.1  date: 27/06/2007 by Thomas Leaute
+	@version: 1.0  date: 19/02/2007 by Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch
+	@copyright: EPFL-IC-IIF-LIA 2007
+
+test faitSatisfaitUneCondition:
+[[{'?y': 'paul', '?x': 'jean'}, {'?z': 'paul', '?y': 'jean'}], [[['pere', '?y', '?z']], [['pere', '?x', '?y']]]]
+[[{'?z': 'paul', '?y': 'jean'}], [[['fils', '?x', '?y'], ['mere', '?x', '?y']]]]
+[[], []]
+
+test satisfaitUneCondition:
+[{'?y': 'b', '?x': 'a'}, {'?y': 'b', '?x': 'b'}]
+
+test satisfaitConditions:
+[{'?y': 'b', '?x': 'b'}]
+[{'?z': 'b', '?y': 'b', '?x': 'a'}, {'?z': 'b', '?y': 'b', '?x': 'b'}]
+[]
+
+test instantieVariables:
+[['X', ['Y', '?z']], ['X', ['?y', 'Z']]]
+|+| Chargement du fichier impots2
+	Ajout des faits 	OK
+	Ajout des regles 	OK
+['reduc-loyer', '200', 'Paul']
+['reduc-enfant', '100', 'Paul']
+['reduc-loyer', '100', 'Marc']
+['reduc-enfant', '100', 'Marc']
+['reduc-enfant', '0', 'Jean']
+['reduc-trajet', '0', 'Paul']
+['reduc-trajet', '50', 'Marc']
+['reduc-trajet', '100', 'Jean']
+['reduc', '300', 'Paul']
+['reduc', '250', 'Marc']
+
+#####Solution Exo 3
+Unificateur
+	@version: 1.3  date: 20/2/2007 by Vincent Schickel-Zuber
+	@version: 1.2  date: 11/2/2007 by Vincent Schickel-Zuber
+	@version: 1.1  date: 11/1/2007 by Bruno Alves
+	@version: 1.0  date: 17/2/2006 by Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch
+	@copyright: EPFL-IC-IIF-LIA 2007
+test substitueVariables:
+	['?x', 'est un', 'doctorant']
+	['?x', 'est un', 'doctorant']
+	['vincent', 'est un', 'doctorant']
+	['foo', 'bar', '45']
+	['p', ['f', 'a']]
+	['p', ['f', ['g', ['a']]]]
+	['p', ['f', ['g', ['?q']]]]
+test fonction unifier:
+	{'?x': 'vincent'}
+	{'?x': 'vincent'}
+	{'?y': 'doctorant', '?x': 'vincent'}
+	{}
+	ECHEC
+	{'?z': 'jean', '?y': 'marc', '?x': 'jean'}
+	{'?y': 'marc', '?x': 'jean'}
+	ECHEC
+	{'?y': 'a', '?x': ['f', 'a']}
+
+test patternMatching:
+	{'?x': 'vincent'}
+	{'?x': 'vincent'}
+	{'?y': 'doctorant', '?x': 'vincent'}
+	{}
+	ECHEC
+	{'?z': 'jean', '?y': 'marc', '?x': 'jean'}
+	{'?y': 'marc', '?x': 'jean'}
+	ECHEC
+	{'?z': '?x', '?x': '?y'}
+    
+On constate que l'on obtient exactement le même résultat.
+Ceci est normal vu que les faits que l'on utilise ne contiennent pas de variables. 
+Remarque: L'unificateur est donc inutile dans ce cas. L'unificateur est vraiement utile pour le chainage arrière.

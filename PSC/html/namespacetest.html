@@ -1,0 +1,360 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 6a : Satisfaction de contraintes: Paquetage test</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="namespacemembers.html"><span>Fonctions&nbsp;de&nbsp;paquetage</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Paquetage test</h1>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#8bd1e6493fb3532c7ad2d586a3f0d273">vars</a> = Variables()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#1d5a6372218aa7370d8681619e846af0">contraintes</a> = Contraintes()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#6546fabd63b8e020a216e4ff18816375">v1</a> = <a class="el" href="classlib_p_s_c_1_1_variable.html">libPSC.Variable</a>(&quot;a&quot;,[2, 3])</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">v2</a> = <a class="el" href="classlib_p_s_c_1_1_variable.html">libPSC.Variable</a>(&quot;b&quot;,range(12))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#476348c91dadad724590c6e1f7572c8d">v3</a> = <a class="el" href="classlib_p_s_c_1_1_variable.html">libPSC.Variable</a>(&quot;c&quot;,range(3))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#e0b352b9a59185a8da41e154f784a846">v4</a> = <a class="el" href="classlib_p_s_c_1_1_variable.html">libPSC.Variable</a>(&quot;d&quot;,range(3))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#e45ce7778f81316696159916aa3f3786">v5</a> = <a class="el" href="classlib_p_s_c_1_1_variable.html">libPSC.Variable</a>(&quot;e&quot;,range(12))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#bbfb944d965a6c3150d2d3d1debeb948">cv2</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_unaire.html">libPSC.ContrainteUnaire</a>(<a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">v2</a>,&quot;&lt;&quot;,4)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#bb0dd7bd14bdbbc0587ac375475d7dae">cv1v2</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#6546fabd63b8e020a216e4ff18816375">v1</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">v2</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#03528936169152f351402f09dfaa0dd2">cv2v3</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">v2</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#476348c91dadad724590c6e1f7572c8d">v3</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#1d003d36b377fec6010d9112c92b78ec">cv2v4</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">v2</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#e0b352b9a59185a8da41e154f784a846">v4</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#4431bb86789b359fa42e3d68c5742edf">cv2v5</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">v2</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#e45ce7778f81316696159916aa3f3786">v5</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#f56024ee5f3a5801ec1d7c0546581190">cv3v4</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#476348c91dadad724590c6e1f7572c8d">v3</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#e0b352b9a59185a8da41e154f784a846">v4</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#be4f95cf6cf8a4da5b05488a8bd30fe9">cv3v5</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#476348c91dadad724590c6e1f7572c8d">v3</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#e45ce7778f81316696159916aa3f3786">v5</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#554eeef141e47b777738d7f5c01dcecc">cv4v5</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#e0b352b9a59185a8da41e154f784a846">v4</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#e45ce7778f81316696159916aa3f3786">v5</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#944e2920542996dd2b29fa27b7c33a76">cv5v1</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#e45ce7778f81316696159916aa3f3786">v5</a>,&quot;&lt;&quot;,<a class="el" href="namespacetest.html#6546fabd63b8e020a216e4ff18816375">v1</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacetest.html#7fa0e0d0791e5b2a0b70e4a03316436f">sol</a> = backtrack(0,True)</td></tr>
+
+</table>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="1d5a6372218aa7370d8681619e846af0"></a><!-- doxytag: member="test::contraintes" ref="1d5a6372218aa7370d8681619e846af0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#1d5a6372218aa7370d8681619e846af0">test.contraintes</a> = Contraintes()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00004">4</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bb0dd7bd14bdbbc0587ac375475d7dae"></a><!-- doxytag: member="test::cv1v2" ref="bb0dd7bd14bdbbc0587ac375475d7dae" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#bb0dd7bd14bdbbc0587ac375475d7dae">test.cv1v2</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#6546fabd63b8e020a216e4ff18816375">v1</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">v2</a>)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00020">20</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="bbfb944d965a6c3150d2d3d1debeb948"></a><!-- doxytag: member="test::cv2" ref="bbfb944d965a6c3150d2d3d1debeb948" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#bbfb944d965a6c3150d2d3d1debeb948">test.cv2</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_unaire.html">libPSC.ContrainteUnaire</a>(<a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">v2</a>,&quot;&lt;&quot;,4)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00019">19</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="03528936169152f351402f09dfaa0dd2"></a><!-- doxytag: member="test::cv2v3" ref="03528936169152f351402f09dfaa0dd2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#03528936169152f351402f09dfaa0dd2">test.cv2v3</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">v2</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#476348c91dadad724590c6e1f7572c8d">v3</a>)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00021">21</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1d003d36b377fec6010d9112c92b78ec"></a><!-- doxytag: member="test::cv2v4" ref="1d003d36b377fec6010d9112c92b78ec" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#1d003d36b377fec6010d9112c92b78ec">test.cv2v4</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">v2</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#e0b352b9a59185a8da41e154f784a846">v4</a>)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00022">22</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4431bb86789b359fa42e3d68c5742edf"></a><!-- doxytag: member="test::cv2v5" ref="4431bb86789b359fa42e3d68c5742edf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#4431bb86789b359fa42e3d68c5742edf">test.cv2v5</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">v2</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#e45ce7778f81316696159916aa3f3786">v5</a>)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00023">23</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f56024ee5f3a5801ec1d7c0546581190"></a><!-- doxytag: member="test::cv3v4" ref="f56024ee5f3a5801ec1d7c0546581190" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#f56024ee5f3a5801ec1d7c0546581190">test.cv3v4</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#476348c91dadad724590c6e1f7572c8d">v3</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#e0b352b9a59185a8da41e154f784a846">v4</a>)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00024">24</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="be4f95cf6cf8a4da5b05488a8bd30fe9"></a><!-- doxytag: member="test::cv3v5" ref="be4f95cf6cf8a4da5b05488a8bd30fe9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#be4f95cf6cf8a4da5b05488a8bd30fe9">test.cv3v5</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#476348c91dadad724590c6e1f7572c8d">v3</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#e45ce7778f81316696159916aa3f3786">v5</a>)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00025">25</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="554eeef141e47b777738d7f5c01dcecc"></a><!-- doxytag: member="test::cv4v5" ref="554eeef141e47b777738d7f5c01dcecc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#554eeef141e47b777738d7f5c01dcecc">test.cv4v5</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#e0b352b9a59185a8da41e154f784a846">v4</a>,&quot;!=&quot;,<a class="el" href="namespacetest.html#e45ce7778f81316696159916aa3f3786">v5</a>)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00026">26</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="944e2920542996dd2b29fa27b7c33a76"></a><!-- doxytag: member="test::cv5v1" ref="944e2920542996dd2b29fa27b7c33a76" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#944e2920542996dd2b29fa27b7c33a76">test.cv5v1</a> = <a class="el" href="classlib_p_s_c_1_1_contrainte_binaire.html">libPSC.ContrainteBinaire</a>(<a class="el" href="namespacetest.html#e45ce7778f81316696159916aa3f3786">v5</a>,&quot;&lt;&quot;,<a class="el" href="namespacetest.html#6546fabd63b8e020a216e4ff18816375">v1</a>)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00027">27</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7fa0e0d0791e5b2a0b70e4a03316436f"></a><!-- doxytag: member="test::sol" ref="7fa0e0d0791e5b2a0b70e4a03316436f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#7fa0e0d0791e5b2a0b70e4a03316436f">test.sol</a> = backtrack(0,True)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00048">48</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6546fabd63b8e020a216e4ff18816375"></a><!-- doxytag: member="test::v1" ref="6546fabd63b8e020a216e4ff18816375" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#6546fabd63b8e020a216e4ff18816375">test.v1</a> = <a class="el" href="classlib_p_s_c_1_1_variable.html">libPSC.Variable</a>(&quot;a&quot;,[2, 3])          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00006">6</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0f1027df33a8522673f716b77083c719"></a><!-- doxytag: member="test::v2" ref="0f1027df33a8522673f716b77083c719" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#0f1027df33a8522673f716b77083c719">test.v2</a> = <a class="el" href="classlib_p_s_c_1_1_variable.html">libPSC.Variable</a>(&quot;b&quot;,range(12))          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00007">7</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="476348c91dadad724590c6e1f7572c8d"></a><!-- doxytag: member="test::v3" ref="476348c91dadad724590c6e1f7572c8d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#476348c91dadad724590c6e1f7572c8d">test.v3</a> = <a class="el" href="classlib_p_s_c_1_1_variable.html">libPSC.Variable</a>(&quot;c&quot;,range(3))          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00008">8</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e0b352b9a59185a8da41e154f784a846"></a><!-- doxytag: member="test::v4" ref="e0b352b9a59185a8da41e154f784a846" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#e0b352b9a59185a8da41e154f784a846">test.v4</a> = <a class="el" href="classlib_p_s_c_1_1_variable.html">libPSC.Variable</a>(&quot;d&quot;,range(3))          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00009">9</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e45ce7778f81316696159916aa3f3786"></a><!-- doxytag: member="test::v5" ref="e45ce7778f81316696159916aa3f3786" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#e45ce7778f81316696159916aa3f3786">test.v5</a> = <a class="el" href="classlib_p_s_c_1_1_variable.html">libPSC.Variable</a>(&quot;e&quot;,range(12))          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00010">10</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8bd1e6493fb3532c7ad2d586a3f0d273"></a><!-- doxytag: member="test::vars" ref="8bd1e6493fb3532c7ad2d586a3f0d273" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacetest.html#8bd1e6493fb3532c7ad2d586a3f0d273">test.vars</a> = Variables()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="test_8py-source.html#l00003">3</a> du fichier <a class="el" href="test_8py-source.html">test.py</a>.</p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:18 2008 pour Lab 6a : Satisfaction de contraintes par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

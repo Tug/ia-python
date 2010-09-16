@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 9 : Clustering:  Fichier source de kMeans.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>kMeans.py</h1><a href="k_means_8py.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespacek_means.html">00001</a> <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00002"></a>00002 <span class="keywordflow">print</span> <span class="stringliteral">"Algorithme de k-means"</span>
+<a name="l00003"></a>00003 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.2  date: 26/06/2007 modified by Thomas Leaute"</span>
+<a name="l00004"></a>00004 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.1  date: 25/05/2007 modified by Thomas Leaute"</span>
+<a name="l00005"></a>00005 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.0  date: 05/03/2007 created by Thomas Leaute"</span>
+<a name="l00006"></a>00006 <span class="keywordflow">print</span> <span class="stringliteral">"\t@author: thomas.leaute _AT_ epfl.ch date: 09/05/2007"</span>
+<a name="l00007"></a>00007 <span class="keywordflow">print</span> <span class="stringliteral">"\t@copyright: EPFL-IC-IIF-LIA 2007"</span>
+<a name="l00008"></a>00008 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00009"></a>00009 <span class="comment">## @package kMeans Algorithme de k-means</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 <span class="comment">## @file kMeans.py Algorithme de k-means</span>
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 <span class="keyword">import</span> copy
+<a name="l00014"></a>00014 exec file(<span class="stringliteral">"distance.py"</span>)
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="comment">## Noyaux de l'iteration precedente </span>
+<a name="l00017"></a><a class="code" href="namespacek_means.html#b75577a1b94fe13d921f35b47b635c25">00017</a> VIEUXNOYAUX = [] 
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="comment">## Liste des clusters courants </span>
+<a name="l00020"></a><a class="code" href="namespacek_means.html#5298d6674b7a8b7ea781a2b5632d1041">00020</a> CLUSTERS = [] 
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 <span class="comment">## \brief Affiche les clusters dans un format lisible</span>
+<a name="l00023"></a>00023 <span class="comment"># @param clusters Liste des clusters a afficher</span>
+<a name="l00024"></a><a class="code" href="namespacek_means.html#065d7c91f4fc8b661b2b6e8bd967d17f">00024</a> <span class="keyword">def </span><a class="code" href="namespacek_means.html#065d7c91f4fc8b661b2b6e8bd967d17f" title="Affiche les clusters dans un format lisible.">afficheClusters</a> (clusters):
+<a name="l00025"></a>00025         <span class="keywordflow">print</span> <span class="stringliteral">"*********************"</span>
+<a name="l00026"></a>00026         <span class="keywordflow">print</span> <span class="stringliteral">"Clusters :"</span>
+<a name="l00027"></a>00027         <span class="keywordflow">for</span> cluster <span class="keywordflow">in</span> clusters: 
+<a name="l00028"></a>00028                 <span class="keywordflow">if</span> len(cluster) &gt; 0:
+<a name="l00029"></a>00029                         <span class="keywordflow">print</span> <span class="stringliteral">"Donnees :"</span>, cluster[0]
+<a name="l00030"></a>00030                         <span class="keywordflow">for</span> donnee <span class="keywordflow">in</span> cluster[1:]:
+<a name="l00031"></a>00031                                 <span class="keywordflow">print</span> <span class="stringliteral">"         "</span>, donnee 
+<a name="l00032"></a>00032         <span class="keywordflow">print</span> <span class="stringliteral">"*********************"</span>
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="comment">## \brief Associe chaque donnee au plus proche noyau</span>
+<a name="l00035"></a>00035 <span class="comment"># @param noyaux Liste des noyaux</span>
+<a name="l00036"></a>00036 <span class="comment"># @return La liste des clusters. La premiere donnee de chaque cluster est son noyau. </span>
+<a name="l00037"></a><a class="code" href="namespacek_means.html#b5c241330e3d00d788176958163ea07e">00037</a> <span class="keyword">def </span><a class="code" href="namespacek_means.html#b5c241330e3d00d788176958163ea07e" title="Associe chaque donnee au plus proche noyau.">formeClusters</a> (noyaux):
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039         <span class="comment"># Commence avec des clusters ne contenant que leur noyau </span>
+<a name="l00040"></a>00040         clusters = [[noyau] <span class="keywordflow">for</span> noyau <span class="keywordflow">in</span> noyaux]
+<a name="l00041"></a>00041         
+<a name="l00042"></a>00042         <span class="keywordflow">for</span> donnee <span class="keywordflow">in</span> DONNEES:
+<a name="l00043"></a>00043                 <span class="keywordflow">if</span> donnee <span class="keywordflow">in</span> noyaux: 
+<a name="l00044"></a>00044                         <span class="keywordflow">continue</span> <span class="comment"># Ignore les noyaux, ils ont deja ete traites</span>
+<a name="l00045"></a>00045                         
+<a name="l00046"></a>00046                 <span class="comment"># Selectionne le cluster dont le noyau est le plus proche de la donnee et ajoute la donnee a ce cluster </span>
+<a name="l00047"></a>00047 <span class="comment">#               cluster = argmin(clusters, lambda c: distance(donnee, c[0])) # pour Python 2.3</span>
+<a name="l00048"></a>00048                 cluster = min(clusters, key = <span class="keyword">lambda</span> c: distance(donnee, c[0])) <span class="comment"># pour Python 2.x, x &gt;= 4</span>
+<a name="l00049"></a>00049                 cluster.append(donnee)
+<a name="l00050"></a>00050         <span class="keywordflow">return</span> clusters
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053 <span class="comment">## \brief Recentre le noyau d'un cluster passe en parametre. </span>
+<a name="l00054"></a>00054 <span class="comment"># </span>
+<a name="l00055"></a>00055 <span class="comment"># Le nouveau noyau est place en tete de la liste qui represente le cluster. </span>
+<a name="l00056"></a>00056 <span class="comment"># @param cluster Le cluster dont le noyau doit etre recentre</span>
+<a name="l00057"></a>00057 <span class="comment"># @return Le cluster dont le noyau a ete recentre</span>
+<a name="l00058"></a><a class="code" href="namespacek_means.html#2fe05a187897a693f8740ee1b537fd92">00058</a> <span class="keyword">def </span><a class="code" href="namespacek_means.html#2fe05a187897a693f8740ee1b537fd92" title="Recentre le noyau d&amp;#39;un cluster passe en parametre.">recentreNoyau</a> (cluster):
+<a name="l00059"></a>00059 <span class="comment">#       noyau = argmin(cluster, lambda x: sum([distance(donnee, x)**2 for donnee in cluster])) # pour Python 2.3</span>
+<a name="l00060"></a>00060         noyau = min(cluster, key = <span class="keyword">lambda</span> x: sum([distance(donnee, x)**2 <span class="keywordflow">for</span> donnee <span class="keywordflow">in</span> cluster])) <span class="comment"># pour Python 2.x, x &gt;= 4</span>
+<a name="l00061"></a>00061         cluster.remove(noyau)
+<a name="l00062"></a>00062         cluster.insert(0, noyau)
+<a name="l00063"></a>00063         <span class="keywordflow">return</span> cluster
+<a name="l00064"></a>00064         
+<a name="l00065"></a>00065         
+<a name="l00066"></a>00066 <span class="comment">## \brief Affiche les noyaux dans un format lisible </span>
+<a name="l00067"></a>00067 <span class="comment"># @param noyaux Liste des noyaux a afficher</span>
+<a name="l00068"></a><a class="code" href="namespacek_means.html#0b6f4b17b4968f896eb6568fec4c5184">00068</a> <span class="keyword">def </span><a class="code" href="namespacek_means.html#0b6f4b17b4968f896eb6568fec4c5184" title="Affiche les noyaux dans un format lisible.">afficheNoyaux</a> (noyaux):
+<a name="l00069"></a>00069         <span class="keywordflow">if</span> len(noyaux) &gt; 0:
+<a name="l00070"></a>00070                 <span class="keywordflow">print</span> <span class="stringliteral">"Noyaux  :"</span>, noyaux[0]
+<a name="l00071"></a>00071                 <span class="keywordflow">for</span> noyau <span class="keywordflow">in</span> noyaux[1:]:
+<a name="l00072"></a>00072                         <span class="keywordflow">print</span> <span class="stringliteral">"         "</span>, noyau
+<a name="l00073"></a>00073                         
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 <span class="comment">## \brief Affiche le resultat du clustering, i.e. la liste des clusters</span>
+<a name="l00076"></a><a class="code" href="namespacek_means.html#ad984e8278eb746eaa4f71fae9ddd009">00076</a> <span class="keyword">def </span><a class="code" href="namespacek_means.html#ad984e8278eb746eaa4f71fae9ddd009" title="Affiche le resultat du clustering, i.e.">afficheResultat</a> ():
+<a name="l00077"></a>00077         afficheClusters(CLUSTERS)
+<a name="l00078"></a>00078         
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 <span class="comment">## \brief Initialise l'algorithme</span>
+<a name="l00081"></a>00081 <span class="comment"># </span>
+<a name="l00082"></a>00082 <span class="comment"># Construit la liste \c CLUSTERS. Initialement, le premier cluster contient toutes les donnees (sauf les autres noyaux)</span>
+<a name="l00083"></a>00083 <span class="comment"># @param k Nombre de clusters desires </span>
+<a name="l00084"></a>00084 <span class="comment"># @param listeNoyaux Liste des noyaux. Si pas specifiee, prend les k premieres donnees comme noyaux</span>
+<a name="l00085"></a><a class="code" href="namespacek_means.html#c0ef62482b97adcc43ee31d856110e2c">00085</a> <span class="keyword">def </span><a class="code" href="namespacek_means.html#c0ef62482b97adcc43ee31d856110e2c" title="Initialise l&amp;#39;algorithme.">chargeDonnees</a> (k, listeNoyaux = None):
+<a name="l00086"></a>00086         <span class="keyword">global</span> CLUSTERS
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088         noyaux = listeNoyaux
+<a name="l00089"></a>00089         <span class="keywordflow">if</span> noyaux == <span class="keywordtype">None</span>:
+<a name="l00090"></a>00090                 <span class="comment"># Par defaut on choisit les k premieres donnees comme noyaux</span>
+<a name="l00091"></a>00091                 noyaux = DONNEES[0:k]
+<a name="l00092"></a>00092                 afficheNoyaux(noyaux)
+<a name="l00093"></a>00093         
+<a name="l00094"></a>00094         <span class="comment"># Initialement, par defaut, affecte toutes les donnees au premier noyau : </span>
+<a name="l00095"></a>00095         CLUSTERS = [ [noyau] <span class="keywordflow">for</span> noyau <span class="keywordflow">in</span> noyaux ]
+<a name="l00096"></a>00096         <span class="keywordflow">for</span> donnee <span class="keywordflow">in</span> DONNEES: 
+<a name="l00097"></a>00097                 <span class="keywordflow">if</span> <span class="keywordflow">not</span> donnee <span class="keywordflow">in</span> noyaux:
+<a name="l00098"></a>00098                         CLUSTERS[0].append(donnee)
+<a name="l00099"></a>00099         
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 <span class="comment">## \brief Retourne la liste des noyaux</span>
+<a name="l00102"></a>00102 <span class="comment"># @return La liste des premiers elements de chaque cluster</span>
+<a name="l00103"></a><a class="code" href="namespacek_means.html#f3db66afea3825cd78bfd36cab84a695">00103</a> <span class="keyword">def </span><a class="code" href="namespacek_means.html#f3db66afea3825cd78bfd36cab84a695" title="Retourne la liste des noyaux.">retourneNoyaux</a> ():
+<a name="l00104"></a>00104         <span class="keywordflow">return</span> [cluster[0] <span class="keywordflow">for</span> cluster <span class="keywordflow">in</span> CLUSTERS]
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 <span class="comment">## \brief Retourne si la liste de clusters passee en parametre est satisfaisante, ou s'il faut continuer a iterer</span>
+<a name="l00108"></a>00108 <span class="comment"># @return True si la liste des noyaux n'a pas change depuis l'iteration precedente </span>
+<a name="l00109"></a><a class="code" href="namespacek_means.html#c73956ef2f8c083063c66db7e93f029b">00109</a> <span class="keyword">def </span><a class="code" href="namespacek_means.html#c73956ef2f8c083063c66db7e93f029b" title="Retourne si la liste de clusters passee en parametre est satisfaisante, ou s&amp;#39;il...">fini</a> ():
+<a name="l00110"></a>00110         noyaux = retourneNoyaux()
+<a name="l00111"></a>00111         noyaux.sort()
+<a name="l00112"></a>00112         VIEUXNOYAUX.sort()
+<a name="l00113"></a>00113         <span class="keywordflow">return</span> noyaux == VIEUXNOYAUX
+<a name="l00114"></a>00114         
+<a name="l00115"></a>00115         
+<a name="l00116"></a>00116 <span class="comment">## \brief Boucle principale qui met a jour les clusters</span>
+<a name="l00117"></a><a class="code" href="namespacek_means.html#27ca1b91a4893b7ed7c9313dfa995bed">00117</a> <span class="keyword">def </span><a class="code" href="namespacek_means.html#27ca1b91a4893b7ed7c9313dfa995bed" title="Boucle principale qui met a jour les clusters.">reviseClusters</a> ():
+<a name="l00118"></a>00118         <span class="keyword">global</span> VIEUXNOYAUX, CLUSTERS
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120         noyaux = retourneNoyaux() 
+<a name="l00121"></a>00121         VIEUXNOYAUX = copy.deepcopy(noyaux)
+<a name="l00122"></a>00122         
+<a name="l00123"></a>00123         <span class="comment"># Forme les clusters autour des noyaux :</span>
+<a name="l00124"></a>00124         CLUSTERS = formeClusters(noyaux)
+<a name="l00125"></a>00125         
+<a name="l00126"></a>00126         <span class="comment"># Recentre le noyau de chaque cluster :</span>
+<a name="l00127"></a>00127         CLUSTERS = [recentreNoyau(cluster) <span class="keywordflow">for</span> cluster <span class="keywordflow">in</span> CLUSTERS]
+<a name="l00128"></a>00128 <span class="comment">#       afficheClusters(CLUSTERS)</span>
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 <span class="comment">############################</span>
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133 <span class="comment"># Charge la base de donnees :</span>
+<a name="l00134"></a>00134 exec file(<span class="stringliteral">"maladies.py"</span>)
+<a name="l00135"></a>00135 <span class="comment">#exec file("profits.py")</span>
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 <span class="comment"># Initialise l'algorithme de k-means :</span>
+<a name="l00138"></a>00138 chargeDonnees(4) 
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 <span class="comment"># Lance l'agorithme de clustering :</span>
+<a name="l00141"></a>00141 exec file(<span class="stringliteral">"clustering.py"</span>)
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:38 2008 pour Lab 9 : Clustering par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

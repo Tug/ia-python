@@ -1,0 +1,17 @@
+Loading chainage_avant_sans_variables
+	@version: 2.4  date: 27/06/2007 modifie par Thomas Leaute
+	@version: 2.3  date: 20/02/2007 modifie par Vincent Schickel-Zuber
+	@version: 2.2  date: 10/23/2006 modifie par Vincent Schickel-Zuber
+	@version: 2.1  date: 01/03/2007 modifie par Bruno Alves
+	@version: 2.0  date: 12/02/2007 modifie par Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch
+	@copyright: EPFL-IC-IIF-LIA 2007
+|+| Chargement du fichier impots
+	Ajout des faits... 	OK
+	Ajout des regles... 	OK
+reduc-loyer-200
+reduc-enfant-100
+reduc-trajet-0
+reduc-300
+Liste des faits deduits:
+['bas-salaire', 'loyer', 'enfants', 'long-trajet', 'reduc-loyer-200', 'reduc-enfant-100', 'reduc-trajet-0', 'reduc-300']

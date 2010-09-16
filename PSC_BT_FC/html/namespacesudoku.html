@@ -1,0 +1,391 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 6b : Satisfaction de contraintes: Paquetage sudoku</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="namespacemembers.html"><span>Fonctions&nbsp;de&nbsp;paquetage</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Paquetage sudoku</h1>Implementation d'un exemple de probleme de contraintes sur la base du fameux jeu du Sudoku.  
+<a href="#_details">Plus de détails...</a>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Classes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsudoku_1_1_s_s_grille.html">SSGrille</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Classe representant une sous-grille faisant partie d'une grille du Sudoku.  <a href="classsudoku_1_1_s_s_grille.html#_details">Plus de détails...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsudoku_1_1_grille.html">Grille</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Classe definissant la grille, qui est faite de 9 sous-grilles.  <a href="classsudoku_1_1_grille.html#_details">Plus de détails...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#e508ee7484a948dcc7628ab6deaec534">retournePosSSGille</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la position de la ss_grille correspondant a la position absolue.  <a href="#e508ee7484a948dcc7628ab6deaec534"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#54344bb7a08947e06031a84a5f4c18af">retournePosINSSGille</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la position dans la ss_grille correspondant a la position absolue.  <a href="#54344bb7a08947e06031a84a5f4c18af"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#7cab85b7a607376968902aad2aaa04bd">estVide</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Verifie si le symbole passe en parametre correspond au symbole vide.  <a href="#7cab85b7a607376968902aad2aaa04bd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#c816c12fdc3204cd8c63e3ca943a63a9">run</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise le jeu (la grille) et trouve la solution.  <a href="#c816c12fdc3204cd8c63e3ca943a63a9"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#3ee8ec7af5250bc4dc1985d2fd7f5c35">X</a> = 0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Represente le symbole vide dans la grille.  <a href="#3ee8ec7af5250bc4dc1985d2fd7f5c35"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#9b17b31582b8aae7facc20595c3f75a9">DOMAINE</a> = range(1,10)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Le domaine des variables (pour un <a class="el" href="namespacesudoku.html" title="Implementation d&#39;un exemple de probleme de contraintes sur la base du fameux...">sudoku</a>, va de 0 a 9).  <a href="#9b17b31582b8aae7facc20595c3f75a9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">list&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#ace97515b4a1574c22f1c800171fa612">PROBLEME</a> = []</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Contient l'enonce de depart.  <a href="#ace97515b4a1574c22f1c800171fa612"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">list&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#a03c3bad03a09ade3308c824e19bd7cc">GRILLE</a> = [[]]</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Contient la grille du Sudoku.  <a href="#a03c3bad03a09ade3308c824e19bd7cc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#8effb6b11d230614a3f98673b45b580f">NBCOL</a> = 9</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Nombre de colonnes dans la grille.  <a href="#8effb6b11d230614a3f98673b45b580f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#837e1180a8c9f349764ee19b4c7a0ad9">NBLGN</a> = 9</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Nombre de lignes dans la grille.  <a href="#837e1180a8c9f349764ee19b4c7a0ad9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#00c993f8854387d332fd8535420ad439">VARS</a> = <a class="el" href="class_p_s_c_1_1_variables.html">PSC.Variables</a>()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">tuple&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#d57fb5db4763729c1695f06e5130c58f">CONTS</a> = <a class="el" href="class_p_s_c_1_1_contraintes.html">PSC.Contraintes</a>()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesudoku.html#ca1f9933e8ec1e1f46d7e725180db999">TAILLESOUSGRILLE</a> = 3</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Taille d'une sous grille.  <a href="#ca1f9933e8ec1e1f46d7e725180db999"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Implementation d'un exemple de probleme de contraintes sur la base du fameux jeu du Sudoku. <hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="7cab85b7a607376968902aad2aaa04bd"></a><!-- doxytag: member="sudoku::estVide" ref="7cab85b7a607376968902aad2aaa04bd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sudoku.estVide           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>symbol</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Verifie si le symbole passe en parametre correspond au symbole vide. 
+<p>
+Verifie si le symbole correspond au symbole vide en le testant contre le symbole vide X.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>symbol</em>&nbsp;</td><td>le symbole a verifier </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd><b>True</b> si le symbole est un symbole vide, <b>False</b> </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00086">86</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="54344bb7a08947e06031a84a5f4c18af"></a><!-- doxytag: member="sudoku::retournePosINSSGille" ref="54344bb7a08947e06031a84a5f4c18af" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sudoku.retournePosINSSGille           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>pos</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la position dans la ss_grille correspondant a la position absolue. 
+<p>
+Retourne la position dans la sous-grille correspondant a la valeur absolue donnee en pos: <br>
+ exemple:<br>
+ pos=5 et TAILLESOUSGRILLE=3<br>
+ donc <code>retournePosINSSGille(5)</code> = 53 = 2<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>pos</em>&nbsp;</td><td>la position absolue </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la position dans la sous-grille correspondant a la position absolue </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00075">75</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e508ee7484a948dcc7628ab6deaec534"></a><!-- doxytag: member="sudoku::retournePosSSGille" ref="e508ee7484a948dcc7628ab6deaec534" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sudoku.retournePosSSGille           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>pos</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la position de la ss_grille correspondant a la position absolue. 
+<p>
+Retourne la position de la sous-grille correspondant a la valeur absolue donnee en pos: <br>
+ exemple:<br>
+ pos=5 et TAILLESOUSGRILLE=3<br>
+ donc <code>retournePosSSGrille(5)</code> = 5/3 = 1<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>pos</em>&nbsp;</td><td>la position absolue </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la position de la sous-grille correspondant a la position absolue </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00060">60</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c816c12fdc3204cd8c63e3ca943a63a9"></a><!-- doxytag: member="sudoku::run" ref="c816c12fdc3204cd8c63e3ca943a63a9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sudoku.run           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>algo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>grille</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialise le jeu (la grille) et trouve la solution. 
+<p>
+Lance la resolution du probleme en prenant comme entree l'algorithme de resolution et la grille dont on cherche la solution. La fonction se chargera ensuite de la creation des contraintes de grille, de ligne de colonne et de sous-grille.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>algo</em>&nbsp;</td><td>l'algorithme a utiliser pour la resolution du probleme </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>grille</em>&nbsp;</td><td>la grille preexistante que l'on souhaite resoudre. Deux grilles sont disponibles <em>A</em> et <em>B</em>. <em>A</em> est de faible difficulte, tandis que <em>B</em> est difficile. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00362">362</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="d57fb5db4763729c1695f06e5130c58f"></a><!-- doxytag: member="sudoku::CONTS" ref="d57fb5db4763729c1695f06e5130c58f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacesudoku.html#d57fb5db4763729c1695f06e5130c58f">sudoku.CONTS</a> = <a class="el" href="class_p_s_c_1_1_contraintes.html">PSC.Contraintes</a>()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00043">43</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9b17b31582b8aae7facc20595c3f75a9"></a><!-- doxytag: member="sudoku::DOMAINE" ref="9b17b31582b8aae7facc20595c3f75a9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacesudoku.html#9b17b31582b8aae7facc20595c3f75a9">sudoku.DOMAINE</a> = range(1,10)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Le domaine des variables (pour un <a class="el" href="namespacesudoku.html" title="Implementation d&#39;un exemple de probleme de contraintes sur la base du fameux...">sudoku</a>, va de 0 a 9). 
+<p>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00028">28</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a03c3bad03a09ade3308c824e19bd7cc"></a><!-- doxytag: member="sudoku::GRILLE" ref="a03c3bad03a09ade3308c824e19bd7cc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list <a class="el" href="namespacesudoku.html#a03c3bad03a09ade3308c824e19bd7cc">sudoku.GRILLE</a> = [[]]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Contient la grille du Sudoku. 
+<p>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00034">34</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8effb6b11d230614a3f98673b45b580f"></a><!-- doxytag: member="sudoku::NBCOL" ref="8effb6b11d230614a3f98673b45b580f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="namespacesudoku.html#8effb6b11d230614a3f98673b45b580f">sudoku.NBCOL</a> = 9          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Nombre de colonnes dans la grille. 
+<p>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00037">37</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="837e1180a8c9f349764ee19b4c7a0ad9"></a><!-- doxytag: member="sudoku::NBLGN" ref="837e1180a8c9f349764ee19b4c7a0ad9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="namespacesudoku.html#837e1180a8c9f349764ee19b4c7a0ad9">sudoku.NBLGN</a> = 9          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Nombre de lignes dans la grille. 
+<p>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00040">40</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ace97515b4a1574c22f1c800171fa612"></a><!-- doxytag: member="sudoku::PROBLEME" ref="ace97515b4a1574c22f1c800171fa612" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list <a class="el" href="namespacesudoku.html#ace97515b4a1574c22f1c800171fa612">sudoku.PROBLEME</a> = []          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Contient l'enonce de depart. 
+<p>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00031">31</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ca1f9933e8ec1e1f46d7e725180db999"></a><!-- doxytag: member="sudoku::TAILLESOUSGRILLE" ref="ca1f9933e8ec1e1f46d7e725180db999" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="namespacesudoku.html#ca1f9933e8ec1e1f46d7e725180db999">sudoku.TAILLESOUSGRILLE</a> = 3          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Taille d'une sous grille. 
+<p>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00046">46</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="00c993f8854387d332fd8535420ad439"></a><!-- doxytag: member="sudoku::VARS" ref="00c993f8854387d332fd8535420ad439" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tuple <a class="el" href="namespacesudoku.html#00c993f8854387d332fd8535420ad439">sudoku.VARS</a> = <a class="el" href="class_p_s_c_1_1_variables.html">PSC.Variables</a>()          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00042">42</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3ee8ec7af5250bc4dc1985d2fd7f5c35"></a><!-- doxytag: member="sudoku::X" ref="3ee8ec7af5250bc4dc1985d2fd7f5c35" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="namespacesudoku.html#3ee8ec7af5250bc4dc1985d2fd7f5c35">sudoku.X</a> = 0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Represente le symbole vide dans la grille. 
+<p>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00025">25</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:23 2008 pour Lab 6b : Satisfaction de contraintes par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

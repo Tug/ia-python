@@ -1,0 +1,96 @@
+Chargement du module PSC
+	@version: 2.0  date: 06/06/2008 modified by Thomas Leaute
+	@version: 1.8  date: 03/06/2008 modified by Thomas Leaute
+	@version: 1.7  date: 03/06/2008 modified by Thomas Leaute
+	@version: 1.6  date: 28/03/2008 modified by Thomas Leaute
+	@version: 1.5  date: 28/06/2007 modified by Thomas Leaute
+	@version: 1.4  date: 19/03/2007 modified by Vincent Schickel-Zuber
+	@version: 1.3  date: 14/02/2007 modified by Vincent Schickel-Zuber
+	@version: 1.2  date: 21/01/2007 modified by Bruno Alves
+	@version: 1.1  date: 24/04/2006 modified by Vincent Schickel
+	@author: vincent.schickel-zuber@epfl.ch date: 24/04/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+Chargement du module variable et noeud pour PSC
+	@version: 2.0  date: 06/06/2008 modified by Thomas Leaute
+	@version: 1.8  date: 25/04/2008 modified by Thomas Leaute
+	@version: 1.7  date: 28/06/2007 modified by Thomas Leaute
+	@version: 1.4  date: 19/03/2007 modified by Vincent Schickel-Zuber
+	@version: 1.3  date: 14/02/2007 modified by Vincent Schickel-Zuber
+	@version: 1.2  date: 17/01/2007 modified by Bruno Alves
+	@version: 1.0  date: 24/04/2006 created by Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch date: 24/04/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+Vars:
+	var : a 	= None,	domaine = [2, 3]
+	var : b 	= None,	domaine = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+	var : c 	= None,	domaine = [0, 1, 2]
+	var : d 	= None,	domaine = [0, 1, 2]
+	var : e 	= None,	domaine = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+Contraintes:
+	1. Contrainte : b < 4
+	1. Contrainte : a != b
+	1. Contrainte : b != c
+	1. Contrainte : b != d
+	1. Contrainte : b != e
+	1. Contrainte : c != d
+	1. Contrainte : c != e
+	1. Contrainte : d != e
+	1. Contrainte : e < a
+
+Fait la consistance des noeuds
+Vars:
+	var : a 	= None,	domaine = [2, 3]
+	var : b 	= None,	domaine = [0, 1, 2, 3]
+	var : c 	= None,	domaine = [0, 1, 2]
+	var : d 	= None,	domaine = [0, 1, 2]
+	var : e 	= None,	domaine = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+Fait la consistance des arcs
+Vars:
+	var : a 	= None,	domaine = [2, 3]
+	var : b 	= None,	domaine = [0, 1, 2, 3]
+	var : c 	= None,	domaine = [0, 1, 2]
+	var : d 	= None,	domaine = [0, 1, 2]
+	var : e 	= None,	domaine = [0, 1, 2]
+
+Applique le Variable Ordering
+Vars:
+	var : a 	= None,	domaine = [2, 3]
+	var : c 	= None,	domaine = [0, 1, 2]
+	var : d 	= None,	domaine = [0, 1, 2]
+	var : e 	= None,	domaine = [0, 1, 2]
+	var : b 	= None,	domaine = [0, 1, 2, 3]
+
+fc : Iteration:= 1 , profondeur actuelle:= 0 et 0 contraintes verifiees
+fc : Iteration:= 2 , profondeur actuelle:= 1 et 7 contraintes verifiees
+fc : Iteration:= 3 , profondeur actuelle:= 2 et 15 contraintes verifiees
+fc : Iteration:= 4 , profondeur actuelle:= 3 et 21 contraintes verifiees
+fc : Iteration:= 5 , profondeur actuelle:= 4 et 23 contraintes verifiees
+fc : Iteration:= 6 , profondeur actuelle:= 5 et 23 contraintes verifiees
+	fc : SOLUTION TROUVEE en 6 etapes et avec 23 contraintes verifiees; SOLUTION= {'a': 2, 'c': 0, 'b': 3, 'e': 1, 'd': 2}
+fc : Iteration:= 7 , profondeur actuelle:= 2 et 31 contraintes verifiees
+fc : Iteration:= 8 , profondeur actuelle:= 3 et 37 contraintes verifiees
+fc : Iteration:= 9 , profondeur actuelle:= 4 et 39 contraintes verifiees
+fc : Iteration:= 10 , profondeur actuelle:= 5 et 39 contraintes verifiees
+	fc : SOLUTION TROUVEE en 10 etapes et avec 39 contraintes verifiees; SOLUTION= {'a': 2, 'c': 1, 'b': 3, 'e': 0, 'd': 2}
+fc : Iteration:= 11 , profondeur actuelle:= 2 et 47 contraintes verifiees
+fc : Iteration:= 12 , profondeur actuelle:= 3 et 52 contraintes verifiees
+fc : Iteration:= 13 , profondeur actuelle:= 4 et 54 contraintes verifiees
+fc : Iteration:= 14 , profondeur actuelle:= 5 et 54 contraintes verifiees
+	fc : SOLUTION TROUVEE en 14 etapes et avec 54 contraintes verifiees; SOLUTION= {'a': 2, 'c': 2, 'b': 3, 'e': 1, 'd': 0}
+fc : Iteration:= 15 , profondeur actuelle:= 3 et 59 contraintes verifiees
+fc : Iteration:= 16 , profondeur actuelle:= 4 et 61 contraintes verifiees
+fc : Iteration:= 17 , profondeur actuelle:= 5 et 61 contraintes verifiees
+	fc : SOLUTION TROUVEE en 17 etapes et avec 61 contraintes verifiees; SOLUTION= {'a': 2, 'c': 2, 'b': 3, 'e': 0, 'd': 1}
+fc : Iteration:= 18 , profondeur actuelle:= 1 et 68 contraintes verifiees
+fc : Iteration:= 19 , profondeur actuelle:= 2 et 77 contraintes verifiees
+fc : Iteration:= 20 , profondeur actuelle:= 3 et 81 contraintes verifiees
+fc : Iteration:= 21 , profondeur actuelle:= 3 et 86 contraintes verifiees
+fc : Iteration:= 22 , profondeur actuelle:= 2 et 96 contraintes verifiees
+fc : Iteration:= 23 , profondeur actuelle:= 3 et 100 contraintes verifiees
+fc : Iteration:= 24 , profondeur actuelle:= 3 et 105 contraintes verifiees
+fc : Iteration:= 25 , profondeur actuelle:= 2 et 115 contraintes verifiees
+fc : Iteration:= 26 , profondeur actuelle:= 3 et 119 contraintes verifiees
+fc : Iteration:= 27 , profondeur actuelle:= 3 et 124 contraintes verifiees
+Solutions trouvees avec fc:= [{'a': 2, 'c': 0, 'b': 3, 'e': 1, 'd': 2}, {'a': 2, 'c': 1, 'b': 3, 'e': 0, 'd': 2}, {'a': 2, 'c': 2, 'b': 3, 'e': 1, 'd': 0}, {'a': 2, 'c': 2, 'b': 3, 'e': 0, 'd': 1}]

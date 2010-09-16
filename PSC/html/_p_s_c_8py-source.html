@@ -1,0 +1,381 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 6a : Satisfaction de contraintes:  Fichier source de PSC.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>PSC.py</h1><a href="_p_s_c_8py.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespace_p_s_c.html">00001</a> <span class="comment">## \file PSC.py</span>
+<a name="l00002"></a>00002 <span class="comment"># \brief Module implementant l'algorithme du backtracking </span>
+<a name="l00003"></a>00003 <span class="comment">#               pour la resolution des problemes de contraintes</span>
+<a name="l00004"></a>00004 <span class="comment"># \package PSC</span>
+<a name="l00005"></a>00005 <span class="comment"># \brief Module implementant l'algorithme du backtracking </span>
+<a name="l00006"></a>00006 <span class="comment">#               pour la resolution des problemes de contraintes</span>
+<a name="l00007"></a>00007 <span class="comment">#</span>
+<a name="l00008"></a>00008 <span class="comment"># Chaque algorithme utilise les methodes de consistance pour eviter</span>
+<a name="l00009"></a>00009 <span class="comment"># d'avoir des instanciations de valeurs qui ne sont pas compatibles</span>
+<a name="l00010"></a>00010 <span class="comment"># avec les contraintes. Pour plus de details sur le fonctionnement</span>
+<a name="l00011"></a>00011 <span class="comment"># des PSC, lire le chapitre 8 du livre.</span>
+<a name="l00012"></a>00012 <span class="comment">#</span>
+<a name="l00013"></a>00013 <span class="comment"># @see Chapitre 8 du livre</span>
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00016"></a>00016 <span class="keywordflow">print</span> <span class="stringliteral">"Chargement du module PSC"</span>
+<a name="l00017"></a>00017 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 2.0  date: 06/06/2008 modified by Thomas Leaute"</span>
+<a name="l00018"></a>00018 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.5  date: 28/03/2008 modified by Thomas Leaute"</span>
+<a name="l00019"></a>00019 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.4  date: 28/06/2007 modified by Thomas Leaute"</span>
+<a name="l00020"></a>00020 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.3  date: 14/02/2007 modified by Vincent Schickel"</span>
+<a name="l00021"></a>00021 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.2  date: 17/01/2007 modified by Bruno Alves"</span>
+<a name="l00022"></a>00022 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.1  date: 24/04/2006 modified by Vincent Schickel-Zuber"</span>
+<a name="l00023"></a>00023 <span class="keywordflow">print</span> <span class="stringliteral">"\t@author: vincent.schickel-zuber@epfl.ch date: 24/04/2006"</span>
+<a name="l00024"></a>00024 <span class="keywordflow">print</span> <span class="stringliteral">"\t@copyright: EPFL-IC-IIF-LIA 2006-2007"</span>
+<a name="l00025"></a>00025 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="comment"># modules utilises</span>
+<a name="l00028"></a>00028 <span class="keyword">import</span> libPSC
+<a name="l00029"></a>00029 <span class="keyword">import</span> copy
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 <span class="comment">## Liste de toutes les variables</span>
+<a name="l00032"></a><a class="code" href="namespace_p_s_c.html#b80f7f24a7f2a5d11f7e22d5bdf983df">00032</a> VARIABLES=[]
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="comment">## Liste de toutes les contraintes</span>
+<a name="l00035"></a><a class="code" href="namespace_p_s_c.html#ae50a961422874028d954ebe758d28c6">00035</a> CONTRAINTES=[]
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="comment">## Constante retournee en cas d'echec</span>
+<a name="l00038"></a><a class="code" href="namespace_p_s_c.html#7e298a6f32921875750c71395edba756">00038</a> ECHEC=<span class="stringliteral">'echec'</span>
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="comment">## Contient le nombre d'iterations de l'algorithme</span>
+<a name="l00041"></a><a class="code" href="namespace_p_s_c.html#beabf4cbf800562e44f88bf372321aa8">00041</a> ITERATIONS = 0
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 <span class="comment">## Liste des solutions de l'algorithme</span>
+<a name="l00044"></a><a class="code" href="namespace_p_s_c.html#f6991257b4f56a2ee8e52a616898f8b6">00044</a> SOLUTIONS=[]
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 <span class="comment">## Verifie si chaque contrainte portant sur la variable k et sur au moins une des variables</span>
+<a name="l00048"></a>00048 <span class="comment">## precedentes dans PSC.VARIABLES est satisfaite</span>
+<a name="l00049"></a>00049 <span class="comment">#</span>
+<a name="l00050"></a>00050 <span class="comment"># @param[in] k position actuelle dans PSC.VARIABLES </span>
+<a name="l00051"></a><a class="code" href="namespace_p_s_c.html#c20b9fd4f1e23157586cf6324ea937c0">00051</a> <span class="keyword">def </span><a class="code" href="namespace_p_s_c.html#c20b9fd4f1e23157586cf6324ea937c0" title="Verifie si chaque contrainte portant sur la variable k et sur au moins une des variables...">consistanceAvecVarsPrecedentes</a> ( k ):
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053         <span class="comment"># pour chaque contrainte portant sur la variable k: </span>
+<a name="l00054"></a>00054         <span class="keywordflow">for</span> c <span class="keywordflow">in</span> CONTRAINTES:
+<a name="l00055"></a>00055                 <span class="keywordflow">if</span> VARIABLES[k].nom <span class="keywordflow">in</span> c.vars:
+<a name="l00056"></a>00056                 
+<a name="l00057"></a>00057                         <span class="comment"># si la contrainte porte aussi sur une variable precedente:</span>
+<a name="l00058"></a>00058                         <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(0, k):
+<a name="l00059"></a>00059                                 <span class="keywordflow">if</span> VARIABLES[i].nom <span class="keywordflow">in</span> c.vars:
+<a name="l00060"></a>00060                                 
+<a name="l00061"></a>00061                                         <span class="comment"># si la contrainte est valide, passe a la suivante</span>
+<a name="l00062"></a>00062                                         <span class="keywordflow">if</span> c.estValide( VARIABLES[k], VARIABLES[k].valeur ):
+<a name="l00063"></a>00063                                                 <span class="keywordflow">break</span>
+<a name="l00064"></a>00064                                         <span class="keywordflow">else</span>:
+<a name="l00065"></a>00065                                                 <span class="keywordflow">return</span> <span class="keyword">False</span>
+<a name="l00066"></a>00066         
+<a name="l00067"></a>00067         <span class="comment"># toutes les contraintes sont valides</span>
+<a name="l00068"></a>00068         <span class="keywordflow">return</span> <span class="keyword">True</span>
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 <span class="comment">## Affiche la solution avec quelques informations utiles</span>
+<a name="l00072"></a>00072 <span class="comment">#</span>
+<a name="l00073"></a>00073 <span class="comment"># Affiche tout simplement la solution en indiquant le nom de l'algorithme</span>
+<a name="l00074"></a>00074 <span class="comment"># utilise, le nombre d'iterations qui ont ete necessaires pour arriver</span>
+<a name="l00075"></a>00075 <span class="comment"># a la solution, le nombre de contraintes visitees et enfin, la solution</span>
+<a name="l00076"></a>00076 <span class="comment"># elle-meme.</span>
+<a name="l00077"></a>00077 <span class="comment">#</span>
+<a name="l00078"></a>00078 <span class="comment"># @param[in] algo le nom de l'algorithme de recherche utilise</span>
+<a name="l00079"></a>00079 <span class="comment"># @param[in] solution la solution trouvee jusqu'a present</span>
+<a name="l00080"></a><a class="code" href="namespace_p_s_c.html#5ce3a0aa7f70506d53f7afae147f5e17">00080</a> <span class="keyword">def </span><a class="code" href="namespace_p_s_c.html#5ce3a0aa7f70506d53f7afae147f5e17" title="Affiche la solution avec quelques informations utiles.">afficheSolution</a>( algo, solution ):
+<a name="l00081"></a>00081         <span class="keywordflow">print</span> <span class="stringliteral">"\t"</span>, algo, <span class="stringliteral">": SOLUTION TROUVEE en"</span>, ITERATIONS, <span class="stringliteral">"etapes et avec"</span>, libPSC.NBCONTRAINTES, <span class="stringliteral">"contraintes verifiees;"</span>, <span class="stringliteral">"SOLUTION="</span>, solution
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 <span class="comment">## Affiche le nombre d'iterations ainsi que quelques informations utiles</span>
+<a name="l00085"></a>00085 <span class="comment">#</span>
+<a name="l00086"></a>00086 <span class="comment"># Affiche le nombre d'iterations avec des informations supplementaires sur</span>
+<a name="l00087"></a>00087 <span class="comment"># l'algorithme utilise et la profondeur de recheche actuelle.</span>
+<a name="l00088"></a>00088 <span class="comment">#</span>
+<a name="l00089"></a>00089 <span class="comment"># @param[in] algo le nom de l'algorithme de recherche utilise</span>
+<a name="l00090"></a>00090 <span class="comment"># @param[in] k la profondeur actuelle a laquelle on se trouve</span>
+<a name="l00091"></a><a class="code" href="namespace_p_s_c.html#64595f32fcb7b26d24d67aa0a75e80f9">00091</a> <span class="keyword">def </span><a class="code" href="namespace_p_s_c.html#64595f32fcb7b26d24d67aa0a75e80f9" title="Affiche le nombre d&amp;#39;iterations ainsi que quelques informations utiles.">afficheNbIterations</a>( algo, k ):
+<a name="l00092"></a>00092         <span class="keywordflow">print</span> algo, <span class="stringliteral">": Iteration:="</span>, ITERATIONS, <span class="stringliteral">", profondeur actuelle:="</span>, k,<span class="stringliteral">"et"</span>, libPSC.NBCONTRAINTES, <span class="stringliteral">"contraintes verifiees"</span>
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 <span class="comment">## Classe gerant la liste des variables PSC.VARIABLES</span>
+<a name="l00097"></a>00097 <span class="comment">#</span>
+<a name="l00098"></a>00098 <span class="comment"># Cette classe est une sorte de wrapper pour l'object PSC.VARIABLES facilitant</span>
+<a name="l00099"></a>00099 <span class="comment"># la manipulation de celui-ci. Les fonctions disponibles peuvent ajouter</span>
+<a name="l00100"></a>00100 <span class="comment"># ou obtenir une variables donnee. D'autres fonctions avancees permettent</span>
+<a name="l00101"></a>00101 <span class="comment"># d'appliquer la consistance des noeuds a toutes les variables ou d'initialiser</span>
+<a name="l00102"></a>00102 <span class="comment"># une instance des variables presentes.</span>
+<a name="l00103"></a><a class="code" href="class_p_s_c_1_1_variables.html">00103</a> <span class="keyword">class </span><a class="code" href="class_p_s_c_1_1_variables.html" title="Classe gerant la liste des variables PSC.VARIABLES.">Variables</a>:
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105         <span class="comment">## Constructeur de classe</span>
+<a name="l00106"></a>00106         <span class="comment">#</span>
+<a name="l00107"></a>00107         <span class="comment"># Initialise le tableau de variables en l'effacant.</span>
+<a name="l00108"></a>00108         <span class="comment">#</span>
+<a name="l00109"></a>00109         <span class="comment"># @param[in] self pointeur automatique vers l'instance executant cette</span>
+<a name="l00110"></a>00110         <span class="comment">#                                methode.</span>
+<a name="l00111"></a><a class="code" href="class_p_s_c_1_1_variables.html#69eb6297952e72f82eb35c43b5118859">00111</a>         <span class="keyword">def </span><a class="code" href="class_p_s_c_1_1_variables.html#69eb6297952e72f82eb35c43b5118859" title="Constructeur de classe.">__init__</a>( self ):
+<a name="l00112"></a>00112                 del VARIABLES[:]
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115         <span class="comment">## Retourne une variable d'apres son nom</span>
+<a name="l00116"></a>00116         <span class="comment">#</span>
+<a name="l00117"></a>00117         <span class="comment"># Retourne une variable dont le nom correspond au nom passe en parametre.</span>
+<a name="l00118"></a>00118         <span class="comment">#</span>
+<a name="l00119"></a>00119         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00120"></a>00120         <span class="comment">#                                methode.</span>
+<a name="l00121"></a>00121         <span class="comment"># @param[in] nom le nom de la variable que l'on cherche</span>
+<a name="l00122"></a>00122         <span class="comment"># @return une reference a la variable recherchee si celle-ci existe, \c None sinon</span>
+<a name="l00123"></a><a class="code" href="class_p_s_c_1_1_variables.html#04604f5b3497725ea4402840ff9b7b30">00123</a>         <span class="keyword">def </span><a class="code" href="class_p_s_c_1_1_variables.html#04604f5b3497725ea4402840ff9b7b30" title="Retourne une variable d&amp;#39;apres son nom.">retourneVar</a>( self, nom ):
+<a name="l00124"></a>00124                 <span class="keywordflow">for</span> var <span class="keywordflow">in</span> VARIABLES:
+<a name="l00125"></a>00125                         <span class="keywordflow">if</span> var.nomEstEgal( nom ):
+<a name="l00126"></a>00126                                 <span class="keywordflow">return</span> var
+<a name="l00127"></a>00127                 <span class="keywordflow">return</span> <span class="keywordtype">None</span>
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130         <span class="comment">## Ajoute une nouvelle variable a la liste des variables</span>
+<a name="l00131"></a>00131         <span class="comment">#</span>
+<a name="l00132"></a>00132         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00133"></a>00133         <span class="comment">#                                methode.</span>
+<a name="l00134"></a>00134         <span class="comment"># @param[in] var la variable a ajouter dans la liste</span>
+<a name="l00135"></a><a class="code" href="class_p_s_c_1_1_variables.html#66e70e8e6cc45f9a6b1326ef03ee8205">00135</a>         <span class="keyword">def </span><a class="code" href="class_p_s_c_1_1_variables.html#66e70e8e6cc45f9a6b1326ef03ee8205" title="Ajoute une nouvelle variable a la liste des variables.">ajouteVar</a>( self, var ):
+<a name="l00136"></a>00136                 VARIABLES.append( var )
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139         <span class="comment">## Applique la consistance des noeuds</span>
+<a name="l00140"></a>00140         <span class="comment">#</span>
+<a name="l00141"></a>00141         <span class="comment"># Cette methode applique la consistance des noeuds pour chaque</span>
+<a name="l00142"></a>00142         <span class="comment"># variable de la liste. </span>
+<a name="l00143"></a>00143         <span class="comment"># La methode de consistance consiste a supprimer du domaine toutes les</span>
+<a name="l00144"></a>00144         <span class="comment"># valeurs qui violent les contraintes unaires. Pour cela, il suffit d'iterer</span>
+<a name="l00145"></a>00145         <span class="comment"># sur la liste des contraintes unaires, et verifier si chacune est verifiee </span>
+<a name="l00146"></a>00146         <span class="comment"># par toutes les valeurs possibles de la variable sur laquelle elle porte. </span>
+<a name="l00147"></a>00147         <span class="comment"># Dans le cas contraire, cette valeur est supprimee du domaine. </span>
+<a name="l00148"></a>00148         <span class="comment">#</span>
+<a name="l00149"></a>00149         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00150"></a>00150         <span class="comment">#                                methode.</span>
+<a name="l00151"></a>00151         <span class="comment"># @see Chapitre 8.5.1 du livre</span>
+<a name="l00152"></a>00152         <span class="comment"># @warning lors de l'iteration des valeurs du domaine, il faut bien</span>
+<a name="l00153"></a>00153         <span class="comment">#                 faire \b attention a iterer sur une copie du domaine, car</span>
+<a name="l00154"></a>00154         <span class="comment">#                 on ne peut pas supprimer des valeurs d'une liste et continuer</span>
+<a name="l00155"></a>00155         <span class="comment">#                 a iterer sur celle-ci</span>
+<a name="l00156"></a><a class="code" href="class_p_s_c_1_1_variables.html#4f1cf8d190e321a325c7d896d561c8e0">00156</a>         <span class="keyword">def </span><a class="code" href="class_p_s_c_1_1_variables.html#4f1cf8d190e321a325c7d896d561c8e0" title="Applique la consistance des noeuds.">consistanceDesNoeuds</a>( self ):
+<a name="l00157"></a>00157         
+<a name="l00158"></a>00158                 <span class="comment"># pour chaque contrainte unaire</span>
+<a name="l00159"></a>00159                 <span class="keywordflow">for</span> c <span class="keywordflow">in</span> CONTRAINTES:
+<a name="l00160"></a>00160                         <span class="keywordflow">if</span> c.dimension() == 1:
+<a name="l00161"></a>00161                         
+<a name="l00162"></a>00162                                 <span class="comment"># pour chaque valeur du domaine de la variable</span>
+<a name="l00163"></a>00163                                 <span class="keywordflow">for</span> d <span class="keywordflow">in</span> c.refVar.domaine[:]:
+<a name="l00164"></a>00164         
+<a name="l00165"></a>00165                                         <span class="comment"># si la contrainte n'est pas satisfaite, supprime la valeur</span>
+<a name="l00166"></a>00166                                         <span class="keywordflow">if</span> <span class="keywordflow">not</span> c.estValide( c.refVar, d ) :
+<a name="l00167"></a>00167                                                 c.refVar.domaine.remove(d)
+<a name="l00168"></a>00168                                                                                                         
+<a name="l00169"></a>00169         
+<a name="l00170"></a>00170         <span class="comment">## Retourne le nombre de variables</span>
+<a name="l00171"></a>00171         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00172"></a>00172         <span class="comment">#                                methode.</span>
+<a name="l00173"></a><a class="code" href="class_p_s_c_1_1_variables.html#5d4b19ddaa79c2c480767ce6d90bc714">00173</a>         <span class="keyword">def </span><a class="code" href="class_p_s_c_1_1_variables.html#5d4b19ddaa79c2c480767ce6d90bc714" title="Retourne le nombre de variables.">retourneNbVars</a>(self):
+<a name="l00174"></a>00174                 <span class="keywordflow">return</span> len(VARIABLES)
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176         <span class="comment">## Retourne une representation textuelle des donnees des variables</span>
+<a name="l00177"></a>00177         <span class="comment">#</span>
+<a name="l00178"></a>00178         <span class="comment"># Retourne une representation de toutes les variables ajoutees dans la</span>
+<a name="l00179"></a>00179         <span class="comment"># liste PSC.VARIABLES. Le format d'affichage est:</span>
+<a name="l00180"></a>00180         <span class="comment">#</span>
+<a name="l00181"></a>00181         <span class="comment"># @code</span>
+<a name="l00182"></a>00182         <span class="comment"># Vars:</span>
+<a name="l00183"></a>00183         <span class="comment">#   var1.__repr__()</span>
+<a name="l00184"></a>00184         <span class="comment">#   var2.__repr__()</span>
+<a name="l00185"></a>00185         <span class="comment">#   ...</span>
+<a name="l00186"></a>00186         <span class="comment">#   varn.__repr__()</span>
+<a name="l00187"></a>00187         <span class="comment"># @endcode</span>
+<a name="l00188"></a>00188         <span class="comment">#</span>
+<a name="l00189"></a>00189         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00190"></a>00190         <span class="comment">#                                methode.</span>
+<a name="l00191"></a>00191         <span class="comment"># @return une chaine de caracteres contenant une representation de la classe</span>
+<a name="l00192"></a><a class="code" href="class_p_s_c_1_1_variables.html#94c18a14c01a3d2c69b7b762b92a2f29">00192</a>         <span class="keyword">def </span><a class="code" href="class_p_s_c_1_1_variables.html#94c18a14c01a3d2c69b7b762b92a2f29" title="Retourne une representation textuelle des donnees des variables.">__repr__</a>( self ):
+<a name="l00193"></a>00193                 str = <span class="stringliteral">"Vars:\n"</span>
+<a name="l00194"></a>00194                 <span class="keywordflow">for</span> var <span class="keywordflow">in</span> VARIABLES:
+<a name="l00195"></a>00195                         str += <span class="stringliteral">"\t"</span> + var.__repr__() + <span class="stringliteral">"\n"</span>
+<a name="l00196"></a>00196                 <span class="keywordflow">return</span> str
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199 <span class="comment">## Classe gerant la liste des contraintes PSC.CONTRAINTES</span>
+<a name="l00200"></a>00200 <span class="comment">#</span>
+<a name="l00201"></a>00201 <span class="comment"># Cette classe assure la gestion de la liste PSC.CONTRAINTES. Pour assurer la</span>
+<a name="l00202"></a>00202 <span class="comment"># consistance, cette classe propose des methodes pour acceder aux contraintes,</span>
+<a name="l00203"></a>00203 <span class="comment"># mais aussi pour appliquer la consistance des arcs a chacune.</span>
+<a name="l00204"></a><a class="code" href="class_p_s_c_1_1_contraintes.html">00204</a> <span class="keyword">class </span><a class="code" href="class_p_s_c_1_1_contraintes.html" title="Classe gerant la liste des contraintes PSC.CONTRAINTES.">Contraintes</a>:
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206         <span class="comment">## Constructeur de la classe</span>
+<a name="l00207"></a>00207         <span class="comment">#</span>
+<a name="l00208"></a>00208         <span class="comment"># Initialise la liste des contraintes PSC.CONTRAINTES</span>
+<a name="l00209"></a>00209         <span class="comment">#</span>
+<a name="l00210"></a>00210         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00211"></a>00211         <span class="comment">#                                methode.</span>
+<a name="l00212"></a><a class="code" href="class_p_s_c_1_1_contraintes.html#b31a393427c5a0b2ea5434fc86e92e95">00212</a>         <span class="keyword">def </span><a class="code" href="class_p_s_c_1_1_contraintes.html#b31a393427c5a0b2ea5434fc86e92e95" title="Constructeur de la classe.">__init__</a>( self ):
+<a name="l00213"></a>00213                 del CONTRAINTES[:]
+<a name="l00214"></a>00214 
+<a name="l00215"></a>00215 
+<a name="l00216"></a>00216         <span class="comment">## Ajoute une contrainte dans la liste des contraintes</span>
+<a name="l00217"></a>00217         <span class="comment">#</span>
+<a name="l00218"></a>00218         <span class="comment"># Ajoute la contrainte passee en parametre dans PSC.CONTRAINTES.</span>
+<a name="l00219"></a>00219         <span class="comment">#</span>
+<a name="l00220"></a>00220         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00221"></a>00221         <span class="comment">#                                methode.</span>
+<a name="l00222"></a>00222         <span class="comment"># @param[in] c la contrainte que l'on cherche a ajouter</span>
+<a name="l00223"></a><a class="code" href="class_p_s_c_1_1_contraintes.html#aeef06b90394269e9a41d9abd4d2c9d7">00223</a>         <span class="keyword">def </span><a class="code" href="class_p_s_c_1_1_contraintes.html#aeef06b90394269e9a41d9abd4d2c9d7" title="Ajoute une contrainte dans la liste des contraintes.">ajouteContrainte</a>( self, c ):
+<a name="l00224"></a>00224                 CONTRAINTES.append(c)
+<a name="l00225"></a>00225 
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227         <span class="comment">## Applique la consistance des arcs</span>
+<a name="l00228"></a>00228         <span class="comment">#</span>
+<a name="l00229"></a>00229         <span class="comment"># Cette methode est une application directe de l'algorithme REVISER</span>
+<a name="l00230"></a>00230         <span class="comment"># vu en cours. Sa base theorique prend en compte le fait que pour une</span>
+<a name="l00231"></a>00231         <span class="comment"># valeur v du domaine de xi, il se peut qu'il n'y ait pas de valeur</span>
+<a name="l00232"></a>00232         <span class="comment"># dans le domaine qui soit consistante avec les contraintes en xi et xj. Dans ce cas,</span>
+<a name="l00233"></a>00233         <span class="comment"># l'algorithme REVISER supprime v de xi. Cependant, l'appliquer une fois</span>
+<a name="l00234"></a>00234         <span class="comment"># ne suffit pas. En effet, il se peut, comme cet algorithme modifie le domaine de xi,</span>
+<a name="l00235"></a>00235         <span class="comment"># que cette modification entraine l'inconsistance avec d'autres contraintes etant valides dans le passe.</span>
+<a name="l00236"></a>00236         <span class="comment">#</span>
+<a name="l00237"></a>00237         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00238"></a>00238         <span class="comment">#                                methode.</span>
+<a name="l00239"></a>00239         <span class="comment"># @note Regarder le chapitre 8.5.2 du cours pour de plus amples informations</span>
+<a name="l00240"></a>00240         <span class="comment"># sur le fonctionnement de l'algorithme de Waltz et REVISER</span>
+<a name="l00241"></a><a class="code" href="class_p_s_c_1_1_contraintes.html#c5582767508af52ba85b955b3e8f442f">00241</a>         <span class="keyword">def </span><a class="code" href="class_p_s_c_1_1_contraintes.html#c5582767508af52ba85b955b3e8f442f" title="Applique la consistance des arcs.">consistanceDesArcs</a>( self ):
+<a name="l00242"></a>00242                 refaire=<span class="keyword">False</span>
+<a name="l00243"></a>00243                 <span class="keywordflow">for</span> c <span class="keywordflow">in</span> CONTRAINTES:
+<a name="l00244"></a>00244                         <span class="keywordflow">if</span> c.dimension()==2 <span class="keywordflow">and</span> c.reviser():
+<a name="l00245"></a>00245                                 refaire = <span class="keyword">True</span>
+<a name="l00246"></a>00246                 <span class="keywordflow">if</span> refaire:
+<a name="l00247"></a>00247                         self.<a class="code" href="class_p_s_c_1_1_contraintes.html#c5582767508af52ba85b955b3e8f442f" title="Applique la consistance des arcs.">consistanceDesArcs</a>()
+<a name="l00248"></a>00248                         
+<a name="l00249"></a>00249         <span class="comment">## Retourne le nombre de contraintes</span>
+<a name="l00250"></a>00250         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00251"></a>00251         <span class="comment">#                                methode.</span>
+<a name="l00252"></a><a class="code" href="class_p_s_c_1_1_contraintes.html#f79c116b8e015b7a2b1d35f1059bfa36">00252</a>         <span class="keyword">def </span><a class="code" href="class_p_s_c_1_1_contraintes.html#f79c116b8e015b7a2b1d35f1059bfa36" title="Retourne le nombre de contraintes.">retourneNbContraintes</a>(self):
+<a name="l00253"></a>00253                 <span class="keywordflow">return</span> len(CONTRAINTES)
+<a name="l00254"></a>00254         
+<a name="l00255"></a>00255         
+<a name="l00256"></a>00256         <span class="comment">## Retourne une representation textuelle des donnees des contraintes</span>
+<a name="l00257"></a>00257         <span class="comment">#</span>
+<a name="l00258"></a>00258         <span class="comment"># Retourne une representation des toutes les contraintes ajoutees dans la</span>
+<a name="l00259"></a>00259         <span class="comment"># liste PSC.CONTRAINTES. Le format d'affichage est:</span>
+<a name="l00260"></a>00260         <span class="comment">#</span>
+<a name="l00261"></a>00261         <span class="comment"># @code</span>
+<a name="l00262"></a>00262         <span class="comment"># Contraintes:</span>
+<a name="l00263"></a>00263         <span class="comment">#   c1.__repr__()</span>
+<a name="l00264"></a>00264         <span class="comment">#   c2.__repr__()</span>
+<a name="l00265"></a>00265         <span class="comment">#   ...</span>
+<a name="l00266"></a>00266         <span class="comment">#   cn.__repr__()</span>
+<a name="l00267"></a>00267         <span class="comment"># @endcode</span>
+<a name="l00268"></a>00268         <span class="comment">#</span>
+<a name="l00269"></a>00269         <span class="comment"># @param[in] self reference automatique vers l'instance executant cette</span>
+<a name="l00270"></a>00270         <span class="comment">#                                methode.</span>
+<a name="l00271"></a>00271         <span class="comment"># @return une chaine de caracteres contenant une representation de la classe</span>
+<a name="l00272"></a><a class="code" href="class_p_s_c_1_1_contraintes.html#d5a23a439c2e5af6f5338ce5d49701f3">00272</a>         <span class="keyword">def </span><a class="code" href="class_p_s_c_1_1_contraintes.html#d5a23a439c2e5af6f5338ce5d49701f3" title="Retourne une representation textuelle des donnees des contraintes.">__repr__</a>( self ):
+<a name="l00273"></a>00273                 str = <span class="stringliteral">"Contraintes:\n"</span>
+<a name="l00274"></a>00274                 <span class="keywordflow">for</span> c <span class="keywordflow">in</span> CONTRAINTES:
+<a name="l00275"></a>00275                         str += <span class="stringliteral">"\t1. "</span>+ c.__repr__() + <span class="stringliteral">"\n"</span>
+<a name="l00276"></a>00276                 <span class="keywordflow">return</span> str
+<a name="l00277"></a>00277 
+<a name="l00278"></a>00278 
+<a name="l00279"></a>00279 <span class="comment">## Algorithme de backtracking simple</span>
+<a name="l00280"></a>00280 <span class="comment">#</span>
+<a name="l00281"></a>00281 <span class="comment"># Le principe de l'algorithme est de tenter d'assigner une valeur a chaque variable</span>
+<a name="l00282"></a>00282 <span class="comment"># dans la liste PSC.VAR. A chaque assignation, on verifie que toutes le contraintes</span>
+<a name="l00283"></a>00283 <span class="comment"># liant la variable courante avec les variables deja instanciees sont satisfaites. </span>
+<a name="l00284"></a>00284 <span class="comment"># Sinon, on procede a un backtrack pour essayer une autre valeur. </span>
+<a name="l00285"></a>00285 <span class="comment">#</span>
+<a name="l00286"></a>00286 <span class="comment"># @param[in] k la profondeur de la recherce (commence a 0)</span>
+<a name="l00287"></a>00287 <span class="comment"># @param[in] toutesLesSolutions si \b True alors cherche TOUTES les solutions,</span>
+<a name="l00288"></a>00288 <span class="comment">#                       sinon s'arrete a la premiere (valeur par defaut)</span>
+<a name="l00289"></a>00289 <span class="comment"># @param[in] initialise initialise les variables globales ITERATIONS et SOLUTIONS</span>
+<a name="l00290"></a>00290 <span class="comment"># @return instances contenant la solution \e ou echec si aucune solution trouvee</span>
+<a name="l00291"></a>00291 <span class="comment"># @see Chapitre 8.4.1 du livre</span>
+<a name="l00292"></a><a class="code" href="namespace_p_s_c.html#33742ccb82fcb799b2a40071ec47df7d">00292</a> <span class="keyword">def </span><a class="code" href="namespace_p_s_c.html#33742ccb82fcb799b2a40071ec47df7d" title="Algorithme de backtracking simple.">backtrack</a>( k, toutesLesSolutions=None, initialise=None ):
+<a name="l00293"></a>00293 
+<a name="l00294"></a>00294         <span class="comment"># l'algorithme utilise est le backtracking</span>
+<a name="l00295"></a>00295         algo=<span class="stringliteral">"bt"</span>
+<a name="l00296"></a>00296 
+<a name="l00297"></a>00297         <span class="comment"># variables globales</span>
+<a name="l00298"></a>00298         <span class="keyword">global</span> ITERATIONS
+<a name="l00299"></a>00299         <span class="keyword">global</span> SOLUTIONS
+<a name="l00300"></a>00300 
+<a name="l00301"></a>00301         <span class="comment"># faut-il ajouter toutes les solutions ?</span>
+<a name="l00302"></a>00302         <span class="keywordflow">if</span> toutesLesSolutions==<span class="keywordtype">None</span>:
+<a name="l00303"></a>00303                 toutesLesSolutions=<span class="keyword">False</span>
+<a name="l00304"></a>00304 
+<a name="l00305"></a>00305         <span class="comment"># faut-il initialiser les variables ?</span>
+<a name="l00306"></a>00306         <span class="keywordflow">if</span> initialise==<span class="keywordtype">None</span> <span class="keywordflow">or</span> initialise==<span class="keyword">True</span>:
+<a name="l00307"></a>00307                 ITERATIONS=0
+<a name="l00308"></a>00308                 SOLUTIONS=[]
+<a name="l00309"></a>00309                 libPSC.NBCONTRAINTES=0
+<a name="l00310"></a>00310                 initialise=<span class="keyword">False</span>
+<a name="l00311"></a>00311 
+<a name="l00312"></a>00312         <span class="comment"># incremente le nombre d'iterations et affiche les</span>
+<a name="l00313"></a>00313         <span class="comment"># informations du nombre de noeuds visites, etc...</span>
+<a name="l00314"></a>00314         ITERATIONS += 1;
+<a name="l00315"></a>00315         afficheNbIterations( algo, k )
+<a name="l00316"></a>00316 
+<a name="l00317"></a>00317         <span class="comment"># si k&gt;nombre-variables, alors on a une solution</span>
+<a name="l00318"></a>00318         <span class="comment"># a la profondeur ou l'on se trouve.</span>
+<a name="l00319"></a>00319         <span class="keywordflow">if</span> k &gt;= len(VARIABLES):
+<a name="l00320"></a>00320 
+<a name="l00321"></a>00321                 <span class="comment"># affiche la solution et l'ajoute dans la liste SOLUTIONS</span>
+<a name="l00322"></a>00322                 solution = {}
+<a name="l00323"></a>00323                 <span class="keywordflow">for</span> var <span class="keywordflow">in</span> VARIABLES:
+<a name="l00324"></a>00324                         solution[var.nom] = var.valeur
+<a name="l00325"></a>00325                 afficheSolution( algo, solution )
+<a name="l00326"></a>00326                 SOLUTIONS.append( solution )
+<a name="l00327"></a>00327 
+<a name="l00328"></a>00328                 <span class="comment"># s'il ne faut pas garder toutes les solutions, on peut</span>
+<a name="l00329"></a>00329                 <span class="comment"># quitter l'algorithme a cette etape. La recursion sera</span>
+<a name="l00330"></a>00330                 <span class="comment"># deroulee et l'algorithme termine.</span>
+<a name="l00331"></a>00331                 <span class="keywordflow">if</span> <span class="keywordflow">not</span> toutesLesSolutions:
+<a name="l00332"></a>00332                         <span class="keywordflow">return</span> SOLUTIONS
+<a name="l00333"></a>00333 
+<a name="l00334"></a>00334         <span class="comment"># sinon, il faut continuer la recherche</span>
+<a name="l00335"></a>00335         <span class="keywordflow">else</span>:
+<a name="l00336"></a>00336 
+<a name="l00337"></a>00337                 <span class="comment"># obtient la k-ieme variable</span>
+<a name="l00338"></a>00338                 var = VARIABLES[k]
+<a name="l00339"></a>00339 
+<a name="l00340"></a>00340                 <span class="comment"># pour chaque valeur du domaine...</span>
+<a name="l00341"></a>00341                 <span class="keywordflow">for</span> d <span class="keywordflow">in</span> var.domaine:
+<a name="l00342"></a>00342 
+<a name="l00343"></a>00343                         <span class="comment"># ... teste la variable avec la valeur d</span>
+<a name="l00344"></a>00344                         var.metAJourValeur(d)
+<a name="l00345"></a>00345 
+<a name="l00346"></a>00346                         <span class="comment"># verifie si cette valeur d est consistante avec </span>
+<a name="l00347"></a>00347                         <span class="comment"># toutes les contraintes portant sur la variable k</span>
+<a name="l00348"></a>00348                         <span class="comment"># et sur au moins une des variables 0..k-1 </span>
+<a name="l00349"></a>00349                         <span class="keywordflow">if</span> consistanceAvecVarsPrecedentes(k):
+<a name="l00350"></a>00350 
+<a name="l00351"></a>00351                                 <span class="comment"># continue l'algorithme sur la variable k+1</span>
+<a name="l00352"></a>00352                                 reste = backtrack( k+1, toutesLesSolutions, initialise )
+<a name="l00353"></a>00353                                 <span class="keywordflow">if</span> reste!= ECHEC:
+<a name="l00354"></a>00354                                         <span class="keywordflow">return</span> reste
+<a name="l00355"></a>00355 
+<a name="l00356"></a>00356         <span class="comment"># si l'on arrive ici, cela signifie que les valeurs pour les variables 0 a k-1 ne sont consistantes</span>
+<a name="l00357"></a>00357         <span class="comment"># avec aucune valeur possible pour la variable k. </span>
+<a name="l00358"></a>00358         var.metAJourValeur(<span class="keywordtype">None</span>)
+<a name="l00359"></a>00359         <span class="keywordflow">return</span> ECHEC                    
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:18 2008 pour Lab 6a : Satisfaction de contraintes par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

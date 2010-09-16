@@ -1,0 +1,1031 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 8 : ID3: Paquetage id3</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="namespacemembers.html"><span>Fonctions&nbsp;de&nbsp;paquetage</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Paquetage id3</h1>Contient l'algorithme ID3.  
+<a href="#_details">Plus de détails...</a>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Classes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classid3_1_1_noeud.html">Noeud</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Represente un noeud dans l'arbre de décision.  <a href="classid3_1_1_noeud.html#_details">Plus de détails...</a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#0272360f7cb80a453623bba62f4e85fc">initID3</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise le module ID3.  <a href="#0272360f7cb80a453623bba62f4e85fc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#822ef6a6ece41d8d631d3cc890dd0fce">classifie</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Permet de classer un set d'exemples à l'aide de l'arbre de décision.  <a href="#822ef6a6ece41d8d631d3cc890dd0fce"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#cc26cfdacafd3ac0b9089f7f20dcead2">construitArbreDecision</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Construit l'arbre de decision pour les exemples de <code>tousLesExemples</code> et le sauvegarde dans la variable globale <code>classification</code>.  <a href="#cc26cfdacafd3ac0b9089f7f20dcead2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#2ab3dfda6d72c5d8cb754fbd4ab39d69">construitArbreDecisionAux</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction auxiliaire de construction de l'arbre de décision.  <a href="#2ab3dfda6d72c5d8cb754fbd4ab39d69"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#5de9d6172363f04d6f3c046b396917db">meilleurAttribut</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne le meilleur attribut à choisir dans la liste disponible.  <a href="#5de9d6172363f04d6f3c046b396917db"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#03b838adc9b14c80771faf45e2f84f72">entropie</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne l'entropie totale pour l'attribut passé en paramètre.  <a href="#03b838adc9b14c80771faf45e2f84f72"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#9273f0b2f0354984fabf8f03b590e899">H_C_Aj</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne l'entropie conditionnelle de l'attribut passé en paramètre pour une certaine valeur.  <a href="#9273f0b2f0354984fabf8f03b590e899"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#1efde1e90a731c541cc27b3d709c2ca2">calculeXlogX</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calcule x * log_2(x).  <a href="#1efde1e90a731c541cc27b3d709c2ca2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#c9bc75db3a6f29ffd15ff9013daa5fcd">P_Ci_Aj</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calcule la probabilité P(Ci|Aj) = P(class-value|attribute=value).  <a href="#c9bc75db3a6f29ffd15ff9013daa5fcd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#b7be952ee6c3b68c5e9dc2446d6d2ae5">P_Aj</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la probabilité P_Aj.  <a href="#b7be952ee6c3b68c5e9dc2446d6d2ae5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#dc249e2fbf4dd8e38b8dde31d7b756dc">retourneValeurAttribut</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la valeur de l'attribut donné en paramètre pour l'exemple donné.  <a href="#dc249e2fbf4dd8e38b8dde31d7b756dc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#262f90448fac7f346bba0c9b6dbad410">retourneClasse</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la classe de l'exemple passé en paramètre.  <a href="#262f90448fac7f346bba0c9b6dbad410"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#1bdfd548556f761a192b9465af07e2d5">partition</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Partitionne les exemples selon les valeur de l'attribut.  <a href="#1bdfd548556f761a192b9465af07e2d5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#119c7c83e7a0fb723365e6494715a43d">memeClasse</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Indique si tous les exemples passés en paramètre appartiennent à la même classe.  <a href="#119c7c83e7a0fb723365e6494715a43d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#b49e82382c3c62395c0d37c8f09294a8">retourneValeursPossiblesAttribut</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la liste de toutes les valeurs pour un certain attribut.  <a href="#b49e82382c3c62395c0d37c8f09294a8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#9547f618a4d3daf4f147f2d3350b7e7a">retourneClassesPossibles</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la liste de toutes les classes possibles de la liste des exemples.  <a href="#9547f618a4d3daf4f147f2d3350b7e7a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#d063413d9a42c0f10d7b2a2a235289d2">nombreOccurences</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne le nombre d'exemples dont l'attribut vaut une certaine valeur.  <a href="#d063413d9a42c0f10d7b2a2a235289d2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#b2a95adbc60d79ae09d2bfe41d35bb3c">nombreOccurencesCond</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne le nombre d'exemples respectant une condition particulière.  <a href="#b2a95adbc60d79ae09d2bfe41d35bb3c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#1b01426396cfd56d3963a39a29290ebd">retourneValeursAttribut</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la liste de toutes les valeurs possibles de l'attribut d'index <code>attribut</code>.  <a href="#1b01426396cfd56d3963a39a29290ebd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#edd935eff60c845cfa96058daa070d0e">construitListeAttributs</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la liste des index des attributs, i.e.  <a href="#edd935eff60c845cfa96058daa070d0e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#b13b7c72cbe7032a95d54f9dedc2a78c">retourneNomAttribut</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne le nom de l'attribut d'index <code>attribut</code>.  <a href="#b13b7c72cbe7032a95d54f9dedc2a78c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#75b261ccf2a40aa7f5b8cae83eb1ddd7">retourneIndiceMinimum</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne l'index de la plus petite valeur de la liste <code>liste</code>.  <a href="#75b261ccf2a40aa7f5b8cae83eb1ddd7"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">list&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#611bab7622fd489539cd6e30b4617bb7">tousLesExemples</a> = []</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">La liste des exemples.  <a href="#611bab7622fd489539cd6e30b4617bb7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">list&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#e5d280f72812c90b152408d39075b8b7">attributsEtValeurs</a> = []</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">La liste des attributs.  <a href="#e5d280f72812c90b152408d39075b8b7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">list&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceid3.html#86dcd4bf88ed98750920c4ed89a17677">classification</a> = []</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">L'arbre de decision trouvé.  <a href="#86dcd4bf88ed98750920c4ed89a17677"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Contient l'algorithme ID3. <hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="1efde1e90a731c541cc27b3d709c2ca2"></a><!-- doxytag: member="id3::calculeXlogX" ref="1efde1e90a731c541cc27b3d709c2ca2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.calculeXlogX           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>x</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Calcule x * log_2(x). 
+<p>
+Cette méthode calcule x * log_2(x). Retourne 0 si x == 0.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>x</em>&nbsp;</td><td>la variable </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00406">406</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="822ef6a6ece41d8d631d3cc890dd0fce"></a><!-- doxytag: member="id3::classifie" ref="822ef6a6ece41d8d631d3cc890dd0fce" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.classifie           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>n</em> = <code>classification</code>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Permet de classer un set d'exemples à l'aide de l'arbre de décision. 
+<p>
+Cette fonction s'appuye sur l'arbre de décision construit par la fonction <code><a class="el" href="namespaceid3.html#cc26cfdacafd3ac0b9089f7f20dcead2" title="Construit l&#39;arbre de decision pour les exemples de tousLesExemples et le sauvegarde...">construitArbreDecision()</a></code>. Pour classifier les exemples, on part depuis le noeud <code>n</code> et on descend recursivement dans les sous-noeuds.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>n</em>&nbsp;</td><td>le noeud d'où part la classification </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00229">229</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cc26cfdacafd3ac0b9089f7f20dcead2"></a><!-- doxytag: member="id3::construitArbreDecision" ref="cc26cfdacafd3ac0b9089f7f20dcead2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.construitArbreDecision           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Construit l'arbre de decision pour les exemples de <code>tousLesExemples</code> et le sauvegarde dans la variable globale <code>classification</code>. 
+<p>
+Cette fonction s'appuye sur <code>construitArbreDecisionAux</code> pour construire l'arbre de décision à partir des exemples donnés. 
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00274">274</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2ab3dfda6d72c5d8cb754fbd4ab39d69"></a><!-- doxytag: member="id3::construitArbreDecisionAux" ref="2ab3dfda6d72c5d8cb754fbd4ab39d69" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.construitArbreDecisionAux           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attributs</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Fonction auxiliaire de construction de l'arbre de décision. 
+<p>
+Cette fonction est la fonction qui construit vraiment l'arbre de décision. Elle est appelée depuis <code><a class="el" href="namespaceid3.html#cc26cfdacafd3ac0b9089f7f20dcead2" title="Construit l&#39;arbre de decision pour les exemples de tousLesExemples et le sauvegarde...">construitArbreDecision()</a></code> pour initialiser la création de l'arbre à partir d'un set d'exemples et une liste d'attributs<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste d'exemples servant à la construction de l'arbre </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attributs</em>&nbsp;</td><td>la liste des attributs </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une branche de l'arbre de décision </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00297">297</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="edd935eff60c845cfa96058daa070d0e"></a><!-- doxytag: member="id3::construitListeAttributs" ref="edd935eff60c845cfa96058daa070d0e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.construitListeAttributs           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>actuel</em> = <code>1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>dernier</em> = <code>-1</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la liste des index des attributs, i.e. 
+<p>
+une liste de <code>actuel</code> a <code>dernier-1</code>.<p>
+Cette fonction crée une liste d'indices correspondant à chaque élément de la liste <code>attributsEtValeurs</code>.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>actuel</em>&nbsp;</td><td>l'indice de l'attribut courant </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>dernier</em>&nbsp;</td><td>l'indice du dernier attribut </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une liste d'indices pour chaque attribut </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00618">618</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="03b838adc9b14c80771faf45e2f84f72"></a><!-- doxytag: member="id3::entropie" ref="03b838adc9b14c80771faf45e2f84f72" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.entropie           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attribut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne l'entropie totale pour l'attribut passé en paramètre. 
+<p>
+Cette fonction calcule et retourne l'entropie totale pour l'attribut d'indice <code>attribut</code>, a savoir: H(C|A) = H(C|attribute).<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attribut</em>&nbsp;</td><td>l'indice de l'attribut dont on cherche l'entropie </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste des exemples sur laquelle on calcule l'entropie </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00369">369</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9273f0b2f0354984fabf8f03b590e899"></a><!-- doxytag: member="id3::H_C_Aj" ref="9273f0b2f0354984fabf8f03b590e899" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.H_C_Aj           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attribut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>valeur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne l'entropie conditionnelle de l'attribut passé en paramètre pour une certaine valeur. 
+<p>
+Cette fonction calcule l'entropie conditionnelle pour l'attribut <code>attribut</code> ayant comme valeur d'attribut <code>valeur</code>, en d'autres termes : H(C|Aj) = H(C|attribute=value).<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attribut</em>&nbsp;</td><td>l'indice de l'attribut </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>valeur</em>&nbsp;</td><td>la valeur de l'attribut </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste des exemples sur laquelle calculer l'entropie </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00395">395</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="0272360f7cb80a453623bba62f4e85fc"></a><!-- doxytag: member="id3::initID3" ref="0272360f7cb80a453623bba62f4e85fc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.initID3           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attrsEtValeurs</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialise le module ID3. 
+<p>
+Cette fonction initialise le module ID3 avec les exemples <code>exemples</code> et la description des classes et attributs <code>attrsEtValeurs</code>.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>les exemples à classifier </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attrsEtValeurs</em>&nbsp;</td><td>les attributs ainsi que leur valeur </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00206">206</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5de9d6172363f04d6f3c046b396917db"></a><!-- doxytag: member="id3::meilleurAttribut" ref="5de9d6172363f04d6f3c046b396917db" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.meilleurAttribut           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attributs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne le meilleur attribut à choisir dans la liste disponible. 
+<p>
+Cette fonction retourne le meilleur attribut dans la liste des attributs. Pour ce faire, cette fonction retourne l'attribut dont l'entropie est la plus faible.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attributs</em>&nbsp;</td><td>la liste des attributs </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste des exemples </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>l'attribut ayant la plus faible entropie </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00350">350</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="119c7c83e7a0fb723365e6494715a43d"></a><!-- doxytag: member="id3::memeClasse" ref="119c7c83e7a0fb723365e6494715a43d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.memeClasse           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Indique si tous les exemples passés en paramètre appartiennent à la même classe. 
+<p>
+Cette fonction indique si les exemples passés dans la liste <code>exemples</code> appartiennent ou non à la même classe. Elle procède en dénombrant les classes possibles parmi les exemples. Si le nombre est <b>1</b>, alors cela signifie que les exemples font partie d'une même classe<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste des exemples dont on veut savoir s'ils sont de la même classe </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd><b>True</b> si tous les exemples sont de la même classe, <b>False</b> sinon </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00514">514</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d063413d9a42c0f10d7b2a2a235289d2"></a><!-- doxytag: member="id3::nombreOccurences" ref="d063413d9a42c0f10d7b2a2a235289d2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.nombreOccurences           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attribut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>valeur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne le nombre d'exemples dont l'attribut vaut une certaine valeur. 
+<p>
+Cette fonction retourne le nombre d'exemples de la liste <code>exemples</code> dont la valeur de l'attribut d'indice <code>attribut</code> vaut <code>valeur</code>.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attribut</em>&nbsp;</td><td>l'indice de l'attribut </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>valeur</em>&nbsp;</td><td>la valeur de l'attribut </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste des exemples à parcourir </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>le nombre d'exemples de même valeur que <code>valeur</code> </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00561">561</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b2a95adbc60d79ae09d2bfe41d35bb3c"></a><!-- doxytag: member="id3::nombreOccurencesCond" ref="b2a95adbc60d79ae09d2bfe41d35bb3c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.nombreOccurencesCond           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>classe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attribut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>valeur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne le nombre d'exemples respectant une condition particulière. 
+<p>
+Cette fonction retourne le nombre d'exemples d'<code>exemples</code> appartenant à la classe <code>classe</code> et qui ont <code>valeur</code> comme valeur de l'attribut d'index <code>attribut</code>.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>classe</em>&nbsp;</td><td>le nom de classe </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attribut</em>&nbsp;</td><td>l'indice de l'attribut </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>valeur</em>&nbsp;</td><td>la valeur de l'attribut </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste des exemples </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>le nombre d'exemples respectant la condition </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00580">580</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b7be952ee6c3b68c5e9dc2446d6d2ae5"></a><!-- doxytag: member="id3::P_Aj" ref="b7be952ee6c3b68c5e9dc2446d6d2ae5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.P_Aj           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attribut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>valeur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la probabilité P_Aj. 
+<p>
+Cette fonction retourne la probabilité que la valeur de l'attribut d'indice <code>attribut</code> soit <code>valeur</code>. Cette probabilité est tout simplement le nombre d'exemples dont l'attribut <code>attribut</code> a la valeur <code>valeur</code>, divisé par le nombre d'exemples de la liste <code>exemples</code>.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attribut</em>&nbsp;</td><td>l'attribut cherché </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>valeur</em>&nbsp;</td><td>la valeur de l'attribut </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste des exemples </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la probabilité P_Aj </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00442">442</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c9bc75db3a6f29ffd15ff9013daa5fcd"></a><!-- doxytag: member="id3::P_Ci_Aj" ref="c9bc75db3a6f29ffd15ff9013daa5fcd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.P_Ci_Aj           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>classe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attribut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>valeur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Calcule la probabilité P(Ci|Aj) = P(class-value|attribute=value). 
+<p>
+Cette fonction calcule la probabilite que la valeur de la classe soit <code>classe</code> lorsque <code>attribut</code> vaut <code>valeur</code>, en d'autres termes : P(Ci|Aj) = P(class-value|attribute=value).<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>classe</em>&nbsp;</td><td>la nom de la classe </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attribut</em>&nbsp;</td><td>l'indice de l'attribut </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>valeur</em>&nbsp;</td><td>la valeur de l'attribut </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste des exemples sur laquelle on calcule la probabilité. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00426">426</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1bdfd548556f761a192b9465af07e2d5"></a><!-- doxytag: member="id3::partition" ref="1bdfd548556f761a192b9465af07e2d5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.partition           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attribut</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Partitionne les exemples selon les valeur de l'attribut. 
+<p>
+Retourne une liste dont chaque element est une liste des exemples avec un valeur commune pour <code>attribut</code>. Cette liste contient pour chaque valeur d'attribut <em>vi</em> un liste d'exemples dont la valeur est <em>vi</em>.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste des exemples à partitionner </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attribut</em>&nbsp;</td><td>l'attribut pivot qui sert au partitionnement </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>un liste de sous-listes d'exemples partitionnés par valeur d'attrib. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00491">491</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="262f90448fac7f346bba0c9b6dbad410"></a><!-- doxytag: member="id3::retourneClasse" ref="262f90448fac7f346bba0c9b6dbad410" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.retourneClasse           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemple</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la classe de l'exemple passé en paramètre. 
+<p>
+Cette fonction retourne la classe d'un <code>exemple</code>. Cette classe est tout simplement le premier élément de la liste <code>exemple</code>.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemple</em>&nbsp;</td><td>l'exemple dont on cherche la classe </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>le nom de la classe à laquelle l'exemple appartient </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00474">474</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9547f618a4d3daf4f147f2d3350b7e7a"></a><!-- doxytag: member="id3::retourneClassesPossibles" ref="9547f618a4d3daf4f147f2d3350b7e7a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.retourneClassesPossibles           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la liste de toutes les classes possibles de la liste des exemples. 
+<p>
+Cette fonction parcourt les exemples et cherche toutes les classes que l'on peut extraire à partir de cette liste.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste des exemples à parcourir </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la liste des classes possibles à partir des exemples </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00547">547</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="75b261ccf2a40aa7f5b8cae83eb1ddd7"></a><!-- doxytag: member="id3::retourneIndiceMinimum" ref="75b261ccf2a40aa7f5b8cae83eb1ddd7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.retourneIndiceMinimum           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>liste</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne l'index de la plus petite valeur de la liste <code>liste</code>. 
+<p>
+Cette fonction cherche parmi tous les éléments de la liste <code>liste</code> passée en paramètre <em>le plus petit</em> et retourne sa position<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>liste</em>&nbsp;</td><td>la liste dans laquelle l'on doit chercher </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>l'indice du plus petit élément de la liste </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00654">654</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b13b7c72cbe7032a95d54f9dedc2a78c"></a><!-- doxytag: member="id3::retourneNomAttribut" ref="b13b7c72cbe7032a95d54f9dedc2a78c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.retourneNomAttribut           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attribut</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne le nom de l'attribut d'index <code>attribut</code>. 
+<p>
+Cette fonction retourne, dans la liste des attributs et de leur valeur, le nom de l'attribut correspondant à l'indice <code>attribut</code>. Le codage de la liste <code>attributsEtValeurs</code> est le suivant :<p>
+<div class="fragment"><pre class="fragment"> attributEtValeur = [ <span class="stringliteral">'nom_attribut'</span>, <span class="stringliteral">'valeur_1'</span>, ..., <span class="stringliteral">'valeur_n'</span> ]
+ attributsEtValeurs = [ attributEtValeur[0], ...., attributEtValeur[m] ]
+</pre></div><p>
+Le nom de l'attribut <code>attribut</code> se trouve donc en <code>attributsEtValeurs</code>[attribut][<b>0</b>].<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attribut</em>&nbsp;</td><td>l'indice de l'attribut dont on cherche le nom </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>le nom de l'attribut d'indice <code>attribut</code> </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00643">643</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dc249e2fbf4dd8e38b8dde31d7b756dc"></a><!-- doxytag: member="id3::retourneValeurAttribut" ref="dc249e2fbf4dd8e38b8dde31d7b756dc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.retourneValeurAttribut           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemple</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attribut</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la valeur de l'attribut donné en paramètre pour l'exemple donné. 
+<p>
+Cette fonction retourne la valeur de l'attribut d'indice <code>attribut</code> dans l'exemple <code>exemple</code>. Un exemple est une liste de la forme:<p>
+<div class="fragment"><pre class="fragment"> exemple = [ <span class="stringliteral">'nom-classe'</span>, <span class="stringliteral">'valeur-attribut1'</span>, ..., <span class="stringliteral">'valeur-attributn'</span>]
+</pre></div><p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemple</em>&nbsp;</td><td>l'exemple dont on veut la valeur de l'attribut </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attribut</em>&nbsp;</td><td>l'indice de l'attribut dont on cherche la valeur </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>la valeur de l'attribut pour l'exemple passé en paramètre. </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00463">463</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="1b01426396cfd56d3963a39a29290ebd"></a><!-- doxytag: member="id3::retourneValeursAttribut" ref="1b01426396cfd56d3963a39a29290ebd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.retourneValeursAttribut           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attribut</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la liste de toutes les valeurs possibles de l'attribut d'index <code>attribut</code>. 
+<p>
+Cette fonction retourne la liste de toutes les valeurs possible pour un attribut donné. Les valeurs d'un attribut sont stockées dans une liste dont le premier élément est le nom de l'attribut. Donc, pour obtenir les valeurs, il suffit de retourner les éléments de 1 à len(<code>attributsEtValeurs</code>[attribut])<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attribut</em>&nbsp;</td><td>l'indice de l'attribut </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une liste de valeurs correspondant à l'attribut d'indice <code>attribut</code> </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00605">605</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b49e82382c3c62395c0d37c8f09294a8"></a><!-- doxytag: member="id3::retourneValeursPossiblesAttribut" ref="b49e82382c3c62395c0d37c8f09294a8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def id3.retourneValeursPossiblesAttribut           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>attribut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>exemples</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la liste de toutes les valeurs pour un certain attribut. 
+<p>
+Cette fonction retourne une liste de toutes les valeurs possibles pour l'attribut d'indice <code>attribut</code> que l'on trouve dans les exemples de la liste <code>exemples</code>.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>attribut</em>&nbsp;</td><td>l'indice de l'attribut dont on cherche les valeur </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>exemples</em>&nbsp;</td><td>la liste des exemples dans laquelle on cherche </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une liste contenant toutes les valeurs possibles de l'attribut </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00531">531</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="e5d280f72812c90b152408d39075b8b7"></a><!-- doxytag: member="id3::attributsEtValeurs" ref="e5d280f72812c90b152408d39075b8b7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list <a class="el" href="namespaceid3.html#e5d280f72812c90b152408d39075b8b7">id3.attributsEtValeurs</a> = []          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+La liste des attributs. 
+<p>
+La liste des attributs (dans le meme ordre que celui des exemples) avec leur valeur. Format: attributsEtValeurs ::= [ attribut1 attribut2 ... ] attribut ::= [ nom-attribut valeur-1 .. valeur-m ] 
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00039">39</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="86dcd4bf88ed98750920c4ed89a17677"></a><!-- doxytag: member="id3::classification" ref="86dcd4bf88ed98750920c4ed89a17677" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list <a class="el" href="namespaceid3.html#86dcd4bf88ed98750920c4ed89a17677">id3.classification</a> = []          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+L'arbre de decision trouvé. 
+<p>
+Contient l'arbre de décision 
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00044">44</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="611bab7622fd489539cd6e30b4617bb7"></a><!-- doxytag: member="id3::tousLesExemples" ref="611bab7622fd489539cd6e30b4617bb7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list <a class="el" href="namespaceid3.html#611bab7622fd489539cd6e30b4617bb7">id3.tousLesExemples</a> = []          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+La liste des exemples. 
+<p>
+La liste des exemples, selon le format suivant: tousLesExemples ::= [ exemple1 exemple2 ... ] exemple ::= [ classe valeur-attribut-1 ... valeur-attribut-n] 
+<p>Définition à la ligne <a class="el" href="id3_8py-source.html#l00031">31</a> du fichier <a class="el" href="id3_8py-source.html">id3.py</a>.</p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:34 2008 pour Lab 8 : ID3 par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

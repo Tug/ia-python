@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 5 : Algorithmes de recherche:  Fichier source de carte.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>carte.py</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">###-------------------------------------------------------------------</span>
+<a name="l00002"></a>00002 <span class="comment">##   Les villes.  </span>
+<a name="l00003"></a>00003 <span class="comment">###-------------------------------------------------------------------</span>
+<a name="l00004"></a>00004 villes=Villes()
+<a name="l00005"></a>00005 villes.construitVille(<span class="stringliteral">"A"</span>, 0, 16)
+<a name="l00006"></a>00006 villes.construitVille(<span class="stringliteral">"B"</span>, 5, 13)
+<a name="l00007"></a>00007 villes.construitVille(<span class="stringliteral">"C"</span>, 0, 10)
+<a name="l00008"></a>00008 villes.construitVille(<span class="stringliteral">"D"</span>, 5, 8)
+<a name="l00009"></a>00009 villes.construitVille(<span class="stringliteral">"E"</span>, 11, 18)
+<a name="l00010"></a>00010 villes.construitVille(<span class="stringliteral">"F"</span>, 15, 13)
+<a name="l00011"></a>00011 villes.construitVille(<span class="stringliteral">"G"</span>, 29, 18)
+<a name="l00012"></a>00012 villes.construitVille(<span class="stringliteral">"H"</span>, 26, 0)
+<a name="l00013"></a>00013 villes.construitVille(<span class="stringliteral">"I"</span>, 12, 10)
+<a name="l00014"></a>00014 villes.construitVille(<span class="stringliteral">"J"</span>, 17, 7)
+<a name="l00015"></a>00015 villes.construitVille(<span class="stringliteral">"K"</span>, 11, 3)
+<a name="l00016"></a>00016 villes.construitVille(<span class="stringliteral">"L"</span>, 22, 16)
+<a name="l00017"></a>00017 villes.construitVille(<span class="stringliteral">"M"</span>, 25, 12)
+<a name="l00018"></a>00018 villes.construitVille(<span class="stringliteral">"N"</span>, 24, 6)
+<a name="l00019"></a>00019 villes.construitVille(<span class="stringliteral">"O"</span>, 20, 0)
+<a name="l00020"></a>00020 villes.construitVille(<span class="stringliteral">"P"</span>, 5, 0)
+<a name="l00021"></a>00021 <span class="keywordflow">print</span> <span class="stringliteral">"\tVilles ajoutees"</span>
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="comment">###-------------------------------------------------------------------</span>
+<a name="l00025"></a>00025 <span class="comment">##   Les routes.</span>
+<a name="l00026"></a>00026 <span class="comment">###-------------------------------------------------------------------</span>
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 villes.construitRoute(<span class="stringliteral">"A"</span>,<span class="stringliteral">"B"</span>)
+<a name="l00029"></a>00029 villes.construitRoute(<span class="stringliteral">"A"</span>,<span class="stringliteral">"E"</span>)
+<a name="l00030"></a>00030 villes.construitRoute(<span class="stringliteral">"B"</span>,<span class="stringliteral">"C"</span>)
+<a name="l00031"></a>00031 villes.construitRoute(<span class="stringliteral">"B"</span>,<span class="stringliteral">"E"</span>)
+<a name="l00032"></a>00032 villes.construitRoute(<span class="stringliteral">"B"</span>,<span class="stringliteral">"D"</span>)
+<a name="l00033"></a>00033 villes.construitRoute(<span class="stringliteral">"C"</span>,<span class="stringliteral">"D"</span>)
+<a name="l00034"></a>00034 villes.construitRoute(<span class="stringliteral">"C"</span>,<span class="stringliteral">"P"</span>)
+<a name="l00035"></a>00035 villes.construitRoute(<span class="stringliteral">"D"</span>,<span class="stringliteral">"I"</span>)
+<a name="l00036"></a>00036 villes.construitRoute(<span class="stringliteral">"D"</span>,<span class="stringliteral">"K"</span>)
+<a name="l00037"></a>00037 villes.construitRoute(<span class="stringliteral">"E"</span>,<span class="stringliteral">"F"</span>)
+<a name="l00038"></a>00038 villes.construitRoute(<span class="stringliteral">"E"</span>,<span class="stringliteral">"L"</span>)
+<a name="l00039"></a>00039 villes.construitRoute(<span class="stringliteral">"F"</span>,<span class="stringliteral">"I"</span>)
+<a name="l00040"></a>00040 villes.construitRoute(<span class="stringliteral">"F"</span>,<span class="stringliteral">"L"</span>)
+<a name="l00041"></a>00041 villes.construitRoute(<span class="stringliteral">"F"</span>,<span class="stringliteral">"M"</span>)
+<a name="l00042"></a>00042 villes.construitRoute(<span class="stringliteral">"G"</span>,<span class="stringliteral">"H"</span>)
+<a name="l00043"></a>00043 villes.construitRoute(<span class="stringliteral">"G"</span>,<span class="stringliteral">"L"</span>)
+<a name="l00044"></a>00044 villes.construitRoute(<span class="stringliteral">"G"</span>,<span class="stringliteral">"M"</span>)
+<a name="l00045"></a>00045 villes.construitRoute(<span class="stringliteral">"I"</span>,<span class="stringliteral">"J"</span>)
+<a name="l00046"></a>00046 villes.construitRoute(<span class="stringliteral">"J"</span>,<span class="stringliteral">"K"</span>)
+<a name="l00047"></a>00047 villes.construitRoute(<span class="stringliteral">"J"</span>,<span class="stringliteral">"N"</span>)
+<a name="l00048"></a>00048 villes.construitRoute(<span class="stringliteral">"K"</span>,<span class="stringliteral">"O"</span>)
+<a name="l00049"></a>00049 villes.construitRoute(<span class="stringliteral">"K"</span>,<span class="stringliteral">"P"</span>)
+<a name="l00050"></a>00050 villes.construitRoute(<span class="stringliteral">"M"</span>,<span class="stringliteral">"N"</span>)
+<a name="l00051"></a>00051 villes.construitRoute(<span class="stringliteral">"N"</span>,<span class="stringliteral">"O"</span>)
+<a name="l00052"></a>00052 villes.construitRoute(<span class="stringliteral">"B"</span>,<span class="stringliteral">"I"</span>)
+<a name="l00053"></a>00053 villes.construitRoute(<span class="stringliteral">"B"</span>,<span class="stringliteral">"F"</span>)
+<a name="l00054"></a>00054 villes.construitRoute(<span class="stringliteral">"P"</span>,<span class="stringliteral">"O"</span>)
+<a name="l00055"></a>00055 <span class="keywordflow">print</span> <span class="stringliteral">"\tRoutes ajoutees"</span>
+<a name="l00056"></a>00056 <span class="comment">###-------------------------------------------------------------------</span>
+<a name="l00057"></a>00057 <span class="comment">###                         FIN DU FICHIER</span>
+<a name="l00058"></a>00058 <span class="comment">###-------------------------------------------------------------------</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Wed Mar 25 11:01:49 2009 pour Lab 5 : Algorithmes de recherche par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 5 : Algorithmes de recherche: Référence de la classe recherche.Villes</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Liste&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="hierarchy.html"><span>Hiérarchie&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="functions.html"><span>Membres&nbsp;de&nbsp;classe</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><b>recherche</b>.<a class="el" href="classrecherche_1_1_villes.html">Villes</a>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence de la classe recherche.Villes</h1><!-- doxytag: class="recherche::Villes" -->Representation d'un graphe de villes.  
+<a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="classrecherche_1_1_villes-members.html">Liste de tous les membres</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions membres publiques</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrecherche_1_1_villes.html#2ad0c6d99347ecd80a5d4e68428c2a7d">__init__</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur de la classe.  <a href="#2ad0c6d99347ecd80a5d4e68428c2a7d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrecherche_1_1_villes.html#36ce739d8953274c8fe9b3e32ff43c42">construitVille</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Construit et ajoute la ville au dictionnaire villes.  <a href="#36ce739d8953274c8fe9b3e32ff43c42"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrecherche_1_1_villes.html#c61ab0284d25e5292f5132e026371f20">chercheVille</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cherche et retourne une ville associee a un nom donne.  <a href="#c61ab0284d25e5292f5132e026371f20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrecherche_1_1_villes.html#eea6781802c81a783108735d4c6ed6eb">construitRoute</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Definit une route (un arc) entre deux villes.  <a href="#eea6781802c81a783108735d4c6ed6eb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrecherche_1_1_villes.html#6bcdccfffe0b81bcba07d4b0467bc795">imprimeLesVilles</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Imprime toutes les villes avec leurs connections(voisins).  <a href="#6bcdccfffe0b81bcba07d4b0467bc795"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Representation d'un graphe de villes. 
+<p>
+Le graphe est represente par les relations de voisinage entre les villes. Toutes les villes sont ajoutees dans le dictionnaire CARTE 
+<p>Définition à la ligne <a class="el" href="recherche_8py-source.html#l00096">96</a> du fichier <a class="el" href="recherche_8py-source.html">recherche.py</a>.</p>
+<hr><h2>Documentation des fonctions membres</h2>
+<a class="anchor" name="2ad0c6d99347ecd80a5d4e68428c2a7d"></a><!-- doxytag: member="recherche::Villes::__init__" ref="2ad0c6d99347ecd80a5d4e68428c2a7d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def recherche.Villes.__init__           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructeur de la classe. 
+<p>
+Instantie un attribut villes qui sera un dictionnaire avec clef=ville.nom et la valeur=objet_ville<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>un pointeur vers cet objet lui-meme (automatique) </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="recherche_8py-source.html#l00104">104</a> du fichier <a class="el" href="recherche_8py-source.html">recherche.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="36ce739d8953274c8fe9b3e32ff43c42"></a><!-- doxytag: member="recherche::Villes::construitVille" ref="36ce739d8953274c8fe9b3e32ff43c42" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def recherche.Villes.construitVille           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>nom</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>posX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>posY</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Construit et ajoute la ville au dictionnaire villes. 
+<p>
+Cette methode commence par construire un noeud ville, en lui indiquant son nom et sa position dans le plan. Ensuite, si la ville n'existe pas encore dans le dictionnaire, elle est ajoutee sous la clef ville.nom<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>un pointeur vers cet objet lui-meme (automatique) </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>nom</em>&nbsp;</td><td>le nom de la ville </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>posX</em>&nbsp;</td><td>la position de la ville sur l'axe X </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>posY</em>&nbsp;</td><td>la position de la ville sur l'axe Y </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="recherche_8py-source.html#l00120">120</a> du fichier <a class="el" href="recherche_8py-source.html">recherche.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c61ab0284d25e5292f5132e026371f20"></a><!-- doxytag: member="recherche::Villes::chercheVille" ref="c61ab0284d25e5292f5132e026371f20" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def recherche.Villes.chercheVille           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>nom</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Cherche et retourne une ville associee a un nom donne. 
+<p>
+Cette methode se contente de retourner le noeud associe au nom passe en parametre, si ce nom est deja dans le dictionnaire. Si ce n'est pas le cas, alors <code><a class="el" href="classrecherche_1_1_villes.html#c61ab0284d25e5292f5132e026371f20" title="Cherche et retourne une ville associee a un nom donne.">chercheVille()</a></code> leve une exception du type <a class="el" href="classrecherche_1_1_v_i_l_l_e___p_a_s___t_r_o_u_v_e_e.html" title="Exception pour le cas ou une ville n&#39;est pas trouvee.">VILLE_PAS_TROUVEE</a>. Cette exception contient le nom de la ville qui n'a pas ete trouvee<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>un pointeur vers cet objet lui-meme (automatique) </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>nom</em>&nbsp;</td><td>le nom de la ville </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>Un pointeur vers le noeud recherche s'il existe, -1 sinon </dd></dl>
+<dl compact><dt><b>Exceptions:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Retourne</em>&nbsp;</td><td>une exception du type <a class="el" href="classrecherche_1_1_v_i_l_l_e___p_a_s___t_r_o_u_v_e_e.html" title="Exception pour le cas ou une ville n&#39;est pas trouvee.">VILLE_PAS_TROUVEE</a> pour signifier que la ville en question n'a pas ete trouvee </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="recherche_8py-source.html#l00141">141</a> du fichier <a class="el" href="recherche_8py-source.html">recherche.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="eea6781802c81a783108735d4c6ed6eb"></a><!-- doxytag: member="recherche::Villes::construitRoute" ref="eea6781802c81a783108735d4c6ed6eb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def recherche.Villes.construitRoute           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>nom_ville1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>nom_ville2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Definit une route (un arc) entre deux villes. 
+<p>
+Un arc dans un graphe est defini par une relation de voisinage. On determine s'il existe une route entre deux villes, si chacune est presente dans le liste des voisins de l'autre. Donc, pour creer une route entre les deux, il suffit de les ajouter en tant que voisins<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>un pointeur vers cet objet lui-meme (automatique) </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>nom_ville1</em>&nbsp;</td><td>le nom de la premiere ville </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>nom_ville2</em>&nbsp;</td><td>le nom de la deuxieme ville </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="recherche_8py-source.html#l00158">158</a> du fichier <a class="el" href="recherche_8py-source.html">recherche.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6bcdccfffe0b81bcba07d4b0467bc795"></a><!-- doxytag: member="recherche::Villes::imprimeLesVilles" ref="6bcdccfffe0b81bcba07d4b0467bc795" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def recherche.Villes.imprimeLesVilles           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Imprime toutes les villes avec leurs connections(voisins). 
+<p>
+Imprime la liste des villes contenues dans le dictionnaire CARTE<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>un pointeur vers cet objet lui-meme (automatique) </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="recherche_8py-source.html#l00176">176</a> du fichier <a class="el" href="recherche_8py-source.html">recherche.py</a>.</p>
+
+</div>
+</div><p>
+<hr>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
+<li><a class="el" href="recherche_8py-source.html">recherche.py</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Wed Mar 25 11:01:50 2009 pour Lab 5 : Algorithmes de recherche par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

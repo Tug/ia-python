@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 6a : Satisfaction de contraintes:  Fichier source de testConsistance.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>testConsistance.py</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="keywordflow">print</span> <span class="stringliteral">"TEST CONSISTANCE"</span>
+<a name="l00002"></a>00002 noeuds = Noeuds()
+<a name="l00003"></a>00003 arcs = Arcs()
+<a name="l00004"></a>00004 
+<a name="l00005"></a>00005 monDom = range(10)
+<a name="l00006"></a>00006 monDom2 = range(11)
+<a name="l00007"></a>00007 monDom3 = range(9)
+<a name="l00008"></a>00008 v1=libPSC.Variable(<span class="stringliteral">"a"</span>,monDom)
+<a name="l00009"></a>00009 v2=libPSC.Variable(<span class="stringliteral">"b"</span>,monDom2)
+<a name="l00010"></a>00010 v3=libPSC.Variable(<span class="stringliteral">"c"</span>,monDom3)
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 noeuds.ajouteNoeud(libPSC.Noeud(v1))
+<a name="l00013"></a>00013 noeuds.ajouteNoeud(libPSC.Noeud(v2))
+<a name="l00014"></a>00014 noeuds.ajouteNoeud(libPSC.Noeud(v3))
+<a name="l00015"></a>00015 <span class="keywordflow">print</span> noeuds
+<a name="l00016"></a>00016 noeudb = noeuds.retourneNoeud(<span class="stringliteral">"b"</span>)
+<a name="l00017"></a>00017 <span class="keywordflow">print</span> noeudb
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 cv1= libPSC.ContrainteUnaire(v1,<span class="stringliteral">"&lt;"</span>,2)
+<a name="l00020"></a>00020 cv2= libPSC.ContrainteUnaire(v2,<span class="stringliteral">"&lt;"</span>,3)
+<a name="l00021"></a>00021 cv3= libPSC.ContrainteUnaire(v3,<span class="stringliteral">"&lt;"</span>,3)
+<a name="l00022"></a>00022 cv1v2= libPSC.ContrainteBinaire(v1,<span class="stringliteral">"&lt;&gt;"</span>,v2)
+<a name="l00023"></a>00023 cv2v3= libPSC.ContrainteBinaire(v2,<span class="stringliteral">"&lt;&gt;"</span>,v3)
+<a name="l00024"></a>00024 cv1v3= libPSC.ContrainteBinaire(v1,<span class="stringliteral">"&lt;&gt;"</span>,v3)
+<a name="l00025"></a>00025 arcs.ajouteArc(libPSC.Arc(cv1))
+<a name="l00026"></a>00026 arcs.ajouteArc(libPSC.Arc(cv1))
+<a name="l00027"></a>00027 arcs.ajouteArc(libPSC.Arc(cv2))
+<a name="l00028"></a>00028 arcs.ajouteArc(libPSC.Arc(cv3))
+<a name="l00029"></a>00029 arcs.ajouteArc(libPSC.Arc(cv1v2))
+<a name="l00030"></a>00030 arcs.ajouteArc(libPSC.Arc(cv2v3))
+<a name="l00031"></a>00031 arcs.ajouteArc(libPSC.Arc(cv1v3))
+<a name="l00032"></a>00032 <span class="keywordflow">print</span> arcs
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="keywordflow">print</span> <span class="stringliteral">"Fait la consistance des noeuds"</span>
+<a name="l00036"></a>00036 noeuds.consistanceDesNoeuds()
+<a name="l00037"></a>00037 <span class="keywordflow">print</span> noeuds
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 <span class="keywordflow">print</span> <span class="stringliteral">"Fait la consistance des arcs"</span>
+<a name="l00040"></a>00040 arcs.consistanceDesArcs()
+<a name="l00041"></a>00041 <span class="keywordflow">print</span> noeuds
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Fri Mar 28 13:28:24 2008 pour Lab 6a : Satisfaction de contraintes par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

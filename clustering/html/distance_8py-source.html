@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 9 : Clustering:  Fichier source de distance.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>distance.py</h1><a href="distance_8py.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespacedistance.html">00001</a> <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00002"></a>00002 <span class="keywordflow">print</span> <span class="stringliteral">"Distance entre deux donnees"</span>
+<a name="l00003"></a>00003 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.1  date: 05/03/2007 modified by Thomas Leaute"</span>
+<a name="l00004"></a>00004 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.0  date: 05/03/2007 created by Thomas Leaute"</span>
+<a name="l00005"></a>00005 <span class="keywordflow">print</span> <span class="stringliteral">"\t@author: thomas.leaute _AT_ epfl.ch date: 09/05/2007"</span>
+<a name="l00006"></a>00006 <span class="keywordflow">print</span> <span class="stringliteral">"\t@copyright: EPFL-IC-IIF-LIA 2007"</span>
+<a name="l00007"></a>00007 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00008"></a>00008 <span class="comment">## @package distance Distance entre deux donnees</span>
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 <span class="comment">## @file distance.py Distance entre deux donnees</span>
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 <span class="comment">## \brief Distance entre deux donnees </span>
+<a name="l00013"></a>00013 <span class="comment"># </span>
+<a name="l00014"></a>00014 <span class="comment"># Retourne le nombre d'elements differents </span>
+<a name="l00015"></a>00015 <span class="comment"># @param donnee1 Premiere donnee</span>
+<a name="l00016"></a>00016 <span class="comment"># @param donnee2 Deuxieme donnee</span>
+<a name="l00017"></a>00017 <span class="comment"># @return La distance entre \c donnee1 et \c donnee2</span>
+<a name="l00018"></a><a class="code" href="namespacedistance.html#83b28f7ec7fdb35733d2d1687b92dc86">00018</a> <span class="keyword">def </span><a class="code" href="namespacedistance.html#83b28f7ec7fdb35733d2d1687b92dc86" title="Distance entre deux donnees.">distance</a> (donnee1, donnee2):
+<a name="l00019"></a>00019         dist = 0
+<a name="l00020"></a>00020         <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(0, len(donnee1)):
+<a name="l00021"></a>00021                 <span class="keywordflow">if</span> <span class="keywordflow">not</span> donnee1[i] == donnee2[i]:
+<a name="l00022"></a>00022                         dist = dist + 1
+<a name="l00023"></a>00023         <span class="keywordflow">return</span> dist
+<a name="l00024"></a>00024         
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 <span class="comment">## \brief Fonction argmin</span>
+<a name="l00027"></a>00027 <span class="comment"># </span>
+<a name="l00028"></a>00028 <span class="comment"># Cette fonction retourne l'element d'une liste qui minimise la fonction passee en parametre. </span>
+<a name="l00029"></a>00029 <span class="comment"># Elle n'est utile que pour Python 2.3, sinon on peut utiliser la fonction min() a partir de 2.4. </span>
+<a name="l00030"></a>00030 <span class="comment"># Retourne \c None si la liste est vide. </span>
+<a name="l00031"></a>00031 <span class="comment"># @param liste Une liste dont on cherche l'element optimal</span>
+<a name="l00032"></a>00032 <span class="comment"># @param fn Fonction a minimiser </span>
+<a name="l00033"></a>00033 <span class="comment"># @return L'element de la liste \c liste qui minimise la fonction \c fn</span>
+<a name="l00034"></a><a class="code" href="namespacedistance.html#c769e7f77dd1915d6c53e96a0fb15333">00034</a> <span class="keyword">def </span><a class="code" href="namespacedistance.html#c769e7f77dd1915d6c53e96a0fb15333" title="Fonction argmin.">argmin</a> (liste, fn):
+<a name="l00035"></a>00035         <span class="keywordflow">if</span> liste == []:
+<a name="l00036"></a>00036                 <span class="keywordflow">return</span> <span class="keywordtype">None</span>
+<a name="l00037"></a>00037         e0 = liste[0] 
+<a name="l00038"></a>00038         f0 = fn(e0) 
+<a name="l00039"></a>00039         <span class="keywordflow">for</span> e <span class="keywordflow">in</span> liste[1:]:
+<a name="l00040"></a>00040                 fe = fn(e)
+<a name="l00041"></a>00041                 <span class="keywordflow">if</span> fe &lt; f0:
+<a name="l00042"></a>00042                         e0 = e
+<a name="l00043"></a>00043                         f0 = fe
+<a name="l00044"></a>00044         <span class="keywordflow">return</span> e0
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:38 2008 pour Lab 9 : Clustering par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

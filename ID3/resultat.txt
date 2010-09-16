@@ -1,0 +1,238 @@
+------------ resultat sur maladie.py -------------
+
+Chargement du module ID3
+Construction d'un arbre de decision avec ID3.
+	@version: 1.6  date: 05/05/2008 modifie par Thomas Leaute
+	@version: 1.5  date: 22/05/2007 modifie par Thomas Leaute
+	@version: 1.4  date: 21/05/2007 modifie par Thomas Leaute
+	@version: 1.3  date: 16/05/2007 modifie par Thomas Leaute
+	@version: 1.2  date: 15/02/2007 modifie par Vincent Schickel-Zuber
+	@version: 1.1  date: 01/02/2007 modifie par Bruno alves
+	@version: 1.0  date: 17/05/2006 modified par l'auteur
+	@author: michael.schumacher@epfl.ch
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+DB : initID3 -> attributsEtValeurs : [['maladies', 'angine-erythemateuse', 'angine-pultacee', 'angine-diphterique', 'appendicite', 'bronchite', 'coqueluche', 'pneumonie', 'rougeole', 'rubeole'], ['fievre', 'non', 'legere', 'elevee'], ['amygdales', 'normales', 'gonflees', 'points-blancs', 'enduit-blanc'], ['ganglions', 'non', 'oui'], ['gene-a-avaler', 'non', 'oui'], ['mal-au-ventre', 'non', 'oui'], ['toux', 'non', 'oui'], ['rhume', 'non', 'oui'], ['respiration', 'normale', 'genee', 'rapide'], ['joues', 'normales', 'rouges', 'taches-rouges'], ['yeux', 'normaux', 'larmoyants']]
+DB : construitArbreDecisionAux -> attributs : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['rubeole', 'rougeole', 'pneumonie', 'coqueluche', 'bronchite', 'appendicite', 'angine-diphterique', 'angine-pultacee', 'angine-erythemateuse']
+DB : -- memeClasse -> res False
+DB : meilleurAttribut -> attributs : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+DB : entropie -> res : 1.86719766305
+DB : entropie -> res : 1.81453645923
+DB : entropie -> res : 2.04218645222
+DB : entropie -> res : 2.02205520887
+DB : entropie -> res : 2.60823835857
+DB : entropie -> res : 2.04218645222
+DB : entropie -> res : 2.10375937482
+DB : entropie -> res : 1.9812031259
+DB : entropie -> res : 2.22957395851
+DB : entropie -> res : 2.37203278723
+DB : retourneIndiceMinimum -> l : [1.8671976630472249, 1.8145364592347786, 2.0421864522230484, 2.0220552088742001, 2.6082383585705675, 2.0421864522230484, 2.1037593748197105, 1.9812031259014453, 2.2295739585136225, 2.3720327872258462]
+DB : construitArbreDecisionAux -> attribut de partition : 2
+DB : construitArbreDecisionAux -> attributs restants : [1, 3, 4, 5, 6, 7, 8, 9, 10]
+DB : 000000000000000000000 partition -> res : [[['appendicite', 'legere', 'normales', 'non', 'non', 'oui', 'non', 'non', 'normale', 'normales', 'normaux'], ['bronchite', 'legere', 'normales', 'oui', 'non', 'non', 'oui', 'oui', 'genee', 'normales', 'normaux'], ['coqueluche', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'genee', 'normales', 'normaux'], ['pneumonie', 'elevee', 'normales', 'non', 'non', 'non', 'oui', 'non', 'rapide', 'rouges', 'normaux'], ['rougeole', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'normale', 'normales', 'larmoyants'], ['rougeole', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'normale', 'taches-rouges', 'larmoyants'], ['rubeole', 'legere', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'taches-rouges', 'normaux'], ['rubeole', 'non', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'taches-rouges', 'normaux'], ['rubeole', 'non', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'normales', 'normaux']], [['angine-erythemateuse', 'elevee', 'gonflees', 'oui', 'oui', 'non', 'non', 'non', 'normale', 'normales', 'normaux']], [['angine-pultacee', 'elevee', 'points-blancs', 'oui', 'oui', 'non', 'non', 'non', 'normale', 'normales', 'normaux']], [['angine-diphterique', 'legere', 'enduit-blanc', 'oui', 'oui', 'non', 'non', 'non', 'normale', 'normales', 'normaux']]]
+DB : construitArbreDecisionAux -> attributs : [1, 3, 4, 5, 6, 7, 8, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['rubeole', 'rougeole', 'pneumonie', 'coqueluche', 'bronchite', 'appendicite']
+DB : -- memeClasse -> res False
+DB : meilleurAttribut -> attributs : [1, 3, 4, 5, 6, 7, 8, 9, 10]
+DB : entropie -> res : 1.50108611159
+DB : entropie -> res : 1.42830588581
+DB : entropie -> res : 1.50108611159
+DB : entropie -> res : 1.91612361087
+DB : entropie -> res : 1.42830588581
+DB : entropie -> res : 1.42830588581
+DB : entropie -> res : 1.19498750024
+DB : entropie -> res : 1.59605866407
+DB : entropie -> res : 1.65517743914
+DB : retourneIndiceMinimum -> l : [1.5010861115918817, 1.428305885808149, 1.5010861115918817, 1.9161236108707254, 1.428305885808149, 1.4283058858081494, 1.1949875002403854, 1.5960586640666978, 1.6551774391377516]
+DB : construitArbreDecisionAux -> attribut de partition : 8
+DB : construitArbreDecisionAux -> attributs restants : [1, 3, 4, 5, 6, 7, 9, 10]
+DB : 000000000000000000000 partition -> res : [[['appendicite', 'legere', 'normales', 'non', 'non', 'oui', 'non', 'non', 'normale', 'normales', 'normaux'], ['rougeole', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'normale', 'normales', 'larmoyants'], ['rougeole', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'normale', 'taches-rouges', 'larmoyants'], ['rubeole', 'legere', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'taches-rouges', 'normaux'], ['rubeole', 'non', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'taches-rouges', 'normaux'], ['rubeole', 'non', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'normales', 'normaux']], [['bronchite', 'legere', 'normales', 'oui', 'non', 'non', 'oui', 'oui', 'genee', 'normales', 'normaux'], ['coqueluche', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'genee', 'normales', 'normaux']], [['pneumonie', 'elevee', 'normales', 'non', 'non', 'non', 'oui', 'non', 'rapide', 'rouges', 'normaux']]]
+DB : construitArbreDecisionAux -> attributs : [1, 3, 4, 5, 6, 7, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['rubeole', 'rougeole', 'appendicite']
+DB : -- memeClasse -> res False
+DB : meilleurAttribut -> attributs : [1, 3, 4, 5, 6, 7, 9, 10]
+DB : entropie -> res : 1.0
+DB : entropie -> res : 0.459147917027
+DB : entropie -> res : 0.540852082973
+DB : entropie -> res : 0.809125495379
+DB : entropie -> res : 0.540852082973
+DB : entropie -> res : 0.540852082973
+DB : entropie -> res : 1.25162916739
+DB : entropie -> res : 0.540852082973
+DB : retourneIndiceMinimum -> l : [1.0, 0.45914791702724478, 0.54085208297275522, 0.80912549537889056, 0.54085208297275522, 0.54085208297275522, 1.2516291673878228, 0.54085208297275522]
+DB : construitArbreDecisionAux -> attribut de partition : 3
+DB : construitArbreDecisionAux -> attributs restants : [1, 4, 5, 6, 7, 9, 10]
+DB : 000000000000000000000 partition -> res : [[['appendicite', 'legere', 'normales', 'non', 'non', 'oui', 'non', 'non', 'normale', 'normales', 'normaux'], ['rougeole', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'normale', 'normales', 'larmoyants'], ['rougeole', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'normale', 'taches-rouges', 'larmoyants']], [['rubeole', 'legere', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'taches-rouges', 'normaux'], ['rubeole', 'non', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'taches-rouges', 'normaux'], ['rubeole', 'non', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'normales', 'normaux']]]
+DB : construitArbreDecisionAux -> attributs : [1, 4, 5, 6, 7, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['rougeole', 'appendicite']
+DB : -- memeClasse -> res False
+DB : meilleurAttribut -> attributs : [1, 4, 5, 6, 7, 9, 10]
+DB : entropie -> res : 0.918295834054
+DB : entropie -> res : 0.0
+DB : entropie -> res : 0.0
+DB : entropie -> res : 0.0
+DB : entropie -> res : 0.0
+DB : entropie -> res : 0.666666666667
+DB : entropie -> res : 0.0
+DB : retourneIndiceMinimum -> l : [0.91829583405448956, 0.0, 0.0, 0.0, 0.0, 0.66666666666666663, 0.0]
+DB : construitArbreDecisionAux -> attribut de partition : 4
+DB : construitArbreDecisionAux -> attributs restants : [1, 5, 6, 7, 9, 10]
+DB : 000000000000000000000 partition -> res : [[['appendicite', 'legere', 'normales', 'non', 'non', 'oui', 'non', 'non', 'normale', 'normales', 'normaux']], [['rougeole', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'normale', 'normales', 'larmoyants'], ['rougeole', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'normale', 'taches-rouges', 'larmoyants']]]
+DB : construitArbreDecisionAux -> attributs : [1, 5, 6, 7, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['appendicite']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+DB : construitArbreDecisionAux -> attributs : [1, 5, 6, 7, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['rougeole']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+DB : construitArbreDecisionAux -> attributs : [1, 4, 5, 6, 7, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['rubeole']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+DB : construitArbreDecisionAux -> attributs : [1, 3, 4, 5, 6, 7, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['coqueluche', 'bronchite']
+DB : -- memeClasse -> res False
+DB : meilleurAttribut -> attributs : [1, 3, 4, 5, 6, 7, 9, 10]
+DB : entropie -> res : 1.0
+DB : entropie -> res : 0.0
+DB : entropie -> res : 0.0
+DB : entropie -> res : 1.0
+DB : entropie -> res : 1.0
+DB : entropie -> res : 1.0
+DB : entropie -> res : 1.0
+DB : entropie -> res : 1.0
+DB : retourneIndiceMinimum -> l : [1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+DB : construitArbreDecisionAux -> attribut de partition : 3
+DB : construitArbreDecisionAux -> attributs restants : [1, 4, 5, 6, 7, 9, 10]
+DB : 000000000000000000000 partition -> res : [[['coqueluche', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'genee', 'normales', 'normaux']], [['bronchite', 'legere', 'normales', 'oui', 'non', 'non', 'oui', 'oui', 'genee', 'normales', 'normaux']]]
+DB : construitArbreDecisionAux -> attributs : [1, 4, 5, 6, 7, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['coqueluche']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+DB : construitArbreDecisionAux -> attributs : [1, 4, 5, 6, 7, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['bronchite']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+DB : construitArbreDecisionAux -> attributs : [1, 3, 4, 5, 6, 7, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['pneumonie']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+DB : construitArbreDecisionAux -> attributs : [1, 3, 4, 5, 6, 7, 8, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['angine-erythemateuse']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+DB : construitArbreDecisionAux -> attributs : [1, 3, 4, 5, 6, 7, 8, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['angine-pultacee']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+DB : construitArbreDecisionAux -> attributs : [1, 3, 4, 5, 6, 7, 8, 9, 10]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['angine-diphterique']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+
+********** ARBRE DE DECISION **********
+   Partitionnement selon amygdales
+   Valeur normales
+       Partitionnement selon respiration
+       Valeur normale
+           Partitionnement selon ganglions
+           Valeur non
+               Partitionnement selon gene-a-avaler
+               Valeur non
+                   Noeud terminal : classe appendicite
+                    ['appendicite', 'legere', 'normales', 'non', 'non', 'oui', 'non', 'non', 'normale', 'normales', 'normaux']
+               Valeur oui
+                   Noeud terminal : classe rougeole
+                    ['rougeole', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'normale', 'normales', 'larmoyants']
+                    ['rougeole', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'normale', 'taches-rouges', 'larmoyants']
+           Valeur oui
+               Noeud terminal : classe rubeole
+                ['rubeole', 'legere', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'taches-rouges', 'normaux']
+                ['rubeole', 'non', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'taches-rouges', 'normaux']
+                ['rubeole', 'non', 'normales', 'oui', 'non', 'non', 'non', 'non', 'normale', 'normales', 'normaux']
+       Valeur genee
+           Partitionnement selon ganglions
+           Valeur non
+               Noeud terminal : classe coqueluche
+                ['coqueluche', 'legere', 'normales', 'non', 'oui', 'non', 'oui', 'oui', 'genee', 'normales', 'normaux']
+           Valeur oui
+               Noeud terminal : classe bronchite
+                ['bronchite', 'legere', 'normales', 'oui', 'non', 'non', 'oui', 'oui', 'genee', 'normales', 'normaux']
+       Valeur rapide
+           Noeud terminal : classe pneumonie
+            ['pneumonie', 'elevee', 'normales', 'non', 'non', 'non', 'oui', 'non', 'rapide', 'rouges', 'normaux']
+   Valeur gonflees
+       Noeud terminal : classe angine-erythemateuse
+        ['angine-erythemateuse', 'elevee', 'gonflees', 'oui', 'oui', 'non', 'non', 'non', 'normale', 'normales', 'normaux']
+   Valeur points-blancs
+       Noeud terminal : classe angine-pultacee
+        ['angine-pultacee', 'elevee', 'points-blancs', 'oui', 'oui', 'non', 'non', 'non', 'normale', 'normales', 'normaux']
+   Valeur enduit-blanc
+       Noeud terminal : classe angine-diphterique
+        ['angine-diphterique', 'legere', 'enduit-blanc', 'oui', 'oui', 'non', 'non', 'non', 'normale', 'normales', 'normaux']
+
+
+------------ resultat sur profit.py -------------
+
+DB : initID3 -> attributsEtValeurs : [['profit', 'down', 'up'], ['age', 'old', 'midlife', 'new'], ['competition', 'no', 'yes'], ['type', 'software', 'hardware']]
+DB : construitArbreDecisionAux -> attributs : [1, 2, 3]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['up', 'down']
+DB : -- memeClasse -> res False
+DB : meilleurAttribut -> attributs : [1, 2, 3]
+DB : entropie -> res : 0.4
+DB : entropie -> res : 0.875488750216
+DB : entropie -> res : 1.0
+DB : retourneIndiceMinimum -> l : [0.40000000000000002, 0.87548875021634687, 1.0]
+DB : construitArbreDecisionAux -> attribut de partition : 1
+DB : construitArbreDecisionAux -> attributs restants : [2, 3]
+DB : 000000000000000000000 partition -> res : [[['down', 'old', 'no', 'software'], ['down', 'old', 'no', 'hardware'], ['down', 'old', 'yes', 'software']], [['down', 'midlife', 'yes', 'software'], ['up', 'midlife', 'no', 'hardware'], ['up', 'midlife', 'no', 'software'], ['down', 'midlife', 'yes', 'hardware']], [['up', 'new', 'no', 'hardware'], ['up', 'new', 'no', 'software'], ['up', 'new', 'yes', 'software']]]
+DB : construitArbreDecisionAux -> attributs : [2, 3]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['down']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+DB : construitArbreDecisionAux -> attributs : [2, 3]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['up', 'down']
+DB : -- memeClasse -> res False
+DB : meilleurAttribut -> attributs : [2, 3]
+DB : entropie -> res : 0.0
+DB : entropie -> res : 1.0
+DB : retourneIndiceMinimum -> l : [0.0, 1.0]
+DB : construitArbreDecisionAux -> attribut de partition : 2
+DB : construitArbreDecisionAux -> attributs restants : [3]
+DB : 000000000000000000000 partition -> res : [[['up', 'midlife', 'no', 'hardware'], ['up', 'midlife', 'no', 'software']], [['down', 'midlife', 'yes', 'software'], ['down', 'midlife', 'yes', 'hardware']]]
+DB : construitArbreDecisionAux -> attributs : [3]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['up']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+DB : construitArbreDecisionAux -> attributs : [3]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['down']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+DB : construitArbreDecisionAux -> attributs : [2, 3]
+DB : -- memeClasse -> retourneClassesPossibles(examples) ['up']
+DB : -- memeClasse -> res True
+DB : construitArbreDecisionAux -> memeClasse 
+
+********** ARBRE DE DECISION **********
+   Partitionnement selon age
+   Valeur old
+       Noeud terminal : classe down
+        ['down', 'old', 'no', 'software']
+        ['down', 'old', 'no', 'hardware']
+        ['down', 'old', 'yes', 'software']
+   Valeur midlife
+       Partitionnement selon competition
+       Valeur no
+           Noeud terminal : classe up
+            ['up', 'midlife', 'no', 'hardware']
+            ['up', 'midlife', 'no', 'software']
+       Valeur yes
+           Noeud terminal : classe down
+            ['down', 'midlife', 'yes', 'software']
+            ['down', 'midlife', 'yes', 'hardware']
+   Valeur new
+       Noeud terminal : classe up
+        ['up', 'new', 'no', 'hardware']
+        ['up', 'new', 'no', 'software']
+        ['up', 'new', 'yes', 'software']

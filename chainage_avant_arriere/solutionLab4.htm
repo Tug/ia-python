@@ -1,0 +1,368 @@
+<!DOCTYPE HTML PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+
+
+<script type="text/javascript" src="solutionLab4_files/ufo.js"></script>
+<link rel="stylesheet" type="text/css" href="solutionLab4_files/styles_002.css">
+<link rel="stylesheet" type="text/css" href="solutionLab4_files/styles.css">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="Author" content="Christian Frei">
+  <meta name="GENERATOR" content="Mozilla/4.76 [en] (X11; U; SunOS 5.8 sun4u) [Netscape]">
+  <title>Intelligence Artificielle - Corrigé Lab 4&nbsp;:
+Chaînages avant et arrière</title>
+</head><body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" link="#0000ee" vlink="#551a8b" alink="#ff0000">
+<center>
+</center>
+<center>
+<h1>Corrigé Lab 4 : Chaînages avant et
+arrière</h1>
+<hr width="100%">
+</center>
+<h2>
+Question 1</h2>
+En chaînage avant, il suffit de lancer le système
+(fonction
+interface <i>chainageAvantAvecFiltrage</i> de votre moteur
+d'inférence à
+chaînage avant par exemple) pour trouver tous les faits qui
+peuvent
+être établis d'après la base des faits
+initiaux et
+les règles. Ensuite on examine le contenu de la base de
+faits
+pour
+voir les faits qui correspondent à notre requête.
+On peut
+envisager que l'examen du contenu de la base de faits se fasse au moyen
+d'un mécanisme de "pattern matching".
+<p>Pour le chaînage arrière, il suffit de
+fournir au
+système
+le but à satisfaire&nbsp;:
+</p>
+<ul>
+  <li>Requête 1 : <span style="font-family: monospace;">Bonifier(Bourgogne,?Année-Vin,2007)</span></li>
+  <li>Requête 2 : <span style="font-family: monospace;">Éliminer(?Vin,?Année-Vin)</span></li>
+</ul>
+<h2>
+Question 2</h2>
+Requête&nbsp;: <tt>Bonifier(Bourgogne,1995,2007)<br>
+<br>
+</tt><i>Règle 4)</i> <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <b>but : </b><tt>Bonifier(Bourgogne,1995,2007)<br>
+&nbsp;&nbsp;&nbsp; </tt><span style="font-weight: bold;">consequence-regle
+:
+</span><tt>Bonifier(Bourgogne,?Année-Vin,?Année-Vin+10)<br>
+&nbsp;&nbsp;&nbsp; </tt><b><tt>=&gt;</tt></b><b>échec</b><br>
+<br>
+<i>Règle 6)</i><b> <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; but&nbsp;: </b><tt>Bonifier(Bourgogne,1995,2007)<br>
+&nbsp;&nbsp;&nbsp; </tt><b>sous-buts&nbsp;: <br>
+</b><tt>&nbsp;&nbsp;&nbsp; </tt><tt>&nbsp;&nbsp;&nbsp; </tt><tt>-
+2006 &gt; 1900</tt><tt>-&gt;</tt>succès<br>
+<tt>&nbsp;&nbsp;&nbsp; </tt><tt>&nbsp;&nbsp;&nbsp; </tt><tt>- 2006
+&lt; 2020</tt><tt>-&gt;</tt>succès<span style="font-family: monospace;"><br>
+</span><tt>&nbsp;&nbsp;&nbsp; </tt><tt>&nbsp;&nbsp;&nbsp; </tt><tt>-
+NON Déclasser(Bourgogne,1995,2007)</tt><tt></tt><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <i>Règle
+2)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><b>but&nbsp;: </b><tt>Déclasser(Bourgogne,1995,2007)<br>
+</tt><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><span style="font-weight: bold;">sous-buts :</span> <br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>- 2007 - 1995 &gt; 20</tt><tt>-&gt;</tt>échec
+<br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><tt>=&gt;</tt><b>éche</b><b>c
+<br>
+<br>
+</b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; <i>Règle 5)<br>
+</i><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>but&nbsp;:
+</b><tt>Déclasser(Bourgogne,1995,2007)<br>
+</tt><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><span style="font-weight: bold;">sous-buts :</span> <br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>- </tt><tt>2006 &lt; 2020-&gt;</tt> <strong style="font-weight: normal;">succès</strong> <i><br>
+</i><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>-&nbsp;</tt><tt>2006 &gt; 1900</tt><tt>-&gt;</tt>
+<strong style="font-weight: normal;">succès</strong> <br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>- </tt><tt>Déclasser(Bourgogne, 1995,
+2006)<br>
+<br>
+</tt><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><i>Règle 5)<br>
+</i><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </b><span style="font-weight: bold;">but :</span> <tt>Déclasser(Bourgogne,
+1995,
+2006)<br>
+</tt><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </b><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp; </b><span style="font-weight: bold;">sous-buts :</span> <br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>&nbsp;&nbsp;&nbsp; </tt><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </b><tt>- </tt><tt>2005 &lt; 2020-&gt;</tt> <strong style="font-weight: normal;">succès</strong> <i><br>
+</i><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>&nbsp;&nbsp;&nbsp; </tt><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </b><tt>-&nbsp;</tt><tt>2005 &gt; 1900</tt><tt>-&gt;</tt>
+<strong style="font-weight: normal;">succès</strong> <br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>&nbsp;&nbsp;&nbsp; </tt><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </b><tt>- </tt><tt>Déclasser(Bourgogne,
+1995,
+2005)<br>
+<br>
+</tt><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>&nbsp;&nbsp;&nbsp; </tt><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </b><i>Règle 5)<br>
+</i><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>&nbsp;&nbsp;&nbsp; </tt><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </b>...<strong style="font-weight: normal;">
+jusqu'1900... <br>
+</strong><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><tt> =&gt;</tt><b>éche</b><b>c<br>
+</b><tt>&nbsp;&nbsp;&nbsp; </tt><tt>&nbsp;&nbsp;&nbsp; </tt><tt>-&gt;</tt><strong style="font-weight: normal;">succès<br>
+<br>
+</strong><tt>&nbsp;&nbsp;&nbsp; </tt><tt>&nbsp;&nbsp;&nbsp; </tt><tt>-
+Bonifier(Bourgogne,1995,2006)<br>
+<br>
+</tt><tt>&nbsp;&nbsp;&nbsp; </tt><tt>&nbsp;&nbsp;&nbsp; </tt><i>Règle
+4)<br>
+</i><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>but&nbsp;:</b><tt>
+Bonifier(Bourgogne,1995,2006)<br>
+</tt><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><span style="font-weight: bold;">sous-buts :</span> <br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>- Stock-Vin(Bourgogne,1995)</tt> <tt>-&gt;</tt>
+succès<br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>- 2006 - 1995 &gt; 10</tt><tt>-&gt;</tt>échec<br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><tt>=&gt;</tt><b>échec<br>
+<br>
+</b><tt>&nbsp;&nbsp;&nbsp; </tt><tt>&nbsp;&nbsp;&nbsp; </tt><i>Règle
+6)<br>
+</i><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>but&nbsp;:</b><tt>
+Bonifier(Bourgogne,1995,2006)<br>
+</tt><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><span style="font-weight: bold;">sous-buts :</span> <br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>- 2005 &gt; 1900</tt> <tt>-&gt;</tt>
+succès<br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>- 2005 &lt; 2020</tt><tt>-&gt;</tt>succès<br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>- NON Déclasser(Bourgogne,1995,2006)<br>
+<br>
+</tt><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><i>Règle 2)<br>
+</i><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </b><b>but&nbsp;:</b><tt>
+Déclasser(Bourgogne,1995,2006)<br>
+</tt><span style="font-weight: bold;"></span><i>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; ... <br>
+</b><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </b><tt>=&gt;</tt><b>échec<br>
+</b><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>-&gt;</tt>succès<br>
+<br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>- Bonifier(Bourgogne,1995,2005)<br>
+<br>
+</tt><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><i>Règle 4)<br>
+</i><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; but : </b><tt>Bonifier(Bourgogne,1995,2005)<br>
+</tt><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </b><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp; </b><span style="font-weight: bold;">sous-buts :</span> <br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>&nbsp;&nbsp;&nbsp; </tt><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </b><tt>- Stock-Vin(Bourgogne,1995)</tt> <tt>-&gt;</tt>
+succès<br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>&nbsp;&nbsp;&nbsp; </tt><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </b><tt>- </tt><tt>2005 - 1995 = 10</tt><tt>-&gt;</tt>succès<br>
+<b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; </b><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp; </b><tt>=&gt;</tt><b>succès<br>
+</b><i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><b>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; </b><tt>-&gt;</tt>succès<br>
+<i>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp;&nbsp; </i><b>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; </b><tt>=&gt;</tt><span style="font-weight: bold;">succès <br>
+</span><tt>&nbsp;&nbsp;&nbsp; </tt><tt>&nbsp;&nbsp;&nbsp; </tt><tt>-&gt;</tt><strong style="font-weight: normal;">succès<br>
+</strong><tt>&nbsp;&nbsp;&nbsp; </tt><b><tt>=&gt;</tt></b><span style="font-weight: bold;">succès </span><br>
+<b> </b><br>
+<h2>Question 3</h2>
+Si on enclenche le système en chaînage avant, le
+mécanisme
+d'inférence va essayer de déduire tous les faits
+possibles
+en unifiant l'ensemble des règles avec les faits de la base
+(faits
+initiaux et faits inférés). Dans le cas de notre
+exemple,
+le système va surcharger la base de faits avec des
+informations
+inutiles, en déduisant pour chaque année tous les
+vins
+qui
+seront bons cette année-là (et ce
+jusqu'en 2020).
+Or,
+si un vin est bon une certaine année, il le restera tant
+qu'il
+n'est
+pas déclassé. Déduire explicitement
+qu'il sera bon
+toutes les années suivantes est inutile. Imaginons que le
+nombre
+de bons vins soit important, le nombre de faits
+inférés
+risque
+d'être très grand et va
+considérablement ralentir
+le
+fonctionnement de notre système expert. Ces
+séries
+d'inférences
+sont d'autant plus inutiles qu'elles n'ont rien à voir avec
+la
+requête
+qui nous intéresse, i.e., quels sont les vins à
+éliminer.
+<br>
+&nbsp;
+<h2>Question 4</h2>
+Les règles 1), 2), 5) et 7) permettent de déduire
+tous
+les
+vins à déclasser et à
+éliminer en utilisant
+le chaînage avant. Ceci peut-être
+constaté en
+partant
+du fait <span style="font-family: monospace;">Éliminer
+</span>et en regardant quelles sont les seules règles
+qui
+peuvent être successeurs de ce type de faits dans un
+processus de
+<i>chaînage arrière</i>.
+<br>
+&nbsp;
+<h2>Question 5</h2>
+Dans le cas du chaînage arrière, l'absence de
+cette
+condition
+va faire cycler le système à l'infini pour
+certaines
+requêtes&nbsp;:
+par exemple, si l'on désire savoir si le Bourgogne 1983 est
+un
+bon
+vin, la règle 4) ne sera jamais satisfaite car il n'y a pas
+de
+Bourgogne
+1983 en stock et le système va donc récursivement
+essayer
+d'appliquer la règle 6) puis la règle 4) sans
+jamais
+s'arrêter.
+<br>
+&nbsp;
+<h2>Question 6</h2>
+Si toutes les règles sont appliquées en
+chaînage
+arrière,
+les vins déclassés sont à
+re-déduire
+à
+chaque fois que l'on veut savoir si un vin particulier est bon. De
+plus,
+on va essayer de satisfaire à plusieurs reprises les
+mêmes
+sous-buts, par exemple <tt>Stock-Vin(?Vin,?Année-Vin)</tt>
+qui
+est impliqué dans les règles 1), 2) 3) et 4). Il
+est
+clair
+que si la satisfaction d'un sous-but est onéreuse, on
+aimerait
+éviter
+de le recalculer plusieurs fois.
+<br>
+&nbsp;
+<h2>Question 7</h2>
+Un bon système expert est un système expert
+mort&nbsp;!!!
+<p>Non, non, en fait ce que l'on veut montrer, c'est qu'un
+processus
+de
+décision
+est souvent composé de parties en chaînage avant
+et de
+parties
+en chaînage arrière. Le choix du
+mécanisme
+d'inférence
+est souvent lié à la nature des
+requêtes (certaines
+requêtes se prêtent mieux au chaînage
+avant et
+d'autres
+au chaînage arrière). En principe, si les
+règles
+ont
+été conçues avec suffisamment de soin
+pour
+éviter
+les problèmes de cycles, on peut indifféremment
+utiliser
+l'un ou l'autre type de chaînage pour satisfaire une
+requête.
+Cela ne veut pas dire que le coût (en capacité
+mémoire
+et en temps) soit le même. C'est pour cela qu'en
+pratique,
+les
+systèmes experts sont souvent hybrides.
+</p>
+<hr width="100%">
+<p>&nbsp; </p>
+<script language="JavaScript">document.write("Last modified on " + document.lastModified);</script>Last modified on 03/04/2009 11:08:09
+</body></html>

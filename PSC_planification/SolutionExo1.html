@@ -1,0 +1,824 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Intelligence Artificielle - Lab 7 : Planification avec PSC -
+Solution Exercice 1</title>
+</head>
+<body>
+<br>
+<h1 style="text-align: center;">Lab 7 : Planification avec
+PSC&nbsp;</h1>
+<h1 style="text-align: center;">Solution de l'exercice 1</h1>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h2>Note pr&eacute;liminaire </h2>
+<p>
+Pour un probl&egrave;me de planification donn&eacute;, il peut
+exister&nbsp;diff&eacute;rentes fa&ccedil;ons de le
+mod&eacute;liser
+sous la forme d'un Probl&egrave;me de Satisfaction de Contraintes.
+Le
+mod&egrave;le que nous vous proposons ici correspond &agrave; celui qui
+est d&eacute;crit dans le
+chapitre 10.6 du
+cours. Si, en tentant de mod&eacute;liser le probl&egrave;me, vous
+pensez
+avoir r&eacute;ussi &agrave; obtenir un mod&egrave;le PSC
+diff&eacute;rent qui vous semble valide, nous vous invitons
+&agrave; en
+discuter avec un(e) assistant(e) pendant la s&eacute;ance
+d'exercices. <br>
+</p>
+<br>
+<h2>D&eacute;finition du probl&egrave;me de planification </h2>
+<p>Rappelons qu'un probl&egrave;me de planification est d&eacute;fini
+par les &eacute;l&eacute;ments suivants :&nbsp;</p>
+<ul>
+  <li>une liste de propositions qui d&eacute;crivent l'&eacute;tat du
+monde&nbsp;</li>
+  <li>une liste d'op&eacute;rateurs qui d&eacute;crivent les "actions"
+qui peuvent &ecirc;tre ex&eacute;cut&eacute;es pour changer
+l'&eacute;tat du monde. Chaque op&eacute;rateur a des pr&eacute;- et
+des postconditions.&nbsp;</li>
+  <li>des conditions initiales, d&eacute;crivant compl&egrave;tement
+l'&eacute;tat initial du monde en termes de propositions&nbsp;</li>
+  <li>des conditions finales, d&eacute;crivant (compl&egrave;tement ou
+seulement partiellement) l'&eacute;tat d&eacute;sir&eacute; du monde en
+termes de propositions&nbsp;</li>
+  <li>des <span style="font-style: italic;">mutex</span>, qui
+d&eacute;crivent des contraintes d'exclusions mutuelles entre les
+propositions et entre les op&eacute;rateurs. Les <span
+ style="font-style: italic;">mutex de propositions</span>
+sont des paires de propositions qui ne peuvent pas &ecirc;tre vraies en
+m&ecirc;me temps (par exemple, un missionnaire ne peut pas se trouver
+sur la rive gauche <span style="font-weight: bold;">et</span> sur la
+rive droite en m&ecirc;me temps). Les <span style="font-style: italic;">mutex
+d'op&eacute;rateurs</span> d&eacute;finissent les paires
+d'op&eacute;rateurs qui ne peuvent pas &ecirc;tre
+ex&eacute;cut&eacute;s en m&ecirc;me temps (par exemple, un m&ecirc;me
+bateau ne peut pas &ecirc;tre pilot&eacute; &agrave; la fois par le
+missionnaire M1 pour transporter le canibale C1 <span
+ style="font-weight: bold;">et</span> par M2 pour transporter C2). <br>
+  </li>
+</ul>
+<p></p>
+Dans notre probl&egrave;me de planification, il y a trois types
+d'"acteurs"&nbsp;:
+<ul>
+  <li>les bateaux correspondent au type B&nbsp;; dans notre
+exemple, il
+n'y a qu'un seul bateau, d&eacute;not&eacute; naturellement par
+B&nbsp;</li>
+  <li>les missionnaires correspondent au type M&nbsp;; il y a
+deux missionnaires, M1 et M2</li>
+  <li>les cannibales correspondent au type C ; il y a deux
+cannibales, C1 et C2.</li>
+</ul>
+<p>Le choix des propositions du probl&egrave;me de planification doit
+permettre de d&eacute;crire compl&egrave;tement la position de chaque
+acteur.&nbsp;</p>
+<p>
+Notre probl&egrave;me pr&eacute;sente aussi deux types d'"actions"
+possibles : <br>
+</p>
+<ul>
+  <li>travers&eacute;e du fleuve depuis la rive gauche
+jusqu'&agrave; la rive droite ;</li>
+  <li>travers&eacute;e du fleuve depuis la rive droite
+jusqu'&agrave; la rive gauche.</li>
+</ul>
+<p>Chacun de ces deux types d'actions peut faire intervenir un certain
+nombre
+d'acteurs. Par exemple, une travers&eacute;e ne peut avoir lieu
+qu'&agrave; l'aide d'un bateau (i.e. un acteur de type B). Seul un
+missionnaire (i.e. un acteur de type M) peut conduire le bateau. Le
+bateau ne peut contenir qu'un passager suppl&eacute;mentaire, qui
+peut
+&ecirc;tre indiff&eacute;remment de type M (un missionnaire)
+ou
+C (un
+cannibale). La liste des op&eacute;rateurs du probl&egrave;me de
+planification doit couvrir toutes les possibilit&eacute;s de
+combinaisons d'acteurs pour les deux types d'actions.&nbsp;</p>
+<p></p>
+<h3>Choix des propositions du probl&egrave;me de planification&nbsp;</h3>
+<p>Afin de d&eacute;crire la
+position
+d'un acteur, nous vous proposons d'utiliser deux propositions,
+correspondant aux deux positions possibles de l'acteur (rive gauche ou
+rive droite). Pour un acteur A donn&eacute;,
+introduisons
+donc les deux propositions suivantes : <br>
+</p>
+<ul>
+  <li><span style="font-style: italic;">g</span>(A)
+est vraie si et seulement si l'acteur A est sur la rive gauche
+;&nbsp;</li>
+  <li><span style="font-style: italic;">d</span>(A)
+est vraie si et seulement si l'acteur A est sur la rive droite. </li>
+</ul>
+<p>
+Ces deux propositions peuvent vous sembler redondantes, puisque, si
+l'acteur A n'est pas sur la rive gauche (<span
+ style="font-style: italic;">g</span>(A) est fausse),
+alors il est n&eacute;cessairement sur la rive droite (<span
+ style="font-style: italic;">d</span>(A)
+est&nbsp;vraie). Nous avons choisi cette repr&eacute;sentation
+car elle
+se g&eacute;n&eacute;ralise imm&eacute;diatement
+&agrave; des
+probl&egrave;mes un peu plus g&eacute;n&eacute;raux, dans
+lesquels il
+existe plus de deux positions possibles pour un acteur.</p>
+<p> </p>
+<h3>Choix des op&eacute;rateurs du probl&egrave;me de
+planification&nbsp;</h3>
+<p>
+Comme indiqu&eacute; plus haut, des op&eacute;rateurs vont
+&ecirc;tre
+n&eacute;cessaires pour mod&eacute;liser la
+travers&eacute;e du fleuve
+par des groupes d'acteurs. Pour un &eacute;tat donn&eacute;, les
+op&eacute;rateurs
+seront les
+suivants : <br>
+</p>
+<ul>
+  <li><span style="font-style: italic;">gd</span>(B,
+M, A) est
+l'op&eacute;rateur d&eacute;crivant la travers&eacute;e du
+fleuve de
+gauche &agrave; droite, &agrave; bord d'un bateau B,
+pilot&eacute; par
+le missionnaire M, avec pour&nbsp;<span style="font-weight: bold;"><span
+ style="font-style: italic;"></span></span>passager
+A (qui doit &ecirc;tre de type M ou C). Les
+pr&eacute;conditions de cet op&eacute;rateur sont que les propositions <span
+ style="font-style: italic;">g</span>(B), <span
+ style="font-style: italic;">g</span>(M) et <span
+ style="font-style: italic;">g</span>(A) doivent &ecirc;tre vraies. Les
+postconditions sont que les propositions <span
+ style="font-style: italic;">d</span>(B)<span
+ style="font-style: italic;">, d</span>(M) et <span
+ style="font-style: italic;">d</span>(A) doivent &ecirc;tre vraies.
+&nbsp;</li>
+  <li><span style="font-style: italic;">dg</span>(B,
+M) est
+l'op&eacute;rateur d&eacute;crivant la travers&eacute;e de
+droite
+&agrave; gauche du missionnaire M, &agrave; bord du bateau B.&nbsp;Les
+pr&eacute;conditions de cet op&eacute;rateur sont que les propositions <span
+ style="font-style: italic;">d</span>(B) et <span
+ style="font-style: italic;">d</span>(M) doivent &ecirc;tre vraies. Les
+postconditions sont que les propositions <span
+ style="font-style: italic;">g</span>(B) et <span
+ style="font-style: italic;">g</span>(M) doivent &ecirc;tre vraies. </li>
+</ul>
+<p><span style="font-weight: bold;">Remarque</span> : Le choix a
+&eacute;t&eacute; fait dans ce mod&egrave;le de ne pas
+tenir compte de
+la possibilit&eacute; pour un bateau de faire la
+travers&eacute;e de
+droite &agrave; gauche avec un passager (autre que le pilote). Ce
+choix
+limite l'&eacute;ventail de plans valides possibles. Il a
+l'avantage de
+correspondre &agrave; un probl&egrave;me de planification plus petit,
+plus
+facile
+&agrave; r&eacute;soudre, et qui g&eacute;n&eacute;rera
+des plans plus
+courts (puisqu'il n'est pas possible de perdre du temps &agrave;
+faire
+traverser un cannibale dans un sens, puis dans l'autre sens). Dans
+notre
+exemple particulier, sachant que dans l'&eacute;tat initial, les
+deux
+cannibales sont sur la rive gauche, il est tr&egrave;s facile de
+constater qu'il existe un plan valide qui ne fait jamais traverser un
+cannibale de la rive droite &agrave; la rive gauche. Dans le cas
+d'un
+probl&egrave;me plus g&eacute;n&eacute;ral, un tel choix de
+mod&egrave;le pourrait g&eacute;n&eacute;rer un probl&egrave;me de
+planification
+infaisable, alors
+m&ecirc;me que le probl&egrave;me initial est soluble.&nbsp;</p>
+<p></p>
+<h3>Conditions initiales du probl&egrave;me de planification&nbsp;</h3>
+<p>Initialement, tous les acteurs sont sur la rive gauche. Les
+conditions initiales sont donc les suivantes :&nbsp;</p>
+<p style="text-align: center;"><span style="font-style: italic;">g</span>(B)
+=&nbsp;<span style="font-style: italic;">g</span>(M1)&nbsp;=&nbsp;<span
+ style="font-style: italic;">g</span>(M2) =&nbsp;<span
+ style="font-style: italic;">g</span>(C1)&nbsp;=&nbsp;<span
+ style="font-style: italic;">g</span>(C2) =&nbsp;<span
+ style="font-style: italic;">True</span>&nbsp;</p>
+<p style="text-align: left;"></p>
+<h3>Conditions finales/conditions buts du probl&egrave;me de
+planification&nbsp;</h3>
+<p style="text-align: left;">Le but est de faire passer tous les
+acteurs du c&ocirc;t&eacute; droit de la rivi&egrave;re. Les conditions
+finales sont donc les suivantes :&nbsp;</p>
+<p style="text-align: center;"><span style="font-style: italic;">d</span>(B)
+= <span style="font-style: italic;">d</span>(M1)&nbsp;= <span
+ style="font-style: italic;">d</span>(M2) = <span
+ style="font-style: italic;">d</span>(C1)&nbsp;= <span
+ style="font-style: italic;">d</span>(C2) =&nbsp;<span
+ style="font-style: italic;">True</span>&nbsp;</p>
+<p style="text-align: left;"></p>
+<h3> Mutex de propositions du probl&egrave;me de planification&nbsp;</h3>
+<p style="text-align: left;">Les mutex de propositions sont des paires
+de propositions qui ne peuvent pas &ecirc;tre vraies en m&ecirc;me
+temps. Dans notre probl&egrave;me de planification, pour chaque acteur
+A, on a le mutex suivant :&nbsp;</p>
+<p style="text-align: center;">[ <span style="font-style: italic;">g</span>(A),
+<span style="font-style: italic;">d</span>(A) ]</p>
+<p style="text-align: left;">En effet, un acteur ne peut se trouver en
+m&ecirc;me temps sur la rive gauche <span style="font-weight: bold;">et</span>
+sur la rive droite. <br>
+</p>
+<h3>Mutex d'op&eacute;rateurs du probl&egrave;me de planification</h3>
+<p style="text-align: left;">Les mutex d'op&eacute;rateurs dont des
+paires d'op&eacute;rateurs qui ne peuvent &ecirc;tre
+ex&eacute;cut&eacute;s en m&ecirc;me temps. Dans notre probl&egrave;me
+de planification, pour chaque paire d'op&eacute;rateurs distincts <span
+ style="font-style: italic;">op1</span> et <span
+ style="font-style: italic;">op2</span>, si les deux op&eacute;rateurs
+ont un acteur en commun (qu'il soit de type B, M ou C), alors on a le
+mutex suivant : <br>
+</p>
+<p style="text-align: left;"></p>
+<div style="text-align: center;">[ <span style="font-style: italic;">op1</span>,
+<span style="font-style: italic;">op2</span> ]<br>
+</div>
+<br>
+Ce mutex traduit le fait qu'un m&ecirc;me bateau ne peut pas contenir
+deux &eacute;quipages diff&eacute;rents en m&ecirc;me temps (dans le
+cas o&ugrave; l'acteur en commun est de type B), et aussi qu'un
+m&ecirc;me missionnaire ou un m&ecirc;me canibale ne peut se trouver
+sur deux bateaux diff&eacute;rents en m&ecirc;me temps (dans le cas
+o&ugrave; l'acteur en commun est de type M ou C, et si on a plusieurs
+bateaux &agrave; disposition). <br>
+<span style="font-weight: bold;"></span><br>
+<p style="text-align: left;"></p>
+<h2> <span style="font-weight: bold;"></span>Description du
+mod&egrave;le PSC pour le probl&egrave;me
+de planification&nbsp; </h2>
+<p>
+Rappelons qu'un plan non lin&eacute;aire est constitu&eacute;
+d'une s&eacute;quence d'&eacute;tats <span style="font-style: italic;">S<sub>0</sub></span>,
+<span style="font-style: italic;">S<sub>1</sub></span>,...,
+<span style="font-style: italic;">S<sub>n</sub></span>,
+chaque &eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>
+&eacute;tant d&eacute;crit par des propositions qui sont vraies
+ou
+fausses au d&eacute;but de l'&eacute;tat,&nbsp;un ensemble
+d'op&eacute;rateurs qui sont ex&eacute;cut&eacute;s pendant
+cet &eacute;tat,
+et des propositions qui sont vraies ou fausses &agrave; la fin de
+l'&eacute;tat, apr&egrave;s l'ex&eacute;cution des
+op&eacute;rateurs
+(et qui correspondent aux propositions au d&eacute;but de
+l'&eacute;tat
+suivant). Un op&eacute;rateur est caract&eacute;ris&eacute;
+par des
+pr&eacute;conditions (des propositions qui doivent &ecirc;tre
+vraies au
+d&eacute;but de l'&eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>
+pour que l'op&eacute;rateur puisse &ecirc;tre
+ex&eacute;cut&eacute;) et
+des postconditions (des propositions qui doivent &ecirc;tres vraies
+au
+d&eacute;but de l'&eacute;tat <span style="font-style: italic;">S<sub>i+1</sub></span>
+si l'op&eacute;rateur est ex&eacute;cut&eacute; dans
+l'&eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>).</p>
+<p></p>
+<h3>Choix des variables PSC pour les propositions&nbsp; </h3>
+Pour chaque &eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>
+avec <span style="font-style: italic;">i = 0...n+1</span>,
+et chaque acteur A, le PSC contiendra les variables
+bool&eacute;ennes suivantes, qui correspondent aux propositions du
+probl&egrave;me de planification introduites plus haut : <br>
+<ul>
+  <li><span style="font-style: italic;">g</span>(A, <span
+ style="font-style: italic;">S<sub>i</sub></span>)
+= <span style="font-style: italic;">True</span> si
+et seulement si l'acteur A est sur la rive gauche &agrave; la fin
+de l'&eacute;tat <span style="font-style: italic;">S<sub>i-1</sub></span>
+/ au d&eacute;but de l'&eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>
+;&nbsp;</li>
+  <li><span style="font-style: italic;">d</span>(A, <span
+ style="font-style: italic;">S<sub>i</sub></span>)
+= <span style="font-style: italic;">True</span> si
+et seulement si l'acteur A est sur la rive droite &agrave; la fin
+de l'&eacute;tat <span style="font-style: italic;">S<sub>i-1</sub></span>
+/ au d&eacute;but de l'&eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>.&nbsp;</li>
+</ul>
+<p></p>
+<h3>Choix des variables PSC pour les op&eacute;rateurs&nbsp;</h3>
+<p>
+Pour chaque &eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>
+avec <span style="font-style: italic;">i = 0...n</span>, et chaque
+op&eacute;rateur <span style="font-style: italic;">op</span> (par
+exemple, <span style="font-style: italic;">dg</span>(B, M1)), le PSC
+contiendra la variable bool&eacute;enne <span
+ style="font-style: italic;">op</span>(<span style="font-style: italic;">S<sub>i</sub></span>)
+qui indiquera si oui ou non l'op&eacute;rateur est
+ex&eacute;cut&eacute; dans l'&eacute;tat <span
+ style="font-style: italic;">S<sub>i</sub></span>. <br>
+</p>
+<p></p>
+<h3>Expression des contraintes du PSC </h3>
+Comme indiqu&eacute; au chapitre 10.6 et plus haut dans cet
+&eacute;nonc&eacute;, il existe 6 types de
+contraintes
+qui doivent &ecirc;tre v&eacute;rifi&eacute;es pour qu'un
+plan soit
+valide :
+<ol>
+  <li>les contraintes sur l'&eacute;tat initial</li>
+  <li>les contraintes sur l'&eacute;tat final&nbsp;</li>
+  <li>les pr&eacute;conditions et les postconditions des
+op&eacute;rateurs&nbsp;</li>
+  <li>les axiomes de cadre</li>
+  <li>les mutex de propositions </li>
+  <li>les mutex d'op&eacute;rateurs <br>
+  </li>
+</ol>
+<p></p>
+<h4>1. Contraintes PSC correspondant aux contraintes&nbsp;sur
+l'&eacute;tat initial</h4>
+<p>
+Tous les acteurs sont initialement sur la rive gauche. Par
+cons&eacute;quent, les contraintes sur l'&eacute;tat initial
+prennent
+la forme tr&egrave;s simple suivante : </p>
+<div style="text-align: center;">
+<p><span style="font-style: italic;">g</span>(B, <span
+ style="font-style: italic;">S<sub>0</sub></span>)
+=&nbsp;<span style="font-style: italic;">g</span>(M1,
+<span style="font-style: italic;">S<sub>0</sub></span>)
+=&nbsp;<span style="font-style: italic;">g</span>(M2,
+<span style="font-style: italic;">S<sub>0</sub></span>)
+= <span style="font-style: italic;">g</span>(C1, <span
+ style="font-style: italic;">S<sub>0</sub></span>)
+=&nbsp;<span style="font-style: italic;">g</span>(C2,
+<span style="font-style: italic;">S<sub>0</sub></span>)
+=&nbsp;<span style="font-style: italic;">True</span>&nbsp;</p>
+</div>
+<p></p>
+<h4>2. Contraintes PSC correspondant aux contraintes sur l'&eacute;tat
+final </h4>
+<p>
+Les contraintes sur l'&eacute;tat final sont tr&egrave;s
+comparables
+aux contraintes sur l'&eacute;tat initial, &agrave; la
+diff&eacute;rence fondamentale qu'il faut d&eacute;finir lequel
+des
+&eacute;tats <span style="font-style: italic;">S<sub>0</sub></span>,
+<span style="font-style: italic;">S<sub>1</sub></span>,...,
+<span style="font-style: italic;">S<sub>n</sub></span>
+correspondra &agrave; cet &eacute;tat final. En d'autres
+termes, il
+faut choisir par avance la longueur des plans solutions que l'on veut
+consid&eacute;rer (i.e. le nombre total d'&eacute;tats). Si on
+se
+restreint &agrave; des plans tr&egrave;s courts, il est
+possible qu'on
+n'obtienne aucune solution, car il n'existe aucun plan qui transforme
+l'&eacute;tat initial en l'&eacute;tat final avec si peu
+d'&eacute;tats
+interm&eacute;diaires. Si on permet des plans tr&egrave;s
+longs, la
+taille du PSC et la complexit&eacute; de sa r&eacute;solution
+explosent. Traditionnellement, on commence donc par se restreindre
+&agrave; des plans courts, et on augmente progressivement la taille
+des
+plans si aucune solution n'est trouv&eacute;e. </p>
+<br>
+Dans notre cas, le probl&egrave;me se r&eacute;sout
+tr&egrave;s
+facilement &agrave; la main, donc on peut tricher et choisir une
+nombre
+d'&eacute;tats en sachant qu'il existe un plan solution qui
+contient ce
+nombre d'&eacute;tats. Une solution &eacute;vidente du
+probl&egrave;me
+est par exemple la suivante, sachant que le but &agrave; atteindre
+est
+d'avoir tous les acteurs sur la rive droite : <br>
+<ol>
+  <li><span style="font-style: italic;">gd</span>(B,
+M1, C1)&nbsp;</li>
+  <li><span style="font-style: italic;">dg</span>(B,
+M1)</li>
+  <li><span style="font-style: italic;">gd</span>(B,
+M1, C2)<span style="font-style: italic;"></span></li>
+  <li><span style="font-style: italic;">dg</span>(B,
+M1)</li>
+  <li><span style="font-style: italic;">dg</span>(B,
+M1, M2) </li>
+</ol>
+<p>
+Il suffit donc de 5 &eacute;tapes, soit 5 &eacute;tats (sans
+compter l'&eacute;tat initial <span style="font-style: italic;">S<sub>0</sub></span>)
+pour obtenir l'&eacute;tat final d&eacute;sir&eacute;. On
+choisira donc <span style="font-style: italic;">S<sub>5</sub></span>
+comme &eacute;tat final. Les contraintes sur l'&eacute;tat
+final sont par cons&eacute;quent les suivantes : </p>
+<div style="text-align: center;">
+<p><span style="font-style: italic;">d</span>(B,&nbsp;<span
+ style="font-style: italic;">S<sub>5</sub></span>)
+= <span style="font-style: italic;">d</span>(M1, <span
+ style="font-style: italic;">S<sub>5</sub></span>)
+= <span style="font-style: italic;">d</span>(M2, <span
+ style="font-style: italic;">S<sub>5</sub></span>)
+= <span style="font-style: italic;">d</span>(C1, <span
+ style="font-style: italic;">S<sub>5</sub></span>)
+= <span style="font-style: italic;">d</span>(C2,&nbsp;<span
+ style="font-style: italic;">S<sub>5</sub></span><span
+ style="font-style: italic;"></span>)
+=&nbsp;<span style="font-style: italic;">True</span>&nbsp;</p>
+</div>
+<p></p>
+<h4>3. Contraintes PSC correspondant aux contraintes de pr&eacute;- et
+postconditions des
+op&eacute;rateurs </h4>
+<p>
+Reprenons les deux types d'op&eacute;rateurs introduits
+pr&eacute;c&eacute;demment, et explicitons leurs
+pr&eacute;- et
+postconditions en termes de variables du PSC.&nbsp; </p>
+<ul>
+  <li>L'op&eacute;rateur <span style="font-style: italic;">gd</span>(B,
+M, A) a pour pr&eacute;conditions que <span style="font-style: italic;">g</span>(B),&nbsp;<span
+ style="font-style: italic;">g</span>(M) et&nbsp;<span
+ style="font-style: italic;">g</span>(A) doivent toutes
+&ecirc;tre vraies. Les postconditions stipulent que <span
+ style="font-style: italic;">d</span>(B), <span
+ style="font-style: italic;">d</span>(M) et <span
+ style="font-style: italic;">d</span>(A) doivent toutes
+&ecirc;tre vraies.&nbsp;</li>
+  <li>L'op&eacute;rateur <span style="font-style: italic;">dg</span>(B,
+M) a pour pr&eacute;conditions que <span style="font-style: italic;">d</span>(B)
+et <span style="font-style: italic;">d</span>(M)&nbsp;doivent
+&ecirc;tre vraies. Les postconditions stipulent que <span
+ style="font-style: italic;">g</span>(B) et <span
+ style="font-style: italic;">g</span>(M) doivent
+&ecirc;tre vraies.&nbsp;</li>
+</ul>
+<p><span style="font-weight: bold;">Remarque :</span> On n'a pas
+mentionn&eacute; ici les "suppressions" de chaque
+op&eacute;rateur ; par exemple, une autre postcondition de <span
+ style="font-style: italic;">dg</span>(B, M) est
+que&nbsp;<span style="font-style: italic;">d</span>(B)
+doit &ecirc;tre fausse. Il n'est pas n&eacute;cessaire
+d'expliciter ces
+postconditions n&eacute;gatives, car elles seront automatiquement
+impos&eacute;es par les&nbsp;<span style="font-style: italic;">mutex de
+propositions</span>
+introduits pr&eacute;c&eacute;demment, et
+pr&eacute;sent&eacute;s en d&eacute;tail plus bas. </p>
+<p>
+En termes de PSC, ces pr&eacute;- et postconditions prennent la
+forme
+des contraintes suivantes sur les variables du PSC, pour chaque
+&eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>
+avec <span style="font-style: italic;">i = 0...n</span> et chaque
+op&eacute;rateur <span style="font-style: italic;">op</span> : <br>
+</p>
+<div style="text-align: center;">pour chaque proposition <span
+ style="font-style: italic;">prop</span> qui est une postcondition de
+l'op&eacute;rateur <span style="font-style: italic;">op</span>
+: &nbsp;&nbsp;&nbsp; <span style="font-style: italic;">op</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>) -&gt; <span
+ style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i+1</sub></span>)
+;<br>
+pour chaque proposition <span style="font-style: italic;">prop</span>
+qui est une pr&eacute;condition de l'op&eacute;rateur <span
+ style="font-style: italic;">op</span>
+: &nbsp;&nbsp;&nbsp; <span style="font-style: italic;">op</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>) -&gt; <span
+ style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>). <br>
+</div>
+<br>
+On a utilis&eacute; ici la notation -&gt; pour indiquer l'implication
+logique. Ainsi, si <span style="font-style: italic;">prop</span> est
+une postcondition de l'op&eacute;rateur <span
+ style="font-style: italic;">op</span>, alors <span
+ style="font-style: italic;">op</span>(<span style="font-style: italic;">S<sub>i</sub></span>)
+-&gt; <span style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i+1</sub></span>) est
+&eacute;quivalent &agrave; "si <span style="font-style: italic;">op</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>) = <span
+ style="font-style: italic;">True</span>, alors <span
+ style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i+1</sub></span>) = <span
+ style="font-style: italic;">True</span>". Ceci traduit bien le fait
+que si l'op&eacute;rateur <span style="font-style: italic;">op</span>
+est ex&eacute;cut&eacute; dans l'&eacute;tat <span
+ style="font-style: italic;">S<sub>i</sub></span>, alors sa
+postcondition <span style="font-style: italic;">prop</span> doit
+&ecirc;tre vraie &agrave; la fin de l'&eacute;tat <span
+ style="font-style: italic;">S<sub>i</sub></span>, c'est &agrave; dire
+au d&eacute;but de l'&eacute;tat <span style="font-style: italic;">S<sub>i+1</sub></span>.
+<p></p>
+<h4>4. Contraintes PSC correspondant aux axiomes de cadre </h4>
+<p>
+Rappelons que les <span style="font-style: italic;">axiomes
+de cadre</span> stipulent que si aucun op&eacute;rateur ne
+vient, dans l'&eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>,
+modifier une proposition <span style="font-style: italic;">prop</span>,
+alors elle reste identique &agrave; l'&eacute;tat <span
+ style="font-style: italic;">S<sub>i+1</sub></span>.
+De mani&egrave;re &eacute;quivalente : si la valeur d'une
+proposition change d'un &eacute;tat&nbsp;<span
+ style="font-style: italic;">S<sub>i</sub></span>
+&agrave; l'&eacute;tat suivant <span style="font-style: italic;">S<sub>i+1</sub></span>,
+c'est que l'op&eacute;rateur <span style="font-style: italic;">op</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>)
+y est pour quelque chose. Par exemple, si <span
+ style="font-style: italic;">g</span>(C1, <span
+ style="font-style: italic;">S<sub>i</sub></span>)
+= <span style="font-style: italic;">True</span> et <span
+ style="font-style: italic;">g</span>(C1, <span
+ style="font-style: italic;">S<sub>i+1</sub></span>)
+= <span style="font-style: italic;">False</span>,
+alors <span style="font-style: italic;">op</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>)
+est n&eacute;cessairement l'un des deux op&eacute;rateurs
+suivants : <span style="font-style: italic;">gd</span>(B,
+M1, C1) ou <span style="font-style: italic;">gd</span>(B,
+M2, C1). </p>
+<p>
+Remarquez que cette contrainte est de formulation relativement
+complexe, et qu'en particulier, elle implique plus de 2 variables : <span
+ style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>), <span
+ style="font-style: italic;"></span><span style="font-style: italic;"></span>
+<span style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i+1</sub></span>), et les variables
+pour l'&eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>
+de tous les op&eacute;rateurs qui ont <span style="font-style: italic;">prop</span>
+comme pr&eacute;- ou post-condition. Plus particuli&egrave;rement, les
+contraintes d'axiomes de cadre prennent les deux formes suivantes, pour
+chaque &eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>,
+et pour chaque proposition <span style="font-style: italic;">prop</span>
+: <br>
+</p>
+<p style="text-align: center;">si <span style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>) = <span
+ style="font-style: italic;">False</span> et <span
+ style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i+1</sub></span>) = <span
+ style="font-style: italic;">True</span>, alors pour au moins un
+op&eacute;rateur <span style="font-style: italic;">op</span> qui a <span
+ style="font-style: italic;">prop</span> comme postcondition, on a <span
+ style="font-style: italic;">op</span>(<span style="font-style: italic;">S<sub>i</sub></span>)
+= <span style="font-style: italic;">True</span> ;<br>
+si <span style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>) = <span
+ style="font-style: italic;">True</span> et <span
+ style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i+1</sub></span>) = <span
+ style="font-style: italic;">False</span> alors pour au moins un
+op&eacute;rateur <span style="font-style: italic;">op</span> qui a <span
+ style="font-style: italic;">prop</span> comme postcondition
+n&eacute;gative, on a <span style="font-style: italic;">op</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>) = <span
+ style="font-style: italic;">True</span>.<br>
+</p>
+<p><span style="font-weight: bold;">Remarque</span> : Comme
+indiqu&eacute; pr&eacute;c&eacute;demment, il n'est pas
+n&eacute;cessaire de consid&eacute;rer le deuxi&egrave;me cas avec la
+postcondition n&eacute;gative. En effet, prenons l'exemple de la
+proposition <span style="font-style: italic;">d</span>(M1). Si <span
+ style="font-style: italic;">d</span>(M1) passe de <span
+ style="font-style: italic;">True</span> &agrave; <span
+ style="font-style: italic;">False</span>, il n'est pas
+n&eacute;cessaire de v&eacute;rifier que l'op&eacute;rateur <span
+ style="font-style: italic;">dg</span>(M1) est ex&eacute;cut&eacute;,
+puisqu'alors les contraintes de mutex de propositions imposeront que <span
+ style="font-style: italic;">g</span>(M1) passe (&agrave; l'inverse) de
+<span style="font-style: italic;">False</span> &agrave; <span
+ style="font-style: italic;">True</span>, et alors le premier cas
+ci-dessus suffira pour imposer que <span style="font-style: italic;">dg</span>(M1)
+soit ex&eacute;cut&eacute;.&nbsp;
+</p>
+<p>Rappelons que ces contraintes ne sont pas simplement unaires ou
+binaires, mais qu'elles ont une multiplicit&eacute; plus grande que 2.
+Il va falloir modifier le solveur PSC pour qu'il puisse supporter de
+telles contraintes. <br>
+</p>
+<h4>5. Contraintes PSC correspondant aux <span
+ style="font-style: italic;">mutex de
+propositions</span> </h4>
+<p>
+Les <span style="font-style: italic;">mutex de
+propositions</span> sont les contraintes qui expriment le fait
+que deux propositions sont <span style="font-style: italic;">MUTuellement
+EXclusives</span>,
+c'est &agrave; dire qu'elles sont incompatibles et ne peuvent pas
+&ecirc;tre vraies en m&ecirc;me temps. Par exemple, on ne peut
+pas
+avoir <span style="font-style: italic;">g</span>(M1)
+et <span style="font-style: italic;">d</span>(M1)
+vraies en m&ecirc;me temps, puisque le missionnaire M1 ne peut pas
+se
+trouver &agrave; la fois sur la rive droite et sur la rive gauche
+(&agrave; moins que les cannibales l'aient coup&eacute; en
+morceaux). </p>
+<br>
+<p>
+Plus g&eacute;n&eacute;ralement, pour chaque &eacute;tat <span
+ style="font-style: italic;">S<sub>i</sub></span>,
+et pour chaque acteur A (de n'importe quel type), le mod&egrave;le
+PSC contiendra donc les contraintes suivantes : </p>
+<div style="text-align: center;"><span style="font-style: italic;">g</span>(A,
+<span style="font-style: italic;">S<sub>i</sub></span>)
+&nbsp;&nbsp;&nbsp; NAND &nbsp;&nbsp;&nbsp; <span
+ style="font-style: italic;">d</span>(A, <span
+ style="font-style: italic;">S<sub>i</sub></span>)
+</div>
+<span style="font-weight: bold;"><br>
+</span>
+<p><span style="font-weight: bold;">Remarque</span> : Cette contrainte
+autorise <span style="font-style: italic;">virtuellement</span> qu'un
+acteur puisse n'&ecirc;tre ni sur la rive gauche, si sur la rive droite
+(<span style="font-style: italic;">g</span>(A, <span
+ style="font-style: italic;">S<sub>i</sub></span>)
+= <span style="font-style: italic;">d</span>(A, <span
+ style="font-style: italic;">S<sub>i</sub></span>) = <span
+ style="font-style: italic;">False</span>).
+Dans la pratique, cette situation ne pourra pas se produire. Ceci peut
+se d&eacute;montrer par r&eacute;currence. Nous partons du principe que
+les contraintes sur l'&eacute;tat initial d&eacute;crivent <span
+ style="font-weight: bold;">compl&egrave;tement</span>
+la situation initiale, c'est &agrave; dire qu'au d&eacute;but de
+l'&eacute;tat 0, un acteur est n&eacute;cessairement sur une rive
+donn&eacute;e. Consid&eacute;rons maintenant l'&eacute;tat <span
+ style="font-style: italic;">k</span>, et supposons qu'un acteur se
+trouve sur la rive gauche (<span style="font-style: italic;">g</span>(A)
+= <span style="font-style: italic;">True</span>)
+au d&eacute;but de cet &eacute;tat (le raisonnement tient toujours si
+on remplace "gauche" par "droite" et "droite" par "gauche"). On a alors
+deux possibilit&eacute;s pour les op&eacute;rateurs
+ex&eacute;cut&eacute;s
+&agrave; l'&eacute;tat <span style="font-style: italic;">k</span> : 1)
+aucun op&eacute;rateur n'a <span style="font-style: italic;">g</span>(A)
+comme pr&eacute;condition, et alors les contraintes d'axiomes de cadre
+vont imposer que <span style="font-style: italic;">g</span>(A) reste
+vraie &agrave; la fin de l'&eacute;tat ; 2) au moins un
+op&eacute;rateur a <span style="font-style: italic;">g</span>(A) comme
+pr&eacute;condition, et
+alors les contraintes de postconditions vont imposer que <span
+ style="font-style: italic;">d</span>(A)
+soit vraie &agrave; la fin de l'&eacute;tat. Dans les deux cas, la rive
+sur laquelle se trouve &agrave; la fin de l'&eacute;tat est clairement
+d&eacute;finie.</p>
+<h4>6. Contraintes PSC correspondant aux <span
+ style="font-style: italic;">mutex d'op&eacute;rateurs</span> <br>
+</h4>
+<p>De la m&ecirc;me mani&egrave;re que pour les mutex de propositions,
+chaque mutex d'op&eacute;rateur [ <span style="font-style: italic;">op1</span>,
+<span style="font-style: italic;">op2</span> ] va donner lieu, pour
+chaque &eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>,
+&agrave; la contrainte suivante :</p>
+<p style="text-align: center;"><span style="font-style: italic;">op1</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>)
+&nbsp;&nbsp;&nbsp; NAND &nbsp;&nbsp;&nbsp; <span
+ style="font-style: italic;">op2</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>) </p>
+<p></p>
+<h2>R&eacute;sum&eacute; du mod&egrave;le PSC&nbsp; </h2>
+<h3>Variables</h3>
+<ul>
+  <li>variables bool&eacute;ennes <span style="font-style: italic;">g</span>(A,
+    <span style="font-style: italic;">S<sub>i</sub></span>),
+pour chaque acteur A et chaque &eacute;tat <span
+ style="font-style: italic;">S<sub>i</sub></span>&nbsp;;&nbsp;</li>
+  <li>variables bool&eacute;ennes <span style="font-style: italic;">d</span>(A,
+    <span style="font-style: italic;">S<sub>i</sub></span>),
+pour chaque acteur A et chaque &eacute;tat <span
+ style="font-style: italic;">S<sub>i</sub></span>&nbsp;;&nbsp;</li>
+  <li>variables bool&eacute;ennes <span style="font-style: italic;">op</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>),
+pour chaque op&eacute;rateur <span style="font-style: italic;">op</span>
+et chaque &eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>.&nbsp;</li>
+</ul>
+<h3>Contraintes </h3>
+<ul>
+  <li>contraintes sur l'&eacute;tat initial :&nbsp;</li>
+</ul>
+<div style="text-align: center;"><span style="font-style: italic;">g</span>(B,
+<span style="font-style: italic;">S<sub>0</sub></span>)
+=&nbsp;<span style="font-style: italic;">g</span>(M1,
+<span style="font-style: italic;">S<sub>0</sub></span>)
+=&nbsp;<span style="font-style: italic;">g</span>(M2,
+<span style="font-style: italic;">S<sub>0</sub></span>)
+= <span style="font-style: italic;">g</span>(C1, <span
+ style="font-style: italic;">S<sub>0</sub></span>)
+=&nbsp;<span style="font-style: italic;">g</span>(C2,
+<span style="font-style: italic;">S<sub>0</sub></span>)
+=&nbsp;<span style="font-style: italic;">True</span>&nbsp;</div>
+<ul>
+  <li>contraintes sur l'&eacute;tat final : </li>
+</ul>
+<div style="text-align: center;"><span style="font-style: italic;">d</span>(B,&nbsp;<span
+ style="font-style: italic;">S<sub>5</sub></span>)
+= <span style="font-style: italic;">d</span>(M1, <span
+ style="font-style: italic;">S<sub>5</sub></span>)
+= <span style="font-style: italic;">d</span>(M2, <span
+ style="font-style: italic;">S<sub>5</sub></span>)
+= <span style="font-style: italic;">d</span>(C1, <span
+ style="font-style: italic;">S<sub>5</sub></span>)
+= <span style="font-style: italic;">d</span>(C2,&nbsp;<span
+ style="font-style: italic;">S<sub>5</sub></span><span
+ style="font-style: italic;"></span>) =&nbsp;<span
+ style="font-style: italic;">True</span>&nbsp;</div>
+<ul>
+  <li>contraintes de pr&eacute;- et postconditions des
+op&eacute;rateurs, pour chaque &eacute;tat <span
+ style="font-style: italic;">S<sub>i</sub></span>&nbsp;et
+chaque op&eacute;rateur <span style="font-style: italic;">op</span>
+:&nbsp;</li>
+</ul>
+<div style="text-align: center;">pour chaque proposition <span
+ style="font-style: italic;">prop</span> qui est une postcondition de
+l'op&eacute;rateur <span style="font-style: italic;">op</span>
+: &nbsp;&nbsp;&nbsp; <span style="font-style: italic;">op</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>) -&gt; <span
+ style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i+1</sub></span>)
+;<br>
+pour chaque proposition <span style="font-style: italic;">prop</span>
+qui est une pr&eacute;condition de l'op&eacute;rateur <span
+ style="font-style: italic;">op</span>
+: &nbsp;&nbsp;&nbsp; <span style="font-style: italic;">op</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>) -&gt; <span
+ style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>). </div>
+<ul>
+  <li>contraintes d'axiomes de cadre, pour chaque &eacute;tat <span
+ style="font-style: italic;">S<sub>i</sub></span>
+et chaque proposition <span style="font-style: italic;">prop</span>
+:&nbsp;</li>
+</ul>
+<div style="text-align: center;">si <span style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>) = <span
+ style="font-style: italic;">False</span> et <span
+ style="font-style: italic;">prop</span>(<span
+ style="font-style: italic;">S<sub>i+1</sub></span>) = <span
+ style="font-style: italic;">True</span>, alors pour au moins un
+op&eacute;rateur <span style="font-style: italic;">op</span> qui a <span
+ style="font-style: italic;">prop</span> comme postcondition, on a <span
+ style="font-style: italic;">op</span>(<span style="font-style: italic;">S<sub>i</sub></span>)
+= <span style="font-style: italic;">True</span></div>
+<ul>
+  <li>contraintes de mutex de propositions,&nbsp;pour chaque
+&eacute;tat <span style="font-style: italic;">S<sub>i</sub></span>,
+et pour chaque acteur A : </li>
+</ul>
+<div style="text-align: center;"><span style="font-style: italic;">g</span>(A,
+<span style="font-style: italic;">S<sub>i</sub></span>)
+&nbsp;&nbsp;&nbsp; NAND &nbsp;&nbsp;&nbsp; <span
+ style="font-style: italic;">d</span>(A, <span
+ style="font-style: italic;">S<sub>i</sub></span>)</div>
+<ul>
+  <li>contraintes de mutex d'op&eacute;rateurs, pour chaque &eacute;tat
+    <span style="font-style: italic;">S<sub>i</sub></span>, et pour
+chaque paire d'op&eacute;rateurs distincts <span
+ style="font-style: italic;">op1</span> et <span
+ style="font-style: italic;">op2</span> qui ont un acteur en commun :<br>
+  </li>
+</ul>
+<div style="text-align: center;"><span style="font-style: italic;"></span><span
+ style="font-style: italic;">op1</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>)
+&nbsp;&nbsp;&nbsp; NAND &nbsp;&nbsp;&nbsp; <span
+ style="font-style: italic;">op2</span>(<span
+ style="font-style: italic;">S<sub>i</sub></span>)
+</div>
+<br>
+<h2>Remarque sur PSC vs SAT<br>
+</h2>
+Il est int&eacute;ressant de remarquer que dans ce PSC, toutes les
+variables sont bool&eacute;ennes. Typiquement, plut&ocirc;t qu'un
+r&eacute;solveur PSC, on utiliserait plut&ocirc;t un r&eacute;solveur
+SAT pour r&eacute;soudre ce genre de probl&egrave;mes. Un
+r&eacute;solveur SAT est un r&eacute;solveur sp&eacute;cialis&eacute;
+dans la r&eacute;solution de probl&egrave;mes PSC exprim&eacute;s sous
+la forme de clauses (des expressions qui peuvent &ecirc;tre vraies ou
+fausses) qui ne portent que sur des variables bool&eacute;ennes. <br>
+<br>
+<hr style="width: 100%; height: 2px;">Copyright LIA -
+2008. Auteur :
+thomas.leaute (at) epfl.ch - Cr&eacute;&eacute; le 12 avril
+2007 -
+Derni&egrave;re r&eacute;vision le 18 juin 2008.&nbsp;
+</body>
+</html>

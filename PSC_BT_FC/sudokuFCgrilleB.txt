@@ -1,0 +1,222 @@
+Chargement du probleme de sudoku
+	@version: 2.0  date: 06/06/2008 modified by Thomas Leaute
+	@version: 1.3  date: 25/04/2008 modified by Thomas Leaute
+	@version: 1.2  date: 15/03/2007 modified by Vincent Schickel-Zuber
+	@version: 1.1  date: 21/01/2007 modified by Bruno Alves
+	@version: 1.0  date: 01/05/2006 modified by Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch date: 1/05/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+Chargement du module variable et noeud pour PSC
+	@version: 2.0  date: 06/06/2008 modified by Thomas Leaute
+	@version: 1.8  date: 25/04/2008 modified by Thomas Leaute
+	@version: 1.7  date: 28/06/2007 modified by Thomas Leaute
+	@version: 1.4  date: 19/03/2007 modified by Vincent Schickel-Zuber
+	@version: 1.3  date: 14/02/2007 modified by Vincent Schickel-Zuber
+	@version: 1.2  date: 17/01/2007 modified by Bruno Alves
+	@version: 1.0  date: 24/04/2006 created by Vincent Schickel-Zuber
+	@author: vincent.schickel-zuber@epfl.ch date: 24/04/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+Chargement du module PSC
+	@version: 2.0  date: 06/06/2008 modified by Thomas Leaute
+	@version: 1.8  date: 03/06/2008 modified by Thomas Leaute
+	@version: 1.7  date: 03/06/2008 modified by Thomas Leaute
+	@version: 1.6  date: 28/03/2008 modified by Thomas Leaute
+	@version: 1.5  date: 28/06/2007 modified by Thomas Leaute
+	@version: 1.4  date: 19/03/2007 modified by Vincent Schickel-Zuber
+	@version: 1.3  date: 14/02/2007 modified by Vincent Schickel-Zuber
+	@version: 1.2  date: 21/01/2007 modified by Bruno Alves
+	@version: 1.1  date: 24/04/2006 modified by Vincent Schickel
+	@author: vincent.schickel-zuber@epfl.ch date: 24/04/2006
+	@copyright: EPFL-IC-IIF-LIA 2006-2007
+|+| Chargement du probleme
+|+| Initialisation de la grille
+|+| Ajoute les contraintes
+|+| Fait la consistance des noeuds
+|+| Fait la consistance des arcs
+fc : Iteration:= 1 , profondeur actuelle:= 0 et 0 contraintes verifiees
+fc : Iteration:= 2 , profondeur actuelle:= 1 et 57 contraintes verifiees
+fc : Iteration:= 3 , profondeur actuelle:= 2 et 110 contraintes verifiees
+fc : Iteration:= 4 , profondeur actuelle:= 3 et 167 contraintes verifiees
+fc : Iteration:= 5 , profondeur actuelle:= 4 et 228 contraintes verifiees
+fc : Iteration:= 6 , profondeur actuelle:= 5 et 287 contraintes verifiees
+fc : Iteration:= 7 , profondeur actuelle:= 6 et 348 contraintes verifiees
+fc : Iteration:= 8 , profondeur actuelle:= 7 et 389 contraintes verifiees
+fc : Iteration:= 9 , profondeur actuelle:= 8 et 435 contraintes verifiees
+fc : Iteration:= 10 , profondeur actuelle:= 9 et 490 contraintes verifiees
+fc : Iteration:= 11 , profondeur actuelle:= 10 et 552 contraintes verifiees
+fc : Iteration:= 12 , profondeur actuelle:= 11 et 619 contraintes verifiees
+fc : Iteration:= 13 , profondeur actuelle:= 12 et 683 contraintes verifiees
+fc : Iteration:= 14 , profondeur actuelle:= 13 et 760 contraintes verifiees
+fc : Iteration:= 15 , profondeur actuelle:= 14 et 834 contraintes verifiees
+fc : Iteration:= 16 , profondeur actuelle:= 15 et 879 contraintes verifiees
+fc : Iteration:= 17 , profondeur actuelle:= 16 et 933 contraintes verifiees
+fc : Iteration:= 18 , profondeur actuelle:= 17 et 979 contraintes verifiees
+fc : Iteration:= 19 , profondeur actuelle:= 18 et 1034 contraintes verifiees
+fc : Iteration:= 20 , profondeur actuelle:= 19 et 1075 contraintes verifiees
+fc : Iteration:= 21 , profondeur actuelle:= 20 et 1142 contraintes verifiees
+fc : Iteration:= 22 , profondeur actuelle:= 21 et 1205 contraintes verifiees
+fc : Iteration:= 23 , profondeur actuelle:= 22 et 1271 contraintes verifiees
+fc : Iteration:= 24 , profondeur actuelle:= 23 et 1342 contraintes verifiees
+fc : Iteration:= 25 , profondeur actuelle:= 24 et 1406 contraintes verifiees
+fc : Iteration:= 26 , profondeur actuelle:= 25 et 1455 contraintes verifiees
+fc : Iteration:= 27 , profondeur actuelle:= 26 et 1506 contraintes verifiees
+fc : Iteration:= 28 , profondeur actuelle:= 27 et 1550 contraintes verifiees
+fc : Iteration:= 29 , profondeur actuelle:= 28 et 1599 contraintes verifiees
+fc : Iteration:= 30 , profondeur actuelle:= 29 et 1646 contraintes verifiees
+fc : Iteration:= 31 , profondeur actuelle:= 30 et 1682 contraintes verifiees
+fc : Iteration:= 32 , profondeur actuelle:= 31 et 1735 contraintes verifiees
+fc : Iteration:= 33 , profondeur actuelle:= 32 et 1763 contraintes verifiees
+fc : Iteration:= 34 , profondeur actuelle:= 33 et 1818 contraintes verifiees
+fc : Iteration:= 35 , profondeur actuelle:= 34 et 1867 contraintes verifiees
+fc : Iteration:= 36 , profondeur actuelle:= 35 et 1908 contraintes verifiees
+fc : Iteration:= 37 , profondeur actuelle:= 36 et 1940 contraintes verifiees
+fc : Iteration:= 38 , profondeur actuelle:= 37 et 1971 contraintes verifiees
+fc : Iteration:= 39 , profondeur actuelle:= 38 et 2010 contraintes verifiees
+fc : Iteration:= 40 , profondeur actuelle:= 39 et 2045 contraintes verifiees
+fc : Iteration:= 41 , profondeur actuelle:= 40 et 2080 contraintes verifiees
+fc : Iteration:= 42 , profondeur actuelle:= 41 et 2110 contraintes verifiees
+fc : Iteration:= 43 , profondeur actuelle:= 42 et 2146 contraintes verifiees
+fc : Iteration:= 44 , profondeur actuelle:= 43 et 2172 contraintes verifiees
+fc : Iteration:= 45 , profondeur actuelle:= 44 et 2194 contraintes verifiees
+fc : Iteration:= 46 , profondeur actuelle:= 45 et 2231 contraintes verifiees
+fc : Iteration:= 47 , profondeur actuelle:= 46 et 2258 contraintes verifiees
+fc : Iteration:= 48 , profondeur actuelle:= 47 et 2277 contraintes verifiees
+fc : Iteration:= 49 , profondeur actuelle:= 34 et 2340 contraintes verifiees
+fc : Iteration:= 50 , profondeur actuelle:= 35 et 2383 contraintes verifiees
+fc : Iteration:= 51 , profondeur actuelle:= 36 et 2416 contraintes verifiees
+fc : Iteration:= 52 , profondeur actuelle:= 37 et 2449 contraintes verifiees
+fc : Iteration:= 53 , profondeur actuelle:= 38 et 2491 contraintes verifiees
+fc : Iteration:= 54 , profondeur actuelle:= 39 et 2533 contraintes verifiees
+fc : Iteration:= 55 , profondeur actuelle:= 40 et 2572 contraintes verifiees
+fc : Iteration:= 56 , profondeur actuelle:= 41 et 2602 contraintes verifiees
+fc : Iteration:= 57 , profondeur actuelle:= 42 et 2638 contraintes verifiees
+fc : Iteration:= 58 , profondeur actuelle:= 43 et 2668 contraintes verifiees
+fc : Iteration:= 59 , profondeur actuelle:= 44 et 2697 contraintes verifiees
+fc : Iteration:= 60 , profondeur actuelle:= 45 et 2722 contraintes verifiees
+fc : Iteration:= 61 , profondeur actuelle:= 46 et 2741 contraintes verifiees
+fc : Iteration:= 62 , profondeur actuelle:= 42 et 2778 contraintes verifiees
+fc : Iteration:= 63 , profondeur actuelle:= 43 et 2808 contraintes verifiees
+fc : Iteration:= 64 , profondeur actuelle:= 44 et 2837 contraintes verifiees
+fc : Iteration:= 65 , profondeur actuelle:= 45 et 2862 contraintes verifiees
+fc : Iteration:= 66 , profondeur actuelle:= 46 et 2881 contraintes verifiees
+fc : Iteration:= 67 , profondeur actuelle:= 37 et 2915 contraintes verifiees
+fc : Iteration:= 68 , profondeur actuelle:= 38 et 2956 contraintes verifiees
+fc : Iteration:= 69 , profondeur actuelle:= 39 et 2998 contraintes verifiees
+fc : Iteration:= 70 , profondeur actuelle:= 40 et 3037 contraintes verifiees
+fc : Iteration:= 71 , profondeur actuelle:= 41 et 3067 contraintes verifiees
+fc : Iteration:= 72 , profondeur actuelle:= 42 et 3102 contraintes verifiees
+fc : Iteration:= 73 , profondeur actuelle:= 43 et 3133 contraintes verifiees
+fc : Iteration:= 74 , profondeur actuelle:= 44 et 3163 contraintes verifiees
+fc : Iteration:= 75 , profondeur actuelle:= 45 et 3188 contraintes verifiees
+fc : Iteration:= 76 , profondeur actuelle:= 46 et 3207 contraintes verifiees
+fc : Iteration:= 77 , profondeur actuelle:= 42 et 3256 contraintes verifiees
+fc : Iteration:= 78 , profondeur actuelle:= 43 et 3287 contraintes verifiees
+fc : Iteration:= 79 , profondeur actuelle:= 44 et 3317 contraintes verifiees
+fc : Iteration:= 80 , profondeur actuelle:= 45 et 3342 contraintes verifiees
+fc : Iteration:= 81 , profondeur actuelle:= 46 et 3361 contraintes verifiees
+fc : Iteration:= 82 , profondeur actuelle:= 36 et 3406 contraintes verifiees
+fc : Iteration:= 83 , profondeur actuelle:= 37 et 3446 contraintes verifiees
+fc : Iteration:= 84 , profondeur actuelle:= 38 et 3488 contraintes verifiees
+fc : Iteration:= 85 , profondeur actuelle:= 39 et 3519 contraintes verifiees
+fc : Iteration:= 86 , profondeur actuelle:= 40 et 3549 contraintes verifiees
+fc : Iteration:= 87 , profondeur actuelle:= 41 et 3587 contraintes verifiees
+fc : Iteration:= 88 , profondeur actuelle:= 42 et 3616 contraintes verifiees
+fc : Iteration:= 89 , profondeur actuelle:= 43 et 3636 contraintes verifiees
+fc : Iteration:= 90 , profondeur actuelle:= 44 et 3661 contraintes verifiees
+fc : Iteration:= 91 , profondeur actuelle:= 35 et 3715 contraintes verifiees
+fc : Iteration:= 92 , profondeur actuelle:= 36 et 3754 contraintes verifiees
+fc : Iteration:= 93 , profondeur actuelle:= 37 et 3785 contraintes verifiees
+fc : Iteration:= 94 , profondeur actuelle:= 38 et 3802 contraintes verifiees
+fc : Iteration:= 95 , profondeur actuelle:= 39 et 3839 contraintes verifiees
+fc : Iteration:= 96 , profondeur actuelle:= 40 et 3868 contraintes verifiees
+fc : Iteration:= 97 , profondeur actuelle:= 41 et 3903 contraintes verifiees
+fc : Iteration:= 98 , profondeur actuelle:= 42 et 3932 contraintes verifiees
+fc : Iteration:= 99 , profondeur actuelle:= 43 et 3957 contraintes verifiees
+fc : Iteration:= 100 , profondeur actuelle:= 44 et 3983 contraintes verifiees
+fc : Iteration:= 101 , profondeur actuelle:= 45 et 4012 contraintes verifiees
+fc : Iteration:= 102 , profondeur actuelle:= 46 et 4028 contraintes verifiees
+fc : Iteration:= 103 , profondeur actuelle:= 47 et 4052 contraintes verifiees
+fc : Iteration:= 104 , profondeur actuelle:= 48 et 4079 contraintes verifiees
+fc : Iteration:= 105 , profondeur actuelle:= 49 et 4098 contraintes verifiees
+fc : Iteration:= 106 , profondeur actuelle:= 50 et 4123 contraintes verifiees
+fc : Iteration:= 107 , profondeur actuelle:= 51 et 4150 contraintes verifiees
+fc : Iteration:= 108 , profondeur actuelle:= 52 et 4163 contraintes verifiees
+fc : Iteration:= 109 , profondeur actuelle:= 53 et 4184 contraintes verifiees
+fc : Iteration:= 110 , profondeur actuelle:= 54 et 4204 contraintes verifiees
+fc : Iteration:= 111 , profondeur actuelle:= 55 et 4219 contraintes verifiees
+fc : Iteration:= 112 , profondeur actuelle:= 56 et 4231 contraintes verifiees
+fc : Iteration:= 113 , profondeur actuelle:= 57 et 4249 contraintes verifiees
+fc : Iteration:= 114 , profondeur actuelle:= 31 et 4313 contraintes verifiees
+fc : Iteration:= 115 , profondeur actuelle:= 32 et 4342 contraintes verifiees
+fc : Iteration:= 116 , profondeur actuelle:= 33 et 4397 contraintes verifiees
+fc : Iteration:= 117 , profondeur actuelle:= 34 et 4445 contraintes verifiees
+fc : Iteration:= 118 , profondeur actuelle:= 35 et 4488 contraintes verifiees
+fc : Iteration:= 119 , profondeur actuelle:= 36 et 4527 contraintes verifiees
+fc : Iteration:= 120 , profondeur actuelle:= 37 et 4554 contraintes verifiees
+fc : Iteration:= 121 , profondeur actuelle:= 38 et 4573 contraintes verifiees
+fc : Iteration:= 122 , profondeur actuelle:= 38 et 4621 contraintes verifiees
+fc : Iteration:= 123 , profondeur actuelle:= 37 et 4675 contraintes verifiees
+fc : Iteration:= 124 , profondeur actuelle:= 28 et 4725 contraintes verifiees
+fc : Iteration:= 125 , profondeur actuelle:= 29 et 4773 contraintes verifiees
+fc : Iteration:= 126 , profondeur actuelle:= 30 et 4811 contraintes verifiees
+fc : Iteration:= 127 , profondeur actuelle:= 31 et 4864 contraintes verifiees
+fc : Iteration:= 128 , profondeur actuelle:= 32 et 4892 contraintes verifiees
+fc : Iteration:= 129 , profondeur actuelle:= 33 et 4947 contraintes verifiees
+fc : Iteration:= 130 , profondeur actuelle:= 34 et 4995 contraintes verifiees
+fc : Iteration:= 131 , profondeur actuelle:= 35 et 5041 contraintes verifiees
+fc : Iteration:= 132 , profondeur actuelle:= 36 et 5073 contraintes verifiees
+fc : Iteration:= 133 , profondeur actuelle:= 37 et 5113 contraintes verifiees
+fc : Iteration:= 134 , profondeur actuelle:= 38 et 5146 contraintes verifiees
+fc : Iteration:= 135 , profondeur actuelle:= 39 et 5185 contraintes verifiees
+fc : Iteration:= 136 , profondeur actuelle:= 40 et 5216 contraintes verifiees
+fc : Iteration:= 137 , profondeur actuelle:= 41 et 5261 contraintes verifiees
+fc : Iteration:= 138 , profondeur actuelle:= 42 et 5293 contraintes verifiees
+fc : Iteration:= 139 , profondeur actuelle:= 43 et 5331 contraintes verifiees
+fc : Iteration:= 140 , profondeur actuelle:= 44 et 5358 contraintes verifiees
+fc : Iteration:= 141 , profondeur actuelle:= 45 et 5381 contraintes verifiees
+fc : Iteration:= 142 , profondeur actuelle:= 46 et 5407 contraintes verifiees
+fc : Iteration:= 143 , profondeur actuelle:= 47 et 5432 contraintes verifiees
+fc : Iteration:= 144 , profondeur actuelle:= 48 et 5449 contraintes verifiees
+fc : Iteration:= 145 , profondeur actuelle:= 49 et 5471 contraintes verifiees
+fc : Iteration:= 146 , profondeur actuelle:= 50 et 5499 contraintes verifiees
+fc : Iteration:= 147 , profondeur actuelle:= 51 et 5520 contraintes verifiees
+fc : Iteration:= 148 , profondeur actuelle:= 52 et 5531 contraintes verifiees
+fc : Iteration:= 149 , profondeur actuelle:= 53 et 5544 contraintes verifiees
+fc : Iteration:= 150 , profondeur actuelle:= 54 et 5567 contraintes verifiees
+fc : Iteration:= 151 , profondeur actuelle:= 55 et 5587 contraintes verifiees
+fc : Iteration:= 152 , profondeur actuelle:= 56 et 5606 contraintes verifiees
+fc : Iteration:= 153 , profondeur actuelle:= 57 et 5622 contraintes verifiees
+fc : Iteration:= 154 , profondeur actuelle:= 58 et 5638 contraintes verifiees
+fc : Iteration:= 155 , profondeur actuelle:= 59 et 5650 contraintes verifiees
+fc : Iteration:= 156 , profondeur actuelle:= 60 et 5670 contraintes verifiees
+fc : Iteration:= 157 , profondeur actuelle:= 61 et 5685 contraintes verifiees
+fc : Iteration:= 158 , profondeur actuelle:= 62 et 5695 contraintes verifiees
+fc : Iteration:= 159 , profondeur actuelle:= 63 et 5705 contraintes verifiees
+fc : Iteration:= 160 , profondeur actuelle:= 64 et 5707 contraintes verifiees
+fc : Iteration:= 161 , profondeur actuelle:= 65 et 5717 contraintes verifiees
+fc : Iteration:= 162 , profondeur actuelle:= 66 et 5727 contraintes verifiees
+fc : Iteration:= 163 , profondeur actuelle:= 67 et 5734 contraintes verifiees
+fc : Iteration:= 164 , profondeur actuelle:= 68 et 5741 contraintes verifiees
+fc : Iteration:= 165 , profondeur actuelle:= 69 et 5748 contraintes verifiees
+fc : Iteration:= 166 , profondeur actuelle:= 70 et 5753 contraintes verifiees
+fc : Iteration:= 167 , profondeur actuelle:= 71 et 5758 contraintes verifiees
+fc : Iteration:= 168 , profondeur actuelle:= 72 et 5760 contraintes verifiees
+fc : Iteration:= 169 , profondeur actuelle:= 73 et 5762 contraintes verifiees
+fc : Iteration:= 170 , profondeur actuelle:= 74 et 5768 contraintes verifiees
+fc : Iteration:= 171 , profondeur actuelle:= 75 et 5772 contraintes verifiees
+fc : Iteration:= 172 , profondeur actuelle:= 76 et 5776 contraintes verifiees
+fc : Iteration:= 173 , profondeur actuelle:= 77 et 5779 contraintes verifiees
+fc : Iteration:= 174 , profondeur actuelle:= 78 et 5781 contraintes verifiees
+fc : Iteration:= 175 , profondeur actuelle:= 79 et 5782 contraintes verifiees
+fc : Iteration:= 176 , profondeur actuelle:= 80 et 5782 contraintes verifiees
+fc : Iteration:= 177 , profondeur actuelle:= 81 et 5782 contraintes verifiees
+	fc : SOLUTION TROUVEE en 177 etapes et avec 5782 contraintes verifiees; SOLUTION= {'v[1,1][2,0]': 7, 'v[1,2][0,1]': 7, 'v[0,1][2,0]': 9, 'v[1,1][0,2]': 1, 'v[2,0][2,2]': 6, 'v[2,0][1,1]': 7, 'v[2,2][1,2]': 8, 'v[0,2][0,0]': 8, 'v[1,1][1,2]': 9, 'v[2,0][2,0]': 1, 'v[1,1][2,1]': 4, 'v[2,1][0,0]': 4, 'v[2,1][1,2]': 6, 'v[2,0][0,0]': 9, 'v[0,1][0,0]': 1, 'v[1,1][0,0]': 6, 'v[0,2][1,0]': 9, 'v[1,2][1,1]': 8, 'v[2,1][0,2]': 7, 'v[0,2][1,2]': 2, 'v[1,0][0,2]': 2, 'v[0,0][1,1]': 1, 'v[2,2][1,0]': 1, 'v[2,1][2,1]': 2, 'v[0,1][2,2]': 2, 'v[1,0][2,2]': 9, 'v[2,1][1,0]': 5, 'v[0,2][0,1]': 3, 'v[1,0][0,0]': 5, 'v[2,1][1,1]': 9, 'v[0,1][0,1]': 6, 'v[1,0][1,1]': 4, 'v[2,0][0,2]': 8, 'v[0,2][2,1]': 4, 'v[0,2][0,2]': 7, 'v[0,0][2,0]': 3, 'v[0,2][2,2]': 1, 'v[0,0][2,2]': 5, 'v[0,0][0,1]': 9, 'v[0,0][0,0]': 2, 'v[0,1][1,1]': 3, 'v[1,1][1,0]': 2, 'v[1,2][0,0]': 4, 'v[1,2][1,2]': 6, 'v[0,0][2,1]': 8, 'v[0,2][1,1]': 5, 'v[0,0][0,2]': 4, 'v[1,2][0,2]': 9, 'v[0,1][0,2]': 5, 'v[1,0][1,2]': 1, 'v[2,1][0,1]': 1, 'v[2,2][0,2]': 3, 'v[1,2][2,0]': 2, 'v[2,2][0,0]': 5, 'v[2,0][1,0]': 4, 'v[1,2][1,0]': 3, 'v[1,0][0,1]': 3, 'v[1,2][2,2]': 5, 'v[2,2][0,1]': 6, 'v[2,0][1,2]': 3, 'v[2,2][2,1]': 9, 'v[2,2][1,1]': 2, 'v[0,0][1,0]': 6, 'v[2,2][2,0]': 7, 'v[2,1][2,0]': 3, 'v[1,1][1,1]': 5, 'v[2,0][0,1]': 2, 'v[1,1][2,2]': 3, 'v[2,2][2,2]': 4, 'v[1,0][1,0]': 7, 'v[0,0][1,2]': 7, 'v[0,2][2,0]': 6, 'v[2,0][2,1]': 5, 'v[0,1][1,2]': 4, 'v[1,2][2,1]': 1, 'v[1,0][2,1]': 6, 'v[0,1][2,1]': 7, 'v[2,1][2,2]': 8, 'v[0,1][1,0]': 8, 'v[1,0][2,0]': 8, 'v[1,1][0,1]': 8}
+	2 9 4 1 6 5 8 3 7 
+	6 1 7 8 3 4 9 5 2 
+	3 8 5 9 7 2 6 4 1 
+	5 3 2 6 8 1 4 7 9 
+	7 4 1 2 5 9 3 8 6 
+	8 6 9 7 4 3 2 1 5 
+	9 2 8 4 1 7 5 6 3 
+	4 7 3 5 9 6 1 2 8 
+	1 5 6 3 2 8 7 9 4 

@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 6b : Satisfaction de contraintes: Référence de la classe sudoku.Grille</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Liste&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="hierarchy.html"><span>Hiérarchie&nbsp;des&nbsp;classes</span></a></li>
+      <li><a href="functions.html"><span>Membres&nbsp;de&nbsp;classe</span></a></li>
+    </ul>
+  </div>
+  <div class="navpath"><a class="el" href="namespacesudoku.html">sudoku</a>.<a class="el" href="classsudoku_1_1_grille.html">Grille</a>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence de la classe sudoku.Grille</h1><!-- doxytag: class="sudoku::Grille" -->Classe definissant la grille, qui est faite de 9 sous-grilles.  
+<a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="classsudoku_1_1_grille-members.html">Liste de tous les membres</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions membres publiques</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsudoku_1_1_grille.html#81cf6152ff1801732cac885a96f78eee">__init__</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructeur de la classe.  <a href="#81cf6152ff1801732cac885a96f78eee"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsudoku_1_1_grille.html#67208ec562b0bc8ab3fd8f53dc6de9ac">init</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise la grille avec le contenu du probleme.  <a href="#67208ec562b0bc8ab3fd8f53dc6de9ac"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsudoku_1_1_grille.html#d6d16e2ba6ce653c52434a7c70c62ced">__str__</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne la grille sous forme textuelle.  <a href="#d6d16e2ba6ce653c52434a7c70c62ced"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsudoku_1_1_grille.html#028c2329ca9d41d6ce6ce8ba01853939">retourneVariable</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne une variable se trouvant a une position en valeur absolue.  <a href="#028c2329ca9d41d6ce6ce8ba01853939"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsudoku_1_1_grille.html#b0f0930c0dc192833908eae1e4919e6a">genereContraintesLignes</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Genere toutes les contraintes de lignes.  <a href="#b0f0930c0dc192833908eae1e4919e6a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsudoku_1_1_grille.html#01b05ecc38beb31d46becf6999ab80c9">genereContraintesColonnes</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Genere toutes les contraintes de colonne.  <a href="#01b05ecc38beb31d46becf6999ab80c9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">def&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsudoku_1_1_grille.html#c141710199d46f5774ba243a2ac7e1a0">genereContraintesSSGrilles</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Genere toutes les contraintes de sous-grille.  <a href="#c141710199d46f5774ba243a2ac7e1a0"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Classe definissant la grille, qui est faite de 9 sous-grilles. 
+<p>
+Cette classe propose des methodes sympathiques pour aider dans la creation et la specification d'un probleme de Sudoku. Cette classe gere l'initialisation de la grille a partir des donnees d'un probleme contenues dans <code>PROBLEME</code>. Elle permet entre autres de retourner une representation sous forme texte de la grille 
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00194">194</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+<hr><h2>Documentation des fonctions membres</h2>
+<a class="anchor" name="81cf6152ff1801732cac885a96f78eee"></a><!-- doxytag: member="sudoku::Grille::__init__" ref="81cf6152ff1801732cac885a96f78eee" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sudoku.Grille.__init__           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructeur de la classe. 
+<p>
+Fait un appel automatique a la fonction d'initialisation interne <a class="el" href="classsudoku_1_1_grille.html#67208ec562b0bc8ab3fd8f53dc6de9ac" title="Initialise la grille avec le contenu du probleme.">init()</a><p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>pointeur automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00202">202</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="67208ec562b0bc8ab3fd8f53dc6de9ac"></a><!-- doxytag: member="sudoku::Grille::init" ref="67208ec562b0bc8ab3fd8f53dc6de9ac" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sudoku.Grille.init           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialise la grille avec le contenu du probleme. 
+<p>
+Cette methode initialise une grille complete en creant les tableaux necessaires et en placant dedans les donnees du probleme contenues dans <code>PROBLEME</code> <p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>pointeur automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00214">214</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d6d16e2ba6ce653c52434a7c70c62ced"></a><!-- doxytag: member="sudoku::Grille::__str__" ref="d6d16e2ba6ce653c52434a7c70c62ced" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sudoku.Grille.__str__           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne la grille sous forme textuelle. 
+<p>
+Cette methode retourne une representation de la grille sous forme textuelle. Voici un exemple de sortie de cette fonction:<p>
+<div class="fragment"><pre class="fragment">   9 0 0 0 0 0 0 0 2 
+        3 0 7 1 0 0 4 0 8 
+        0 1 0 0 5 4 0 6 0 
+        0 0 1 0 0 0 0 7 0 
+        0 0 4 0 0 0 9 0 0 
+        0 2 0 0 0 0 8 0 0 
+        0 8 0 3 2 0 0 4 0 
+        7 0 3 0 0 6 2 0 1 
+        4 0 0 0 0 0 0 0 5
+</pre></div><p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>pointeur automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>une chaine de caracteres contenant une grille sous forme textuelle </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00267">267</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="028c2329ca9d41d6ce6ce8ba01853939"></a><!-- doxytag: member="sudoku::Grille::retourneVariable" ref="028c2329ca9d41d6ce6ce8ba01853939" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sudoku.Grille.retourneVariable           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>posX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>posY</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retourne une variable se trouvant a une position en valeur absolue. 
+<p>
+Cette methode retourne simplement la variable lie a une certaine position dans la grille globale.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>posX</em>&nbsp;</td><td>la position absolue X </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>posY</em>&nbsp;</td><td>la position absolue Y </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>pointeur automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00293">293</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b0f0930c0dc192833908eae1e4919e6a"></a><!-- doxytag: member="sudoku::Grille::genereContraintesLignes" ref="b0f0930c0dc192833908eae1e4919e6a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sudoku.Grille.genereContraintesLignes           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Genere toutes les contraintes de lignes. 
+<p>
+Genere toutes les contraintes liees a une ligne. Ces contraintes sont generalement qu'il ne faut pas qu'il y ait deux fois le meme numero sur la meme ligne. Ce qui veut dire que pour une ligne donnee, il doit y avoir une fois tous les numeros de 1 a 9.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>pointeur automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00307">307</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="01b05ecc38beb31d46becf6999ab80c9"></a><!-- doxytag: member="sudoku::Grille::genereContraintesColonnes" ref="01b05ecc38beb31d46becf6999ab80c9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sudoku.Grille.genereContraintesColonnes           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Genere toutes les contraintes de colonne. 
+<p>
+Genere toutes les contraintes liees a une colonne. Ces contraintes sont generalement qu'il ne faut pas qu'il y ait deux fois le meme numero sur la meme colonne. Ce qui veut dire que pour une colonne, donnee il doit y avoir une fois tous les numeros de 1 a 9.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>pointeur automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00326">326</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c141710199d46f5774ba243a2ac7e1a0"></a><!-- doxytag: member="sudoku::Grille::genereContraintesSSGrilles" ref="c141710199d46f5774ba243a2ac7e1a0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sudoku.Grille.genereContraintesSSGrilles           </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>self</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Genere toutes les contraintes de sous-grille. 
+<p>
+Cette methode genere toutes les contraintes liees a une sous-grille. Ces contraintes sont en general qu'il ne faut pas qu'il y ait deux fois le meme nombre dans la meme sous-grille.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>self</em>&nbsp;</td><td>pointeur automatique vers l'instance executant cette methode. </td></tr>
+  </table>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="sudoku_8py-source.html#l00345">345</a> du fichier <a class="el" href="sudoku_8py-source.html">sudoku.py</a>.</p>
+
+</div>
+</div><p>
+<hr>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
+<li><a class="el" href="sudoku_8py-source.html">sudoku.py</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:23 2008 pour Lab 6b : Satisfaction de contraintes par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

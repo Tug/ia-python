@@ -1,0 +1,685 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Lab 8 : ID3:  Fichier source de id3.py</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="namespaces.html"><span>Paquetages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+<h1>id3.py</h1><a href="id3_8py.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a><a class="code" href="namespaceid3.html">00001</a> <span class="comment"># -*- coding: cp1252 -*-</span>
+<a name="l00002"></a>00002 <span class="comment">## \file id3.py</span>
+<a name="l00003"></a>00003 <span class="comment">## \brief Contient l'algorithme ID3</span>
+<a name="l00004"></a>00004 <span class="comment">## \package id3</span>
+<a name="l00005"></a>00005 <span class="comment">## \brief Contient l'algorithme ID3</span>
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00008"></a>00008 <span class="keywordflow">print</span> <span class="stringliteral">"Chargement du module ID3"</span>
+<a name="l00009"></a>00009 <span class="keywordflow">print</span> <span class="stringliteral">"Construction d'un arbre de decision avec ID3."</span>
+<a name="l00010"></a>00010 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.6  date: 05/05/2008 modifie par Thomas Leaute"</span>
+<a name="l00011"></a>00011 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.5  date: 22/05/2007 modifie par Thomas Leaute"</span>
+<a name="l00012"></a>00012 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.4  date: 21/05/2007 modifie par Thomas Leaute"</span>
+<a name="l00013"></a>00013 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.3  date: 16/05/2007 modifie par Thomas Leaute"</span>
+<a name="l00014"></a>00014 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.2  date: 15/02/2007 modifie par Vincent Schickel-Zuber"</span>
+<a name="l00015"></a>00015 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.1  date: 01/02/2007 modifie par Bruno alves"</span>
+<a name="l00016"></a>00016 <span class="keywordflow">print</span> <span class="stringliteral">"\t@version: 1.0  date: 17/05/2006 modified par l'auteur"</span>
+<a name="l00017"></a>00017 <span class="keywordflow">print</span> <span class="stringliteral">"\t@author: michael.schumacher@epfl.ch"</span>
+<a name="l00018"></a>00018 <span class="keywordflow">print</span> <span class="stringliteral">"\t@copyright: EPFL-IC-IIF-LIA 2006-2007"</span>
+<a name="l00019"></a>00019 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="comment"># modules nécessaires</span>
+<a name="l00022"></a>00022 <span class="keyword">import</span> math
+<a name="l00023"></a>00023 <span class="keyword">import</span> copy
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 <span class="comment">## La liste des exemples</span>
+<a name="l00027"></a>00027 <span class="comment">#</span>
+<a name="l00028"></a>00028 <span class="comment"># La liste des exemples, selon le format suivant:</span>
+<a name="l00029"></a>00029 <span class="comment">#       tousLesExemples ::= [ exemple1 exemple2 ... ]</span>
+<a name="l00030"></a>00030 <span class="comment">#       exemple ::= [ classe valeur-attribut-1 ... valeur-attribut-n]</span>
+<a name="l00031"></a><a class="code" href="namespaceid3.html#611bab7622fd489539cd6e30b4617bb7">00031</a> tousLesExemples = []
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="comment">## La liste des attributs</span>
+<a name="l00034"></a>00034 <span class="comment">#</span>
+<a name="l00035"></a>00035 <span class="comment"># La liste des attributs (dans le meme ordre que celui des exemples)</span>
+<a name="l00036"></a>00036 <span class="comment"># avec leur valeur. Format:</span>
+<a name="l00037"></a>00037 <span class="comment">#       attributsEtValeurs ::= [ attribut1 attribut2 ... ]</span>
+<a name="l00038"></a>00038 <span class="comment">#       attribut ::= [ nom-attribut valeur-1 .. valeur-m ]</span>
+<a name="l00039"></a><a class="code" href="namespaceid3.html#e5d280f72812c90b152408d39075b8b7">00039</a> attributsEtValeurs = []
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 <span class="comment">## L'arbre de decision trouvé</span>
+<a name="l00042"></a>00042 <span class="comment">#</span>
+<a name="l00043"></a>00043 <span class="comment"># Contient l'arbre de décision</span>
+<a name="l00044"></a><a class="code" href="namespaceid3.html#86dcd4bf88ed98750920c4ed89a17677">00044</a> classification = []     
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00048"></a>00048 <span class="comment">#   CALCUL DE L'ARBRE DE DECISION</span>
+<a name="l00049"></a>00049 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 <span class="comment">## \brief Represente un noeud dans l'arbre de décision</span>
+<a name="l00052"></a>00052 <span class="comment">#</span>
+<a name="l00053"></a>00053 <span class="comment"># Cette classe représente un noeud dans l'arbre de décision</span>
+<a name="l00054"></a><a class="code" href="classid3_1_1_noeud.html">00054</a> <span class="keyword">class </span><a class="code" href="classid3_1_1_noeud.html" title="Represente un noeud dans l&amp;#39;arbre de décision.">Noeud</a>:
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056         <span class="comment">## \var attribut</span>
+<a name="l00057"></a>00057         <span class="comment">#</span>
+<a name="l00058"></a>00058         <span class="comment"># L'attribut de partitionnement du noeud</span>
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <span class="comment">## \var exemples</span>
+<a name="l00061"></a>00061         <span class="comment">#</span>
+<a name="l00062"></a>00062         <span class="comment"># La liste des exemples à classifier</span>
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064         <span class="comment">## \var enfants</span>
+<a name="l00065"></a>00065         <span class="comment">#</span>
+<a name="l00066"></a>00066         <span class="comment"># La liste des noeuds enfants de ce noeud.</span>
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068         
+<a name="l00069"></a>00069         <span class="comment">## Constructeur du noeud</span>
+<a name="l00070"></a>00070         <span class="comment">#</span>
+<a name="l00071"></a>00071         <span class="comment"># Initialise l'état interne du noeud, en lui passant l'attribut</span>
+<a name="l00072"></a>00072         <span class="comment"># de partionnement, les exemples à classer ainsi que la liste</span>
+<a name="l00073"></a>00073         <span class="comment"># des enfants attachés à ce noeud.</span>
+<a name="l00074"></a>00074         <span class="comment">#</span>
+<a name="l00075"></a>00075         <span class="comment"># @param[in] self référence automatique vers l'objet exécutant cette méthode</span>
+<a name="l00076"></a>00076         <span class="comment"># @param[in] attributPartition L'attribut de partitionnement du noeud.</span>
+<a name="l00077"></a>00077         <span class="comment"># @param[in] listeExemples Les exemples du noeud (s'il est terminal).</span>
+<a name="l00078"></a>00078         <span class="comment"># @param[in] enfants Les noeuds fils (s'il n'est pas terminal).</span>
+<a name="l00079"></a><a class="code" href="classid3_1_1_noeud.html#b6a0bd397d95263e76003559898b6dba">00079</a>         <span class="keyword">def </span><a class="code" href="classid3_1_1_noeud.html#b6a0bd397d95263e76003559898b6dba" title="Constructeur du noeud.">__init__</a>( self, attributPartition, listeExemples, enfants ):
+<a name="l00080"></a><a class="code" href="classid3_1_1_noeud.html#fac8732e5398bf03f86d05790e3aabe4">00080</a>                 self.<a class="code" href="classid3_1_1_noeud.html#fac8732e5398bf03f86d05790e3aabe4" title="L&amp;#39;attribut de partitionnement du noeud.">attribut</a> = attributPartition
+<a name="l00081"></a><a class="code" href="classid3_1_1_noeud.html#a9f9708ac61ffad4fa847e7ccb6169f0">00081</a>                 self.<a class="code" href="classid3_1_1_noeud.html#a9f9708ac61ffad4fa847e7ccb6169f0" title="La liste des exemples à classifier.">exemples</a> = listeExemples
+<a name="l00082"></a><a class="code" href="classid3_1_1_noeud.html#4dba6d45075dc8674909ff3ddbfb05f7">00082</a>                 self.<a class="code" href="classid3_1_1_noeud.html#4dba6d45075dc8674909ff3ddbfb05f7" title="La liste des noeuds enfants de ce noeud.">enfants</a> = enfants
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085         <span class="comment">## Retourne une représentation textuelle des caractéristiques du noeud</span>
+<a name="l00086"></a>00086         <span class="comment">#</span>
+<a name="l00087"></a>00087         <span class="comment"># Cette méthode retourne une représentation textuelle de cette classe. Voici</span>
+<a name="l00088"></a>00088         <span class="comment"># un exemple de sortie:</span>
+<a name="l00089"></a>00089         <span class="comment">#</span>
+<a name="l00090"></a>00090         <span class="comment"># @code</span>
+<a name="l00091"></a>00091         <span class="comment"># ********** ARBRE DE DECISION **********</span>
+<a name="l00092"></a>00092         <span class="comment"># Partitionnement selon age</span>
+<a name="l00093"></a>00093         <span class="comment"># Valeur old</span>
+<a name="l00094"></a>00094         <span class="comment">#       Noeud terminal: classe down</span>
+<a name="l00095"></a>00095         <span class="comment">#          ['down', 'old', 'no', 'software']</span>
+<a name="l00096"></a>00096         <span class="comment">#          ['down', 'old', 'no', 'hardware']</span>
+<a name="l00097"></a>00097         <span class="comment">#          ['down', 'old', 'yes', 'software']</span>
+<a name="l00098"></a>00098         <span class="comment"># Valeur midlife</span>
+<a name="l00099"></a>00099         <span class="comment">#       Partitionnement selon competition</span>
+<a name="l00100"></a>00100         <span class="comment">#       Valeur no</span>
+<a name="l00101"></a>00101         <span class="comment">#          Noeud terminal: classe up</span>
+<a name="l00102"></a>00102         <span class="comment">#                 ['up', 'midlife', 'no', 'hardware']</span>
+<a name="l00103"></a>00103         <span class="comment">#                 ['up', 'midlife', 'no', 'software']</span>
+<a name="l00104"></a>00104         <span class="comment">#       Valeur yes</span>
+<a name="l00105"></a>00105         <span class="comment">#          Noeud terminal: classe down</span>
+<a name="l00106"></a>00106         <span class="comment">#                 ['down', 'midlife', 'yes', 'software']</span>
+<a name="l00107"></a>00107         <span class="comment">#                 ['down', 'midlife', 'yes', 'hardware']</span>
+<a name="l00108"></a>00108         <span class="comment"># Valeur new</span>
+<a name="l00109"></a>00109         <span class="comment">#       Noeud terminal: classe up</span>
+<a name="l00110"></a>00110         <span class="comment">#          ['up', 'new', 'no', 'hardware']</span>
+<a name="l00111"></a>00111         <span class="comment">#          ['up', 'new', 'no', 'software']</span>
+<a name="l00112"></a>00112         <span class="comment">#          ['up', 'new', 'yes', 'software']</span>
+<a name="l00113"></a>00113         <span class="comment"># @endcode</span>
+<a name="l00114"></a>00114         <span class="comment">#</span>
+<a name="l00115"></a>00115         <span class="comment"># @param[in] self référence automatique vers l'objet exécutant cette méthode</span>
+<a name="l00116"></a>00116         <span class="comment"># @return une chaîne de caractères contenant la représentation du noeud</span>
+<a name="l00117"></a><a class="code" href="classid3_1_1_noeud.html#27e47c24764769b31b12cdd5bddbdd98">00117</a>         <span class="keyword">def </span><a class="code" href="classid3_1_1_noeud.html#27e47c24764769b31b12cdd5bddbdd98" title="Retourne une représentation textuelle des caractéristiques du noeud.">__repr__</a>(self):
+<a name="l00118"></a>00118                 out = (<span class="stringliteral">"\n********** ARBRE DE DECISION **********\n"</span>)
+<a name="l00119"></a>00119                 <span class="keywordflow">return</span> out + self.<a class="code" href="classid3_1_1_noeud.html#f84a3821ef28cbed68d004d728aa9747" title="Retourne une représentation textuelle de l&amp;#39;arbre de décision à partir du noeud...">imprimeNoeudAux</a>(<span class="stringliteral">"  "</span>)
+<a name="l00120"></a>00120         
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122         <span class="comment">## Retourne une représentation textuelle de l'arbre de décision à partir</span>
+<a name="l00123"></a>00123         <span class="comment"># du noeud courrant</span>
+<a name="l00124"></a>00124         <span class="comment">#</span>
+<a name="l00125"></a>00125         <span class="comment"># Cette méthode imprime un arbre de décision en commençant par le noeud courant</span>
+<a name="l00126"></a>00126         <span class="comment"># et en descendant dans la hiérarchie.</span>
+<a name="l00127"></a>00127         <span class="comment">#</span>
+<a name="l00128"></a>00128         <span class="comment"># @param[in] self référence automatique vers l'objet exécutant cette méthode</span>
+<a name="l00129"></a>00129         <span class="comment"># @param[in] espacement l'espacement initial pour le formattage</span>
+<a name="l00130"></a>00130         <span class="comment"># @return une chaîne de caractères contenant la représentation du noeud</span>
+<a name="l00131"></a><a class="code" href="classid3_1_1_noeud.html#f84a3821ef28cbed68d004d728aa9747">00131</a>         <span class="keyword">def </span><a class="code" href="classid3_1_1_noeud.html#f84a3821ef28cbed68d004d728aa9747" title="Retourne une représentation textuelle de l&amp;#39;arbre de décision à partir du noeud...">imprimeNoeudAux</a>( self, espacement ):
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133                 <span class="comment"># si le noeud est terminal, on affiche le noeud et les exemples</span>
+<a name="l00134"></a>00134                 <span class="keywordflow">if</span> self.<a class="code" href="classid3_1_1_noeud.html#b34e1e37b6fb31bc0c3a628f7925f51a" title="Indique si le noeud est terminal ou non.">estTerminal</a>():
+<a name="l00135"></a>00135                         out = (<span class="stringliteral">"%s Noeud terminal : classe %s\n"</span> %
+<a name="l00136"></a>00136                                    ( espacement, self.<a class="code" href="classid3_1_1_noeud.html#10d080372eeaf0412503ae9519411f1d" title="Retourne la classe du noeud.">retourneClasse</a>()) )
+<a name="l00137"></a>00137                         <span class="keywordflow">for</span> ex <span class="keywordflow">in</span> self.<a class="code" href="classid3_1_1_noeud.html#a9f9708ac61ffad4fa847e7ccb6169f0" title="La liste des exemples à classifier.">exemples</a>:
+<a name="l00138"></a>00138                                 out = out + (<span class="stringliteral">"%s  %s\n"</span> % (espacement, ex))
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140                 <span class="comment"># si le noeud n'est pas terminal, alors continue la descente récursive</span>
+<a name="l00141"></a>00141                 <span class="keywordflow">else</span>:
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143                         <span class="comment"># indique que le noeud n'est pas terminal</span>
+<a name="l00144"></a>00144                         out = (<span class="stringliteral">"%s Partitionnement selon %s\n"</span> %
+<a name="l00145"></a>00145                                    (espacement, retourneNomAttribut(self.<a class="code" href="classid3_1_1_noeud.html#fac8732e5398bf03f86d05790e3aabe4" title="L&amp;#39;attribut de partitionnement du noeud.">attribut</a>)))
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147                         <span class="comment"># retourne la liste des valeurs de l'attribut</span>
+<a name="l00148"></a>00148                         valeurs = retourneValeursAttribut( self.<a class="code" href="classid3_1_1_noeud.html#fac8732e5398bf03f86d05790e3aabe4" title="L&amp;#39;attribut de partitionnement du noeud.">attribut</a> )
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150                         <span class="comment"># retourne la liste des successeurs</span>
+<a name="l00151"></a>00151                         successeurs = self.<a class="code" href="classid3_1_1_noeud.html#4dba6d45075dc8674909ff3ddbfb05f7" title="La liste des noeuds enfants de ce noeud.">enfants</a>
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153                         <span class="comment"># incrémente l'espacement pour le formattage</span>
+<a name="l00154"></a>00154                         nouvelEspacement = espacement + <span class="stringliteral">"    "</span>
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156                         <span class="comment"># parcourt les successeurs jusqu'à ce qu'il n'y en ait plus</span>
+<a name="l00157"></a>00157                         <span class="keywordflow">while</span> len(successeurs) &gt; 0:
+<a name="l00158"></a>00158                                 <span class="keywordflow">if</span> successeurs[0] != []:
+<a name="l00159"></a>00159                                         out = out + (<span class="stringliteral">"%s Valeur %s\n"</span> % (espacement, valeurs[0]))
+<a name="l00160"></a>00160                                         out = out + successeurs[0].imprimeNoeudAux( nouvelEspacement )
+<a name="l00161"></a>00161                                 valeurs = valeurs[1:]
+<a name="l00162"></a>00162                                 successeurs = successeurs[1:]
+<a name="l00163"></a>00163 
+<a name="l00164"></a>00164                 <span class="comment"># retourne la représentation ainsi obtenue</span>
+<a name="l00165"></a>00165                 <span class="keywordflow">return</span> out
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168         <span class="comment">## Retourne la classe du noeud</span>
+<a name="l00169"></a>00169         <span class="comment"># </span>
+<a name="l00170"></a>00170         <span class="comment"># Cette méthode indique la classe du noeud s'il est un noeud</span>
+<a name="l00171"></a>00171         <span class="comment"># terminal. Si le noeud est un noeud intermédiaire, alors celui-ci</span>
+<a name="l00172"></a>00172         <span class="comment"># n'a pas de classe.</span>
+<a name="l00173"></a>00173         <span class="comment">#</span>
+<a name="l00174"></a>00174         <span class="comment"># @param[in] self référence automatique vers l'objet exécutant cette méthode</span>
+<a name="l00175"></a>00175         <span class="comment"># @return la classe correspondant au noeud \c n s'il est terminal,</span>
+<a name="l00176"></a>00176         <span class="comment">#                \c [] si c'est un noeud intermediaire</span>
+<a name="l00177"></a><a class="code" href="classid3_1_1_noeud.html#10d080372eeaf0412503ae9519411f1d">00177</a>         <span class="keyword">def </span><a class="code" href="classid3_1_1_noeud.html#10d080372eeaf0412503ae9519411f1d" title="Retourne la classe du noeud.">retourneClasse</a>( self ):
+<a name="l00178"></a>00178                 <span class="keywordflow">if</span> self.<a class="code" href="classid3_1_1_noeud.html#b34e1e37b6fb31bc0c3a628f7925f51a" title="Indique si le noeud est terminal ou non.">estTerminal</a>():
+<a name="l00179"></a>00179                         <span class="keywordflow">return</span> retourneClasse( self.<a class="code" href="classid3_1_1_noeud.html#a9f9708ac61ffad4fa847e7ccb6169f0" title="La liste des exemples à classifier.">exemples</a>[0] )
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182         <span class="comment">## Indique si le noeud est terminal ou non</span>
+<a name="l00183"></a>00183         <span class="comment">#</span>
+<a name="l00184"></a>00184         <span class="comment"># Cette méthode indique si le noeud considéré est terminal ou pas. Un</span>
+<a name="l00185"></a>00185         <span class="comment"># noeud est terminal ssi il ne possède pas d'attribut de partitionnement,</span>
+<a name="l00186"></a>00186         <span class="comment"># mais uniquement des exemples classifiés.</span>
+<a name="l00187"></a>00187         <span class="comment">#</span>
+<a name="l00188"></a>00188         <span class="comment"># @param[in] self référence automatique vers l'objet exécutant cette méthode</span>
+<a name="l00189"></a>00189         <span class="comment"># @return \b True si le noeud est terminal, \b False sinon</span>
+<a name="l00190"></a><a class="code" href="classid3_1_1_noeud.html#b34e1e37b6fb31bc0c3a628f7925f51a">00190</a>         <span class="keyword">def </span><a class="code" href="classid3_1_1_noeud.html#b34e1e37b6fb31bc0c3a628f7925f51a" title="Indique si le noeud est terminal ou non.">estTerminal</a>( self ):
+<a name="l00191"></a>00191                 <span class="keywordflow">return</span> (self.<a class="code" href="classid3_1_1_noeud.html#fac8732e5398bf03f86d05790e3aabe4" title="L&amp;#39;attribut de partitionnement du noeud.">attribut</a> == [])
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00195"></a>00195 <span class="comment"># INITIALISATION ET CONSULTATION DE L'ARBRE DE DECISION</span>
+<a name="l00196"></a>00196 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199 <span class="comment">## Initialise le module ID3 </span>
+<a name="l00200"></a>00200 <span class="comment">#</span>
+<a name="l00201"></a>00201 <span class="comment"># Cette fonction initialise le module ID3 avec les exemples \c exemples et la</span>
+<a name="l00202"></a>00202 <span class="comment"># description des classes et attributs \c attrsEtValeurs.</span>
+<a name="l00203"></a>00203 <span class="comment">#</span>
+<a name="l00204"></a>00204 <span class="comment"># @param[in] exemples les exemples à classifier</span>
+<a name="l00205"></a>00205 <span class="comment"># @param[in] attrsEtValeurs les attributs ainsi que leur valeur</span>
+<a name="l00206"></a><a class="code" href="namespaceid3.html#0272360f7cb80a453623bba62f4e85fc">00206</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#0272360f7cb80a453623bba62f4e85fc" title="Initialise le module ID3.">initID3</a>( exemples, attrsEtValeurs):
+<a name="l00207"></a>00207 
+<a name="l00208"></a>00208         <span class="comment"># variables globales du problème</span>
+<a name="l00209"></a>00209         <span class="keyword">global</span> tousLesExemples
+<a name="l00210"></a>00210         <span class="keyword">global</span> attributsEtValeurs
+<a name="l00211"></a>00211         <span class="keyword">global</span> classification
+<a name="l00212"></a>00212 
+<a name="l00213"></a>00213         <span class="comment"># initialise les variables du problème</span>
+<a name="l00214"></a>00214         tousLesExemples = exemples
+<a name="l00215"></a>00215         attributsEtValeurs = attrsEtValeurs
+<a name="l00216"></a>00216         classification = []
+<a name="l00217"></a>00217 
+<a name="l00218"></a>00218         <span class="comment"># affiche les informations</span>
+<a name="l00219"></a>00219         <span class="keywordflow">print</span>( <span class="stringliteral">"DB : initID3 -&gt; attributsEtValeurs : %s"</span> % (attributsEtValeurs) )
+<a name="l00220"></a>00220 
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222 <span class="comment">## Permet de classer un set d'exemples à l'aide de l'arbre de décision</span>
+<a name="l00223"></a>00223 <span class="comment">#</span>
+<a name="l00224"></a>00224 <span class="comment"># Cette fonction s'appuye sur l'arbre de décision construit par la fonction</span>
+<a name="l00225"></a>00225 <span class="comment"># \c construitArbreDecision(). Pour classifier les exemples, on part depuis</span>
+<a name="l00226"></a>00226 <span class="comment"># le noeud \c n et on descend recursivement dans les sous-noeuds.</span>
+<a name="l00227"></a>00227 <span class="comment">#</span>
+<a name="l00228"></a>00228 <span class="comment"># @param[in] n le noeud d'où part la classification</span>
+<a name="l00229"></a><a class="code" href="namespaceid3.html#822ef6a6ece41d8d631d3cc890dd0fce">00229</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#822ef6a6ece41d8d631d3cc890dd0fce" title="Permet de classer un set d&amp;#39;exemples à l&amp;#39;aide de l&amp;#39;arbre de décision...">classifie</a>( n=classification ):
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231         <span class="comment"># si le noeud est vide, alors pas de classification possible</span>
+<a name="l00232"></a>00232         <span class="keywordflow">if</span> n == []:
+<a name="l00233"></a>00233                 <span class="keywordflow">print</span>( <span class="stringliteral">"&gt;&gt;&gt; L'exemple ne peut être classé"</span> )
+<a name="l00234"></a>00234 
+<a name="l00235"></a>00235         <span class="comment"># si le noeud est terminal, alors on peut obtenir sa classe</span>
+<a name="l00236"></a>00236         <span class="keywordflow">elif</span> n.estTerminal():
+<a name="l00237"></a>00237                 <span class="keywordflow">print</span>( <span class="stringliteral">"&gt;&gt;&gt; L'exemple est de la classe %s"</span> % (n.retourneClasse()) )
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239         <span class="comment"># sinon, il nous faut encore parcourir l'arbre de décision</span>
+<a name="l00240"></a>00240         <span class="keywordflow">else</span>:
+<a name="l00241"></a>00241 
+<a name="l00242"></a>00242                 <span class="comment"># tout d'abord on définit quelles sont les valeurs valables</span>
+<a name="l00243"></a>00243                 <span class="comment"># pour l'attribut de partionnement</span>
+<a name="l00244"></a>00244                 attributPartition = n.attribut
+<a name="l00245"></a>00245                 valeursPossibles = retourneValeursAttribut( attributPartition )
+<a name="l00246"></a>00246 
+<a name="l00247"></a>00247                 <span class="comment"># continue le test jusqu'à ce qu'on reçoive une valeur</span>
+<a name="l00248"></a>00248                 <span class="comment"># valide et qu'on puisse continuer la classification</span>
+<a name="l00249"></a>00249                 <span class="keywordflow">while</span> <span class="keyword">True</span>:
+<a name="l00250"></a>00250 
+<a name="l00251"></a>00251                         <span class="comment"># affiche la valeur de l'attribut</span>
+<a name="l00252"></a>00252                         <span class="keywordflow">print</span>( <span class="stringliteral">"&gt; Valeur de l'attribut %s? "</span> %
+<a name="l00253"></a>00253                                   (retourneNomAttribut(attributPartition)) )
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255                         <span class="comment"># lit la valeur depuis le clavier</span>
+<a name="l00256"></a>00256                         valeur = raw_input()
+<a name="l00257"></a>00257 
+<a name="l00258"></a>00258                         <span class="comment"># si la valeur fait partie des valeurs possibles, alors</span>
+<a name="l00259"></a>00259                         <span class="comment"># on peut continuer la classification</span>
+<a name="l00260"></a>00260                         <span class="keywordflow">if</span> valeur <span class="keywordflow">in</span> valeursPossibles:
+<a name="l00261"></a>00261                                 <span class="keywordflow">return</span> classifie( n.enfants[valeursPossibles.index(valeur)] )
+<a name="l00262"></a>00262 
+<a name="l00263"></a>00263                         <span class="comment"># sinon, on affiche une erreur pour signaleur que la</span>
+<a name="l00264"></a>00264                         <span class="comment"># valeur n'est pas valide</span>
+<a name="l00265"></a>00265                         <span class="keywordflow">print</span>( <span class="stringliteral">"## Valeur %S inconnue pour l'attribut %s"</span> %
+<a name="l00266"></a>00266                                   (valeur, retourneNomAttribut(attributPartition)) )
+<a name="l00267"></a>00267 
+<a name="l00268"></a>00268                         
+<a name="l00269"></a>00269 <span class="comment">## Construit l'arbre de decision pour les exemples de \c tousLesExemples et</span>
+<a name="l00270"></a>00270 <span class="comment"># le sauvegarde dans la variable globale \c classification.</span>
+<a name="l00271"></a>00271 <span class="comment"># </span>
+<a name="l00272"></a>00272 <span class="comment"># Cette fonction s'appuye sur \c construitArbreDecisionAux pour construire</span>
+<a name="l00273"></a>00273 <span class="comment"># l'arbre de décision à partir des exemples donnés.</span>
+<a name="l00274"></a><a class="code" href="namespaceid3.html#cc26cfdacafd3ac0b9089f7f20dcead2">00274</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#cc26cfdacafd3ac0b9089f7f20dcead2" title="Construit l&amp;#39;arbre de decision pour les exemples de tousLesExemples et le sauvegarde...">construitArbreDecision</a>():
+<a name="l00275"></a>00275 
+<a name="l00276"></a>00276         <span class="comment"># variables globales</span>
+<a name="l00277"></a>00277         <span class="keyword">global</span> classification
+<a name="l00278"></a>00278 
+<a name="l00279"></a>00279         <span class="comment"># retourne l'arbre ainsi produit</span>
+<a name="l00280"></a>00280         classification = construitArbreDecisionAux( tousLesExemples,
+<a name="l00281"></a>00281                                                                                                 construitListeAttributs() )
+<a name="l00282"></a>00282 
+<a name="l00283"></a>00283         <span class="comment"># affiche l'arbre de décision produit</span>
+<a name="l00284"></a>00284         <span class="keywordflow">print</span>( classification )
+<a name="l00285"></a>00285 
+<a name="l00286"></a>00286 
+<a name="l00287"></a>00287 <span class="comment">## Fonction auxiliaire de construction de l'arbre de décision</span>
+<a name="l00288"></a>00288 <span class="comment">#</span>
+<a name="l00289"></a>00289 <span class="comment"># Cette fonction est la fonction qui construit vraiment l'arbre de décision.</span>
+<a name="l00290"></a>00290 <span class="comment"># Elle est appelée depuis \c construitArbreDecision() pour initialiser la</span>
+<a name="l00291"></a>00291 <span class="comment"># création de l'arbre à partir d'un set d'exemples et une liste</span>
+<a name="l00292"></a>00292 <span class="comment"># d'attributs</span>
+<a name="l00293"></a>00293 <span class="comment">#</span>
+<a name="l00294"></a>00294 <span class="comment"># @param[in] exemples la liste d'exemples servant à la construction de l'arbre</span>
+<a name="l00295"></a>00295 <span class="comment"># @param[in] attributs la liste des attributs</span>
+<a name="l00296"></a>00296 <span class="comment"># @return une branche de l'arbre de décision</span>
+<a name="l00297"></a><a class="code" href="namespaceid3.html#2ab3dfda6d72c5d8cb754fbd4ab39d69">00297</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#2ab3dfda6d72c5d8cb754fbd4ab39d69" title="Fonction auxiliaire de construction de l&amp;#39;arbre de décision.">construitArbreDecisionAux</a>( exemples, attributs ):
+<a name="l00298"></a>00298         
+<a name="l00299"></a>00299         <span class="comment"># indique que nous construisons l'arbre de décision</span>
+<a name="l00300"></a>00300         <span class="keywordflow">print</span>(<span class="stringliteral">"DB : construitArbreDecisionAux -&gt; attributs : %s"</span> % (attributs)) 
+<a name="l00301"></a>00301 
+<a name="l00302"></a>00302         <span class="comment"># s'il n'y a plus d'exemples, alors on a fini</span>
+<a name="l00303"></a>00303         <span class="keywordflow">if</span> exemples == []:
+<a name="l00304"></a>00304                 <span class="keywordflow">return</span> []
+<a name="l00305"></a>00305                 
+<a name="l00306"></a>00306         <span class="comment"># si les exemples sont de même classe, alors</span>
+<a name="l00307"></a>00307         <span class="comment"># on n'a plus qu'un noeud terminal</span>
+<a name="l00308"></a>00308         <span class="keywordflow">elif</span> memeClasse( exemples ):
+<a name="l00309"></a>00309                 <span class="keywordflow">print</span>(<span class="stringliteral">"DB : construitArbreDecisionAux -&gt; memeClasse "</span>) 
+<a name="l00310"></a>00310                 <span class="keywordflow">return</span> Noeud( [], exemples, [] )
+<a name="l00311"></a>00311 
+<a name="l00312"></a>00312         <span class="comment"># sinon, il reste plus d'une classe, et il faut continuer</span>
+<a name="l00313"></a>00313         <span class="comment"># à descendre dans l'arbre</span>
+<a name="l00314"></a>00314         <span class="keywordflow">else</span>:
+<a name="l00315"></a>00315 
+<a name="l00316"></a>00316                 <span class="comment"># choisit le meilleur attribut comme attribut de partition</span>
+<a name="l00317"></a>00317                 attributPartition = meilleurAttribut( attributs, exemples )
+<a name="l00318"></a>00318                 <span class="keywordflow">print</span>( <span class="stringliteral">"DB : construitArbreDecisionAux -&gt; attribut de partition : %s"</span>
+<a name="l00319"></a>00319                            % (attributPartition) )
+<a name="l00320"></a>00320 
+<a name="l00321"></a>00321                 <span class="comment"># garde les attributs restants</span>
+<a name="l00322"></a>00322                 attributsRestants = copy.deepcopy( attributs )
+<a name="l00323"></a>00323                 attributsRestants.remove( attributPartition )
+<a name="l00324"></a>00324                 
+<a name="l00325"></a>00325                 <span class="keywordflow">print</span>( <span class="stringliteral">"DB : construitArbreDecisionAux -&gt; attributs restants : %s"</span>
+<a name="l00326"></a>00326                            % (attributsRestants) )
+<a name="l00327"></a>00327                 
+<a name="l00328"></a>00328                 <span class="comment"># trie les exemples en sous-listes d'après la valeur de l'attribut de partition</span>
+<a name="l00329"></a>00329                 sousListes = partition( exemples, attributPartition )
+<a name="l00330"></a>00330                 
+<a name="l00331"></a>00331                 <span class="comment"># construit les noeuds fils en appliquant l'algorithme à chaque sous-liste</span>
+<a name="l00332"></a>00332                 fils = map( <span class="keyword">lambda</span> p : construitArbreDecisionAux(p, attributsRestants), sousListes )
+<a name="l00333"></a>00333                 
+<a name="l00334"></a>00334                 <span class="keywordflow">return</span> Noeud( attributPartition, [], fils )
+<a name="l00335"></a>00335 
+<a name="l00336"></a>00336 
+<a name="l00337"></a>00337 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00338"></a>00338 <span class="comment"># CALCUL DE L'ENTROPIE</span>
+<a name="l00339"></a>00339 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00340"></a>00340 
+<a name="l00341"></a>00341 <span class="comment">## Retourne le meilleur attribut à choisir dans la liste disponible</span>
+<a name="l00342"></a>00342 <span class="comment">#</span>
+<a name="l00343"></a>00343 <span class="comment"># Cette fonction retourne le meilleur attribut dans la liste des attributs.</span>
+<a name="l00344"></a>00344 <span class="comment"># Pour ce faire, cette fonction retourne l'attribut dont l'entropie est la</span>
+<a name="l00345"></a>00345 <span class="comment"># plus faible.</span>
+<a name="l00346"></a>00346 <span class="comment">#</span>
+<a name="l00347"></a>00347 <span class="comment"># @param[in] attributs la liste des attributs</span>
+<a name="l00348"></a>00348 <span class="comment"># @param[in] exemples la liste des exemples</span>
+<a name="l00349"></a>00349 <span class="comment"># @return l'attribut ayant la plus faible entropie</span>
+<a name="l00350"></a><a class="code" href="namespaceid3.html#5de9d6172363f04d6f3c046b396917db">00350</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#5de9d6172363f04d6f3c046b396917db" title="Retourne le meilleur attribut à choisir dans la liste disponible.">meilleurAttribut</a>( attributs, exemples ):
+<a name="l00351"></a>00351 
+<a name="l00352"></a>00352         <span class="comment"># indique ce qu'on fait</span>
+<a name="l00353"></a>00353         <span class="keywordflow">print</span>( <span class="stringliteral">"DB : meilleurAttribut -&gt; attributs : %s"</span> % (attributs) )
+<a name="l00354"></a>00354         
+<a name="l00355"></a>00355         <span class="comment"># trouve l'entropie minimale</span>
+<a name="l00356"></a>00356         entropieAttributs = [entropie(a,exemples) <span class="keywordflow">for</span> a <span class="keywordflow">in</span> attributs]
+<a name="l00357"></a>00357         <span class="keywordflow">return</span> attributs[retourneIndiceMinimum(entropieAttributs)]
+<a name="l00358"></a>00358 
+<a name="l00359"></a>00359 
+<a name="l00360"></a>00360 
+<a name="l00361"></a>00361 
+<a name="l00362"></a>00362 <span class="comment">## Retourne l'entropie totale pour l'attribut passé en paramètre.</span>
+<a name="l00363"></a>00363 <span class="comment">#</span>
+<a name="l00364"></a>00364 <span class="comment"># Cette fonction calcule et retourne l'entropie totale pour l'attribut</span>
+<a name="l00365"></a>00365 <span class="comment"># d'indice \c attribut, a savoir: H(C|A) = H(C|attribute).</span>
+<a name="l00366"></a>00366 <span class="comment">#</span>
+<a name="l00367"></a>00367 <span class="comment"># @param[in] attribut l'indice de l'attribut dont on cherche l'entropie</span>
+<a name="l00368"></a>00368 <span class="comment"># @param[in] exemples la liste des exemples sur laquelle on calcule l'entropie</span>
+<a name="l00369"></a><a class="code" href="namespaceid3.html#03b838adc9b14c80771faf45e2f84f72">00369</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#03b838adc9b14c80771faf45e2f84f72" title="Retourne l&amp;#39;entropie totale pour l&amp;#39;attribut passé en paramètre.">entropie</a>( attribut, exemples ):
+<a name="l00370"></a>00370 
+<a name="l00371"></a>00371         <span class="comment"># calcule l'entropie pour chaque attribut </span>
+<a name="l00372"></a>00372         liste = [ P_Aj(attribut,x,exemples)*H_C_Aj(attribut,x,exemples)
+<a name="l00373"></a>00373                          <span class="keywordflow">for</span> x <span class="keywordflow">in</span> retourneValeursPossiblesAttribut(attribut,exemples)]
+<a name="l00374"></a>00374 
+<a name="l00375"></a>00375         <span class="comment"># calcule la somme</span>
+<a name="l00376"></a>00376         res = sum(liste)
+<a name="l00377"></a>00377         
+<a name="l00378"></a>00378         <span class="comment"># affiche l'entropie    </span>
+<a name="l00379"></a>00379         <span class="keywordflow">print</span>( <span class="stringliteral">"DB : entropie -&gt; res : %s"</span> % (res) )
+<a name="l00380"></a>00380         
+<a name="l00381"></a>00381         <span class="comment"># retourne le résultat</span>
+<a name="l00382"></a>00382         <span class="keywordflow">return</span> res
+<a name="l00383"></a>00383 
+<a name="l00384"></a>00384 
+<a name="l00385"></a>00385 <span class="comment">## Retourne l'entropie conditionnelle de l'attribut passé en paramètre pour</span>
+<a name="l00386"></a>00386 <span class="comment"># une certaine valeur.</span>
+<a name="l00387"></a>00387 <span class="comment">#</span>
+<a name="l00388"></a>00388 <span class="comment"># Cette fonction calcule l'entropie conditionnelle pour l'attribut \c attribut</span>
+<a name="l00389"></a>00389 <span class="comment"># ayant comme valeur d'attribut \c valeur, en d'autres termes :</span>
+<a name="l00390"></a>00390 <span class="comment">#         H(C|Aj) = H(C|attribute=value).</span>
+<a name="l00391"></a>00391 <span class="comment">#</span>
+<a name="l00392"></a>00392 <span class="comment"># @param[in] attribut l'indice de l'attribut</span>
+<a name="l00393"></a>00393 <span class="comment"># @param[in] valeur la valeur de l'attribut</span>
+<a name="l00394"></a>00394 <span class="comment"># @param[in] exemples la liste des exemples sur laquelle calculer l'entropie</span>
+<a name="l00395"></a><a class="code" href="namespaceid3.html#9273f0b2f0354984fabf8f03b590e899">00395</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#9273f0b2f0354984fabf8f03b590e899" title="Retourne l&amp;#39;entropie conditionnelle de l&amp;#39;attribut passé en paramètre pour...">H_C_Aj</a>( attribut, valeur, exemples ):
+<a name="l00396"></a>00396 
+<a name="l00397"></a>00397         <span class="comment"># ajoute les probabilités</span>
+<a name="l00398"></a>00398         <span class="keywordflow">return</span> - sum([ calculeXlogX(P_Ci_Aj(c,attribut,valeur,exemples)) <span class="keywordflow">for</span> c <span class="keywordflow">in</span> retourneClassesPossibles(exemples) ])
+<a name="l00399"></a>00399 
+<a name="l00400"></a>00400 
+<a name="l00401"></a>00401 <span class="comment">## Calcule x * log_2(x)</span>
+<a name="l00402"></a>00402 <span class="comment">#</span>
+<a name="l00403"></a>00403 <span class="comment"># Cette méthode calcule x * log_2(x). Retourne 0 si x == 0. </span>
+<a name="l00404"></a>00404 <span class="comment">#</span>
+<a name="l00405"></a>00405 <span class="comment"># @param[in] x la variable </span>
+<a name="l00406"></a><a class="code" href="namespaceid3.html#1efde1e90a731c541cc27b3d709c2ca2">00406</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#1efde1e90a731c541cc27b3d709c2ca2" title="Calcule x * log_2(x).">calculeXlogX</a>( x ):
+<a name="l00407"></a>00407 
+<a name="l00408"></a>00408         <span class="comment"># si x est nul, alors retourne 0</span>
+<a name="l00409"></a>00409         <span class="keywordflow">if</span> x == 0:
+<a name="l00410"></a>00410                 <span class="keywordflow">return</span> 0                
+<a name="l00411"></a>00411         <span class="comment"># sinon, retourne x * log(x,2)</span>
+<a name="l00412"></a>00412         <span class="keywordflow">else</span>:
+<a name="l00413"></a>00413                 <span class="keywordflow">return</span> x * math.log(x,2)
+<a name="l00414"></a>00414 
+<a name="l00415"></a>00415 
+<a name="l00416"></a>00416 <span class="comment">## Calcule la probabilité P(Ci|Aj) = P(class-value|attribute=value)</span>
+<a name="l00417"></a>00417 <span class="comment">#</span>
+<a name="l00418"></a>00418 <span class="comment"># Cette fonction calcule la probabilite que la valeur de la classe soit</span>
+<a name="l00419"></a>00419 <span class="comment"># \c classe lorsque \c attribut vaut \c valeur, en d'autres</span>
+<a name="l00420"></a>00420 <span class="comment"># termes : P(Ci|Aj) = P(class-value|attribute=value).</span>
+<a name="l00421"></a>00421 <span class="comment">#</span>
+<a name="l00422"></a>00422 <span class="comment"># @param[in] classe la nom de la classe</span>
+<a name="l00423"></a>00423 <span class="comment"># @param[in] attribut l'indice de l'attribut</span>
+<a name="l00424"></a>00424 <span class="comment"># @param[in] valeur la valeur de l'attribut</span>
+<a name="l00425"></a>00425 <span class="comment"># @param[in] exemples la liste des exemples sur laquelle on calcule la probabilité.</span>
+<a name="l00426"></a><a class="code" href="namespaceid3.html#c9bc75db3a6f29ffd15ff9013daa5fcd">00426</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#c9bc75db3a6f29ffd15ff9013daa5fcd" title="Calcule la probabilité P(Ci|Aj) = P(class-value|attribute=value).">P_Ci_Aj</a>( classe, attribut, valeur, exemples ):
+<a name="l00427"></a>00427         <span class="keywordflow">return</span> nombreOccurencesCond(classe,attribut,valeur,exemples) /float(
+<a name="l00428"></a>00428                 nombreOccurences(attribut,valeur,exemples))
+<a name="l00429"></a>00429 
+<a name="l00430"></a>00430 
+<a name="l00431"></a>00431 <span class="comment">## Retourne la probabilité P_Aj</span>
+<a name="l00432"></a>00432 <span class="comment">#</span>
+<a name="l00433"></a>00433 <span class="comment"># Cette fonction retourne la probabilité que la valeur de l'attribut</span>
+<a name="l00434"></a>00434 <span class="comment"># d'indice \c attribut soit \c valeur. Cette probabilité est tout simplement</span>
+<a name="l00435"></a>00435 <span class="comment"># le nombre d'exemples dont l'attribut \c attribut a la valeur \c valeur,</span>
+<a name="l00436"></a>00436 <span class="comment"># divisé par le nombre d'exemples de la liste \c exemples.</span>
+<a name="l00437"></a>00437 <span class="comment">#</span>
+<a name="l00438"></a>00438 <span class="comment"># @param[in] attribut l'attribut cherché</span>
+<a name="l00439"></a>00439 <span class="comment"># @param[in] valeur la valeur de l'attribut</span>
+<a name="l00440"></a>00440 <span class="comment"># @param[in] exemples la liste des exemples</span>
+<a name="l00441"></a>00441 <span class="comment"># @return la probabilité P_Aj</span>
+<a name="l00442"></a><a class="code" href="namespaceid3.html#b7be952ee6c3b68c5e9dc2446d6d2ae5">00442</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#b7be952ee6c3b68c5e9dc2446d6d2ae5" title="Retourne la probabilité P_Aj.">P_Aj</a>( attribut, valeur, exemples ):
+<a name="l00443"></a>00443         <span class="keywordflow">return</span> nombreOccurences(attribut, valeur, exemples) / float(len(exemples))
+<a name="l00444"></a>00444 
+<a name="l00445"></a>00445 
+<a name="l00446"></a>00446 
+<a name="l00447"></a>00447 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00448"></a>00448 <span class="comment"># EXEMPLES</span>
+<a name="l00449"></a>00449 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00450"></a>00450 
+<a name="l00451"></a>00451 <span class="comment">## Retourne la valeur de l'attribut donné en paramètre pour l'exemple donné.</span>
+<a name="l00452"></a>00452 <span class="comment">#</span>
+<a name="l00453"></a>00453 <span class="comment"># Cette fonction retourne la valeur de l'attribut d'indice \c attribut dans</span>
+<a name="l00454"></a>00454 <span class="comment"># l'exemple \c exemple. Un exemple est une liste de la forme:</span>
+<a name="l00455"></a>00455 <span class="comment">#</span>
+<a name="l00456"></a>00456 <span class="comment"># @code</span>
+<a name="l00457"></a>00457 <span class="comment"># exemple = [ 'nom-classe', 'valeur-attribut1', ..., 'valeur-attributn']</span>
+<a name="l00458"></a>00458 <span class="comment"># @endcode</span>
+<a name="l00459"></a>00459 <span class="comment">#</span>
+<a name="l00460"></a>00460 <span class="comment"># @param[in] exemple l'exemple dont on veut la valeur de l'attribut</span>
+<a name="l00461"></a>00461 <span class="comment"># @param[in] attribut l'indice de l'attribut dont on cherche la valeur</span>
+<a name="l00462"></a>00462 <span class="comment"># @return la valeur de l'attribut pour l'exemple passé en paramètre.</span>
+<a name="l00463"></a><a class="code" href="namespaceid3.html#dc249e2fbf4dd8e38b8dde31d7b756dc">00463</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#dc249e2fbf4dd8e38b8dde31d7b756dc" title="Retourne la valeur de l&amp;#39;attribut donné en paramètre pour l&amp;#39;exemple donné...">retourneValeurAttribut</a>( exemple, attribut ):
+<a name="l00464"></a>00464         <span class="keywordflow">return</span> exemple[attribut]
+<a name="l00465"></a>00465 
+<a name="l00466"></a>00466 
+<a name="l00467"></a>00467 <span class="comment">## Retourne la classe de l'exemple passé en paramètre.</span>
+<a name="l00468"></a>00468 <span class="comment">#</span>
+<a name="l00469"></a>00469 <span class="comment"># Cette fonction retourne la classe d'un \c exemple. Cette classe est tout</span>
+<a name="l00470"></a>00470 <span class="comment"># simplement le premier élément de la liste \c exemple.</span>
+<a name="l00471"></a>00471 <span class="comment">#</span>
+<a name="l00472"></a>00472 <span class="comment"># @param[in] exemple l'exemple dont on cherche la classe</span>
+<a name="l00473"></a>00473 <span class="comment"># @return le nom de la classe à laquelle l'exemple appartient</span>
+<a name="l00474"></a><a class="code" href="namespaceid3.html#262f90448fac7f346bba0c9b6dbad410">00474</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#262f90448fac7f346bba0c9b6dbad410" title="Retourne la classe de l&amp;#39;exemple passé en paramètre.">retourneClasse</a>( exemple ):
+<a name="l00475"></a>00475         <span class="keywordflow">return</span> exemple[0]
+<a name="l00476"></a>00476 
+<a name="l00477"></a>00477 
+<a name="l00478"></a>00478 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00479"></a>00479 <span class="comment"># OPERATIONS SUR UNE LISTE D'EXEMPLES</span>
+<a name="l00480"></a>00480 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00481"></a>00481 
+<a name="l00482"></a>00482 <span class="comment">## Partitionne les exemples selon les valeur de l'attribut</span>
+<a name="l00483"></a>00483 <span class="comment">#</span>
+<a name="l00484"></a>00484 <span class="comment"># Retourne une liste dont chaque element est une liste des exemples</span>
+<a name="l00485"></a>00485 <span class="comment"># avec un valeur commune pour \c attribut. Cette liste contient pour chaque</span>
+<a name="l00486"></a>00486 <span class="comment"># valeur d'attribut \e vi un liste d'exemples dont la valeur est \e vi.</span>
+<a name="l00487"></a>00487 <span class="comment">#</span>
+<a name="l00488"></a>00488 <span class="comment"># @param[in] exemples la liste des exemples à partitionner</span>
+<a name="l00489"></a>00489 <span class="comment"># @param[in] attribut l'attribut pivot qui sert au partitionnement</span>
+<a name="l00490"></a>00490 <span class="comment"># @return un liste de sous-listes d'exemples partitionnés par valeur d'attrib.</span>
+<a name="l00491"></a><a class="code" href="namespaceid3.html#1bdfd548556f761a192b9465af07e2d5">00491</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#1bdfd548556f761a192b9465af07e2d5" title="Partitionne les exemples selon les valeur de l&amp;#39;attribut.">partition</a>( exemples, attribut ):
+<a name="l00492"></a>00492         <span class="comment"># partionne les exemples</span>
+<a name="l00493"></a>00493         res = [ [e <span class="keywordflow">for</span> e <span class="keywordflow">in</span> exemples <span class="keywordflow">if</span> retourneValeurAttribut(e, attribut)==v]
+<a name="l00494"></a>00494                         <span class="keywordflow">for</span> v <span class="keywordflow">in</span> retourneValeursAttribut(attribut) ]
+<a name="l00495"></a>00495   
+<a name="l00496"></a>00496         <span class="comment"># affiche la partition</span>
+<a name="l00497"></a>00497         <span class="keywordflow">print</span>( <span class="stringliteral">"DB : 000000000000000000000 partition -&gt; res : %s"</span> % (res) )
+<a name="l00498"></a>00498         
+<a name="l00499"></a>00499         <span class="comment"># retourne la partition</span>
+<a name="l00500"></a>00500         <span class="keywordflow">return</span> res
+<a name="l00501"></a>00501         
+<a name="l00502"></a>00502 
+<a name="l00503"></a>00503 <span class="comment">## Indique si tous les exemples passés en paramètre appartiennent à la même</span>
+<a name="l00504"></a>00504 <span class="comment"># classe.</span>
+<a name="l00505"></a>00505 <span class="comment">#</span>
+<a name="l00506"></a>00506 <span class="comment"># Cette fonction indique si les exemples passés dans la liste \c exemples</span>
+<a name="l00507"></a>00507 <span class="comment"># appartiennent ou non à la même classe. Elle procède en dénombrant les classes </span>
+<a name="l00508"></a>00508 <span class="comment"># possibles parmi les exemples. Si le nombre est \b 1,</span>
+<a name="l00509"></a>00509 <span class="comment"># alors cela signifie que les exemples font partie d'une même classe</span>
+<a name="l00510"></a>00510 <span class="comment">#</span>
+<a name="l00511"></a>00511 <span class="comment"># @param[in] exemples la liste des exemples dont on veut savoir s'ils sont</span>
+<a name="l00512"></a>00512 <span class="comment">#                                        de la même classe</span>
+<a name="l00513"></a>00513 <span class="comment"># @return \b True si tous les exemples sont de la même classe, \b False sinon</span>
+<a name="l00514"></a><a class="code" href="namespaceid3.html#119c7c83e7a0fb723365e6494715a43d">00514</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#119c7c83e7a0fb723365e6494715a43d" title="Indique si tous les exemples passés en paramètre appartiennent à la même classe...">memeClasse</a>( exemples ):
+<a name="l00515"></a>00515         res = len( retourneClassesPossibles(exemples) ) == 1
+<a name="l00516"></a>00516         <span class="keywordflow">print</span>( <span class="stringliteral">"DB : -- memeClasse -&gt; retourneClassesPossibles(examples) %s"</span> %
+<a name="l00517"></a>00517                    (retourneClassesPossibles(exemples)) )
+<a name="l00518"></a>00518         <span class="keywordflow">print</span>( <span class="stringliteral">"DB : -- memeClasse -&gt; res %s"</span> % (res))
+<a name="l00519"></a>00519         <span class="keywordflow">return</span> res
+<a name="l00520"></a>00520 
+<a name="l00521"></a>00521 
+<a name="l00522"></a>00522 <span class="comment">## Retourne la liste de toutes les valeurs pour un certain attribut</span>
+<a name="l00523"></a>00523 <span class="comment">#</span>
+<a name="l00524"></a>00524 <span class="comment"># Cette fonction retourne une liste de toutes les valeurs possibles</span>
+<a name="l00525"></a>00525 <span class="comment"># pour l'attribut d'indice \c attribut que l'on trouve dans les</span>
+<a name="l00526"></a>00526 <span class="comment"># exemples de la liste \c exemples.</span>
+<a name="l00527"></a>00527 <span class="comment">#</span>
+<a name="l00528"></a>00528 <span class="comment"># @param[in] attribut l'indice de l'attribut dont on cherche les valeur</span>
+<a name="l00529"></a>00529 <span class="comment"># @param[in] exemples la liste des exemples dans laquelle on cherche</span>
+<a name="l00530"></a>00530 <span class="comment"># @return une liste contenant toutes les valeurs possibles de l'attribut</span>
+<a name="l00531"></a><a class="code" href="namespaceid3.html#b49e82382c3c62395c0d37c8f09294a8">00531</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#b49e82382c3c62395c0d37c8f09294a8" title="Retourne la liste de toutes les valeurs pour un certain attribut.">retourneValeursPossiblesAttribut</a>( attribut, exemples ):
+<a name="l00532"></a>00532         res = []
+<a name="l00533"></a>00533         <span class="keywordflow">for</span> ex <span class="keywordflow">in</span> exemples:
+<a name="l00534"></a>00534                 valeur = retourneValeurAttribut( ex, attribut )
+<a name="l00535"></a>00535                 <span class="keywordflow">if</span> <span class="keywordflow">not</span> valeur <span class="keywordflow">in</span> res:
+<a name="l00536"></a>00536                         res = [valeur] + res            
+<a name="l00537"></a>00537         <span class="keywordflow">return</span> res
+<a name="l00538"></a>00538 
+<a name="l00539"></a>00539 
+<a name="l00540"></a>00540 <span class="comment">## Retourne la liste de toutes les classes possibles de la liste des exemples</span>
+<a name="l00541"></a>00541 <span class="comment">#</span>
+<a name="l00542"></a>00542 <span class="comment"># Cette fonction parcourt les exemples et cherche toutes les classes</span>
+<a name="l00543"></a>00543 <span class="comment"># que l'on peut extraire à partir de cette liste.</span>
+<a name="l00544"></a>00544 <span class="comment">#</span>
+<a name="l00545"></a>00545 <span class="comment"># @param[in] exemples la liste des exemples à parcourir</span>
+<a name="l00546"></a>00546 <span class="comment"># @return la liste des classes possibles à partir des exemples</span>
+<a name="l00547"></a><a class="code" href="namespaceid3.html#9547f618a4d3daf4f147f2d3350b7e7a">00547</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#9547f618a4d3daf4f147f2d3350b7e7a" title="Retourne la liste de toutes les classes possibles de la liste des exemples.">retourneClassesPossibles</a>( exemples ):
+<a name="l00548"></a>00548         res = retourneValeursPossiblesAttribut(0, exemples)
+<a name="l00549"></a>00549         <span class="keywordflow">return</span> res
+<a name="l00550"></a>00550 
+<a name="l00551"></a>00551 
+<a name="l00552"></a>00552 <span class="comment">## Retourne le nombre d'exemples dont l'attribut vaut une certaine valeur</span>
+<a name="l00553"></a>00553 <span class="comment">#</span>
+<a name="l00554"></a>00554 <span class="comment"># Cette fonction retourne le nombre d'exemples de la liste \c exemples dont</span>
+<a name="l00555"></a>00555 <span class="comment"># la valeur de l'attribut d'indice \c attribut vaut \c valeur.</span>
+<a name="l00556"></a>00556 <span class="comment">#</span>
+<a name="l00557"></a>00557 <span class="comment"># @param[in] attribut l'indice de l'attribut</span>
+<a name="l00558"></a>00558 <span class="comment"># @param[in] valeur la valeur de l'attribut</span>
+<a name="l00559"></a>00559 <span class="comment"># @param[in] exemples la liste des exemples à parcourir</span>
+<a name="l00560"></a>00560 <span class="comment"># @return le nombre d'exemples de même valeur que \c valeur</span>
+<a name="l00561"></a><a class="code" href="namespaceid3.html#d063413d9a42c0f10d7b2a2a235289d2">00561</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#d063413d9a42c0f10d7b2a2a235289d2" title="Retourne le nombre d&amp;#39;exemples dont l&amp;#39;attribut vaut une certaine valeur.">nombreOccurences</a>( attribut, valeur, exemples ):
+<a name="l00562"></a>00562         res = 0
+<a name="l00563"></a>00563         <span class="keywordflow">for</span> ex <span class="keywordflow">in</span> exemples:
+<a name="l00564"></a>00564                 <span class="keywordflow">if</span> retourneValeurAttribut(ex,attribut) == valeur:
+<a name="l00565"></a>00565                         res = res + 1
+<a name="l00566"></a>00566         <span class="keywordflow">return</span> res
+<a name="l00567"></a>00567         
+<a name="l00568"></a>00568         
+<a name="l00569"></a>00569 <span class="comment">## Retourne le nombre d'exemples respectant une condition particulière.</span>
+<a name="l00570"></a>00570 <span class="comment">#</span>
+<a name="l00571"></a>00571 <span class="comment"># Cette fonction retourne le nombre d'exemples d'\c exemples appartenant à la</span>
+<a name="l00572"></a>00572 <span class="comment"># classe \c classe et qui ont \c valeur comme valeur de l'attribut d'index</span>
+<a name="l00573"></a>00573 <span class="comment"># \c attribut.</span>
+<a name="l00574"></a>00574 <span class="comment">#</span>
+<a name="l00575"></a>00575 <span class="comment"># @param[in] classe le nom de classe</span>
+<a name="l00576"></a>00576 <span class="comment"># @param[in] attribut l'indice de l'attribut</span>
+<a name="l00577"></a>00577 <span class="comment"># @param[in] valeur la valeur de l'attribut</span>
+<a name="l00578"></a>00578 <span class="comment"># @param[in] exemples la liste des exemples</span>
+<a name="l00579"></a>00579 <span class="comment"># @return le nombre d'exemples respectant la condition</span>
+<a name="l00580"></a><a class="code" href="namespaceid3.html#b2a95adbc60d79ae09d2bfe41d35bb3c">00580</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#b2a95adbc60d79ae09d2bfe41d35bb3c" title="Retourne le nombre d&amp;#39;exemples respectant une condition particulière.">nombreOccurencesCond</a>( classe, attribut, valeur, exemples ):
+<a name="l00581"></a>00581         res = 0
+<a name="l00582"></a>00582         <span class="keywordflow">for</span> ex <span class="keywordflow">in</span> exemples:
+<a name="l00583"></a>00583                 <span class="keywordflow">if</span> ( retourneClasse(ex) == classe ) <span class="keywordflow">and</span> ( retourneValeurAttribut(
+<a name="l00584"></a>00584                         ex,attribut) == valeur ):
+<a name="l00585"></a>00585                         res = res + 1
+<a name="l00586"></a>00586         <span class="keywordflow">return</span> res
+<a name="l00587"></a>00587 
+<a name="l00588"></a>00588 
+<a name="l00589"></a>00589 
+<a name="l00590"></a>00590 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00591"></a>00591 <span class="comment">#   UTILITAIRES</span>
+<a name="l00592"></a>00592 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00593"></a>00593 
+<a name="l00594"></a>00594 <span class="comment">## Retourne la liste de toutes les valeurs possibles de l'attribut</span>
+<a name="l00595"></a>00595 <span class="comment"># d'index \c attribut.</span>
+<a name="l00596"></a>00596 <span class="comment">#</span>
+<a name="l00597"></a>00597 <span class="comment"># Cette fonction retourne la liste de toutes les valeurs possible pour un</span>
+<a name="l00598"></a>00598 <span class="comment"># attribut donné. Les valeurs d'un attribut sont stockées dans une liste dont</span>
+<a name="l00599"></a>00599 <span class="comment"># le premier élément est le nom de l'attribut. Donc, pour obtenir les valeurs,</span>
+<a name="l00600"></a>00600 <span class="comment"># il suffit de retourner les éléments de 1 à</span>
+<a name="l00601"></a>00601 <span class="comment"># len(\c attributsEtValeurs[attribut])</span>
+<a name="l00602"></a>00602 <span class="comment">#</span>
+<a name="l00603"></a>00603 <span class="comment"># @param[in] attribut l'indice de l'attribut</span>
+<a name="l00604"></a>00604 <span class="comment"># @return une liste de valeurs correspondant à l'attribut d'indice \c attribut</span>
+<a name="l00605"></a><a class="code" href="namespaceid3.html#1b01426396cfd56d3963a39a29290ebd">00605</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#1b01426396cfd56d3963a39a29290ebd" title="Retourne la liste de toutes les valeurs possibles de l&amp;#39;attribut d&amp;#39;index attribut...">retourneValeursAttribut</a>( attribut ):
+<a name="l00606"></a>00606         <span class="keywordflow">return</span> attributsEtValeurs[attribut][1:]
+<a name="l00607"></a>00607 
+<a name="l00608"></a>00608 
+<a name="l00609"></a>00609 <span class="comment">## Retourne la liste des index des attributs, i.e. une liste de \c actuel a</span>
+<a name="l00610"></a>00610 <span class="comment"># \c dernier-1.</span>
+<a name="l00611"></a>00611 <span class="comment">#</span>
+<a name="l00612"></a>00612 <span class="comment"># Cette fonction crée une liste d'indices correspondant à chaque élément</span>
+<a name="l00613"></a>00613 <span class="comment"># de la liste \c attributsEtValeurs.</span>
+<a name="l00614"></a>00614 <span class="comment">#</span>
+<a name="l00615"></a>00615 <span class="comment"># @param[in] actuel l'indice de l'attribut courant</span>
+<a name="l00616"></a>00616 <span class="comment"># @param[in] dernier l'indice du dernier attribut</span>
+<a name="l00617"></a>00617 <span class="comment"># @return une liste d'indices pour chaque attribut</span>
+<a name="l00618"></a><a class="code" href="namespaceid3.html#edd935eff60c845cfa96058daa070d0e">00618</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#edd935eff60c845cfa96058daa070d0e" title="Retourne la liste des index des attributs, i.e.">construitListeAttributs</a>( actuel=1, dernier=-1 ):
+<a name="l00619"></a>00619         <span class="keywordflow">if</span> dernier == -1:
+<a name="l00620"></a>00620                 dernier = len(attributsEtValeurs)
+<a name="l00621"></a>00621         <span class="keywordflow">if</span> actuel &lt; dernier:
+<a name="l00622"></a>00622                 <span class="keywordflow">return</span> range(actuel,dernier)
+<a name="l00623"></a>00623         <span class="keywordflow">else</span>:
+<a name="l00624"></a>00624                 <span class="keywordflow">return</span> []
+<a name="l00625"></a>00625 
+<a name="l00626"></a>00626 
+<a name="l00627"></a>00627 <span class="comment">## Retourne le nom de l'attribut d'index \c attribut.</span>
+<a name="l00628"></a>00628 <span class="comment">#</span>
+<a name="l00629"></a>00629 <span class="comment"># Cette fonction retourne, dans la liste des attributs et de leur valeur,</span>
+<a name="l00630"></a>00630 <span class="comment"># le nom de l'attribut correspondant à l'indice \c attribut. Le codage de la</span>
+<a name="l00631"></a>00631 <span class="comment"># liste \c attributsEtValeurs est le suivant :</span>
+<a name="l00632"></a>00632 <span class="comment">#</span>
+<a name="l00633"></a>00633 <span class="comment"># @code</span>
+<a name="l00634"></a>00634 <span class="comment"># attributEtValeur = [ 'nom_attribut', 'valeur_1', ..., 'valeur_n' ]</span>
+<a name="l00635"></a>00635 <span class="comment"># attributsEtValeurs = [ attributEtValeur[0], ...., attributEtValeur[m] ]</span>
+<a name="l00636"></a>00636 <span class="comment"># @endcode</span>
+<a name="l00637"></a>00637 <span class="comment">#</span>
+<a name="l00638"></a>00638 <span class="comment"># Le nom de l'attribut \c attribut se trouve donc en</span>
+<a name="l00639"></a>00639 <span class="comment"># \c attributsEtValeurs[attribut][\b 0].</span>
+<a name="l00640"></a>00640 <span class="comment">#</span>
+<a name="l00641"></a>00641 <span class="comment"># @param[in] attribut l'indice de l'attribut dont on cherche le nom</span>
+<a name="l00642"></a>00642 <span class="comment"># @return le nom de l'attribut d'indice \c attribut</span>
+<a name="l00643"></a><a class="code" href="namespaceid3.html#b13b7c72cbe7032a95d54f9dedc2a78c">00643</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#b13b7c72cbe7032a95d54f9dedc2a78c" title="Retourne le nom de l&amp;#39;attribut d&amp;#39;index attribut.">retourneNomAttribut</a>( attribut ):
+<a name="l00644"></a>00644         <span class="keywordflow">return</span> attributsEtValeurs[attribut][0]
+<a name="l00645"></a>00645 
+<a name="l00646"></a>00646 
+<a name="l00647"></a>00647 <span class="comment">## Retourne l'index de la plus petite valeur de la liste \c liste.</span>
+<a name="l00648"></a>00648 <span class="comment">#</span>
+<a name="l00649"></a>00649 <span class="comment"># Cette fonction cherche parmi tous les éléments de la liste \c liste passée</span>
+<a name="l00650"></a>00650 <span class="comment"># en paramètre &lt;em&gt;le plus petit&lt;/em&gt; et retourne sa position </span>
+<a name="l00651"></a>00651 <span class="comment">#</span>
+<a name="l00652"></a>00652 <span class="comment"># @param[in] liste la liste dans laquelle l'on doit chercher</span>
+<a name="l00653"></a>00653 <span class="comment"># @return l'indice du plus petit élément de la liste</span>
+<a name="l00654"></a><a class="code" href="namespaceid3.html#75b261ccf2a40aa7f5b8cae83eb1ddd7">00654</a> <span class="keyword">def </span><a class="code" href="namespaceid3.html#75b261ccf2a40aa7f5b8cae83eb1ddd7" title="Retourne l&amp;#39;index de la plus petite valeur de la liste liste.">retourneIndiceMinimum</a>( liste ):
+<a name="l00655"></a>00655         <span class="keywordflow">print</span>( <span class="stringliteral">"DB : retourneIndiceMinimum -&gt; l : %s"</span> % (liste) )
+<a name="l00656"></a>00656         <span class="keywordflow">return</span> liste.index( min(liste) )
+<a name="l00657"></a>00657 
+<a name="l00658"></a>00658 
+<a name="l00659"></a>00659 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00660"></a>00660 <span class="comment"># BATTERIE DE TESTS</span>
+<a name="l00661"></a>00661 <span class="comment">#-------------------------------------------------------------------------------</span>
+<a name="l00662"></a>00662 exec file( <span class="stringliteral">'maladie.py'</span> )
+<a name="l00663"></a>00663 exec file( <span class="stringliteral">'profit.py'</span> )
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Thu Oct 2 12:59:34 2008 pour Lab 8 : ID3 par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>
